@@ -21,6 +21,7 @@ from typing import Protocol
 
 import numpy as np
 
+from app.domain.vocab import ReviewReason, SourceClass
 from app.schemas import CLASSES
 
 # BR-CLS-02: a catalog type is never a model input; a model that asks for one is refused at load.
@@ -34,7 +35,7 @@ class Predictor(Protocol):
     thresholds: dict[str, float]
     rule_params: dict[str, float] | None
 
-    def predict(self, evidence: dict) -> dict:  # -> {"label": str, "class_probs": {class: p}}
+    def predict(self, evidence: dict) -> dict:  # -> {"label", "class_probs": {class: p}, "reasons": [...]}
         ...
 
 
@@ -71,18 +72,26 @@ class RulePredictor:
     def predict(self, evidence: dict) -> dict:
         moving = (evidence.get("motion_px") or 0.0) >= self._motion_min or _pm_total(evidence) >= self._pm_min
         methane = evidence.get("methane_index")
+        reasons: list[str] = []
         if evidence.get("jpl_match"):
-            label = "asteroid_comet"
+            label = SourceClass.ASTEROID_COMET
         elif evidence.get("extended"):
-            label = "galaxy"
+            label = SourceClass.GALAXY
         elif methane is not None and methane >= self._methane_min:
             # BR-CLS-04: methane-like colour without motion can be a quasar or an artefact: send to review
-            label = "cold_brown_dwarf" if moving else "unknown"
+            label = SourceClass.COLD_BROWN_DWARF if moving else SourceClass.UNKNOWN
+            if not moving:
+                reasons.append(ReviewReason.METHANE_WITHOUT_MOTION)
         elif methane is None and not evidence.get("in_gaia") and not moving:
-            label = "unknown"
+            label = SourceClass.UNKNOWN
+            reasons.append(ReviewReason.INSUFFICIENT_DATA)
         else:
-            label = "star"
-        return {"label": label, "class_probs": {c: 1.0 if c == label else 0.0 for c in CLASSES}}
+            label = SourceClass.STAR
+        return {
+            "label": label.value,
+            "class_probs": {c: 1.0 if c == label else 0.0 for c in CLASSES},
+            "reasons": [r.value for r in reasons],
+        }
 
 
 class OnnxPredictor:
@@ -129,25 +138,12 @@ class OnnxPredictor:
         class_probs = {c: float(p) for c, p in zip(self.classes, probs, strict=True)}
         best = max(class_probs, key=class_probs.get)
         threshold = self.thresholds.get(best, 0.0)
-        label = best if class_probs[best] >= threshold else "unknown"
-        return {"label": label, "class_probs": {c: class_probs.get(c, 0.0) for c in CLASSES}}
+        label = best if class_probs[best] >= threshold else SourceClass.UNKNOWN.value
+        reasons = [] if label == best else [ReviewReason.BELOW_THRESHOLD.value]
+        return {"label": label, "class_probs": {c: class_probs.get(c, 0.0) for c in CLASSES}, "reasons": reasons}
 
 
 def load_predictor(model_path: Path | None) -> Predictor:
     if model_path and Path(model_path).is_file():
         return OnnxPredictor(Path(model_path))
     return RulePredictor()
-
-
-PRIORITY = {"cold_brown_dwarf": 0, "unknown": 1, "asteroid_comet": 2, "galaxy": 3, "star": 4}
-
-
-def sort_candidates_first(sources: list[dict]) -> list[dict]:
-    """Cold brown dwarfs first, then unknowns that move, then the rest."""
-
-    def key(s: dict) -> tuple:
-        moving = (s["evidence"].get("motion_px") or 0) >= 1 or _pm_total(s["evidence"]) >= 100
-        p = PRIORITY.get(s["label"], 9) + (0 if s["label"] != "unknown" or moving else 0.5)
-        return (p, -s["class_probs"].get(s["label"], 0.0))
-
-    return sorted(sources, key=key)

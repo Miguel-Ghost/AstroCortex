@@ -6,7 +6,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from app.domain.vocab import SourceClass
+from app.domain.vocab import Agreement, CatalogStatus, ReviewReason, ReviewStatus, SourceClass
 
 ClassName = Literal["star", "galaxy", "asteroid_comet", "cold_brown_dwarf", "unknown"]
 CLASSES: tuple[str, ...] = tuple(c.value for c in SourceClass)
@@ -125,6 +125,19 @@ class Evidence(BaseModel):
     extended: bool | None = None
     variable: bool | None = None
     flagged_frac: float | None = None
+    n_epochs_detected: int | None = None
+
+
+class CatalogInfo(BaseModel):
+    """What the catalogs say about a source. Never a model input (BR-CLS-02)."""
+
+    status: CatalogStatus
+    known_label: SourceClass | None = None
+    known_source: str | None = None  # e.g. "SIMBAD", "UltracoolSheet", "JPL"
+    simbad_type: str | None = None
+    gaia_id: str | None = None
+    catwise_id: str | None = None
+    jpl_name: str | None = None
 
 
 class Source(BaseModel):
@@ -136,8 +149,19 @@ class Source(BaseModel):
     label: ClassName
     class_probs: dict[str, float]
     evidence: Evidence
+    catalog: CatalogInfo
+    agreement: Agreement
+    review_status: ReviewStatus
+    review_reasons: list[ReviewReason]
     obs_ids: list[str] = []
     epoch_mjd: float | None = None
+
+
+class SourcesSummary(BaseModel):
+    n_sources: int
+    needs_review: int
+    classified: int
+    known: int
 
 
 class SourcesResponse(BaseModel):
@@ -151,6 +175,7 @@ class SourcesResponse(BaseModel):
     classes: list[str]
     thresholds: dict[str, float]
     rule_params: dict[str, float] | None = None
+    summary: SourcesSummary
     sources: list[Source]
 
 

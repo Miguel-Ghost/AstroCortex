@@ -5,7 +5,7 @@ import json
 import numpy as np
 import pytest
 
-from app.services.classifier import OnnxPredictor, RulePredictor, sort_candidates_first
+from app.services.classifier import OnnxPredictor, RulePredictor
 
 RULE = RulePredictor()
 
@@ -26,16 +26,9 @@ def test_rule_predictor(evidence, label):
     assert RULE.method == "rule" and RULE.version
     out = RULE.predict(evidence)
     assert out["label"] == label
+    if label == "unknown":
+        assert out["reasons"]  # an unknown always says why
     assert out["class_probs"][label] == 1.0
-
-
-def test_sort_puts_candidates_first():
-    rows = [
-        {"label": "star", "class_probs": {"star": 1.0}, "evidence": {}},
-        {"label": "unknown", "class_probs": {"unknown": 1.0}, "evidence": {}},
-        {"label": "cold_brown_dwarf", "class_probs": {"cold_brown_dwarf": 1.0}, "evidence": {}},
-    ]
-    assert [r["label"] for r in sort_candidates_first(rows)] == ["cold_brown_dwarf", "unknown", "star"]
 
 
 @pytest.fixture()
@@ -84,7 +77,7 @@ def test_onnx_predictor_follows_the_contract(tiny_model):
     assert dwarf["label"] == "cold_brown_dwarf"
     assert sum(dwarf["class_probs"].values()) == pytest.approx(1.0, abs=1e-5)
     weak = predictor.predict({"methane_index": None, "in_gaia": False})  # filled with 1.0 -> p = 0.65 < 0.7
-    assert weak["label"] == "unknown"
+    assert weak["label"] == "unknown" and weak["reasons"] == ["below_threshold"]
 
 
 def test_model_cannot_use_catalog_types_as_input(tiny_model):

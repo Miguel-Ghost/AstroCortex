@@ -67,11 +67,15 @@ def test_field_errors_use_the_error_format(client):
     assert bad.status_code == 422 and bad.json()["error"]["code"] == "invalid_request"
 
 
-def test_sources_put_the_brown_dwarf_first(client):
+def test_sources_carry_review_status_and_summary(client):
+    """BR-CLS-05 through the API: summary matches the rows, needs_review comes first."""
     body = SourcesResponse.model_validate(client.get("/api/sources", params={"field_id": "wise0855"}).json())
     assert body.method == "rule" and body.synthetic and not body.calibrated
-    assert body.sources[0].label == "cold_brown_dwarf"
-    assert all(s.label == "star" for s in body.sources[1:])
+    order = {"needs_review": 0, "classified": 1, "known": 2}
+    statuses = [s.review_status.value for s in body.sources]
+    assert statuses == sorted(statuses, key=order.get)
+    assert body.summary.n_sources == len(body.sources)
+    assert body.summary.needs_review == statuses.count("needs_review")
 
 
 def test_catalogs(client):

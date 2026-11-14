@@ -7,8 +7,9 @@ from fastapi import APIRouter, Depends, Query
 from app.config import Settings, get_settings
 from app.deps import get_predictor, get_store
 from app.errors import ApiError
-from app.schemas import CLASSES, CatalogsResponse, FieldManifest, SourcesResponse, Target
-from app.services.classifier import Predictor, sort_candidates_first
+from app.schemas import CatalogsResponse, FieldManifest, SourcesResponse, Target
+from app.services.classifier import Predictor
+from app.services.engine import classify_field
 from app.services.static_store import StaticStore
 
 router = APIRouter(prefix="/api", tags=["fields"])
@@ -52,25 +53,10 @@ def get_sources(
     predictor: Predictor = Depends(get_predictor),
     settings: Settings = Depends(get_settings),
 ) -> dict:
-    raw = store.read_json(field_id, "sources.json")
-    if raw is None:
+    result = classify_field(field_id, store, predictor, settings)
+    if result is None:
         raise ApiError(404, "sources_not_available", f"No sources for field '{field_id}'")
-    rows = raw["sources"] if isinstance(raw, dict) else raw
-    sources = [{**row, **predictor.predict(row.get("evidence", {}))} for row in rows]
-    manifest = store.manifest(field_id) or {}
-    return {
-        "field_id": field_id,
-        "method": predictor.method,
-        "model_version": predictor.version,
-        "pipeline_commit": manifest.get("pipeline_commit", settings.commit),
-        "data_release": manifest.get("data_release", settings.data_release),
-        "synthetic": bool(isinstance(raw, dict) and raw.get("synthetic")),
-        "calibrated": predictor.calibrated,
-        "classes": list(CLASSES),
-        "thresholds": predictor.thresholds,
-        "rule_params": predictor.rule_params,
-        "sources": sort_candidates_first(sources),
-    }
+    return result
 
 
 @router.get("/catalogs", response_model=CatalogsResponse)
