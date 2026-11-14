@@ -1,4 +1,5 @@
 """Settings from environment variables (set them in the Render dashboard or a local .env)."""
+
 from __future__ import annotations
 
 import os

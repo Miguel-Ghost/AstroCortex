@@ -7,6 +7,7 @@ Usage:
     # local FITS files (testing)
     python -m pipeline.build_field --target wise0855 --fits path/to/*.fits
 """
+
 from __future__ import annotations
 
 import argparse
@@ -41,9 +42,19 @@ def cutout_read_size(size_px: int) -> int:
     return n if n % 2 == 1 else n + 1
 
 
-def build_field(target: Target, cutouts: list[Cutout], out_dir: Path, url_prefix: str, *,
-                size_px: int = 31, data_release: str = "spherex_dr1", pipeline_commit: str = "dev",
-                synthetic: bool = False, exclude_bits: int = 0, write_data: bool = True) -> dict:
+def build_field(
+    target: Target,
+    cutouts: list[Cutout],
+    out_dir: Path,
+    url_prefix: str,
+    *,
+    size_px: int = 31,
+    data_release: str = "spherex_dr1",
+    pipeline_commit: str = "dev",
+    synthetic: bool = False,
+    exclude_bits: int = 0,
+    write_data: bool = True,
+) -> dict:
     if not cutouts:
         raise ValueError(f"No cutouts for {target.target_id}")
     out_dir = Path(out_dir)
@@ -51,7 +62,7 @@ def build_field(target: Target, cutouts: list[Cutout], out_dir: Path, url_prefix
 
     mjds = np.array([c.mjd for c in cutouts])
     center_mjd = float(np.median(mjds))
-    ra_c, dec_c = propagate(target, center_mjd)          # fixed centre for the whole field
+    ra_c, dec_c = propagate(target, center_mjd)  # fixed centre for the whole field
     grid = make_grid_wcs(ra_c, dec_c, size_px, PIXSCALE_ARCSEC)
     aligned = [reproject_cutout(c, grid, size_px) for c in cutouts]
 
@@ -62,8 +73,12 @@ def build_field(target: Target, cutouts: list[Cutout], out_dir: Path, url_prefix
         for i in members:
             by_detector[cutouts[i].detector].append(i)
         for det, idx in by_detector.items():
-            frames[(e, det)] = coadd([aligned[i][0] for i in idx], [aligned[i][1] for i in idx],
-                                     [aligned[i][2] for i in idx], exclude_bits=exclude_bits)
+            frames[(e, det)] = coadd(
+                [aligned[i][0] for i in idx],
+                [aligned[i][1] for i in idx],
+                [aligned[i][2] for i in idx],
+                exclude_bits=exclude_bits,
+            )
 
     detectors = sorted({det for (_, det) in frames})
     limits = {d: stretch_limits([f[0] for (_, dd), f in frames.items() if dd == d]) for d in detectors}
@@ -86,22 +101,30 @@ def build_field(target: Target, cutouts: list[Cutout], out_dir: Path, url_prefix
             if write_data:
                 save_float32(image, out_dir / f"{stem}.f32")
                 data_url = f"{url_prefix}/{stem}.f32"
-            frame_list.append({
-                "detector": det,
-                "image_url": f"{url_prefix}/{stem}.png",
-                "data_url": data_url,
-                "flags_url": f"{url_prefix}/{stem}_flags.png",
-                "n_exposures": n,
-                "flagged_frac": round(float((flags != 0).mean()), 4),
-            })
-        epochs.append({
-            "epoch_id": f"e{e + 1}",
-            "mjd_avg": round(mjd_e, 4),
-            "date_iso": Time(mjd_e, format="mjd").to_value("iso", subfmt="date"),
-            "frames": frame_list,
-            "expected_position": {"ra": round(ra_e, 6), "dec": round(dec_e, 6),
-                                  "x": round(px, 2), "y": round(py, 2)},
-        })
+            frame_list.append(
+                {
+                    "detector": det,
+                    "image_url": f"{url_prefix}/{stem}.png",
+                    "data_url": data_url,
+                    "flags_url": f"{url_prefix}/{stem}_flags.png",
+                    "n_exposures": n,
+                    "flagged_frac": round(float((flags != 0).mean()), 4),
+                }
+            )
+        epochs.append(
+            {
+                "epoch_id": f"e{e + 1}",
+                "mjd_avg": round(mjd_e, 4),
+                "date_iso": Time(mjd_e, format="mjd").to_value("iso", subfmt="date"),
+                "frames": frame_list,
+                "expected_position": {
+                    "ra": round(ra_e, 6),
+                    "dec": round(dec_e, 6),
+                    "x": round(px, 2),
+                    "y": round(py, 2),
+                },
+            }
+        )
 
     manifest = {
         "field_id": target.target_id,
@@ -118,8 +141,12 @@ def build_field(target: Target, cutouts: list[Cutout], out_dir: Path, url_prefix
         "synthetic": synthetic,
         "flux_unit": "MJy/sr",
         "detectors": [
-            {"detector": d, "lambda_min_um": DETECTORS[d][0], "lambda_max_um": DETECTORS[d][1],
-             "stretch": {"type": "asinh", "vmin": limits[d][0], "vmax": limits[d][1]}}
+            {
+                "detector": d,
+                "lambda_min_um": DETECTORS[d][0],
+                "lambda_max_um": DETECTORS[d][1],
+                "stretch": {"type": "asinh", "vmin": limits[d][0], "vmax": limits[d][1]},
+            }
             for d in detectors
         ],
         "epochs": epochs,
@@ -154,8 +181,7 @@ def select_rows(rows: list[dict], max_per_epoch_detector: int) -> list[dict]:
     return kept
 
 
-def fetch_cutouts(target: Target, size_px: int, max_per_epoch_detector: int = 6,
-                  workers: int = 4) -> list[Cutout]:
+def fetch_cutouts(target: Target, size_px: int, max_per_epoch_detector: int = 6, workers: int = 4) -> list[Cutout]:
     """Query IRSA and read the cutouts from S3 (4 parallel reads, as agreed in the plan)."""
     from .query import exposures_for
 
@@ -189,16 +215,22 @@ def main(argv: list[str] | None = None) -> None:
     target = load_targets()[args.target]
     if args.fits:
         read_size = cutout_read_size(args.size)
-        cutouts = [c for f in args.fits
-                   if (c := read_cutout(f, lambda mjd: propagate(target, mjd), read_size, remote=False))]
+        cutouts = [
+            c for f in args.fits if (c := read_cutout(f, lambda mjd: propagate(target, mjd), read_size, remote=False))
+        ]
     else:
         cutouts = fetch_cutouts(target, args.size, args.max_per_epoch_detector)
     log.info("%s: %d cutouts", target.target_id, len(cutouts))
-    manifest = build_field(target, cutouts, args.out_root / target.target_id,
-                           f"/static/fields/{target.target_id}", size_px=args.size,
-                           data_release=args.data_release, pipeline_commit=args.commit)
-    log.info("%s: %d epochs written to %s", target.target_id, len(manifest["epochs"]),
-             args.out_root / target.target_id)
+    manifest = build_field(
+        target,
+        cutouts,
+        args.out_root / target.target_id,
+        f"/static/fields/{target.target_id}",
+        size_px=args.size,
+        data_release=args.data_release,
+        pipeline_commit=args.commit,
+    )
+    log.info("%s: %d epochs written to %s", target.target_id, len(manifest["epochs"]), args.out_root / target.target_id)
 
 
 if __name__ == "__main__":

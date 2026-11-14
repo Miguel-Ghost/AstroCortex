@@ -10,14 +10,17 @@ from app.services.classifier import OnnxPredictor, RulePredictor, sort_candidate
 RULE = RulePredictor()
 
 
-@pytest.mark.parametrize("evidence, label", [
-    ({"methane_index": 40, "pm_mas_yr": {"pmra": -8124, "pmdec": 673}, "in_gaia": False}, "cold_brown_dwarf"),
-    ({"methane_index": 40, "motion_px": 0.0, "in_gaia": False}, "unknown"),        # methane-like but static
-    ({"jpl_match": "2001 AB", "methane_index": 1.0}, "asteroid_comet"),
-    ({"extended": True, "methane_index": 1.0}, "galaxy"),
-    ({"methane_index": 1.0, "in_gaia": True, "pm_mas_yr": {"pmra": -801, "pmdec": 10362}}, "star"),
-    ({"in_gaia": False}, "unknown"),                                                  # no data at all
-])
+@pytest.mark.parametrize(
+    "evidence, label",
+    [
+        ({"methane_index": 40, "pm_mas_yr": {"pmra": -8124, "pmdec": 673}, "in_gaia": False}, "cold_brown_dwarf"),
+        ({"methane_index": 40, "motion_px": 0.0, "in_gaia": False}, "unknown"),  # methane-like but static
+        ({"jpl_match": "2001 AB", "methane_index": 1.0}, "asteroid_comet"),
+        ({"extended": True, "methane_index": 1.0}, "galaxy"),
+        ({"methane_index": 1.0, "in_gaia": True, "pm_mas_yr": {"pmra": -801, "pmdec": 10362}}, "star"),
+        ({"in_gaia": False}, "unknown"),  # no data at all
+    ],
+)
 def test_rule_predictor(evidence, label):
     out = RULE.predict(evidence)
     assert out["label"] == label
@@ -25,9 +28,11 @@ def test_rule_predictor(evidence, label):
 
 
 def test_sort_puts_candidates_first():
-    rows = [{"label": "star", "class_probs": {"star": 1.0}, "evidence": {}},
-            {"label": "unknown", "class_probs": {"unknown": 1.0}, "evidence": {}},
-            {"label": "cold_brown_dwarf", "class_probs": {"cold_brown_dwarf": 1.0}, "evidence": {}}]
+    rows = [
+        {"label": "star", "class_probs": {"star": 1.0}, "evidence": {}},
+        {"label": "unknown", "class_probs": {"unknown": 1.0}, "evidence": {}},
+        {"label": "cold_brown_dwarf", "class_probs": {"cold_brown_dwarf": 1.0}, "evidence": {}},
+    ]
     assert [r["label"] for r in sort_candidates_first(rows)] == ["cold_brown_dwarf", "unknown", "star"]
 
 
@@ -39,20 +44,34 @@ def tiny_model(tmp_path):
 
     classes = ["star", "galaxy", "asteroid_comet", "cold_brown_dwarf", "unknown"]
     w = np.zeros((2, 5), dtype=np.float32)
-    w[0, 3] = 2.0   # methane_index pushes towards cold_brown_dwarf
-    w[1, 0] = 2.0   # in_gaia pushes towards star
+    w[0, 3] = 2.0  # methane_index pushes towards cold_brown_dwarf
+    w[1, 0] = 2.0  # in_gaia pushes towards star
     graph = helper.make_graph(
-        [helper.make_node("MatMul", ["x", "W"], ["logits"]), helper.make_node("Softmax", ["logits"], ["probs"], axis=1)],
-        "tiny", [helper.make_tensor_value_info("x", TensorProto.FLOAT, [1, 2])],
+        [
+            helper.make_node("MatMul", ["x", "W"], ["logits"]),
+            helper.make_node("Softmax", ["logits"], ["probs"], axis=1),
+        ],
+        "tiny",
+        [helper.make_tensor_value_info("x", TensorProto.FLOAT, [1, 2])],
         [helper.make_tensor_value_info("probs", TensorProto.FLOAT, [1, 5])],
-        [numpy_helper.from_array(w, name="W")])
+        [numpy_helper.from_array(w, name="W")],
+    )
     model = helper.make_model(graph, opset_imports=[helper.make_opsetid("", 13)])
     model.ir_version = 8
     onnx.save(model, tmp_path / "model.onnx")
-    (tmp_path / "metadata.json").write_text(json.dumps({
-        "model_version": "tiny-0.1", "features": ["methane_index", "in_gaia"], "classes": classes,
-        "calibrated": True, "thresholds": {"cold_brown_dwarf": 0.7}, "fill_values": {"methane_index": 1.0},
-        "scaler": {"mean": [0.0, 0.0], "scale": [1.0, 1.0]}}))
+    (tmp_path / "metadata.json").write_text(
+        json.dumps(
+            {
+                "model_version": "tiny-0.1",
+                "features": ["methane_index", "in_gaia"],
+                "classes": classes,
+                "calibrated": True,
+                "thresholds": {"cold_brown_dwarf": 0.7},
+                "fill_values": {"methane_index": 1.0},
+                "scaler": {"mean": [0.0, 0.0], "scale": [1.0, 1.0]},
+            }
+        )
+    )
     return tmp_path / "model.onnx"
 
 

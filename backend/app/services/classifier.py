@@ -11,6 +11,7 @@ Contract with the model repo (what it must publish per version):
 The preprocessing done in training (missing values, scaling) MUST be repeated here
 from metadata.json, otherwise training and serving see different inputs.
 """
+
 from __future__ import annotations
 
 import json
@@ -49,11 +50,19 @@ class RulePredictor:
     calibrated = False
     thresholds: dict[str, float] = {}
 
-    def __init__(self, methane_min: float = 3.2, motion_px_min: float = 1.0, pm_min_masyr: float = 100.0,
-                 version: str = "rule-v0"):
+    def __init__(
+        self,
+        methane_min: float = 3.2,
+        motion_px_min: float = 1.0,
+        pm_min_masyr: float = 100.0,
+        version: str = "rule-v0",
+    ):
         self.version = version
-        self.rule_params = {"methane_index_min": methane_min, "motion_px_min": motion_px_min,
-                            "pm_min_mas_yr": pm_min_masyr}
+        self.rule_params = {
+            "methane_index_min": methane_min,
+            "motion_px_min": motion_px_min,
+            "pm_min_mas_yr": pm_min_masyr,
+        }
         self._methane_min, self._motion_min, self._pm_min = methane_min, motion_px_min, pm_min_masyr
 
     def predict(self, evidence: dict) -> dict:
@@ -111,7 +120,7 @@ class OnnxPredictor:
 
     def predict(self, evidence: dict) -> dict:
         probs = np.asarray(self._session.run(None, {self._input: self._vector(evidence)})[-1], dtype=float).ravel()
-        class_probs = {c: float(p) for c, p in zip(self.classes, probs)}
+        class_probs = {c: float(p) for c, p in zip(self.classes, probs, strict=True)}
         best = max(class_probs, key=class_probs.get)
         threshold = self.thresholds.get(best, 0.0)
         label = best if class_probs[best] >= threshold else "unknown"
@@ -129,8 +138,10 @@ PRIORITY = {"cold_brown_dwarf": 0, "unknown": 1, "asteroid_comet": 2, "galaxy": 
 
 def sort_candidates_first(sources: list[dict]) -> list[dict]:
     """Cold brown dwarfs first, then unknowns that move, then the rest."""
+
     def key(s: dict) -> tuple:
         moving = (s["evidence"].get("motion_px") or 0) >= 1 or _pm_total(s["evidence"]) >= 100
         p = PRIORITY.get(s["label"], 9) + (0 if s["label"] != "unknown" or moving else 0.5)
         return (p, -s["class_probs"].get(s["label"], 0.0))
+
     return sorted(sources, key=key)

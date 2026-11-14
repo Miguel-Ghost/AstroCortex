@@ -1,7 +1,8 @@
 """User marks and votes. Postgres when DATABASE_URL is set; in memory otherwise (local runs, tests)."""
+
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from threading import Lock
 
 SCHEMA = """
@@ -29,8 +30,7 @@ class MemoryMarksRepo:
 
     def add(self, mark: dict) -> dict:
         with self._lock:
-            row = {**mark, "mark_id": len(self._rows) + 1,
-                   "created_at": datetime.now(timezone.utc).isoformat()}
+            row = {**mark, "mark_id": len(self._rows) + 1, "created_at": datetime.now(UTC).isoformat()}
             self._rows.append(row)
             return row
 
@@ -51,19 +51,17 @@ class PostgresMarksRepo:
 
     def add(self, mark: dict) -> dict:
         placeholders = ", ".join(["%s"] * len(COLUMNS))
-        sql = (f"INSERT INTO marks ({', '.join(COLUMNS)}) VALUES ({placeholders}) "
-               "RETURNING mark_id, created_at")
+        sql = f"INSERT INTO marks ({', '.join(COLUMNS)}) VALUES ({placeholders}) RETURNING mark_id, created_at"
         with self._psycopg.connect(self._dsn) as conn:
             mark_id, created_at = conn.execute(sql, [mark.get(c) for c in COLUMNS]).fetchone()
         return {**mark, "mark_id": mark_id, "created_at": created_at.isoformat()}
 
     def list(self, field_id: str) -> list[dict]:
-        sql = (f"SELECT mark_id, created_at, {', '.join(COLUMNS)} FROM marks "
-               "WHERE field_id = %s ORDER BY mark_id")
+        sql = f"SELECT mark_id, created_at, {', '.join(COLUMNS)} FROM marks WHERE field_id = %s ORDER BY mark_id"
         with self._psycopg.connect(self._dsn) as conn:
             rows = conn.execute(sql, [field_id]).fetchall()
         keys = ("mark_id", "created_at") + COLUMNS
-        return [{**dict(zip(keys, r)), "created_at": r[1].isoformat()} for r in rows]
+        return [{**dict(zip(keys, r, strict=True)), "created_at": r[1].isoformat()} for r in rows]
 
 
 def make_marks_repo(database_url: str | None):

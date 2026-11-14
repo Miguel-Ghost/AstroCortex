@@ -1,0 +1,17 @@
+# Keeps the free Render instance awake while the jury reviews the project (it sleeps after
+# 15 minutes without traffic and takes about a minute to wake up).
+# Set the repository variable BACKEND_URL (Settings -> Secrets and variables -> Actions -> Variables).
+name: Keep backend awake
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    # Without BACKEND_URL the job does not run, so forks do not spend Actions minutes.
+    if: ${{ vars.BACKEND_URL != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -fsS "${{ vars.BACKEND_URL }}/health" || echo "no response"

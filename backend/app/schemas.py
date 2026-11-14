@@ -1,4 +1,5 @@
 """API contracts. They mirror section 7 of the frontend guide; change both together."""
+
 from __future__ import annotations
 
 from typing import Literal
@@ -100,9 +101,9 @@ class ProperMotion(BaseModel):
 
 class Evidence(BaseModel):
     model_config = ConfigDict(extra="allow")  # extra features pass through to the model
-    motion_px: float | None = None             # displacement seen within SPHEREx data (flipbook)
-    pm_mas_yr: ProperMotion | None = None      # catalog / WISE->SPHEREx proper motion
-    methane_index: float | None = None         # F(3.83-4.41 um) / F(3.20-3.45 um)
+    motion_px: float | None = None  # displacement seen within SPHEREx data (flipbook)
+    pm_mas_yr: ProperMotion | None = None  # catalog / WISE->SPHEREx proper motion
+    methane_index: float | None = None  # F(3.83-4.41 um) / F(3.20-3.45 um)
     in_gaia: bool | None = None
     in_catwise: bool | None = None
     jpl_match: str | None = None
@@ -185,9 +186,21 @@ class MarkOut(MarkIn):
 
 # Agent (section 9) -----------------------------------------------------------
 ActionType = Literal[
-    "goto", "select_target", "set_fov", "set_detector", "show_detector_grid", "set_epoch",
-    "play_flipbook", "pause", "blink", "show_difference", "toggle_layer", "highlight",
-    "select_source", "open_tab", "ask_vote",
+    "goto",
+    "select_target",
+    "set_fov",
+    "set_detector",
+    "show_detector_grid",
+    "set_epoch",
+    "play_flipbook",
+    "pause",
+    "blink",
+    "show_difference",
+    "toggle_layer",
+    "highlight",
+    "select_source",
+    "open_tab",
+    "ask_vote",
 ]
 
 

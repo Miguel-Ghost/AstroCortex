@@ -8,6 +8,7 @@ Rules from the team plan:
 
 NOTE: not tested against IRSA from the development sandbox (no network access there).
 """
+
 from __future__ import annotations
 
 import io
@@ -35,8 +36,14 @@ def _to_python(value: Any) -> Any:
     return value
 
 
-def sia_query(ra: float, dec: float, radius_deg: float = 0.05, collection: str = "spherex_dr1",
-              timeout: float = 60.0, max_tries: int = 5) -> list[dict]:
+def sia_query(
+    ra: float,
+    dec: float,
+    radius_deg: float = 0.05,
+    collection: str = "spherex_dr1",
+    timeout: float = 60.0,
+    max_tries: int = 5,
+) -> list[dict]:
     params = {"COLLECTION": collection, "POS": f"circle {ra} {dec} {radius_deg}"}
     delay = 1.0
     for attempt in range(1, max_tries + 1):
@@ -71,8 +78,9 @@ def s3_key_from_cloud_access(cloud_access: str | dict) -> str | None:
     return find_key(data)
 
 
-def exposures_for(ra: float, dec: float, radius_deg: float = 0.05,
-                  collections: tuple[str, ...] = DEFAULT_COLLECTIONS) -> list[dict]:
+def exposures_for(
+    ra: float, dec: float, radius_deg: float = 0.05, collections: tuple[str, ...] = DEFAULT_COLLECTIONS
+) -> list[dict]:
     """Rows from all collections with an `s3_url` added; skips qr2/ keys and duplicates."""
     seen: set[str] = set()
     out: list[dict] = []

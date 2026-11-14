@@ -1,11 +1,13 @@
 """Combine the exposures of one epoch and detector into a single, less noisy frame."""
+
 from __future__ import annotations
 
 import numpy as np
 
 
-def coadd(images: list[np.ndarray], variances: list[np.ndarray], flags: list[np.ndarray],
-          exclude_bits: int = 0) -> tuple[np.ndarray, np.ndarray, np.ndarray, int]:
+def coadd(
+    images: list[np.ndarray], variances: list[np.ndarray], flags: list[np.ndarray], exclude_bits: int = 0
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, int]:
     """Inverse-variance weighted mean.
 
     `exclude_bits`: pixels with any of these FLAGS bits are left out of the mean

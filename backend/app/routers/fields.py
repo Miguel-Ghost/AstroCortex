@@ -1,4 +1,5 @@
 """Targets, field manifests, classified sources and catalog layers (contracts 7.1-7.4)."""
+
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, Query
@@ -37,8 +38,11 @@ def get_field(
     if manifest is not None:
         return manifest
     # TODO(Brian): live fields -> run the pipeline for (ra, dec) with a small cap of exposures and a timeout.
-    raise ApiError(404, "field_not_available",
-                   "This version serves the 5 test targets; live fields for any coordinate are not ready yet")
+    raise ApiError(
+        404,
+        "field_not_available",
+        "This version serves the 5 test targets; live fields for any coordinate are not ready yet",
+    )
 
 
 @router.get("/sources", response_model=SourcesResponse)

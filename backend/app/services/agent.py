@@ -6,6 +6,7 @@ Design for the live version (keep it this narrow):
 - output is parsed into AgentResponse; any action outside the closed vocabulary is dropped;
 - the provider key lives only in the backend (LLM_API_KEY).
 """
+
 from __future__ import annotations
 
 from pydantic import ValidationError
@@ -24,8 +25,12 @@ def sanitize(raw: dict) -> AgentResponse:
             except ValidationError:
                 continue  # unknown action type or bad parameters: ignore it
         steps.append(AgentStep(say=str(step.get("say", "")), actions=actions))
-    return AgentResponse(reply=str(raw.get("reply", "")), steps=steps,
-                         sources_used=list(raw.get("sources_used", [])), recorded=bool(raw.get("recorded", False)))
+    return AgentResponse(
+        reply=str(raw.get("reply", "")),
+        steps=steps,
+        sources_used=list(raw.get("sources_used", [])),
+        recorded=bool(raw.get("recorded", False)),
+    )
 
 
 def run_live_agent(request: AgentRequest, api_key: str) -> AgentResponse:

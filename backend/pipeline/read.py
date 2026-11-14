@@ -3,6 +3,7 @@
 Remote files are opened with fsspec block caching and `.section[...]`, so only the
 needed blocks travel (31x31 px ~ 1.4 MB instead of ~66 MB per file).
 """
+
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -18,18 +19,19 @@ FSSPEC_KWARGS = {"block_size": 65536, "cache_type": "blockcache"}
 
 @dataclass
 class Cutout:
-    image: np.ndarray      # IMAGE - ZODI, NaN outside the detector
+    image: np.ndarray  # IMAGE - ZODI, NaN outside the detector
     variance: np.ndarray
-    flags: np.ndarray      # int bitmask, 0 outside the detector
-    wcs: WCS               # celestial WCS of the cutout (shifted, SIP kept)
-    mjd: float             # MJD-AVG
-    detector: int          # 1..6
-    source: str            # file path or URL
+    flags: np.ndarray  # int bitmask, 0 outside the detector
+    wcs: WCS  # celestial WCS of the cutout (shifted, SIP kept)
+    mjd: float  # MJD-AVG
+    detector: int  # 1..6
+    source: str  # file path or URL
     wavelength_um: float | None = None  # at the requested position, if available
 
 
-def read_section(section, full_shape: tuple[int, int], xc: float, yc: float, size: int,
-                 fill: float | int) -> tuple[np.ndarray, tuple[int, int]]:
+def read_section(
+    section, full_shape: tuple[int, int], xc: float, yc: float, size: int, fill: float | int
+) -> tuple[np.ndarray, tuple[int, int]]:
     """Square `size` x `size` window centred on pixel (xc, yc); pads outside the array with `fill`.
 
     Returns the window and its (x0, y0) origin in full-image pixel coordinates (0-based).
@@ -43,7 +45,7 @@ def read_section(section, full_shape: tuple[int, int], xc: float, yc: float, siz
     out = np.full((size, size), fill, dtype=dtype)
     cx0, cy0, cx1, cy1 = max(x0, 0), max(y0, 0), min(x1, nx), min(y1, ny)
     if cx0 < cx1 and cy0 < cy1:
-        out[cy0 - y0:cy1 - y0, cx0 - x0:cx1 - x0] = section[cy0:cy1, cx0:cx1]
+        out[cy0 - y0 : cy1 - y0, cx0 - x0 : cx1 - x0] = section[cy0:cy1, cx0:cx1]
     return out, (x0, y0)
 
 

@@ -4,6 +4,7 @@ Without this step the blink shows jumps caused by each exposure's own pointing a
 not real motion. The grid centre is FIXED for the whole field (the target propagated to a
 reference date); the per-date position goes only into the crosshair.
 """
+
 from __future__ import annotations
 
 import numpy as np
@@ -31,7 +32,8 @@ def reproject_cutout(cutout: Cutout, grid_wcs: WCS, size_px: int) -> tuple[np.nd
     shape = (size_px, size_px)
     image, _ = reproject_interp((cutout.image, cutout.wcs), grid_wcs, shape_out=shape, order="bilinear")
     variance, _ = reproject_interp((cutout.variance, cutout.wcs), grid_wcs, shape_out=shape, order="bilinear")
-    flags_f, _ = reproject_interp((cutout.flags.astype(float), cutout.wcs), grid_wcs, shape_out=shape,
-                                  order="nearest-neighbor")
+    flags_f, _ = reproject_interp(
+        (cutout.flags.astype(float), cutout.wcs), grid_wcs, shape_out=shape, order="nearest-neighbor"
+    )
     flags = np.where(np.isfinite(flags_f), flags_f, 0).astype(np.int64)
     return image, variance, flags

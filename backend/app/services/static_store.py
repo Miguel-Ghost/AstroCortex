@@ -1,4 +1,5 @@
 """Read the precomputed products of each field from disk (data/static/fields/<field_id>/)."""
+
 from __future__ import annotations
 
 import json
@@ -35,15 +36,18 @@ class StaticStore:
     def list_targets(self) -> list[dict]:
         out = []
         for t in self.targets.values():
-            has_manifest = self._field_dir(t.target_id) is not None and (self.fields_dir / t.target_id / "manifest.json").is_file()
-            out.append({
-                "target_id": t.target_id,
-                "name": t.name,
-                "kind": t.kind,
-                "behavior": list(t.behavior),
-                "short_description": t.short_description,
-                "static_manifest_url": f"/static/fields/{t.target_id}/manifest.json" if has_manifest else None,
-            })
+            folder = self._field_dir(t.target_id)
+            has_manifest = folder is not None and (folder / "manifest.json").is_file()
+            out.append(
+                {
+                    "target_id": t.target_id,
+                    "name": t.name,
+                    "kind": t.kind,
+                    "behavior": list(t.behavior),
+                    "short_description": t.short_description,
+                    "static_manifest_url": f"/static/fields/{t.target_id}/manifest.json" if has_manifest else None,
+                }
+            )
         return out
 
     def find_target_near(self, ra: float, dec: float, radius_arcmin: float) -> str | None:
@@ -51,7 +55,8 @@ class StaticStore:
         now_mjd = float(Time.now().mjd)
         best, best_sep = None, radius_arcmin
         for t in self.targets.values():
-            for mjd in (now_mjd, None):  # current position, then catalog position (e.g. the statement's 2010 coordinates)
+            # current position first, then the catalog position (e.g. the statement's 2010 coordinates)
+            for mjd in (now_mjd, None):
                 tra, tdec = propagate(t, mjd) if mjd else (t.ra, t.dec)
                 sep = _sep_arcmin(ra, dec, tra, tdec)
                 if sep <= best_sep:

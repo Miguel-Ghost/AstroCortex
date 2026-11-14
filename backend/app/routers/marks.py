@@ -1,4 +1,5 @@
 """User marks and votes (contract 7.7)."""
+
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, Query

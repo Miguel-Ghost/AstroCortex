@@ -1,4 +1,5 @@
 """Group exposures into epochs (visits). SPHEREx returns to each zone about every 6 months."""
+
 from __future__ import annotations
 
 import numpy as np

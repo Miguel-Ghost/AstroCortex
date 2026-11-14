@@ -1,4 +1,5 @@
 """FastAPI entry point: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`."""
+
 from __future__ import annotations
 
 from fastapi import FastAPI
@@ -14,8 +15,11 @@ from app.schemas import Health
 
 def create_app() -> FastAPI:
     settings = get_settings()
-    app = FastAPI(title="SPHEREx Flipbook API", version="0.1.0",
-                  description="Backend of the Space Apps 2026 'Planet X and SPHEREx' project.")
+    app = FastAPI(
+        title="SPHEREx Flipbook API",
+        version="0.1.0",
+        description="Backend of the Space Apps 2026 'Planet X and SPHEREx' project.",
+    )
     app.add_middleware(
         CORSMiddleware,
         allow_origins=settings.cors_origins,
@@ -34,8 +38,12 @@ def create_app() -> FastAPI:
     @app.get("/health", response_model=Health, tags=["meta"])
     def health() -> dict:
         predictor = get_predictor()
-        return {"status": "ok", "commit": settings.commit, "model_version": predictor.version,
-                "classifier_method": predictor.method}
+        return {
+            "status": "ok",
+            "commit": settings.commit,
+            "model_version": predictor.version,
+            "classifier_method": predictor.method,
+        }
 
     return app
 

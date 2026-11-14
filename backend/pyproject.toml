@@ -1,0 +1,26 @@
+[tool.ruff]
+line-length = 120
+target-version = "py311"  # Render runs 3.11; no 3.12-only syntax
+# `exclude` REPLACES ruff's default list: without .venv here the linter analyses installed packages.
+exclude = [".venv", ".ruff_cache", "__pycache__", ".pytest_tmp"]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle
+    "F",    # pyflakes
+    "I",    # import order
+    "B",    # bugbear: subtle bugs
+    "UP",   # modern syntax
+    "C4",   # comprehensions
+    "SIM",  # simplifications
+    "T20",  # no print() outside scripts
+]
+ignore = [
+    "B008",  # Depends() as a default value is the normal FastAPI pattern
+]
+
+[tool.ruff.lint.per-file-ignores]
+"scripts/*" = ["T20"]
+"tests/*" = ["E501"]
+# Prompts are literal text sent to the model; wrapping them at 120 changes what the model receives.
+"app/services/agent.py" = ["E501"]

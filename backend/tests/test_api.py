@@ -50,8 +50,14 @@ def test_catalogs(client):
 
 
 def test_marks_roundtrip(client):
-    mark = {"field_id": "wise0855", "source_id": "wise0855_s000", "ra": 133.76, "dec": -7.24,
-            "epoch_mjd": 61005.5, "user_label": "real"}
+    mark = {
+        "field_id": "wise0855",
+        "source_id": "wise0855_s000",
+        "ra": 133.76,
+        "dec": -7.24,
+        "epoch_mjd": 61005.5,
+        "user_label": "real",
+    }
     created = client.post("/api/marks", json=mark)
     assert created.status_code == 201 and created.json()["mark_id"] == 1
     listed = client.get("/api/marks", params={"field_id": "wise0855"}).json()

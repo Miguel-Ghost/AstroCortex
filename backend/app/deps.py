@@ -1,4 +1,5 @@
 """Shared objects, created once per process (FastAPI dependencies; tests can override them)."""
+
 from __future__ import annotations
 
 from functools import lru_cache

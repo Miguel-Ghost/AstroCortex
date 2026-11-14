@@ -1,4 +1,5 @@
 """Guide agent endpoint (section 9 of the frontend guide)."""
+
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends
@@ -14,8 +15,9 @@ router = APIRouter(prefix="/api", tags=["agent"])
 
 
 @router.post("/agent", response_model=AgentResponse)
-def agent(request: AgentRequest, store: StaticStore = Depends(get_store),
-          settings: Settings = Depends(get_settings)) -> AgentResponse:
+def agent(
+    request: AgentRequest, store: StaticStore = Depends(get_store), settings: Settings = Depends(get_settings)
+) -> AgentResponse:
     if settings.llm_api_key:
         try:
             return run_live_agent(request, settings.llm_api_key)
@@ -25,5 +27,6 @@ def agent(request: AgentRequest, store: StaticStore = Depends(get_store),
     tour = store.read_json(target_id, "agent_tour.json") if target_id else None
     if tour is not None:
         return sanitize({**tour, "recorded": True})
-    raise ApiError(503, "agent_unavailable",
-                   "The live agent is not configured; recorded tours exist only for the 5 test targets")
+    raise ApiError(
+        503, "agent_unavailable", "The live agent is not configured; recorded tours exist only for the 5 test targets"
+    )

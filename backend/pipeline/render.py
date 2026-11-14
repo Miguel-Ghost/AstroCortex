@@ -3,6 +3,7 @@
 Orientation of everything written here: row 0 = north (top), column 0 = east (left).
 FITS-style arrays from the grid have row 0 = south, so they are flipped vertically.
 """
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -45,8 +46,9 @@ def save_png(image: np.ndarray, vmin: float, vmax: float, path: Path) -> None:
     Image.fromarray(to_north_up(rgba_la)).save(path, optimize=True)
 
 
-def save_flags_png(flags: np.ndarray, path: Path, color: tuple[int, int, int] = (255, 64, 64),
-                   alpha: int = 110) -> None:
+def save_flags_png(
+    flags: np.ndarray, path: Path, color: tuple[int, int, int] = (255, 64, 64), alpha: int = 110
+) -> None:
     rgba = np.zeros(flags.shape + (4,), dtype=np.uint8)
     mask = flags != 0
     rgba[mask] = (*color, alpha)

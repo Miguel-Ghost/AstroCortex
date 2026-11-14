@@ -47,8 +47,10 @@ def test_shift_wcs_keeps_sky_positions_with_sip():
     w.wcs.crval = [133.76, -7.24]
     w.wcs.crpix = [1020.0, 1020.0]
     w.wcs.cdelt = [-6.2 / 3600, 6.2 / 3600]
-    a = np.zeros((3, 3)); a[2, 0] = 1e-6
-    b = np.zeros((3, 3)); b[0, 2] = -1e-6
+    a = np.zeros((3, 3))
+    a[2, 0] = 1e-6
+    b = np.zeros((3, 3))
+    b[0, 2] = -1e-6
     w.sip = Sip(a, b, None, None, w.wcs.crpix)
     shifted = shift_wcs(w, -7, 300)
     for x, y in [(10.0, 20.0), (1500.0, 900.0)]:
@@ -64,9 +66,11 @@ def test_group_epochs_splits_on_gaps_and_long_spans():
 
 
 def test_coadd_is_inverse_variance_weighted_and_ors_flags():
-    img, var, flags, n = coadd([np.full((2, 2), 1.0), np.full((2, 2), 4.0)],
-                               [np.full((2, 2), 1.0), np.full((2, 2), 4.0)],
-                               [np.zeros((2, 2), int), np.array([[0, 2], [0, 0]])])
+    img, var, flags, n = coadd(
+        [np.full((2, 2), 1.0), np.full((2, 2), 4.0)],
+        [np.full((2, 2), 1.0), np.full((2, 2), 4.0)],
+        [np.zeros((2, 2), int), np.array([[0, 2], [0, 0]])],
+    )
     assert n == 2
     assert img[0, 0] == pytest.approx((1 * 1 + 4 * 0.25) / 1.25)
     assert var[0, 0] == pytest.approx(1 / 1.25)
@@ -86,7 +90,7 @@ def test_s3_key_from_cloud_access():
 
 
 def _centroid(arr: np.ndarray, x: float, y: float, radius: float = 3.0) -> tuple[float, float]:
-    yy, xx = np.mgrid[0:arr.shape[0], 0:arr.shape[1]]
+    yy, xx = np.mgrid[0 : arr.shape[0], 0 : arr.shape[1]]
     near = np.hypot(xx - x, yy - y) < radius
     iy, ix = np.unravel_index(np.argmax(np.where(near, np.nan_to_num(arr, nan=-np.inf), -np.inf)), arr.shape)
     w = np.where(np.hypot(xx - ix, yy - iy) <= 1.5, np.clip(np.nan_to_num(arr), 0, None), 0.0)
@@ -98,8 +102,11 @@ def built_field(tmp_path_factory):
     t = TARGETS["wise0855"]
     tmp = tmp_path_factory.mktemp("field")
     paths, stars = synthetic_exposures(t, tmp / "fits", seed=7)
-    cutouts = [c for p in paths
-               if (c := read_cutout(str(p), lambda mjd: propagate(t, mjd), cutout_read_size(31), remote=False))]
+    cutouts = [
+        c
+        for p in paths
+        if (c := read_cutout(str(p), lambda mjd: propagate(t, mjd), cutout_read_size(31), remote=False))
+    ]
     manifest = build_field(t, cutouts, tmp / "out", "/static/fields/wise0855", synthetic=True)
     return t, tmp / "out", manifest, stars
 
