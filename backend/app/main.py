@@ -11,7 +11,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from app.config import get_settings
-from app.errors import install_error_handlers
+from app.errors import install_error_handlers, internal_error_response
 from app.logging_setup import configure_logging, request_id
 from app.routers import agent, fields, marks, meta
 
@@ -35,7 +35,11 @@ def create_app() -> FastAPI:
         token = request_id.set(rid)
         start = time.perf_counter()
         try:
-            response = await call_next(request)
+            try:
+                response = await call_next(request)
+            except Exception:  # noqa: BLE001 - BR-ERR-01: last safety net, logged with its request id
+                log.exception("unhandled error", extra={"path": request.url.path})
+                response = internal_error_response()
         finally:
             request_id.reset(token)
         response.headers["X-Request-ID"] = rid

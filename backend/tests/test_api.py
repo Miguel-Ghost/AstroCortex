@@ -58,6 +58,7 @@ def test_field_from_the_statement_coordinate_finds_wise0855(client):
 
 
 def test_field_errors_use_the_error_format(client):
+    """BR-ERR-01."""
     far = client.get("/api/field", params={"ra": 10.0, "dec": 10.0})
     assert far.status_code == 404 and far.json()["error"]["code"] == "field_not_available"
     missing = client.get("/api/field")
@@ -116,4 +117,34 @@ def test_static_frames_are_served(client):
 
 def test_cors_allows_the_frontend_origin(client):
     r = client.get("/health", headers={"Origin": "http://localhost:5173"})
+    assert r.headers.get("access-control-allow-origin") == "http://localhost:5173"
+
+
+def test_validation_errors_list_every_problem(client):
+    """BR-ERR-01: every validation error is reported in details."""
+    r = client.get("/api/field", params={"ra": 999, "dec": -100})
+    body = r.json()["error"]
+    assert r.status_code == 422 and body["code"] == "invalid_request"
+    assert {tuple(e["loc"]) for e in body["details"]["errors"]} == {("query", "ra"), ("query", "dec")}
+
+
+def test_unexpected_errors_return_500_with_request_id(client, monkeypatch):
+    """BR-ERR-01: no stack trace leaves the API; the request id does."""
+    from app import deps
+
+    def broken():
+        raise RuntimeError("secret internals")
+
+    client.app.dependency_overrides[deps.get_store] = broken
+    r = client.get("/api/targets", headers={"X-Request-ID": "req42", "Origin": "http://localhost:5173"})
+    client.app.dependency_overrides.clear()
+    assert r.status_code == 500
+    assert r.json() == {
+        "error": {
+            "code": "internal_error",
+            "message": "Unexpected error. Report the request id.",
+            "details": {"request_id": "req42"},
+        }
+    }
+    assert "secret" not in r.text
     assert r.headers.get("access-control-allow-origin") == "http://localhost:5173"
