@@ -1,0 +1,59 @@
+{
+  "reply": "Here is a short tour of Epsilon Indi B.",
+  "steps": [
+    {
+      "say": "This is Epsilon Indi B. Pair of brown dwarfs (T1 + T6) about 3.6 pc away, seen as a single source by SPHEREx.",
+      "actions": [
+        {
+          "type": "select_target",
+          "target_id": "epsindib"
+        },
+        {
+          "type": "set_detector",
+          "detector": 6
+        }
+      ]
+    },
+    {
+      "say": "Compare the first and last dates: it shifts about 0.8 pixels.",
+      "actions": [
+        {
+          "type": "blink",
+          "epoch_a": "e1",
+          "epoch_b": "e3"
+        },
+        {
+          "type": "highlight",
+          "ra": 331.09748,
+          "dec": -56.800945,
+          "label": "Epsilon Indi B"
+        }
+      ]
+    },
+    {
+      "say": "In the bluer detectors it almost disappears; it is brightest near 4-5 microns.",
+      "actions": [
+        {
+          "type": "show_detector_grid"
+        }
+      ]
+    },
+    {
+      "say": "The classification panel lists every source in this field, candidates first.",
+      "actions": [
+        {
+          "type": "select_source",
+          "source_id": "epsindib_s000"
+        },
+        {
+          "type": "open_tab",
+          "tab": "classification"
+        }
+      ]
+    }
+  ],
+  "sources_used": [
+    "/api/field?target_id=epsindib",
+    "/api/sources?field_id=epsindib"
+  ]
+}

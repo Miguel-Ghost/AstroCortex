@@ -1,0 +1,83 @@
+{
+  "synthetic": true,
+  "epoch_mjd": 61005.685,
+  "gaia": [
+    {
+      "source_id": "mock-epsindib",
+      "ra": 331.096457,
+      "dec": -56.800598,
+      "g_mag": null,
+      "pmra": 3982.0,
+      "pmdec": -2466.8
+    },
+    {
+      "source_id": "mock-epsindib-1",
+      "ra": 331.068336,
+      "dec": -56.803085,
+      "g_mag": 15.33,
+      "pmra": 4.3,
+      "pmdec": 5.4
+    },
+    {
+      "source_id": "mock-epsindib-2",
+      "ra": 331.071929,
+      "dec": -56.805185,
+      "g_mag": 13.85,
+      "pmra": -15.7,
+      "pmdec": -7.1
+    },
+    {
+      "source_id": "mock-epsindib-3",
+      "ra": 331.073355,
+      "dec": -56.793155,
+      "g_mag": 16.29,
+      "pmra": -10.9,
+      "pmdec": -9.8
+    },
+    {
+      "source_id": "mock-epsindib-4",
+      "ra": 331.116273,
+      "dec": -56.809352,
+      "g_mag": 15.51,
+      "pmra": -5.3,
+      "pmdec": 1.1
+    }
+  ],
+  "wise": [
+    {
+      "name": "mock-epsindib",
+      "ra": 331.096457,
+      "dec": -56.800598,
+      "w1": null,
+      "w2": null
+    },
+    {
+      "name": "mock-epsindib-1",
+      "ra": 331.068336,
+      "dec": -56.803085,
+      "w1": 12.14,
+      "w2": 13.42
+    },
+    {
+      "name": "mock-epsindib-2",
+      "ra": 331.071929,
+      "dec": -56.805185,
+      "w1": 11.81,
+      "w2": 12.33
+    },
+    {
+      "name": "mock-epsindib-3",
+      "ra": 331.073355,
+      "dec": -56.793155,
+      "w1": 13.77,
+      "w2": 12.14
+    },
+    {
+      "name": "mock-epsindib-4",
+      "ra": 331.116273,
+      "dec": -56.809352,
+      "w1": 13.11,
+      "w2": 12.11
+    }
+  ]
+}

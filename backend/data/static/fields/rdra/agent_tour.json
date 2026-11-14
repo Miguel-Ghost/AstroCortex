@@ -1,0 +1,44 @@
+{
+  "reply": "Here is a short tour of R Draconis.",
+  "steps": [
+    {
+      "say": "This is R Draconis. Mira variable (pulsating red giant) with a period of about 245 days.",
+      "actions": [
+        {
+          "type": "select_target",
+          "target_id": "rdra"
+        },
+        {
+          "type": "set_detector",
+          "detector": 2
+        }
+      ]
+    },
+    {
+      "say": "Play the dates: its brightness changes from one visit to the next.",
+      "actions": [
+        {
+          "type": "play_flipbook",
+          "fps": 2
+        }
+      ]
+    },
+    {
+      "say": "The classification panel lists every source in this field, candidates first.",
+      "actions": [
+        {
+          "type": "select_source",
+          "source_id": "rdra_s000"
+        },
+        {
+          "type": "open_tab",
+          "tab": "classification"
+        }
+      ]
+    }
+  ],
+  "sources_used": [
+    "/api/field?target_id=rdra",
+    "/api/sources?field_id=rdra"
+  ]
+}

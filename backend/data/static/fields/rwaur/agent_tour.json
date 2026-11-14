@@ -1,0 +1,44 @@
+{
+  "reply": "Here is a short tour of RW Aurigae.",
+  "steps": [
+    {
+      "say": "This is RW Aurigae. Young T Tauri star with a disk; its brightness changes irregularly.",
+      "actions": [
+        {
+          "type": "select_target",
+          "target_id": "rwaur"
+        },
+        {
+          "type": "set_detector",
+          "detector": 2
+        }
+      ]
+    },
+    {
+      "say": "Play the dates: its brightness changes from one visit to the next.",
+      "actions": [
+        {
+          "type": "play_flipbook",
+          "fps": 2
+        }
+      ]
+    },
+    {
+      "say": "The classification panel lists every source in this field, candidates first.",
+      "actions": [
+        {
+          "type": "select_source",
+          "source_id": "rwaur_s000"
+        },
+        {
+          "type": "open_tab",
+          "tab": "classification"
+        }
+      ]
+    }
+  ],
+  "sources_used": [
+    "/api/field?target_id=rwaur",
+    "/api/sources?field_id=rwaur"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "reply": "Here is a short tour of WISE 0855-0714.",
+  "steps": [
+    {
+      "say": "This is WISE 0855-0714. Coldest known brown dwarf (Y type), about 2.3 pc away.",
+      "actions": [
+        {
+          "type": "select_target",
+          "target_id": "wise0855"
+        },
+        {
+          "type": "set_detector",
+          "detector": 6
+        }
+      ]
+    },
+    {
+      "say": "Compare the first and last dates: it shifts about 1.3 pixels.",
+      "actions": [
+        {
+          "type": "blink",
+          "epoch_a": "e1",
+          "epoch_b": "e3"
+        },
+        {
+          "type": "highlight",
+          "ra": 133.75895,
+          "dec": -7.242138,
+          "label": "WISE 0855-0714"
+        }
+      ]
+    },
+    {
+      "say": "In the bluer detectors it almost disappears; it is brightest near 4-5 microns.",
+      "actions": [
+        {
+          "type": "show_detector_grid"
+        }
+      ]
+    },
+    {
+      "say": "The classification panel lists every source in this field, candidates first.",
+      "actions": [
+        {
+          "type": "select_source",
+          "source_id": "wise0855_s000"
+        },
+        {
+          "type": "open_tab",
+          "tab": "classification"
+        }
+      ]
+    }
+  ],
+  "sources_used": [
+    "/api/field?target_id=wise0855",
+    "/api/sources?field_id=wise0855"
+  ]
+}
