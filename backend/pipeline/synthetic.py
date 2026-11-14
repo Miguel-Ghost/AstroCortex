@@ -91,17 +91,22 @@ def synthetic_exposures(
     detectors=(1, 2, 3, 4, 5, 6),
     per_epoch: int = 2,
     n_field_stars: int = 4,
+    red_static: int = 0,
     base_flux: float = 1.0,
     seed: int = 0,
 ) -> tuple[list[Path], list[tuple[float, float, float]]]:
-    """Exposures of `target` with fixed field stars; returns the file paths and the field stars (ra, dec, flux)."""
+    """Exposures of `target` with fixed field sources; returns the file paths and the sources (ra, dec, flux).
+
+    The first `n_field_stars` sources have a stellar SED; the last `red_static` ones have a cold-dwarf
+    SED but do not move (a source the engine must send to review).
+    """
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     rng = np.random.default_rng(seed)
     ra_c, dec_c = propagate(target, float(np.median(epochs_mjd)))
     deg_per_px = PIXSCALE_ARCSEC / 3600.0
     stars = []
-    for _ in range(n_field_stars):
+    for _ in range(n_field_stars + red_static):
         dx, dy = rng.uniform(-11, 11, size=2)
         if math.hypot(dx, dy) < 4:  # keep stars away from the target
             dx += 6 * math.copysign(1, dx)
@@ -124,7 +129,9 @@ def synthetic_exposures(
                 offset = rng.uniform(-20, 20, size=2) * deg_per_px
                 pointing = (ra_t + offset[0] / math.cos(math.radians(dec_t)), dec_t + offset[1])
                 sources = [(ra_t, dec_t, base_flux * sed[det] * factor)]
-                sources += [(ra, dec, f * SED["star"][det]) for ra, dec, f in stars]
+                for i, (ra, dec, f) in enumerate(stars):
+                    kind = "cold_brown_dwarf" if i >= n_field_stars else "star"
+                    sources.append((ra, dec, f * SED[kind][det]))
                 path = out_dir / f"{target.target_id}_e{e + 1}_d{det}_{k}.fits"
                 make_exposure(
                     path,

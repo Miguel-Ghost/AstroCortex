@@ -22,8 +22,8 @@
       "lambda_max_um": 1.09,
       "stretch": {
         "type": "asinh",
-        "vmin": -0.01296280726430708,
-        "vmax": 0.5699010562802853
+        "vmin": -0.011115970794407497,
+        "vmax": 0.5631870568380974
       }
     },
     {
@@ -32,8 +32,8 @@
       "lambda_max_um": 1.62,
       "stretch": {
         "type": "asinh",
-        "vmin": -0.011786106061313565,
-        "vmax": 0.5218842407095559
+        "vmin": -0.012492255717947091,
+        "vmax": 0.5299125465775207
       }
     },
     {
@@ -42,8 +42,8 @@
       "lambda_max_um": 2.41,
       "stretch": {
         "type": "asinh",
-        "vmin": -0.011980274517953542,
-        "vmax": 0.41462960914312025
+        "vmin": -0.012855779693933237,
+        "vmax": 0.39476235831042256
       }
     },
     {
@@ -52,8 +52,8 @@
       "lambda_max_um": 3.82,
       "stretch": {
         "type": "asinh",
-        "vmin": -0.01221800346800864,
-        "vmax": 0.22622562439482408
+        "vmin": -0.011768381038652624,
+        "vmax": 0.2253690051861824
       }
     },
     {
@@ -62,8 +62,8 @@
       "lambda_max_um": 4.41,
       "stretch": {
         "type": "asinh",
-        "vmin": -0.012585841893932916,
-        "vmax": 0.14590145876880686
+        "vmin": -0.011791220095849932,
+        "vmax": 0.2584392209220149
       }
     },
     {
@@ -72,8 +72,8 @@
       "lambda_max_um": 5.0,
       "stretch": {
         "type": "asinh",
-        "vmin": -0.011877969656739528,
-        "vmax": 0.11264031292353792
+        "vmin": -0.01179804496312046,
+        "vmax": 0.2006083643693985
       }
     }
   ],
@@ -89,7 +89,7 @@
           "data_url": "/static/fields/rdra/e1_d1.f32",
           "flags_url": "/static/fields/rdra/e1_d1_flags.png",
           "n_exposures": 2,
-          "flagged_frac": 0.0
+          "flagged_frac": 0.001
         },
         {
           "detector": 2,
@@ -97,7 +97,7 @@
           "data_url": "/static/fields/rdra/e1_d2.f32",
           "flags_url": "/static/fields/rdra/e1_d2_flags.png",
           "n_exposures": 2,
-          "flagged_frac": 0.0
+          "flagged_frac": 0.001
         },
         {
           "detector": 3,
@@ -129,7 +129,7 @@
           "data_url": "/static/fields/rdra/e1_d6.f32",
           "flags_url": "/static/fields/rdra/e1_d6_flags.png",
           "n_exposures": 2,
-          "flagged_frac": 0.0021
+          "flagged_frac": 0.0
         }
       ],
       "expected_position": {
@@ -174,7 +174,7 @@
           "data_url": "/static/fields/rdra/e2_d4.f32",
           "flags_url": "/static/fields/rdra/e2_d4_flags.png",
           "n_exposures": 2,
-          "flagged_frac": 0.0
+          "flagged_frac": 0.001
         },
         {
           "detector": 5,
@@ -211,7 +211,7 @@
           "data_url": "/static/fields/rdra/e3_d1.f32",
           "flags_url": "/static/fields/rdra/e3_d1_flags.png",
           "n_exposures": 2,
-          "flagged_frac": 0.001
+          "flagged_frac": 0.0021
         },
         {
           "detector": 2,
@@ -219,7 +219,7 @@
           "data_url": "/static/fields/rdra/e3_d2.f32",
           "flags_url": "/static/fields/rdra/e3_d2_flags.png",
           "n_exposures": 2,
-          "flagged_frac": 0.0
+          "flagged_frac": 0.001
         },
         {
           "detector": 3,
@@ -235,7 +235,7 @@
           "data_url": "/static/fields/rdra/e3_d4.f32",
           "flags_url": "/static/fields/rdra/e3_d4_flags.png",
           "n_exposures": 2,
-          "flagged_frac": 0.0
+          "flagged_frac": 0.001
         },
         {
           "detector": 5,

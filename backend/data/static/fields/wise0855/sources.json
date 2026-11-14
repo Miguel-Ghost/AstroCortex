@@ -19,7 +19,13 @@
         "jpl_match": null,
         "extended": false,
         "variable": false,
-        "flagged_frac": 0.0005
+        "flagged_frac": 0.0005,
+        "n_epochs_detected": 3
+      },
+      "catalog": {
+        "status": "known_typed",
+        "known_label": "cold_brown_dwarf",
+        "known_source": "SIMBAD"
       },
       "obs_ids": [],
       "epoch_mjd": 61005.685
@@ -30,6 +36,8 @@
       "dec": -7.253174,
       "x": 11.91,
       "y": 21.35,
+      "obs_ids": [],
+      "epoch_mjd": 61005.685,
       "evidence": {
         "motion_px": 0.0,
         "pm_mas_yr": {
@@ -42,10 +50,13 @@
         "jpl_match": null,
         "extended": false,
         "variable": false,
-        "flagged_frac": 0.0005
+        "flagged_frac": 0.0005,
+        "n_epochs_detected": 3
       },
-      "obs_ids": [],
-      "epoch_mjd": 61005.685
+      "catalog": {
+        "status": "catalogued_untyped",
+        "gaia_id": "mock-wise0855-1"
+      }
     },
     {
       "source_id": "wise0855_s002",
@@ -53,6 +64,8 @@
       "dec": -7.241624,
       "x": 21.24,
       "y": 14.65,
+      "obs_ids": [],
+      "epoch_mjd": 61005.685,
       "evidence": {
         "motion_px": 0.0,
         "pm_mas_yr": {
@@ -65,10 +78,13 @@
         "jpl_match": null,
         "extended": false,
         "variable": false,
-        "flagged_frac": 0.0005
+        "flagged_frac": 0.0005,
+        "n_epochs_detected": 3
       },
-      "obs_ids": [],
-      "epoch_mjd": 61005.685
+      "catalog": {
+        "status": "catalogued_untyped",
+        "gaia_id": "mock-wise0855-2"
+      }
     },
     {
       "source_id": "wise0855_s003",
@@ -76,6 +92,8 @@
       "dec": -7.252885,
       "x": 11.15,
       "y": 21.19,
+      "obs_ids": [],
+      "epoch_mjd": 61005.685,
       "evidence": {
         "motion_px": 0.0,
         "pm_mas_yr": {
@@ -88,10 +106,13 @@
         "jpl_match": null,
         "extended": false,
         "variable": false,
-        "flagged_frac": 0.0005
+        "flagged_frac": 0.0005,
+        "n_epochs_detected": 3
       },
-      "obs_ids": [],
-      "epoch_mjd": 61005.685
+      "catalog": {
+        "status": "catalogued_untyped",
+        "gaia_id": "mock-wise0855-3"
+      }
     },
     {
       "source_id": "wise0855_s004",
@@ -99,6 +120,8 @@
       "dec": -7.231855,
       "x": 17.81,
       "y": 8.97,
+      "obs_ids": [],
+      "epoch_mjd": 61005.685,
       "evidence": {
         "motion_px": 0.0,
         "pm_mas_yr": {
@@ -111,10 +134,37 @@
         "jpl_match": null,
         "extended": false,
         "variable": false,
-        "flagged_frac": 0.0005
+        "flagged_frac": 0.0005,
+        "n_epochs_detected": 3
       },
+      "catalog": {
+        "status": "catalogued_untyped",
+        "gaia_id": "mock-wise0855-4"
+      }
+    },
+    {
+      "source_id": "wise0855_s005",
+      "ra": 133.748032,
+      "dec": -7.237172,
+      "x": 21.95,
+      "y": 12.06,
       "obs_ids": [],
-      "epoch_mjd": 61005.685
+      "epoch_mjd": 61005.685,
+      "evidence": {
+        "motion_px": 0.0,
+        "pm_mas_yr": null,
+        "methane_index": 6.1,
+        "in_gaia": false,
+        "in_catwise": false,
+        "jpl_match": null,
+        "extended": false,
+        "variable": false,
+        "flagged_frac": 0.0005,
+        "n_epochs_detected": 3
+      },
+      "catalog": {
+        "status": "uncatalogued"
+      }
     }
   ]
 }

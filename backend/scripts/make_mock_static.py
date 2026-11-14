@@ -31,6 +31,8 @@ from pipeline.synthetic import synthetic_exposures
 from pipeline.targets import Target, load_targets, propagate
 
 MOCK_METHANE = {"wise0855": 40.0, "epsindib": 6.0}  # illustrative values for demo data only
+N_FIELD_STARS = 4
+N_RED_STATIC = 1  # a red source that does not move: the engine must send it to review
 
 
 def _pixel(manifest: dict, ra: float, dec: float) -> tuple[float, float]:
@@ -39,7 +41,7 @@ def _pixel(manifest: dict, ra: float, dec: float) -> tuple[float, float]:
     return grid_to_png_xy(float(gx), float(gy), manifest["ny"])
 
 
-def build_tour(t: Target, manifest: dict, motion_px: float, source_id: str) -> dict:
+def build_tour(t: Target, manifest: dict, motion_px: float, source_id: str, review_id: str | None = None) -> dict:
     first, last = manifest["epochs"][0], manifest["epochs"][-1]
     detector = 6 if t.kind == "cold_brown_dwarf" else 2
     steps = [
@@ -76,9 +78,20 @@ def build_tour(t: Target, manifest: dict, motion_px: float, source_id: str) -> d
                 "actions": [{"type": "play_flipbook", "fps": 2}],
             }
         )
+    if review_id:
+        steps.append(
+            {
+                "say": "This red source does not move and has no catalog counterpart, so it needs a human look.",
+                "actions": [
+                    {"type": "select_source", "source_id": review_id},
+                    {"type": "show_detector_grid"},
+                    {"type": "ask_vote", "source_id": review_id},
+                ],
+            }
+        )
     steps.append(
         {
-            "say": "The classification panel lists every source in this field, candidates first.",
+            "say": "The classification panel lists every source in this field, sources to review first.",
             "actions": [
                 {"type": "select_source", "source_id": source_id},
                 {"type": "open_tab", "tab": "classification"},
@@ -95,7 +108,9 @@ def build_tour(t: Target, manifest: dict, motion_px: float, source_id: str) -> d
 def build_target(t: Target, out_root: Path, workdir: Path, size_px: int = 31) -> dict:
     seed = zlib.crc32(t.target_id.encode())
     rng = np.random.default_rng(seed)
-    paths, stars = synthetic_exposures(t, Path(workdir) / t.target_id, seed=seed)
+    paths, stars = synthetic_exposures(
+        t, Path(workdir) / t.target_id, n_field_stars=N_FIELD_STARS, red_static=N_RED_STATIC, seed=seed
+    )
     read_size = cutout_read_size(size_px)
     cutouts = [c for p in paths if (c := read_cutout(str(p), lambda mjd: propagate(t, mjd), read_size, remote=False))]
     out_dir = Path(out_root) / t.target_id
@@ -131,7 +146,10 @@ def build_target(t: Target, out_root: Path, workdir: Path, size_px: int = 31) ->
             "extended": False,
             "variable": "varies" in t.behavior,
             "flagged_frac": round(flagged, 4),
+            "n_epochs_detected": len(manifest["epochs"]),
         },
+        # the 5 test targets are known objects: SIMBAD types them (demo values)
+        "catalog": {"status": "known_typed", "known_label": t.kind, "known_source": "SIMBAD"},
         "obs_ids": [],
         "epoch_mjd": manifest["center_mjd"],
     }
@@ -150,14 +168,41 @@ def build_target(t: Target, out_root: Path, workdir: Path, size_px: int = 31) ->
     wise.append({"name": f"mock-{t.target_id}", "ra": ra_t, "dec": dec_t, "w1": None, "w2": None})
     for i, (ra, dec, _flux) in enumerate(stars, start=1):
         x, y = _pixel(manifest, ra, dec)
+        base = {
+            "source_id": f"{t.target_id}_s{i:03d}",
+            "ra": round(ra, 6),
+            "dec": round(dec, 6),
+            "x": round(x, 2),
+            "y": round(y, 2),
+            "obs_ids": [],
+            "epoch_mjd": manifest["center_mjd"],
+        }
+        if i > N_FIELD_STARS:
+            # red, static and without counterpart: needs review (methane without motion, uncatalogued)
+            sources.append(
+                {
+                    **base,
+                    "evidence": {
+                        "motion_px": 0.0,
+                        "pm_mas_yr": None,
+                        "methane_index": round(float(rng.uniform(5.0, 7.0)), 2),
+                        "in_gaia": False,
+                        "in_catwise": False,
+                        "jpl_match": None,
+                        "extended": False,
+                        "variable": False,
+                        "flagged_frac": round(flagged, 4),
+                        "n_epochs_detected": len(manifest["epochs"]),
+                    },
+                    "catalog": {"status": "uncatalogued"},
+                }
+            )
+            continue
         pm = {"pmra": round(float(rng.normal(0, 8)), 1), "pmdec": round(float(rng.normal(0, 8)), 1)}
+        gaia_id = f"mock-{t.target_id}-{i}"
         sources.append(
             {
-                "source_id": f"{t.target_id}_s{i:03d}",
-                "ra": round(ra, 6),
-                "dec": round(dec, 6),
-                "x": round(x, 2),
-                "y": round(y, 2),
+                **base,
                 "evidence": {
                     "motion_px": 0.0,
                     "pm_mas_yr": pm,
@@ -168,14 +213,14 @@ def build_target(t: Target, out_root: Path, workdir: Path, size_px: int = 31) ->
                     "extended": False,
                     "variable": False,
                     "flagged_frac": round(flagged, 4),
+                    "n_epochs_detected": len(manifest["epochs"]),
                 },
-                "obs_ids": [],
-                "epoch_mjd": manifest["center_mjd"],
+                "catalog": {"status": "catalogued_untyped", "gaia_id": gaia_id},
             }
         )
         gaia.append(
             {
-                "source_id": f"mock-{t.target_id}-{i}",
+                "source_id": gaia_id,
                 "ra": round(ra, 6),
                 "dec": round(dec, 6),
                 "g_mag": round(float(rng.uniform(13, 17)), 2),
@@ -197,7 +242,12 @@ def build_target(t: Target, out_root: Path, workdir: Path, size_px: int = 31) ->
         json.dumps({"synthetic": True, "epoch_mjd": manifest["center_mjd"], "gaia": gaia, "wise": wise}, indent=2)
     )
     (out_dir / "agent_tour.json").write_text(
-        json.dumps(build_tour(t, manifest, motion_px, target_source["source_id"]), indent=2)
+        json.dumps(
+            build_tour(
+                t, manifest, motion_px, target_source["source_id"], review_id=f"{t.target_id}_s{N_FIELD_STARS + 1:03d}"
+            ),
+            indent=2,
+        )
     )
     return manifest
 

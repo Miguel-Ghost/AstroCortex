@@ -24,7 +24,23 @@
       ]
     },
     {
-      "say": "The classification panel lists every source in this field, candidates first.",
+      "say": "This red source does not move and has no catalog counterpart, so it needs a human look.",
+      "actions": [
+        {
+          "type": "select_source",
+          "source_id": "rdra_s005"
+        },
+        {
+          "type": "show_detector_grid"
+        },
+        {
+          "type": "ask_vote",
+          "source_id": "rdra_s005"
+        }
+      ]
+    },
+    {
+      "say": "The classification panel lists every source in this field, sources to review first.",
       "actions": [
         {
           "type": "select_source",

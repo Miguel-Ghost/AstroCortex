@@ -19,7 +19,13 @@
         "jpl_match": null,
         "extended": false,
         "variable": true,
-        "flagged_frac": 0.0002
+        "flagged_frac": 0.0004,
+        "n_epochs_detected": 3
+      },
+      "catalog": {
+        "status": "known_typed",
+        "known_label": "star",
+        "known_source": "SIMBAD"
       },
       "obs_ids": [],
       "epoch_mjd": 61005.685
@@ -30,6 +36,8 @@
       "dec": 66.743603,
       "x": 9.31,
       "y": 21.58,
+      "obs_ids": [],
+      "epoch_mjd": 61005.685,
       "evidence": {
         "motion_px": 0.0,
         "pm_mas_yr": {
@@ -42,10 +50,13 @@
         "jpl_match": null,
         "extended": false,
         "variable": false,
-        "flagged_frac": 0.0002
+        "flagged_frac": 0.0004,
+        "n_epochs_detected": 3
       },
-      "obs_ids": [],
-      "epoch_mjd": 61005.685
+      "catalog": {
+        "status": "catalogued_untyped",
+        "gaia_id": "mock-rdra-1"
+      }
     },
     {
       "source_id": "rdra_s002",
@@ -53,6 +64,8 @@
       "dec": 66.765193,
       "x": 12.25,
       "y": 9.05,
+      "obs_ids": [],
+      "epoch_mjd": 61005.685,
       "evidence": {
         "motion_px": 0.0,
         "pm_mas_yr": {
@@ -65,10 +78,13 @@
         "jpl_match": null,
         "extended": false,
         "variable": false,
-        "flagged_frac": 0.0002
+        "flagged_frac": 0.0004,
+        "n_epochs_detected": 3
       },
-      "obs_ids": [],
-      "epoch_mjd": 61005.685
+      "catalog": {
+        "status": "catalogued_untyped",
+        "gaia_id": "mock-rdra-2"
+      }
     },
     {
       "source_id": "rdra_s003",
@@ -76,6 +92,8 @@
       "dec": 66.765852,
       "x": 5.77,
       "y": 8.66,
+      "obs_ids": [],
+      "epoch_mjd": 61005.685,
       "evidence": {
         "motion_px": 0.0,
         "pm_mas_yr": {
@@ -88,10 +106,13 @@
         "jpl_match": null,
         "extended": false,
         "variable": false,
-        "flagged_frac": 0.0002
+        "flagged_frac": 0.0004,
+        "n_epochs_detected": 3
       },
-      "obs_ids": [],
-      "epoch_mjd": 61005.685
+      "catalog": {
+        "status": "catalogued_untyped",
+        "gaia_id": "mock-rdra-3"
+      }
     },
     {
       "source_id": "rdra_s004",
@@ -99,6 +120,8 @@
       "dec": 66.737915,
       "x": 20.17,
       "y": 24.89,
+      "obs_ids": [],
+      "epoch_mjd": 61005.685,
       "evidence": {
         "motion_px": 0.0,
         "pm_mas_yr": {
@@ -111,10 +134,37 @@
         "jpl_match": null,
         "extended": false,
         "variable": false,
-        "flagged_frac": 0.0002
+        "flagged_frac": 0.0004,
+        "n_epochs_detected": 3
       },
+      "catalog": {
+        "status": "catalogued_untyped",
+        "gaia_id": "mock-rdra-4"
+      }
+    },
+    {
+      "source_id": "rdra_s005",
+      "ra": 248.125082,
+      "dec": 66.744978,
+      "x": 24.71,
+      "y": 20.78,
       "obs_ids": [],
-      "epoch_mjd": 61005.685
+      "epoch_mjd": 61005.685,
+      "evidence": {
+        "motion_px": 0.0,
+        "pm_mas_yr": null,
+        "methane_index": 6.52,
+        "in_gaia": false,
+        "in_catwise": false,
+        "jpl_match": null,
+        "extended": false,
+        "variable": false,
+        "flagged_frac": 0.0004,
+        "n_epochs_detected": 3
+      },
+      "catalog": {
+        "status": "uncatalogued"
+      }
     }
   ]
 }

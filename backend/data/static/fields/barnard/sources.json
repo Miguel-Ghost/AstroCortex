@@ -19,7 +19,13 @@
         "jpl_match": null,
         "extended": false,
         "variable": false,
-        "flagged_frac": 0.0004
+        "flagged_frac": 0.0007,
+        "n_epochs_detected": 3
+      },
+      "catalog": {
+        "status": "known_typed",
+        "known_label": "star",
+        "known_source": "SIMBAD"
       },
       "obs_ids": [],
       "epoch_mjd": 61005.685
@@ -30,6 +36,8 @@
       "dec": 4.752901,
       "x": 10.03,
       "y": 23.72,
+      "obs_ids": [],
+      "epoch_mjd": 61005.685,
       "evidence": {
         "motion_px": 0.0,
         "pm_mas_yr": {
@@ -42,10 +50,13 @@
         "jpl_match": null,
         "extended": false,
         "variable": false,
-        "flagged_frac": 0.0004
+        "flagged_frac": 0.0007,
+        "n_epochs_detected": 3
       },
-      "obs_ids": [],
-      "epoch_mjd": 61005.685
+      "catalog": {
+        "status": "catalogued_untyped",
+        "gaia_id": "mock-barnard-1"
+      }
     },
     {
       "source_id": "barnard_s002",
@@ -53,6 +64,8 @@
       "dec": 4.785057,
       "x": 21.0,
       "y": 5.05,
+      "obs_ids": [],
+      "epoch_mjd": 61005.685,
       "evidence": {
         "motion_px": 0.0,
         "pm_mas_yr": {
@@ -65,10 +78,13 @@
         "jpl_match": null,
         "extended": false,
         "variable": false,
-        "flagged_frac": 0.0004
+        "flagged_frac": 0.0007,
+        "n_epochs_detected": 3
       },
-      "obs_ids": [],
-      "epoch_mjd": 61005.685
+      "catalog": {
+        "status": "catalogued_untyped",
+        "gaia_id": "mock-barnard-2"
+      }
     },
     {
       "source_id": "barnard_s003",
@@ -76,6 +92,8 @@
       "dec": 4.779589,
       "x": 4.45,
       "y": 8.23,
+      "obs_ids": [],
+      "epoch_mjd": 61005.685,
       "evidence": {
         "motion_px": 0.0,
         "pm_mas_yr": {
@@ -88,10 +106,13 @@
         "jpl_match": null,
         "extended": false,
         "variable": false,
-        "flagged_frac": 0.0004
+        "flagged_frac": 0.0007,
+        "n_epochs_detected": 3
       },
-      "obs_ids": [],
-      "epoch_mjd": 61005.685
+      "catalog": {
+        "status": "catalogued_untyped",
+        "gaia_id": "mock-barnard-3"
+      }
     },
     {
       "source_id": "barnard_s004",
@@ -99,6 +120,8 @@
       "dec": 4.770909,
       "x": 7.07,
       "y": 13.27,
+      "obs_ids": [],
+      "epoch_mjd": 61005.685,
       "evidence": {
         "motion_px": 0.0,
         "pm_mas_yr": {
@@ -111,10 +134,37 @@
         "jpl_match": null,
         "extended": false,
         "variable": false,
-        "flagged_frac": 0.0004
+        "flagged_frac": 0.0007,
+        "n_epochs_detected": 3
       },
+      "catalog": {
+        "status": "catalogued_untyped",
+        "gaia_id": "mock-barnard-4"
+      }
+    },
+    {
+      "source_id": "barnard_s005",
+      "ra": 269.455155,
+      "dec": 4.762231,
+      "x": 9.87,
+      "y": 18.31,
       "obs_ids": [],
-      "epoch_mjd": 61005.685
+      "epoch_mjd": 61005.685,
+      "evidence": {
+        "motion_px": 0.0,
+        "pm_mas_yr": null,
+        "methane_index": 6.21,
+        "in_gaia": false,
+        "in_catwise": false,
+        "jpl_match": null,
+        "extended": false,
+        "variable": false,
+        "flagged_frac": 0.0007,
+        "n_epochs_detected": 3
+      },
+      "catalog": {
+        "status": "uncatalogued"
+      }
     }
   ]
 }
