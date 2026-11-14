@@ -13,10 +13,23 @@ CLASSES: tuple[str, ...] = tuple(c.value for c in SourceClass)
 
 
 class Health(BaseModel):
-    status: str = "ok"
+    status: Literal["ok", "degraded"]
     commit: str
     model_version: str
     classifier_method: str
+    checks: dict[str, bool]
+    static_fields: int
+
+
+class Meta(BaseModel):
+    """Declares which engines produce what the API returns (BR-CLS-01, BR-MARK-02)."""
+
+    app: str
+    version: str
+    commit: str
+    data_release: str
+    classifier: dict
+    marks: dict
 
 
 # 7.1 -------------------------------------------------------------------------

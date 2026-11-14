@@ -27,6 +27,9 @@ class Settings:
     llm_api_key: str | None = field(default_factory=lambda: os.getenv("LLM_API_KEY") or None)
     max_fov_arcmin: float = field(default_factory=lambda: float(os.getenv("MAX_FOV_ARCMIN", "5")))
     target_match_arcmin: float = field(default_factory=lambda: float(os.getenv("TARGET_MATCH_ARCMIN", "3")))
+    log_level: str = field(default_factory=lambda: os.getenv("LOG_LEVEL", "INFO"))
+    log_json: bool = field(default_factory=lambda: os.getenv("LOG_JSON", "true").lower() == "true")
+    app_version: str = field(default_factory=lambda: os.getenv("APP_VERSION", "0.2.0"))
 
     @property
     def fields_dir(self) -> Path:

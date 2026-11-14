@@ -198,7 +198,9 @@ def fetch_cutouts(target: Target, size_px: int, max_per_epoch_detector: int = 6,
         try:
             return read_cutout(row["s3_url"], lambda mjd: propagate(target, mjd), read_size, remote=True)
         except Exception as exc:  # noqa: BLE001 - one bad file must not stop the field
-            log.warning("skip %s: %s", row.get("s3_url"), exc)
+            log.warning(
+                "exposure skipped", extra={"field_id": target.target_id, "url": row.get("s3_url"), "error": str(exc)}
+            )
             return None
 
     with ThreadPoolExecutor(max_workers=workers) as pool:
@@ -225,7 +227,7 @@ def main(argv: list[str] | None = None) -> None:
         ]
     else:
         cutouts = fetch_cutouts(target, args.size, args.max_per_epoch_detector)
-    log.info("%s: %d cutouts", target.target_id, len(cutouts))
+    log.info("cutouts read", extra={"field_id": target.target_id, "cutouts": len(cutouts)})
     manifest = build_field(
         target,
         cutouts,
@@ -235,7 +237,14 @@ def main(argv: list[str] | None = None) -> None:
         data_release=args.data_release,
         pipeline_commit=args.commit,
     )
-    log.info("%s: %d epochs written to %s", target.target_id, len(manifest["epochs"]), args.out_root / target.target_id)
+    log.info(
+        "field written",
+        extra={
+            "field_id": target.target_id,
+            "epochs": len(manifest["epochs"]),
+            "path": str(args.out_root / target.target_id),
+        },
+    )
 
 
 if __name__ == "__main__":

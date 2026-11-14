@@ -6,6 +6,32 @@ from app.schemas import AgentResponse, CatalogsResponse, FieldManifest, SourcesR
 def test_health(client):
     body = client.get("/health").json()
     assert body["status"] == "ok" and body["classifier_method"] == "rule"
+    assert body["checks"] == {"classifier": True, "static_fields": True, "marks": True}
+
+
+def test_health_reports_degraded_when_a_dependency_fails(client, monkeypatch):
+    class BrokenRepo:
+        storage, persistent = "postgres", True
+
+        def ping(self):
+            return False
+
+    monkeypatch.setattr("app.routers.meta.get_marks_repo", lambda: BrokenRepo())
+    body = client.get("/health").json()
+    assert body["status"] == "degraded" and body["checks"]["marks"] is False
+
+
+def test_meta_declares_the_engines(client):
+    """BR-CLS-01 and BR-MARK-02: the API says how its answers are produced and stored."""
+    body = client.get("/api/meta").json()
+    assert body["classifier"] == {"method": "rule", "version": "rule-v0", "calibrated": False}
+    assert body["marks"] == {"storage": "memory", "persistent": False}
+
+
+def test_every_response_carries_a_request_id(client):
+    r = client.get("/health", headers={"X-Request-ID": "abc123"})
+    assert r.headers["X-Request-ID"] == "abc123"
+    assert len(client.get("/health").headers["X-Request-ID"]) == 12
 
 
 def test_targets_lists_the_five_test_targets(client):

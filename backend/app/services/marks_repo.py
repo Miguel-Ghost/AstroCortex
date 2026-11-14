@@ -24,6 +24,12 @@ COLUMNS = ("field_id", "source_id", "ra", "dec", "epoch_mjd", "user_label", "com
 
 
 class MemoryMarksRepo:
+    storage = "memory"
+    persistent = False  # lost when the instance restarts or sleeps
+
+    def ping(self) -> bool:
+        return True
+
     def __init__(self) -> None:
         self._rows: list[dict] = []
         self._lock = Lock()
@@ -40,6 +46,17 @@ class MemoryMarksRepo:
 
 class PostgresMarksRepo:
     """One short connection per call: enough for hackathon traffic, nothing to pool or leak."""
+
+    storage = "postgres"
+    persistent = True
+
+    def ping(self) -> bool:
+        try:
+            with self._psycopg.connect(self._dsn, connect_timeout=3) as conn:
+                conn.execute("SELECT 1")
+            return True
+        except Exception:  # noqa: BLE001 - health check: any failure means degraded
+            return False
 
     def __init__(self, dsn: str) -> None:
         import psycopg
