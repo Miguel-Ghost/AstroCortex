@@ -51,7 +51,11 @@ class StaticStore:
         return out
 
     def find_target_near(self, ra: float, dec: float, radius_arcmin: float) -> str | None:
-        """Target whose current position is within `radius_arcmin` of (ra, dec)."""
+        """Target whose current position is within `radius_arcmin` of (ra, dec).
+
+        BR-FIELD-05: the catalog position (e.g. the 2010 coordinate in the challenge) only finds the
+        target; the field itself is always centred on the propagated position.
+        """
         now_mjd = float(Time.now().mjd)
         best, best_sep = None, radius_arcmin
         for t in self.targets.values():

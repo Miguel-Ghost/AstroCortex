@@ -23,11 +23,14 @@ import numpy as np
 
 from app.schemas import CLASSES
 
+# BR-CLS-02: a catalog type is never a model input; a model that asks for one is refused at load.
+FORBIDDEN_FEATURES = frozenset({"known_label", "simbad_type", "catalog_type", "catalog_status", "known_source"})
+
 
 class Predictor(Protocol):
-    method: str
+    method: str  # BR-CLS-01: every classification declares method and version
     version: str
-    calibrated: bool
+    calibrated: bool  # BR-CLS-03
     thresholds: dict[str, float]
     rule_params: dict[str, float] | None
 
@@ -73,7 +76,7 @@ class RulePredictor:
         elif evidence.get("extended"):
             label = "galaxy"
         elif methane is not None and methane >= self._methane_min:
-            # methane-like colour without motion can be a quasar or an artefact: send to review
+            # BR-CLS-04: methane-like colour without motion can be a quasar or an artefact: send to review
             label = "cold_brown_dwarf" if moving else "unknown"
         elif methane is None and not evidence.get("in_gaia") and not moving:
             label = "unknown"
@@ -92,6 +95,9 @@ class OnnxPredictor:
         meta = json.loads(Path(metadata_path).read_text(encoding="utf-8"))
         self.version = meta["model_version"]
         self.features: list[str] = meta["features"]
+        forbidden = FORBIDDEN_FEATURES.intersection(self.features)
+        if forbidden:
+            raise ValueError(f"BR-CLS-02: catalog types cannot be model inputs: {sorted(forbidden)}")
         self.classes: list[str] = meta["classes"]
         self.calibrated = bool(meta.get("calibrated", False))
         self.thresholds = {k: float(v) for k, v in meta.get("thresholds", {}).items()}

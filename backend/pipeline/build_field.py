@@ -25,7 +25,7 @@ from astropy.coordinates import SkyCoord
 from astropy.time import Time
 
 from . import DETECTORS, PIXSCALE_ARCSEC
-from .coadd import coadd
+from .coadd import coadd, protected_bits
 from .epochs import group_epochs
 from .grid import make_grid_wcs, reproject_cutout
 from .read import Cutout, read_cutout
@@ -62,11 +62,14 @@ def build_field(
 
     mjds = np.array([c.mjd for c in cutouts])
     center_mjd = float(np.median(mjds))
-    ra_c, dec_c = propagate(target, center_mjd)  # fixed centre for the whole field
+    ra_c, dec_c = propagate(target, center_mjd)  # BR-FIELD-01: fixed centre for the whole field
     grid = make_grid_wcs(ra_c, dec_c, size_px, PIXSCALE_ARCSEC)
     aligned = [reproject_cutout(c, grid, size_px) for c in cutouts]
 
     groups = group_epochs(mjds)
+    protected = 0
+    for c in cutouts:
+        protected |= protected_bits(c.flag_bits or {})
     frames: dict[tuple[int, int], tuple] = {}
     for e, members in enumerate(groups):
         by_detector: dict[int, list[int]] = defaultdict(list)
@@ -78,9 +81,11 @@ def build_field(
                 [aligned[i][1] for i in idx],
                 [aligned[i][2] for i in idx],
                 exclude_bits=exclude_bits,
+                protected=protected,
             )
 
     detectors = sorted({det for (_, det) in frames})
+    # BR-FIELD-02: one stretch per detector for all epochs
     limits = {d: stretch_limits([f[0] for (_, dd), f in frames.items() if dd == d]) for d in detectors}
 
     epochs = []
@@ -92,7 +97,7 @@ def build_field(
         frame_list = []
         for det in detectors:
             if (e, det) not in frames:
-                continue  # an epoch may miss detectors; the UI shows the gap
+                continue  # BR-FIELD-04: an epoch may miss detectors; the gap is shown, never filled
             image, _variance, flags, n = frames[(e, det)]
             stem = f"e{e + 1}_d{det}"
             save_png(image, *limits[det], out_dir / f"{stem}.png")
@@ -138,7 +143,7 @@ def build_field(
         "orientation": "north_up_east_left",
         "data_release": data_release,
         "pipeline_commit": pipeline_commit,
-        "synthetic": synthetic,
+        "synthetic": synthetic,  # BR-FIELD-03
         "flux_unit": "MJy/sr",
         "detectors": [
             {
@@ -166,7 +171,7 @@ def _detector_from_bandpass(name: str | None) -> int | None:
 
 
 def select_rows(rows: list[dict], max_per_epoch_detector: int) -> list[dict]:
-    """Cap the number of exposures per epoch and detector before reading (cap is not global)."""
+    """Cap the number of exposures per epoch and detector before reading (BR-PIPE-02: never global)."""
     if not rows:
         return []
     mjds = [((r.get("t_min") or 0) + (r.get("t_max") or 0)) / 2 for r in rows]

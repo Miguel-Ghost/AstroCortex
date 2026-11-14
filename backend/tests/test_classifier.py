@@ -22,6 +22,8 @@ RULE = RulePredictor()
     ],
 )
 def test_rule_predictor(evidence, label):
+    """BR-CLS-04 (methane without motion -> review) and BR-CLS-01 (method declared)."""
+    assert RULE.method == "rule" and RULE.version
     out = RULE.predict(evidence)
     assert out["label"] == label
     assert out["class_probs"][label] == 1.0
@@ -83,3 +85,18 @@ def test_onnx_predictor_follows_the_contract(tiny_model):
     assert sum(dwarf["class_probs"].values()) == pytest.approx(1.0, abs=1e-5)
     weak = predictor.predict({"methane_index": None, "in_gaia": False})  # filled with 1.0 -> p = 0.65 < 0.7
     assert weak["label"] == "unknown"
+
+
+def test_model_cannot_use_catalog_types_as_input(tiny_model):
+    """BR-CLS-02."""
+    meta_path = tiny_model.with_name("metadata.json")
+    meta = json.loads(meta_path.read_text())
+    meta["features"] = ["methane_index", "known_label"]
+    meta_path.write_text(json.dumps(meta))
+    with pytest.raises(ValueError, match="BR-CLS-02"):
+        OnnxPredictor(tiny_model)
+
+
+def test_rule_scores_are_flagged_uncalibrated():
+    """BR-CLS-03."""
+    assert RULE.calibrated is False

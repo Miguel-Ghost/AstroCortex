@@ -87,7 +87,7 @@ def exposures_for(
     for collection in collections:
         for row in sia_query(ra, dec, radius_deg, collection):
             key = s3_key_from_cloud_access(row.get("cloud_access") or "{}")
-            if not key or key.startswith("qr2/") or key in seen:
+            if not key or key.startswith("qr2/") or key in seen:  # BR-PIPE-03
                 continue
             seen.add(key)
             out.append({**row, "collection": collection, "s3_url": S3_HTTPS_BASE + key})

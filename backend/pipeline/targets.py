@@ -47,7 +47,7 @@ def jyear_to_mjd(jyear: float) -> float:
 
 
 def propagate(target: Target, mjd: float) -> tuple[float, float]:
-    """Position of the target at `mjd` with linear proper motion (no parallax).
+    """Position of the target at `mjd` with linear proper motion (no parallax). BR-FIELD-05.
 
     Parallax is ignored on purpose: for Barnard's Star it is 0.55" = 0.09 SPHEREx pixels.
     The linear approximation is far below a pixel for these targets over ~20 years.

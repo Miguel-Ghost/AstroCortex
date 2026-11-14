@@ -27,6 +27,7 @@ class Cutout:
     detector: int  # 1..6
     source: str  # file path or URL
     wavelength_um: float | None = None  # at the requested position, if available
+    flag_bits: dict[str, int] | None = None  # flag name -> bit, from the FLAGS header
 
 
 def read_section(
@@ -71,6 +72,15 @@ def wavelength_at(hdul, x: float, y: float) -> float | None:
         return None
 
 
+def flag_bits_from_header(header) -> dict[str, int]:
+    """Flag names from `MSKN<bit> = '<NAME>'` header cards. Format to confirm with a real file."""
+    out: dict[str, int] = {}
+    for key in header:
+        if key.startswith("MSKN") and key[4:].isdigit():
+            out[str(header[key]).strip()] = int(key[4:])
+    return out
+
+
 def read_cutout(path_or_url: str, position, size_px: int = 49, remote: bool = True) -> Cutout | None:
     """Read IMAGE, VARIANCE, FLAGS and ZODI around a position. Returns None if it is off the detector.
 
@@ -101,4 +111,5 @@ def read_cutout(path_or_url: str, position, size_px: int = 49, remote: bool = Tr
             detector=int(header["DETECTOR"]),
             source=str(path_or_url),
             wavelength_um=wavelength_at(hdul, x, y) if remote else None,
+            flag_bits=flag_bits_from_header(hdul["FLAGS"].header),
         )

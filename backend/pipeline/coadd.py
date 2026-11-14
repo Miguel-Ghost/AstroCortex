@@ -4,9 +4,24 @@ from __future__ import annotations
 
 import numpy as np
 
+PROTECTED_FLAG_WORDS = ("SOURCE", "OUTLIER")
+
+
+def protected_bits(flag_bits: dict[str, int]) -> int:
+    """Bitmask of the flags that must never be excluded (BR-PIPE-01), from the header flag names."""
+    mask = 0
+    for name, bit in flag_bits.items():
+        if any(word in name.upper() for word in PROTECTED_FLAG_WORDS):
+            mask |= 1 << bit
+    return mask
+
 
 def coadd(
-    images: list[np.ndarray], variances: list[np.ndarray], flags: list[np.ndarray], exclude_bits: int = 0
+    images: list[np.ndarray],
+    variances: list[np.ndarray],
+    flags: list[np.ndarray],
+    exclude_bits: int = 0,
+    protected: int = 0,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, int]:
     """Inverse-variance weighted mean.
 
@@ -14,7 +29,10 @@ def coadd(
     (read the bit meanings from the MSKN*/MSKD* header keys). Keep SOURCE and OUTLIER
     out of this mask: a moving object usually carries them.
     Output flags are the OR of the inputs, for display.
+    `protected`: bits that `exclude_bits` may not contain (BR-PIPE-01); raises ValueError if it does.
     """
+    if exclude_bits & protected:
+        raise ValueError("BR-PIPE-01: SOURCE and OUTLIER flags cannot be excluded from a coadd")
     imgs = np.stack(images).astype(float)
     vars_ = np.stack(variances).astype(float)
     flgs = np.stack(flags).astype(np.int64)

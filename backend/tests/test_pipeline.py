@@ -26,6 +26,7 @@ def test_propagate_at_reference_epoch_returns_catalog_position():
 
 
 def test_propagate_displacement_matches_proper_motion():
+    """BR-FIELD-05: positions are propagated with the proper motion."""
     t = TARGETS["wise0855"]
     ra, dec = propagate(t, jyear_to_mjd(t.ref_epoch_yr + 10))
     dra = (ra - t.ra) * math.cos(math.radians((dec + t.dec) / 2)) * 3600
@@ -65,6 +66,27 @@ def test_group_epochs_splits_on_gaps_and_long_spans():
     assert len(group_epochs(continuous, gap_days=10, max_span_days=30)) == 3
 
 
+def test_source_and_outlier_flags_cannot_be_excluded_from_a_coadd():
+    """BR-PIPE-01."""
+    from astropy.io import fits
+
+    from pipeline.coadd import protected_bits
+    from pipeline.read import flag_bits_from_header
+
+    header = fits.Header()
+    header["MSKN0"] = "TRANSIENT"
+    header["MSKN5"] = "SOURCE"
+    header["MSKN7"] = "OUTLIER"
+    protected = protected_bits(flag_bits_from_header(header))
+    assert protected == (1 << 5) | (1 << 7)
+    img = [np.ones((2, 2)), np.ones((2, 2))]
+    var = [np.ones((2, 2)), np.ones((2, 2))]
+    flg = [np.zeros((2, 2), int), np.zeros((2, 2), int)]
+    coadd(img, var, flg, exclude_bits=1, protected=protected)  # TRANSIENT may be excluded
+    with pytest.raises(ValueError, match="BR-PIPE-01"):
+        coadd(img, var, flg, exclude_bits=1 << 5, protected=protected)
+
+
 def test_coadd_is_inverse_variance_weighted_and_ors_flags():
     img, var, flags, n = coadd(
         [np.full((2, 2), 1.0), np.full((2, 2), 4.0)],
@@ -78,10 +100,24 @@ def test_coadd_is_inverse_variance_weighted_and_ors_flags():
 
 
 def test_select_rows_caps_per_epoch_and_detector():
+    """BR-PIPE-02: the cap applies per epoch and detector, not globally."""
     rows = [{"t_min": 100 + i * 0.1, "t_max": 100 + i * 0.1, "energy_bandpassname": "SPHEREx-D1"} for i in range(10)]
     rows += [{"t_min": 300.0, "t_max": 300.0, "energy_bandpassname": "SPHEREx-D5"}]
     kept = select_rows(rows, max_per_epoch_detector=3)
     assert len(kept) == 4
+
+
+def test_qr2_keys_are_never_read(monkeypatch):
+    """BR-PIPE-03."""
+    from pipeline import query
+
+    rows = [
+        {"cloud_access": '{"aws": {"key": "qr2/level2/a.fits"}}'},
+        {"cloud_access": '{"aws": {"key": "qr/level2/b.fits"}}'},
+    ]
+    monkeypatch.setattr(query, "sia_query", lambda *a, **k: rows)
+    keys = [r["s3_url"].rsplit("/", 1)[-1] for r in query.exposures_for(1.0, 2.0, collections=("x",))]
+    assert keys == ["b.fits"]
 
 
 def test_s3_key_from_cloud_access():
@@ -119,8 +155,10 @@ def _frame(out_dir, manifest, epoch_index, detector):
 
 
 def test_manifest_follows_the_contract(built_field):
+    """BR-FIELD-03: a field built from synthetic exposures says so."""
     _, out_dir, manifest, _ = built_field
     FieldManifest.model_validate(manifest)
+    assert manifest["synthetic"] is True
     assert len(manifest["epochs"]) == 3
     assert all(len(e["frames"]) == 6 for e in manifest["epochs"])
     png = Image.open(out_dir / "e1_d5.png")
@@ -137,6 +175,7 @@ def test_target_sits_on_the_crosshair_in_every_epoch(built_field):
 
 
 def test_target_moves_west_and_field_stars_stay_put(built_field):
+    """BR-FIELD-01: fixed centre, so stars stay put and only the moving target shifts."""
     from pipeline import PIXSCALE_ARCSEC
     from pipeline.grid import make_grid_wcs
     from pipeline.render import grid_to_png_xy
@@ -159,3 +198,30 @@ def test_cold_brown_dwarf_is_faint_in_blue_and_bright_in_red(built_field):
     pos = epoch["expected_position"]
     ix, iy = int(round(pos["x"])), int(round(pos["y"]))
     assert arr_red[iy, ix] > 10 * arr_blue[iy, ix]
+
+
+def test_one_stretch_per_detector_for_all_epochs(built_field):
+    """BR-FIELD-02."""
+    from pipeline.render import stretch_limits
+
+    _, out_dir, manifest, _ = built_field
+    for det in manifest["detectors"]:
+        frames = [_frame(out_dir, manifest, i, det["detector"])[0] for i in range(len(manifest["epochs"]))]
+        frames = [np.flipud(f) for f in frames]  # back to grid orientation (stretch is orientation-free anyway)
+        vmin, vmax = stretch_limits(frames)
+        assert det["stretch"]["vmin"] == pytest.approx(vmin) and det["stretch"]["vmax"] == pytest.approx(vmax)
+
+
+def test_missing_detector_is_a_gap_not_filled(tmp_path):
+    """BR-FIELD-04."""
+    t = TARGETS["rdra"]
+    paths, _ = synthetic_exposures(t, tmp_path / "fits", detectors=(1, 2, 3), per_epoch=1, seed=3)
+    cutouts = [
+        c
+        for p in paths
+        if (c := read_cutout(str(p), lambda mjd: propagate(t, mjd), cutout_read_size(31), remote=False))
+        and not (c.detector == 3 and 61000 < c.mjd < 61010)  # drop detector 3 of the 2nd epoch
+    ]
+    manifest = build_field(t, cutouts, tmp_path / "out", "/static/fields/rdra", synthetic=True)
+    dets = [[f["detector"] for f in e["frames"]] for e in manifest["epochs"]]
+    assert dets == [[1, 2, 3], [1, 2], [1, 2, 3]]

@@ -6,8 +6,10 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from app.domain.vocab import SourceClass
+
 ClassName = Literal["star", "galaxy", "asteroid_comet", "cold_brown_dwarf", "unknown"]
-CLASSES: tuple[str, ...] = ("star", "galaxy", "asteroid_comet", "cold_brown_dwarf", "unknown")
+CLASSES: tuple[str, ...] = tuple(c.value for c in SourceClass)
 
 
 class Health(BaseModel):

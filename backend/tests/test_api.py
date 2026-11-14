@@ -23,9 +23,12 @@ def test_field_by_target_id(client):
 
 
 def test_field_from_the_statement_coordinate_finds_wise0855(client):
+    """BR-FIELD-05: the 2010 coordinate finds the target; the centre is the propagated position."""
     # the challenge gives the 2010 position; the object is ~2' away from it today
     r = client.get("/api/field", params={"ra": 133.79513, "dec": -7.24515})
     assert r.status_code == 200 and r.json()["target_id"] == "wise0855"
+    center = r.json()["center"]
+    assert abs(center["ra"] - 133.79513) * 3600 > 60  # more than 1' away from the 2010 coordinate
 
 
 def test_field_errors_use_the_error_format(client):
@@ -66,6 +69,7 @@ def test_marks_roundtrip(client):
 
 
 def test_agent_returns_the_recorded_tour(client):
+    """BR-AGENT-01: only actions from the closed vocabulary reach the viewer."""
     r = client.post("/api/agent", json={"message": "Guide me", "view_state": {"target_id": "wise0855"}})
     body = AgentResponse.model_validate(r.json())
     assert body.recorded and body.steps

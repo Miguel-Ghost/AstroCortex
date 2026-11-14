@@ -2,7 +2,7 @@
 
 Without this step the blink shows jumps caused by each exposure's own pointing and rotation,
 not real motion. The grid centre is FIXED for the whole field (the target propagated to a
-reference date); the per-date position goes only into the crosshair.
+reference date); the per-date position goes only into the crosshair (BR-FIELD-01).
 """
 
 from __future__ import annotations

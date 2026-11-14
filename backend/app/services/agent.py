@@ -15,7 +15,7 @@ from app.schemas import AgentAction, AgentRequest, AgentResponse, AgentStep
 
 
 def sanitize(raw: dict) -> AgentResponse:
-    """Keep only valid steps/actions from a tour or an LLM output."""
+    """Keep only valid steps/actions from a tour or an LLM output (BR-AGENT-01)."""
     steps = []
     for step in raw.get("steps", []):
         actions = []
