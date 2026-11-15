@@ -28,7 +28,8 @@ class Behavior(StrEnum):
 class CatalogStatus(StrEnum):
     KNOWN_TYPED = "known_typed"  # SIMBAD / UltracoolSheet type or JPL name
     CATALOGUED_UNTYPED = "catalogued_untyped"  # in Gaia or CatWISE, no type
-    UNCATALOGUED = "uncatalogued"  # no counterpart
+    UNCATALOGUED = "uncatalogued"  # catalogs checked, no counterpart
+    NOT_CHECKED = "not_checked"  # no catalog cross-match for this field: never read as "no counterpart"
 
 
 class Agreement(StrEnum):
@@ -46,17 +47,32 @@ class ReviewStatus(StrEnum):
 class ReviewReason(StrEnum):
     """Closed list; the UI turns each code into an English chip."""
 
-    BELOW_THRESHOLD = "below_threshold"
+    BELOW_THRESHOLD = "low_confidence"
     INSUFFICIENT_DATA = "insufficient_data"
     METHANE_WITHOUT_MOTION = "methane_without_motion"
     METHANE_INDEX_HIGH_NOT_KNOWN = "methane_index_high_not_known"
     MOVES_WITHOUT_CATALOG_MOTION = "moves_without_catalog_motion"
     DISAGREES_WITH_CATALOG = "disagrees_with_catalog"
-    ONLY_IN_ONE_EPOCH = "only_in_one_epoch"
+    ONLY_IN_ONE_EPOCH = "only_one_epoch"
     UNCATALOGUED = "uncatalogued"
     HIGH_FLAGGED_FRACTION = "high_flagged_fraction"
     # informative only: does not send a source to review by itself (many galaxies lack Gaia)
     NO_GAIA_COUNTERPART = "no_gaia_counterpart"
+
+
+# English chip text for each review reason (served by /api/meta so the UI never hard-codes it)
+REVIEW_REASON_TEXT: dict[str, str] = {
+    ReviewReason.BELOW_THRESHOLD: "Low confidence",
+    ReviewReason.INSUFFICIENT_DATA: "Not enough data to classify",
+    ReviewReason.METHANE_WITHOUT_MOTION: "Methane-like colour, no motion",
+    ReviewReason.METHANE_INDEX_HIGH_NOT_KNOWN: "High methane index, not a known dwarf",
+    ReviewReason.MOVES_WITHOUT_CATALOG_MOTION: "Moves, no catalog motion",
+    ReviewReason.DISAGREES_WITH_CATALOG: "Disagrees with catalog",
+    ReviewReason.ONLY_IN_ONE_EPOCH: "Only in one date",
+    ReviewReason.UNCATALOGUED: "Not in Gaia or CatWISE",
+    ReviewReason.HIGH_FLAGGED_FRACTION: "Mostly flagged pixels",
+    ReviewReason.NO_GAIA_COUNTERPART: "No Gaia counterpart",
+}
 
 
 class JobState(StrEnum):
@@ -74,8 +90,9 @@ class UserLabel(StrEnum):
 
 
 class AgentMode(StrEnum):
-    LIVE = "live"
-    RECORDED = "recorded"
+    LIVE = "live"  # language model over this API's data
+    RULE = "rule"  # deterministic planner over this API's data (no key needed)
+    RECORDED = "recorded"  # a tour written to disk
 
 
 class MarksStorage(StrEnum):

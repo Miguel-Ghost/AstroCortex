@@ -30,6 +30,8 @@ class Meta(BaseModel):
     data_release: str
     classifier: dict
     marks: dict
+    live_fields: bool = False
+    review_reasons: dict[str, str] = {}
 
 
 # 7.1 -------------------------------------------------------------------------
@@ -128,6 +130,13 @@ class Evidence(BaseModel):
     variable: bool | None = None
     flagged_frac: float | None = None
     n_epochs_detected: int | None = None
+    # measured on the published coadds (pipeline.sources); optional for older files
+    motion_sigma_px: float | None = None
+    motion_epochs: list[str] | None = None  # epoch_ids between which motion_px was measured
+    methane_index_lower_limit: bool | None = None
+    saturated: bool | None = None
+    detected_in: list[int] | None = None  # detectors with S/N >= 5
+    snr_max: float | None = None
 
 
 class CatalogInfo(BaseModel):
@@ -142,12 +151,23 @@ class CatalogInfo(BaseModel):
     jpl_name: str | None = None
 
 
-class Source(BaseModel):
-    source_id: str
-    ra: float
-    dec: float
+class SkyPixel(BaseModel):
     x: float
     y: float
+    ra: float | None = None
+    dec: float | None = None
+
+
+class Source(BaseModel):
+    source_id: str
+    name: str | None = None
+    is_target: bool = False
+    ra: float
+    dec: float
+    x: float  # position at epoch_mjd (pixel of the cutout, row 0 = north)
+    y: float
+    positions: dict[str, SkyPixel] | None = None  # per epoch_id, from the catalog motion or measured
+    photometry: dict[str, dict] | None = None  # per detector: flux, flux_err, snr
     label: ClassName
     class_probs: dict[str, float]
     evidence: Evidence
@@ -177,6 +197,8 @@ class SourcesResponse(BaseModel):
     classes: list[str]
     thresholds: dict[str, float]
     rule_params: dict[str, float] | None = None
+    catalogs_checked: bool | None = None
+    methane_index_definition: str | None = None
     summary: SourcesSummary
     sources: list[Source]
 
@@ -277,6 +299,7 @@ class AgentResponse(BaseModel):
     steps: list[AgentStep]
     sources_used: list[str] = []
     recorded: bool = False
+    mode: Literal["live", "rule", "recorded"] = "rule"  # BR-AGENT-02
 
 
 class ErrorBody(BaseModel):

@@ -8,6 +8,7 @@ from fastapi import APIRouter
 
 from app.config import get_settings
 from app.deps import get_marks_repo, get_predictor, get_store
+from app.domain.vocab import REVIEW_REASON_TEXT
 from app.schemas import Health, Meta
 
 router = APIRouter(tags=["meta"])
@@ -28,8 +29,7 @@ def health() -> dict:
         log.exception("classifier failed to load")
         checks["classifier"] = False
     try:
-        store = get_store()
-        static_fields = sum(1 for t in store.targets if store.has_manifest(t))
+        static_fields = len(get_store().fields())
     except Exception:  # noqa: BLE001
         log.exception("static store unavailable")
         static_fields = 0
@@ -61,4 +61,6 @@ def meta() -> dict:
         "data_release": settings.data_release,
         "classifier": {"method": predictor.method, "version": predictor.version, "calibrated": predictor.calibrated},
         "marks": {"storage": repo.storage, "persistent": repo.persistent},
+        "live_fields": settings.live_fields,
+        "review_reasons": {str(k): v for k, v in REVIEW_REASON_TEXT.items()},
     }
