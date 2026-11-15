@@ -1,0 +1,56 @@
+# Render does not auto-deploy a service created from a public repository URL, so this workflow
+# calls the service's deploy hook once CI passes on main, then waits until /health reports the
+# new commit. Set the repository secret RENDER_DEPLOY_HOOK_URL (Render -> service -> Settings ->
+# Deploy Hook) and, for the check, the repository variable BACKEND_URL (also used by keepalive).
+name: Deploy backend
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-backend
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    # only after a green CI run started by a push to main (pull requests never deploy)
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push')
+    runs-on: ubuntu-latest
+    env:
+      HOOK: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+      SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+      BACKEND_URL: ${{ vars.BACKEND_URL }}
+    steps:
+      - name: Trigger the Render deploy
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "::warning::RENDER_DEPLOY_HOOK_URL is not set; Render was not asked to deploy ${SHA:0:7}"
+            exit 0
+          fi
+          case "$HOOK" in *\?*) sep="&" ;; *) sep="?" ;; esac
+          code=$(curl -sS --max-time 30 -X POST -o /dev/null -w "%{http_code}" "${HOOK}${sep}ref=${SHA}")
+          echo "deploy hook answered $code for ${SHA:0:7}"
+          case "$code" in 2??) ;; *) exit 1 ;; esac
+
+      - name: Wait until the new commit is live
+        if: env.HOOK != '' && env.BACKEND_URL != ''
+        run: |
+          url="${BACKEND_URL%/}/health"
+          live=""
+          # a build takes about 2 minutes on the free plan; give up after 12
+          for i in $(seq 1 48); do
+            live=$(curl -sS --max-time 60 "$url" | python3 -c 'import json, sys; print(json.load(sys.stdin).get("commit", ""))' 2>/dev/null || true)
+            if [ -n "$live" ] && [ "${SHA#"$live"}" != "$SHA" ]; then
+              echo "live commit: $live"
+              exit 0
+            fi
+            sleep 15
+          done
+          echo "::error::${SHA:0:7} is not live after 12 minutes (health reports: ${live:-no answer})"
+          exit 1

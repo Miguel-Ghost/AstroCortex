@@ -125,12 +125,18 @@ described there so serving repeats it exactly.
 ## Deploy on Render
 
 1. Push this repo to GitHub.
-2. In Render: **New → Blueprint**, pick the repo; it reads `render.yaml` at the repo root (`rootDir: backend`).
-3. Set `CORS_ORIGINS` to the Vercel URL of the frontend.
+2. In Render: **New → Blueprint**, pick the repo; it reads `render.yaml` at the repo root (`rootDir: Backend`).
+3. Set `CORS_ORIGINS` to the Vercel URL of the frontend, `LLM_MODEL`, and `LLM_API_KEY` (Render only).
 4. Check `https://<service>.onrender.com/health`.
 
+Render auto-deploys only repositories connected through its GitHub App. A service created from the
+public repository URL is deployed by `.github/workflows/deploy.yml`: after CI passes on `main` it
+calls the deploy hook (repository secret `RENDER_DEPLOY_HOOK_URL`, copied from the service's
+Settings → Deploy Hook) and waits until `/health` reports the new commit.
+
 Free instances (512 MB RAM, 0.1 CPU) spin down after 15 minutes without traffic and take about a
-minute to wake up. Use the Starter plan or an external ping during the demo.
+minute to wake up. `.github/workflows/keepalive.yml` pings `/health` every 10 minutes when the
+repository variable `BACKEND_URL` is set; scheduled workflows run only from the default branch.
 
 ## Status
 
