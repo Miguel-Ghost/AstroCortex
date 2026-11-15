@@ -170,6 +170,20 @@ def test_client_retries_without_json_mode_and_parses_fenced_json():
     assert _client(handler).json("s", "u")["intent"] == "answer" and len(bodies) == 2
 
 
+def test_client_asks_for_low_reasoning_and_drops_it_when_unsupported():
+    bodies = []
+
+    def handler(request):
+        body = __import__("json").loads(request.content)
+        bodies.append(body)
+        if "reasoning_effort" in body:
+            return httpx.Response(400, text="Unknown name reasoning_effort")
+        return _ok('{"intent": "tour", "reply": "ok"}')
+
+    assert _client(handler, reasoning_effort="low").json("s", "u")["reply"] == "ok"
+    assert bodies[0]["reasoning_effort"] == "low" and "reasoning_effort" not in bodies[1]
+
+
 def test_client_bad_key_does_not_try_other_models():
     calls = []
 

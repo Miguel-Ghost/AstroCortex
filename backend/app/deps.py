@@ -35,7 +35,13 @@ def get_llm():
     from app.services.llm import LLMClient
 
     return LLMClient(
-        s.llm_api_key, s.llm_base_url, s.llm_model, s.llm_fallback_models, s.llm_timeout_s, s.llm_json_mode
+        s.llm_api_key,
+        s.llm_base_url,
+        s.llm_model,
+        s.llm_fallback_models,
+        s.llm_timeout_s,
+        s.llm_json_mode,
+        reasoning_effort=s.llm_reasoning_effort,
     )
 
 

@@ -116,7 +116,7 @@ described there so serving repeats it exactly.
   dropped, and a reply with a number that is not in the data is replaced by the guide's text
   (`mode: "rule"`). Any failure falls back to the rule-based guide.
 - **Provider** = configuration: any OpenAI-compatible `/chat/completions` endpoint
-  (`LLM_BASE_URL`, default Gemini's), `LLM_MODEL`, optional `LLM_FALLBACK_MODELS`, total budget
+  (`LLM_BASE_URL`, default Gemini's), `LLM_MODEL`, optional `LLM_FALLBACK_MODELS`, `LLM_REASONING_EFFORT` (default `low`, dropped if a model rejects it), total budget
   `LLM_TIMEOUT_S` (6 s). The key lives only in Render.
 - **Limits**: `AGENT_RPM_PER_IP` (20/min, then 429 `rate_limited`); model budget per client
   `LLM_RPM_PER_IP` (6/min), `LLM_RPD_PER_IP` (100/day) and global `LLM_DAILY_MAX` (1000/day),

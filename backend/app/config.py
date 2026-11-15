@@ -33,6 +33,8 @@ class Settings:
     llm_fallback_models: list[str] = field(default_factory=lambda: _csv(os.getenv("LLM_FALLBACK_MODELS", "")))
     llm_timeout_s: float = field(default_factory=lambda: float(os.getenv("LLM_TIMEOUT_S", "6")))
     llm_json_mode: bool = field(default_factory=lambda: os.getenv("LLM_JSON_MODE", "true").lower() == "true")
+    # thinking models (Gemini 2.5+ Flash) spend seconds reasoning unless told otherwise; "" disables the hint
+    llm_reasoning_effort: str = field(default_factory=lambda: os.getenv("LLM_REASONING_EFFORT", "low"))
     # /api/agent limits (BR-AGENT-04)
     agent_rpm_per_ip: int = field(default_factory=lambda: int(os.getenv("AGENT_RPM_PER_IP", "20")))
     llm_rpm_per_ip: int = field(default_factory=lambda: int(os.getenv("LLM_RPM_PER_IP", "6")))

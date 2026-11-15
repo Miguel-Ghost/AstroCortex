@@ -6,7 +6,8 @@ client of the UNICODE backend:
 
 - one total time budget per request (LLM_TIMEOUT_S), shared by all models in the chain;
 - 429 / 5xx / network error / timeout -> next model in the chain;
-- JSON mode when the provider supports it, and tolerant parsing (code fences, text around the object);
+- JSON mode and a low reasoning effort when the provider supports them (a 400 caused by either one is
+  retried once without the optional parameters), and tolerant parsing (code fences, text around it);
 - one pooled HTTP connection reused across requests (saves the TLS handshake on every call).
 """
 
@@ -51,11 +52,13 @@ class LLMClient:
         timeout_s: float = 6.0,
         json_mode: bool = True,
         transport: httpx.BaseTransport | None = None,
+        reasoning_effort: str | None = None,
     ):
         self.model = model
         self.chain = [model, *[m for m in (fallbacks or []) if m and m != model]]
         self.timeout_s = timeout_s
         self.json_mode = json_mode
+        self.reasoning_effort = reasoning_effort or None
         self.provider = httpx.URL(base_url).host
         self._url = base_url.rstrip("/") + "/chat/completions"
         self._http = httpx.Client(
@@ -81,10 +84,14 @@ class LLMClient:
             }
             if self.json_mode:
                 body["response_format"] = {"type": "json_object"}
+            if self.reasoning_effort:
+                body["reasoning_effort"] = self.reasoning_effort  # thinking models answer much sooner
             try:
                 r = self._http.post(self._url, json=body, timeout=remaining)
-                if r.status_code == 400 and self.json_mode and "response_format" in r.text:
-                    body.pop("response_format")  # provider without JSON mode: ask again in plain mode
+                if r.status_code == 400 and ("response_format" in body or "reasoning_effort" in body):
+                    # a model without JSON mode or reasoning control: ask again without the optional parameters
+                    body.pop("response_format", None)
+                    body.pop("reasoning_effort", None)
                     r = self._http.post(self._url, json=body, timeout=max(0.2, deadline - time.monotonic()))
             except httpx.HTTPError as exc:
                 errors.append(f"{model}: {type(exc).__name__}")

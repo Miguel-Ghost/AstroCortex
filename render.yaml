@@ -29,6 +29,10 @@ services:
         value: https://generativelanguage.googleapis.com/v1beta/openai   # any OpenAI-compatible endpoint
       - key: LLM_MODEL
         sync: false       # e.g. the current Gemini Flash model id from Google AI Studio
+      - key: LLM_FALLBACK_MODELS
+        value: gemini-3.5-flash,gemini-2.5-flash   # tried in order on 429/5xx/timeout (separate free quotas)
+      - key: LLM_REASONING_EFFORT
+        value: low
       - key: LLM_TIMEOUT_S
         value: "6"
       - key: LIVE_FIELDS
