@@ -20,7 +20,7 @@ app/                FastAPI application
                     live fields, marks (Postgres/memory)
 pipeline/           image pipeline (query, read, grid, epochs, coadd, render, build_field, synthetic)
                     and sources.py (forced PSF photometry + catalog cross-match on the coadds)
-scripts/            fetch_catalogs, build_real_sources, build_agent_tours, make_mock_static (demo data)
+scripts/            fetch_catalogs, build_real_sources, build_series, build_agent_tours, make_mock_static (demo data)
 data/targets.json   the 5 test targets with astrometry (positions propagated by proper motion)
 static/fields/      real SPHEREx fields of the 5 targets: manifest.json, PNG, flags PNG, float32 .bin,
                     catalogs.json (Gaia DR3 + CatWISE2020), sources.json (measured sources)
@@ -46,6 +46,8 @@ Everything Render serves is committed: nothing is generated at runtime (its disk
 ```bash
 python -m scripts.fetch_catalogs        # Gaia DR3 + CatWISE2020 per field (needs internet; NOIRLab Data Lab)
 python -m scripts.build_real_sources    # sources.json per field, measured on the coadds
+python -m scripts.build_series --exposures <dir> --copy-to ../Frontend/public/static/fields
+                                        # spectrum.json + lightcurve.json per target, from the single exposures
 python -m scripts.build_agent_tours     # static/agent/<target_id>.json
 python -m scripts.make_mock_static      # demo fields for the tests (data/mock, never static/fields)
 python -m pipeline.build_field --target wise0855   # rebuild a field from IRSA + S3 (offline)
@@ -54,6 +56,14 @@ python -m pipeline.build_field --target wise0855   # rebuild a field from IRSA +
 Each real field folder contains `manifest.json`, `e<k>_d<n>.png`, `e<k>_d<n>_flags.png` and `e<k>_d<n>.bin`
 (float32 little-endian, 31x31, row 0 = north, NaN = no data). URLs in the manifest start with
 `/static/fields/<target_id>/` and are relative to the API host.
+
+`spectrum.json` and `lightcurve.json` (manifest `spectrum_url`, `lightcurve_url`) are measured on the
+single SPHEREx exposures of the target (the per-exposure output of the image pipeline, each with its
+wavelength at the target): one spectrum point per exposure (aperture photometry, neighbours
+subtracted, mJy), and per date the brightness relative to the target's own spectrum at the same
+wavelengths (each date samples different wavelengths). Rows carry `flux`, `flux_err` and
+`wavelength_um` or `mjd`; exposures that cannot be measured (saturated core) are listed in
+`excluded`; a light curve whose detectors disagree on a date carries a `warning`.
 
 ### Finding a field (`GET /api/field?ra=&dec=`)
 
