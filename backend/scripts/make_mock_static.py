@@ -23,7 +23,7 @@ import numpy as np
 from astropy.coordinates import SkyCoord
 
 from pipeline import PIXSCALE_ARCSEC
-from pipeline.build_field import DEFAULT_OUT_ROOT, build_field, cutout_read_size
+from pipeline.build_field import build_field, cutout_read_size
 from pipeline.grid import make_grid_wcs
 from pipeline.read import read_cutout
 from pipeline.render import grid_to_png_xy
@@ -32,6 +32,7 @@ from pipeline.targets import Target, load_targets, propagate
 
 MOCK_METHANE = {"wise0855": 40.0, "epsindib": 6.0}  # illustrative values for demo data only
 N_FIELD_STARS = 4
+MOCK_OUT_ROOT = Path(__file__).resolve().parent.parent / "data" / "mock" / "fields"
 N_RED_STATIC = 1  # a red source that does not move: the engine must send it to review
 
 
@@ -255,7 +256,8 @@ def build_target(t: Target, out_root: Path, workdir: Path, size_px: int = 31) ->
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("targets", nargs="*", help="target ids (default: all)")
-    parser.add_argument("--out-root", type=Path, default=DEFAULT_OUT_ROOT)
+    # never the real static/fields folder: demo data must not overwrite real fields
+    parser.add_argument("--out-root", type=Path, default=MOCK_OUT_ROOT)
     args = parser.parse_args(argv)
     targets = load_targets()
     ids = args.targets or list(targets)

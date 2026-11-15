@@ -3,7 +3,9 @@
     "target_id": "barnard",
     "name": "Barnard's Star",
     "kind": "star",
-    "behavior": ["moves"],
+    "behavior": [
+      "moves"
+    ],
     "short_description": "Red dwarf about 1.8 pc away with the largest known proper motion.",
     "ra": 269.448502525,
     "dec": 4.739420084,
@@ -12,13 +14,26 @@
     "pmdec_masyr": 10362.394,
     "astrometry_source": "Gaia DR3 (values to confirm against the archive)",
     "verified": false,
-    "autotype": false
+    "autotype": false,
+    "motion_arcsec_yr": 10.4,
+    "default_detector": 2,
+    "approx_center": {
+      "ra": 269.44622,
+      "dec": 4.76881
+    },
+    "aliases": [
+      "Barnard",
+      "GJ 699",
+      "Gliese 699"
+    ]
   },
   {
     "target_id": "epsindib",
     "name": "Epsilon Indi B",
     "kind": "cold_brown_dwarf",
-    "behavior": ["moves"],
+    "behavior": [
+      "moves"
+    ],
     "short_description": "Pair of brown dwarfs (T1 + T6) about 3.6 pc away, seen as a single source by SPHEREx.",
     "ra": 331.076453,
     "dec": -56.793812,
@@ -27,13 +42,26 @@
     "pmdec_masyr": -2466.8,
     "astrometry_source": "Gaia DR3 (source_id to confirm)",
     "verified": false,
-    "autotype": true
+    "autotype": true,
+    "motion_arcsec_yr": 4.7,
+    "default_detector": 5,
+    "approx_center": {
+      "ra": 331.09629,
+      "dec": -56.80046
+    },
+    "aliases": [
+      "Eps Indi B",
+      "eps Ind B",
+      "Epsilon Indi Ba/Bb"
+    ]
   },
   {
     "target_id": "wise0855",
     "name": "WISE 0855-0714",
     "kind": "cold_brown_dwarf",
-    "behavior": ["moves"],
+    "behavior": [
+      "moves"
+    ],
     "short_description": "Coldest known brown dwarf (Y type), about 2.3 pc away.",
     "ra": 133.783983,
     "dec": -7.244196,
@@ -42,13 +70,25 @@
     "pmdec_masyr": 673.2,
     "astrometry_source": "CatWISE2020",
     "verified": true,
-    "autotype": true
+    "autotype": true,
+    "motion_arcsec_yr": 8.1,
+    "default_detector": 5,
+    "approx_center": {
+      "ra": 133.75945,
+      "dec": -7.24286
+    },
+    "aliases": [
+      "WISE 0855",
+      "WISE J085510.83-071442.5"
+    ]
   },
   {
     "target_id": "rwaur",
     "name": "RW Aurigae",
     "kind": "star",
-    "behavior": ["varies"],
+    "behavior": [
+      "varies"
+    ],
     "short_description": "Young T Tauri star with a disk; its brightness changes irregularly.",
     "ra": 76.956408,
     "dec": 30.401408,
@@ -57,13 +97,24 @@
     "pmdec_masyr": 0.0,
     "astrometry_source": "approximate J2000 position (replace with Gaia DR3)",
     "verified": false,
-    "autotype": false
+    "autotype": false,
+    "motion_arcsec_yr": 0.0,
+    "default_detector": 3,
+    "approx_center": {
+      "ra": 76.95609,
+      "dec": 30.40113
+    },
+    "aliases": [
+      "RW Aur"
+    ]
   },
   {
     "target_id": "rdra",
     "name": "R Draconis",
     "kind": "star",
-    "behavior": ["varies"],
+    "behavior": [
+      "varies"
+    ],
     "short_description": "Mira variable (pulsating red giant) with a period of about 245 days.",
     "ra": 248.167458,
     "dec": 66.754944,
@@ -72,6 +123,15 @@
     "pmdec_masyr": 0.0,
     "astrometry_source": "approximate J2000 position (replace with Gaia DR3)",
     "verified": false,
-    "autotype": false
+    "autotype": false,
+    "motion_arcsec_yr": 0.0,
+    "default_detector": 3,
+    "approx_center": {
+      "ra": 248.16723,
+      "dec": 66.75502
+    },
+    "aliases": [
+      "R Dra"
+    ]
   }
 ]

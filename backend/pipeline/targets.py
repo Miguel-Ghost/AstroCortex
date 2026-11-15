@@ -27,6 +27,10 @@ class Target:
     astrometry_source: str = ""
     verified: bool = False
     autotype: bool = False
+    motion_arcsec_yr: float = 0.0
+    default_detector: int = 3
+    aliases: list[str] = field(default_factory=list, hash=False)
+    approx_center: dict = field(default_factory=dict, hash=False)  # centre of the published field
 
     @property
     def pm_total_masyr(self) -> float:

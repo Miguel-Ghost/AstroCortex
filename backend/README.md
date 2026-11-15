@@ -20,7 +20,7 @@ app/                FastAPI application
 pipeline/           image pipeline (query, read, grid, epochs, coadd, render, build_field, synthetic)
 scripts/            make_mock_static.py: demo data built with the real pipeline on synthetic exposures
 data/targets.json   the 5 test targets with astrometry (positions propagated by proper motion)
-data/static/fields/ precomputed products per field (manifest.json, PNG, .f32, sources, catalogs, agent tour)
+static/fields/      real SPHEREx fields of the 5 targets (manifest.json, PNG, flags PNG, float32 .bin), served at /static/fields
 tests/              pytest suite (API, classifier, pipeline on synthetic SPHEREx-like FITS)
 ```
 
@@ -38,16 +38,17 @@ pytest                                  # full test suite
 ## Data for the 5 test targets
 
 ```bash
-# demo data (synthetic images, real format; every file says "synthetic": true)
+# demo data with sources, catalogs and agent tours (synthetic images; written to data/mock/fields, never to static/fields)
 python -m scripts.make_mock_static
 
 # real data for one target (needs internet access to IRSA and S3; run it offline, not on Render)
 python -m pipeline.build_field --target wise0855
 ```
 
-Each field folder contains `manifest.json` (contract 7.2), `e<epoch>_d<detector>.png`,
-`*_flags.png`, `*.f32` (float32, row 0 = north, NaN = no data), `sources.json`,
-`catalogs.json` and `agent_tour.json`. URLs in the manifest are relative to the API host.
+Each real field folder contains `manifest.json`, `e<k>_d<n>.png`, `e<k>_d<n>_flags.png` and `e<k>_d<n>.bin`
+(float32 little-endian, 31x31, row 0 = north, NaN = no data). URLs in the manifest start with
+`/static/fields/<target_id>/` and are relative to the API host. `GET /api/field?ra=&dec=` returns the manifest
+unchanged when (ra, dec) is within 1 arcmin of a field centre; otherwise 404 `no_coverage`.
 
 ## How the pipeline works
 

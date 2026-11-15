@@ -1,0 +1,344 @@
+{
+  "field_id": "f_rdra",
+  "target_id": "rdra",
+  "name": "R Draconis",
+  "center": {
+    "ra": 248.167234,
+    "dec": 66.755024
+  },
+  "center_ref_mjd": 61010.0255,
+  "fov_arcmin": 3.2,
+  "pixscale_arcsec": 6.2,
+  "nx": 31,
+  "ny": 31,
+  "orientation": "north_up_east_left",
+  "data_release": "spherex_dr1+spherex_qr3",
+  "pipeline_commit": "coadd-v1",
+  "flux_unit": "MJy / sr",
+  "image_is": "IMAGE - ZODI, inverse-variance coadd per epoch and detector, 3-sigma clipped",
+  "flags_overlay": "problem bits (all except SOURCE 2^21) set in >50% of exposures",
+  "detectors": [
+    {
+      "detector": 1,
+      "lambda_min_um": 0.75,
+      "lambda_max_um": 1.09,
+      "stretch": {
+        "type": "asinh",
+        "vmin": 0.33333274722099304,
+        "vmax": 164.48350524902344
+      }
+    },
+    {
+      "detector": 2,
+      "lambda_min_um": 1.1,
+      "lambda_max_um": 1.62,
+      "stretch": {
+        "type": "asinh",
+        "vmin": 0.4819232225418091,
+        "vmax": 772.4681396484375
+      }
+    },
+    {
+      "detector": 3,
+      "lambda_min_um": 1.63,
+      "lambda_max_um": 2.41,
+      "stretch": {
+        "type": "asinh",
+        "vmin": 0.6192680597305298,
+        "vmax": 1538.9986572265625
+      }
+    },
+    {
+      "detector": 4,
+      "lambda_min_um": 2.42,
+      "lambda_max_um": 3.82,
+      "stretch": {
+        "type": "asinh",
+        "vmin": 0.5346692204475403,
+        "vmax": 2135.467529296875
+      }
+    },
+    {
+      "detector": 5,
+      "lambda_min_um": 3.83,
+      "lambda_max_um": 4.41,
+      "stretch": {
+        "type": "asinh",
+        "vmin": 0.5719522833824158,
+        "vmax": 2845.72314453125
+      }
+    },
+    {
+      "detector": 6,
+      "lambda_min_um": 4.42,
+      "lambda_max_um": 5.0,
+      "stretch": {
+        "type": "asinh",
+        "vmin": 0.39965322613716125,
+        "vmax": 2869.2607421875
+      }
+    }
+  ],
+  "epochs": [
+    {
+      "epoch_id": "e1",
+      "mjd_avg": 60846.1768,
+      "date_iso": "2025-06-20",
+      "frames": [
+        {
+          "detector": 1,
+          "image_url": "/static/fields/rdra/e1_d1.png",
+          "data_url": "/static/fields/rdra/e1_d1.bin",
+          "flags_url": "/static/fields/rdra/e1_d1_flags.png",
+          "n_exposures": 23,
+          "flagged_frac": 0.0884,
+          "lambda_range_um": [
+            0.744,
+            1.122
+          ]
+        },
+        {
+          "detector": 2,
+          "image_url": "/static/fields/rdra/e1_d2.png",
+          "data_url": "/static/fields/rdra/e1_d2.bin",
+          "flags_url": "/static/fields/rdra/e1_d2_flags.png",
+          "n_exposures": 36,
+          "flagged_frac": 0.0989,
+          "lambda_range_um": [
+            1.109,
+            1.629
+          ]
+        },
+        {
+          "detector": 3,
+          "image_url": "/static/fields/rdra/e1_d3.png",
+          "data_url": "/static/fields/rdra/e1_d3.bin",
+          "flags_url": "/static/fields/rdra/e1_d3_flags.png",
+          "n_exposures": 23,
+          "flagged_frac": 0.1176,
+          "lambda_range_um": [
+            1.622,
+            2.403
+          ]
+        },
+        {
+          "detector": 4,
+          "image_url": "/static/fields/rdra/e1_d4.png",
+          "data_url": "/static/fields/rdra/e1_d4.bin",
+          "flags_url": "/static/fields/rdra/e1_d4_flags.png",
+          "n_exposures": 21,
+          "flagged_frac": 0.2373,
+          "lambda_range_um": [
+            2.428,
+            3.757
+          ]
+        },
+        {
+          "detector": 5,
+          "image_url": "/static/fields/rdra/e1_d5.png",
+          "data_url": "/static/fields/rdra/e1_d5.bin",
+          "flags_url": "/static/fields/rdra/e1_d5_flags.png",
+          "n_exposures": 36,
+          "flagged_frac": 0.1384,
+          "lambda_range_um": [
+            3.799,
+            4.406
+          ]
+        },
+        {
+          "detector": 6,
+          "image_url": "/static/fields/rdra/e1_d6.png",
+          "data_url": "/static/fields/rdra/e1_d6.bin",
+          "flags_url": "/static/fields/rdra/e1_d6_flags.png",
+          "n_exposures": 22,
+          "flagged_frac": 0.1051,
+          "lambda_range_um": [
+            4.41,
+            4.994
+          ]
+        }
+      ],
+      "expected_position": {
+        "ra": 248.16724082575308,
+        "dec": 66.75502291442376,
+        "x": 14.999,
+        "y": 15.0
+      }
+    },
+    {
+      "epoch_id": "e2",
+      "mjd_avg": 61005.8754,
+      "date_iso": "2025-11-26",
+      "frames": [
+        {
+          "detector": 1,
+          "image_url": "/static/fields/rdra/e2_d1.png",
+          "data_url": "/static/fields/rdra/e2_d1.bin",
+          "flags_url": "/static/fields/rdra/e2_d1_flags.png",
+          "n_exposures": 45,
+          "flagged_frac": 0.0697,
+          "lambda_range_um": [
+            0.736,
+            1.11
+          ]
+        },
+        {
+          "detector": 2,
+          "image_url": "/static/fields/rdra/e2_d2.png",
+          "data_url": "/static/fields/rdra/e2_d2.bin",
+          "flags_url": "/static/fields/rdra/e2_d2_flags.png",
+          "n_exposures": 37,
+          "flagged_frac": 0.0853,
+          "lambda_range_um": [
+            1.105,
+            1.659
+          ]
+        },
+        {
+          "detector": 3,
+          "image_url": "/static/fields/rdra/e2_d3.png",
+          "data_url": "/static/fields/rdra/e2_d3.bin",
+          "flags_url": "/static/fields/rdra/e2_d3_flags.png",
+          "n_exposures": 24,
+          "flagged_frac": 0.1259,
+          "lambda_range_um": [
+            1.633,
+            2.381
+          ]
+        },
+        {
+          "detector": 4,
+          "image_url": "/static/fields/rdra/e2_d4.png",
+          "data_url": "/static/fields/rdra/e2_d4.bin",
+          "flags_url": "/static/fields/rdra/e2_d4_flags.png",
+          "n_exposures": 45,
+          "flagged_frac": 0.1988,
+          "lambda_range_um": [
+            2.406,
+            3.811
+          ]
+        },
+        {
+          "detector": 5,
+          "image_url": "/static/fields/rdra/e2_d5.png",
+          "data_url": "/static/fields/rdra/e2_d5.bin",
+          "flags_url": "/static/fields/rdra/e2_d5_flags.png",
+          "n_exposures": 38,
+          "flagged_frac": 0.1249,
+          "lambda_range_um": [
+            3.797,
+            4.43
+          ]
+        },
+        {
+          "detector": 6,
+          "image_url": "/static/fields/rdra/e2_d6.png",
+          "data_url": "/static/fields/rdra/e2_d6.bin",
+          "flags_url": "/static/fields/rdra/e2_d6_flags.png",
+          "n_exposures": 24,
+          "flagged_frac": 0.0916,
+          "lambda_range_um": [
+            4.419,
+            4.979
+          ]
+        }
+      ],
+      "expected_position": {
+        "ra": 248.16723447316377,
+        "dec": 66.75502366121083,
+        "x": 15.0,
+        "y": 15.0
+      }
+    },
+    {
+      "epoch_id": "e3",
+      "mjd_avg": 61198.9219,
+      "date_iso": "2026-06-07",
+      "frames": [
+        {
+          "detector": 1,
+          "image_url": "/static/fields/rdra/e3_d1.png",
+          "data_url": "/static/fields/rdra/e3_d1.bin",
+          "flags_url": "/static/fields/rdra/e3_d1_flags.png",
+          "n_exposures": 24,
+          "flagged_frac": 0.0791,
+          "lambda_range_um": [
+            0.745,
+            1.122
+          ]
+        },
+        {
+          "detector": 2,
+          "image_url": "/static/fields/rdra/e3_d2.png",
+          "data_url": "/static/fields/rdra/e3_d2.bin",
+          "flags_url": "/static/fields/rdra/e3_d2_flags.png",
+          "n_exposures": 19,
+          "flagged_frac": 0.0697,
+          "lambda_range_um": [
+            1.093,
+            1.639
+          ]
+        },
+        {
+          "detector": 3,
+          "image_url": "/static/fields/rdra/e3_d3.png",
+          "data_url": "/static/fields/rdra/e3_d3.bin",
+          "flags_url": "/static/fields/rdra/e3_d3_flags.png",
+          "n_exposures": 44,
+          "flagged_frac": 0.0937,
+          "lambda_range_um": [
+            1.628,
+            2.409
+          ]
+        },
+        {
+          "detector": 4,
+          "image_url": "/static/fields/rdra/e3_d4.png",
+          "data_url": "/static/fields/rdra/e3_d4.bin",
+          "flags_url": "/static/fields/rdra/e3_d4_flags.png",
+          "n_exposures": 23,
+          "flagged_frac": 0.1863,
+          "lambda_range_um": [
+            2.429,
+            3.801
+          ]
+        },
+        {
+          "detector": 5,
+          "image_url": "/static/fields/rdra/e3_d5.png",
+          "data_url": "/static/fields/rdra/e3_d5.bin",
+          "flags_url": "/static/fields/rdra/e3_d5_flags.png",
+          "n_exposures": 19,
+          "flagged_frac": 0.1113,
+          "lambda_range_um": [
+            3.811,
+            4.417
+          ]
+        },
+        {
+          "detector": 6,
+          "image_url": "/static/fields/rdra/e3_d6.png",
+          "data_url": "/static/fields/rdra/e3_d6.bin",
+          "flags_url": "/static/fields/rdra/e3_d6_flags.png",
+          "n_exposures": 45,
+          "flagged_frac": 0.0728,
+          "lambda_range_um": [
+            4.415,
+            5.0
+          ]
+        }
+      ],
+      "expected_position": {
+        "ra": 248.16722679403972,
+        "dec": 66.75502456394005,
+        "x": 15.002,
+        "y": 14.999
+      }
+    }
+  ],
+  "spectrum_url": null,
+  "autotype_url": null,
+  "lightcurve_url": null,
+  "sources_url": null,
+  "catalogs_url": null
+}

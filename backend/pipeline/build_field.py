@@ -33,7 +33,7 @@ from .render import grid_to_png_xy, save_flags_png, save_float32, save_png, stre
 from .targets import Target, jyear_to_mjd, load_targets, propagate
 
 log = logging.getLogger("pipeline")
-DEFAULT_OUT_ROOT = Path(__file__).resolve().parent.parent / "data" / "static" / "fields"
+DEFAULT_OUT_ROOT = Path(__file__).resolve().parent.parent / "static" / "fields"
 
 
 def cutout_read_size(size_px: int) -> int:

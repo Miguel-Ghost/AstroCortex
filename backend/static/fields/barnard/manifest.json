@@ -1,0 +1,344 @@
+{
+  "field_id": "f_barnard",
+  "target_id": "barnard",
+  "name": "Barnard's Star",
+  "center": {
+    "ra": 269.446221,
+    "dec": 4.768807
+  },
+  "center_ref_mjd": 61117.4976,
+  "fov_arcmin": 3.2,
+  "pixscale_arcsec": 6.2,
+  "nx": 31,
+  "ny": 31,
+  "orientation": "north_up_east_left",
+  "data_release": "spherex_dr1+spherex_qr3",
+  "pipeline_commit": "coadd-v1",
+  "flux_unit": "MJy / sr",
+  "image_is": "IMAGE - ZODI, inverse-variance coadd per epoch and detector, 3-sigma clipped",
+  "flags_overlay": "problem bits (all except SOURCE 2^21) set in >50% of exposures",
+  "detectors": [
+    {
+      "detector": 1,
+      "lambda_min_um": 0.75,
+      "lambda_max_um": 1.09,
+      "stretch": {
+        "type": "asinh",
+        "vmin": 0.1623014360666275,
+        "vmax": 139.81385803222656
+      }
+    },
+    {
+      "detector": 2,
+      "lambda_min_um": 1.1,
+      "lambda_max_um": 1.62,
+      "stretch": {
+        "type": "asinh",
+        "vmin": 0.18159252405166626,
+        "vmax": 262.7052307128906
+      }
+    },
+    {
+      "detector": 3,
+      "lambda_min_um": 1.63,
+      "lambda_max_um": 2.41,
+      "stretch": {
+        "type": "asinh",
+        "vmin": 0.1326943337917328,
+        "vmax": 360.9794616699219
+      }
+    },
+    {
+      "detector": 4,
+      "lambda_min_um": 2.42,
+      "lambda_max_um": 3.82,
+      "stretch": {
+        "type": "asinh",
+        "vmin": 0.07615431398153305,
+        "vmax": 309.1428527832031
+      }
+    },
+    {
+      "detector": 5,
+      "lambda_min_um": 3.83,
+      "lambda_max_um": 4.41,
+      "stretch": {
+        "type": "asinh",
+        "vmin": 0.05409075319766998,
+        "vmax": 228.56715393066406
+      }
+    },
+    {
+      "detector": 6,
+      "lambda_min_um": 4.42,
+      "lambda_max_um": 5.0,
+      "stretch": {
+        "type": "asinh",
+        "vmin": 0.05483975633978844,
+        "vmax": 159.6165313720703
+      }
+    }
+  ],
+  "epochs": [
+    {
+      "epoch_id": "e1",
+      "mjd_avg": 60916.1944,
+      "date_iso": "2025-08-29",
+      "frames": [
+        {
+          "detector": 1,
+          "image_url": "/static/fields/barnard/e1_d1.png",
+          "data_url": "/static/fields/barnard/e1_d1.bin",
+          "flags_url": "/static/fields/barnard/e1_d1_flags.png",
+          "n_exposures": 24,
+          "flagged_frac": 0.0437,
+          "lambda_range_um": [
+            0.75,
+            1.107
+          ]
+        },
+        {
+          "detector": 2,
+          "image_url": "/static/fields/barnard/e1_d2.png",
+          "data_url": "/static/fields/barnard/e1_d2.bin",
+          "flags_url": "/static/fields/barnard/e1_d2_flags.png",
+          "n_exposures": 18,
+          "flagged_frac": 0.0406,
+          "lambda_range_um": [
+            1.101,
+            1.629
+          ]
+        },
+        {
+          "detector": 3,
+          "image_url": "/static/fields/barnard/e1_d3.png",
+          "data_url": "/static/fields/barnard/e1_d3.bin",
+          "flags_url": "/static/fields/barnard/e1_d3_flags.png",
+          "n_exposures": 18,
+          "flagged_frac": 0.0468,
+          "lambda_range_um": [
+            1.632,
+            2.411
+          ]
+        },
+        {
+          "detector": 4,
+          "image_url": "/static/fields/barnard/e1_d4.png",
+          "data_url": "/static/fields/barnard/e1_d4.bin",
+          "flags_url": "/static/fields/barnard/e1_d4_flags.png",
+          "n_exposures": 23,
+          "flagged_frac": 0.0666,
+          "lambda_range_um": [
+            2.441,
+            3.8
+          ]
+        },
+        {
+          "detector": 5,
+          "image_url": "/static/fields/barnard/e1_d5.png",
+          "data_url": "/static/fields/barnard/e1_d5.bin",
+          "flags_url": "/static/fields/barnard/e1_d5_flags.png",
+          "n_exposures": 18,
+          "flagged_frac": 0.0177,
+          "lambda_range_um": [
+            3.821,
+            4.407
+          ]
+        },
+        {
+          "detector": 6,
+          "image_url": "/static/fields/barnard/e1_d6.png",
+          "data_url": "/static/fields/barnard/e1_d6.bin",
+          "flags_url": "/static/fields/barnard/e1_d6_flags.png",
+          "n_exposures": 17,
+          "flagged_frac": 0.0114,
+          "lambda_range_um": [
+            4.418,
+            5.001
+          ]
+        }
+      ],
+      "expected_position": {
+        "ra": 269.44634460991017,
+        "dec": 4.767220918700272,
+        "x": 14.929,
+        "y": 15.921
+      }
+    },
+    {
+      "epoch_id": "e2",
+      "mjd_avg": 61119.4567,
+      "date_iso": "2026-03-20",
+      "frames": [
+        {
+          "detector": 1,
+          "image_url": "/static/fields/barnard/e2_d1.png",
+          "data_url": "/static/fields/barnard/e2_d1.bin",
+          "flags_url": "/static/fields/barnard/e2_d1_flags.png",
+          "n_exposures": 18,
+          "flagged_frac": 0.0499,
+          "lambda_range_um": [
+            0.745,
+            1.092
+          ]
+        },
+        {
+          "detector": 2,
+          "image_url": "/static/fields/barnard/e2_d2.png",
+          "data_url": "/static/fields/barnard/e2_d2.bin",
+          "flags_url": "/static/fields/barnard/e2_d2_flags.png",
+          "n_exposures": 19,
+          "flagged_frac": 0.0364,
+          "lambda_range_um": [
+            1.093,
+            1.629
+          ]
+        },
+        {
+          "detector": 3,
+          "image_url": "/static/fields/barnard/e2_d3.png",
+          "data_url": "/static/fields/barnard/e2_d3.bin",
+          "flags_url": "/static/fields/barnard/e2_d3_flags.png",
+          "n_exposures": 24,
+          "flagged_frac": 0.0531,
+          "lambda_range_um": [
+            1.625,
+            2.411
+          ]
+        },
+        {
+          "detector": 4,
+          "image_url": "/static/fields/barnard/e2_d4.png",
+          "data_url": "/static/fields/barnard/e2_d4.bin",
+          "flags_url": "/static/fields/barnard/e2_d4_flags.png",
+          "n_exposures": 18,
+          "flagged_frac": 0.0676,
+          "lambda_range_um": [
+            2.43,
+            3.738
+          ]
+        },
+        {
+          "detector": 5,
+          "image_url": "/static/fields/barnard/e2_d5.png",
+          "data_url": "/static/fields/barnard/e2_d5.bin",
+          "flags_url": "/static/fields/barnard/e2_d5_flags.png",
+          "n_exposures": 19,
+          "flagged_frac": 0.0198,
+          "lambda_range_um": [
+            3.811,
+            4.407
+          ]
+        },
+        {
+          "detector": 6,
+          "image_url": "/static/fields/barnard/e2_d6.png",
+          "data_url": "/static/fields/barnard/e2_d6.bin",
+          "flags_url": "/static/fields/barnard/e2_d6_flags.png",
+          "n_exposures": 24,
+          "flagged_frac": 0.0094,
+          "lambda_range_um": [
+            4.412,
+            5.002
+          ]
+        }
+      ],
+      "expected_position": {
+        "ra": 269.4462202676246,
+        "dec": 4.768822777190508,
+        "x": 15.001,
+        "y": 14.991
+      }
+    },
+    {
+      "epoch_id": "e3",
+      "mjd_avg": 61274.9934,
+      "date_iso": "2026-08-22",
+      "frames": [
+        {
+          "detector": 1,
+          "image_url": "/static/fields/barnard/e3_d1.png",
+          "data_url": "/static/fields/barnard/e3_d1.bin",
+          "flags_url": "/static/fields/barnard/e3_d1_flags.png",
+          "n_exposures": 18,
+          "flagged_frac": 0.0427,
+          "lambda_range_um": [
+            0.741,
+            1.097
+          ]
+        },
+        {
+          "detector": 2,
+          "image_url": "/static/fields/barnard/e3_d2.png",
+          "data_url": "/static/fields/barnard/e3_d2.bin",
+          "flags_url": "/static/fields/barnard/e3_d2_flags.png",
+          "n_exposures": 25,
+          "flagged_frac": 0.0499,
+          "lambda_range_um": [
+            1.088,
+            1.661
+          ]
+        },
+        {
+          "detector": 3,
+          "image_url": "/static/fields/barnard/e3_d3.png",
+          "data_url": "/static/fields/barnard/e3_d3.bin",
+          "flags_url": "/static/fields/barnard/e3_d3_flags.png",
+          "n_exposures": 19,
+          "flagged_frac": 0.052,
+          "lambda_range_um": [
+            1.65,
+            2.423
+          ]
+        },
+        {
+          "detector": 4,
+          "image_url": "/static/fields/barnard/e3_d4.png",
+          "data_url": "/static/fields/barnard/e3_d4.bin",
+          "flags_url": "/static/fields/barnard/e3_d4_flags.png",
+          "n_exposures": 18,
+          "flagged_frac": 0.0635,
+          "lambda_range_um": [
+            2.419,
+            3.762
+          ]
+        },
+        {
+          "detector": 5,
+          "image_url": "/static/fields/barnard/e3_d5.png",
+          "data_url": "/static/fields/barnard/e3_d5.bin",
+          "flags_url": "/static/fields/barnard/e3_d5_flags.png",
+          "n_exposures": 25,
+          "flagged_frac": 0.0187,
+          "lambda_range_um": [
+            3.804,
+            4.433
+          ]
+        },
+        {
+          "detector": 6,
+          "image_url": "/static/fields/barnard/e3_d6.png",
+          "data_url": "/static/fields/barnard/e3_d6.bin",
+          "flags_url": "/static/fields/barnard/e3_d6_flags.png",
+          "n_exposures": 19,
+          "flagged_frac": 0.0104,
+          "lambda_range_um": [
+            4.402,
+            4.977
+          ]
+        }
+      ],
+      "expected_position": {
+        "ra": 269.44612512031017,
+        "dec": 4.77004852194319,
+        "x": 15.056,
+        "y": 14.279
+      }
+    }
+  ],
+  "spectrum_url": null,
+  "autotype_url": null,
+  "lightcurve_url": null,
+  "sources_url": null,
+  "catalogs_url": null
+}

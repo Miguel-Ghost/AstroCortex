@@ -6,3 +6,4 @@ __pycache__/
 *.fits
 models/*.onnx
 .pytest_tmp/
+data/mock/

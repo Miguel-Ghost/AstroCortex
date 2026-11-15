@@ -1,0 +1,344 @@
+{
+  "field_id": "f_rwaur",
+  "target_id": "rwaur",
+  "name": "RW Aurigae",
+  "center": {
+    "ra": 76.95609,
+    "dec": 30.401127
+  },
+  "center_ref_mjd": 61103.331,
+  "fov_arcmin": 3.2,
+  "pixscale_arcsec": 6.2,
+  "nx": 31,
+  "ny": 31,
+  "orientation": "north_up_east_left",
+  "data_release": "spherex_dr1+spherex_qr3",
+  "pipeline_commit": "coadd-v1",
+  "flux_unit": "MJy / sr",
+  "image_is": "IMAGE - ZODI, inverse-variance coadd per epoch and detector, 3-sigma clipped",
+  "flags_overlay": "problem bits (all except SOURCE 2^21) set in >50% of exposures",
+  "detectors": [
+    {
+      "detector": 1,
+      "lambda_min_um": 0.75,
+      "lambda_max_um": 1.09,
+      "stretch": {
+        "type": "asinh",
+        "vmin": 0.06148200109601021,
+        "vmax": 7.684744834899902
+      }
+    },
+    {
+      "detector": 2,
+      "lambda_min_um": 1.1,
+      "lambda_max_um": 1.62,
+      "stretch": {
+        "type": "asinh",
+        "vmin": 0.05475986376404762,
+        "vmax": 13.25258731842041
+      }
+    },
+    {
+      "detector": 3,
+      "lambda_min_um": 1.63,
+      "lambda_max_um": 2.41,
+      "stretch": {
+        "type": "asinh",
+        "vmin": 0.029156047850847244,
+        "vmax": 12.294036865234375
+      }
+    },
+    {
+      "detector": 4,
+      "lambda_min_um": 2.42,
+      "lambda_max_um": 3.82,
+      "stretch": {
+        "type": "asinh",
+        "vmin": 0.03022272326052189,
+        "vmax": 48.58565139770508
+      }
+    },
+    {
+      "detector": 5,
+      "lambda_min_um": 3.83,
+      "lambda_max_um": 4.41,
+      "stretch": {
+        "type": "asinh",
+        "vmin": 0.027511006221175194,
+        "vmax": 93.58588409423828
+      }
+    },
+    {
+      "detector": 6,
+      "lambda_min_um": 4.42,
+      "lambda_max_um": 5.0,
+      "stretch": {
+        "type": "asinh",
+        "vmin": 0.0356840156018734,
+        "vmax": 63.392547607421875
+      }
+    }
+  ],
+  "epochs": [
+    {
+      "epoch_id": "e1",
+      "mjd_avg": 60928.1904,
+      "date_iso": "2025-09-10",
+      "frames": [
+        {
+          "detector": 1,
+          "image_url": "/static/fields/rwaur/e1_d1.png",
+          "data_url": "/static/fields/rwaur/e1_d1.bin",
+          "flags_url": "/static/fields/rwaur/e1_d1_flags.png",
+          "n_exposures": 19,
+          "flagged_frac": 0.025,
+          "lambda_range_um": [
+            0.747,
+            1.119
+          ]
+        },
+        {
+          "detector": 2,
+          "image_url": "/static/fields/rwaur/e1_d2.png",
+          "data_url": "/static/fields/rwaur/e1_d2.bin",
+          "flags_url": "/static/fields/rwaur/e1_d2_flags.png",
+          "n_exposures": 18,
+          "flagged_frac": 0.0021,
+          "lambda_range_um": [
+            1.105,
+            1.623
+          ]
+        },
+        {
+          "detector": 3,
+          "image_url": "/static/fields/rwaur/e1_d3.png",
+          "data_url": "/static/fields/rwaur/e1_d3.bin",
+          "flags_url": "/static/fields/rwaur/e1_d3_flags.png",
+          "n_exposures": 19,
+          "flagged_frac": 0.0073,
+          "lambda_range_um": [
+            1.621,
+            2.406
+          ]
+        },
+        {
+          "detector": 4,
+          "image_url": "/static/fields/rwaur/e1_d4.png",
+          "data_url": "/static/fields/rwaur/e1_d4.bin",
+          "flags_url": "/static/fields/rwaur/e1_d4_flags.png",
+          "n_exposures": 19,
+          "flagged_frac": 0.0198,
+          "lambda_range_um": [
+            2.435,
+            3.848
+          ]
+        },
+        {
+          "detector": 5,
+          "image_url": "/static/fields/rwaur/e1_d5.png",
+          "data_url": "/static/fields/rwaur/e1_d5.bin",
+          "flags_url": "/static/fields/rwaur/e1_d5_flags.png",
+          "n_exposures": 18,
+          "flagged_frac": 0.0083,
+          "lambda_range_um": [
+            3.827,
+            4.401
+          ]
+        },
+        {
+          "detector": 6,
+          "image_url": "/static/fields/rwaur/e1_d6.png",
+          "data_url": "/static/fields/rwaur/e1_d6.bin",
+          "flags_url": "/static/fields/rwaur/e1_d6_flags.png",
+          "n_exposures": 19,
+          "flagged_frac": 0.0062,
+          "lambda_range_um": [
+            4.409,
+            4.996
+          ]
+        }
+      ],
+      "expected_position": {
+        "ra": 76.95608943731695,
+        "dec": 30.40113083521394,
+        "x": 15.0,
+        "y": 14.998
+      }
+    },
+    {
+      "epoch_id": "e2",
+      "mjd_avg": 61102.2551,
+      "date_iso": "2026-03-03",
+      "frames": [
+        {
+          "detector": 1,
+          "image_url": "/static/fields/rwaur/e2_d1.png",
+          "data_url": "/static/fields/rwaur/e2_d1.bin",
+          "flags_url": "/static/fields/rwaur/e2_d1_flags.png",
+          "n_exposures": 19,
+          "flagged_frac": 0.001,
+          "lambda_range_um": [
+            0.741,
+            1.112
+          ]
+        },
+        {
+          "detector": 2,
+          "image_url": "/static/fields/rwaur/e2_d2.png",
+          "data_url": "/static/fields/rwaur/e2_d2.bin",
+          "flags_url": "/static/fields/rwaur/e2_d2_flags.png",
+          "n_exposures": 19,
+          "flagged_frac": 0.0031,
+          "lambda_range_um": [
+            1.094,
+            1.646
+          ]
+        },
+        {
+          "detector": 3,
+          "image_url": "/static/fields/rwaur/e2_d3.png",
+          "data_url": "/static/fields/rwaur/e2_d3.bin",
+          "flags_url": "/static/fields/rwaur/e2_d3_flags.png",
+          "n_exposures": 19,
+          "flagged_frac": 0.0062,
+          "lambda_range_um": [
+            1.639,
+            2.421
+          ]
+        },
+        {
+          "detector": 4,
+          "image_url": "/static/fields/rwaur/e2_d4.png",
+          "data_url": "/static/fields/rwaur/e2_d4.bin",
+          "flags_url": "/static/fields/rwaur/e2_d4_flags.png",
+          "n_exposures": 19,
+          "flagged_frac": 0.0208,
+          "lambda_range_um": [
+            2.419,
+            3.818
+          ]
+        },
+        {
+          "detector": 5,
+          "image_url": "/static/fields/rwaur/e2_d5.png",
+          "data_url": "/static/fields/rwaur/e2_d5.bin",
+          "flags_url": "/static/fields/rwaur/e2_d5_flags.png",
+          "n_exposures": 19,
+          "flagged_frac": 0.0052,
+          "lambda_range_um": [
+            3.813,
+            4.424
+          ]
+        },
+        {
+          "detector": 6,
+          "image_url": "/static/fields/rwaur/e2_d6.png",
+          "data_url": "/static/fields/rwaur/e2_d6.bin",
+          "flags_url": "/static/fields/rwaur/e2_d6_flags.png",
+          "n_exposures": 19,
+          "flagged_frac": 0.0031,
+          "lambda_range_um": [
+            4.425,
+            5.012
+          ]
+        }
+      ],
+      "expected_position": {
+        "ra": 76.95608984260741,
+        "dec": 30.401127208358776,
+        "x": 15.0,
+        "y": 15.0
+      }
+    },
+    {
+      "epoch_id": "e3",
+      "mjd_avg": 61294.6327,
+      "date_iso": "2026-09-11",
+      "frames": [
+        {
+          "detector": 1,
+          "image_url": "/static/fields/rwaur/e3_d1.png",
+          "data_url": "/static/fields/rwaur/e3_d1.bin",
+          "flags_url": "/static/fields/rwaur/e3_d1_flags.png",
+          "n_exposures": 18,
+          "flagged_frac": 0.0281,
+          "lambda_range_um": [
+            0.754,
+            1.104
+          ]
+        },
+        {
+          "detector": 2,
+          "image_url": "/static/fields/rwaur/e3_d2.png",
+          "data_url": "/static/fields/rwaur/e3_d2.bin",
+          "flags_url": "/static/fields/rwaur/e3_d2_flags.png",
+          "n_exposures": 19,
+          "flagged_frac": 0.0083,
+          "lambda_range_um": [
+            1.096,
+            1.646
+          ]
+        },
+        {
+          "detector": 3,
+          "image_url": "/static/fields/rwaur/e3_d3.png",
+          "data_url": "/static/fields/rwaur/e3_d3.bin",
+          "flags_url": "/static/fields/rwaur/e3_d3_flags.png",
+          "n_exposures": 18,
+          "flagged_frac": 0.0062,
+          "lambda_range_um": [
+            1.644,
+            2.385
+          ]
+        },
+        {
+          "detector": 4,
+          "image_url": "/static/fields/rwaur/e3_d4.png",
+          "data_url": "/static/fields/rwaur/e3_d4.bin",
+          "flags_url": "/static/fields/rwaur/e3_d4_flags.png",
+          "n_exposures": 18,
+          "flagged_frac": 0.0156,
+          "lambda_range_um": [
+            2.452,
+            3.789
+          ]
+        },
+        {
+          "detector": 5,
+          "image_url": "/static/fields/rwaur/e3_d5.png",
+          "data_url": "/static/fields/rwaur/e3_d5.bin",
+          "flags_url": "/static/fields/rwaur/e3_d5_flags.png",
+          "n_exposures": 19,
+          "flagged_frac": 0.0021,
+          "lambda_range_um": [
+            3.815,
+            4.422
+          ]
+        },
+        {
+          "detector": 6,
+          "image_url": "/static/fields/rwaur/e3_d6.png",
+          "data_url": "/static/fields/rwaur/e3_d6.bin",
+          "flags_url": "/static/fields/rwaur/e3_d6_flags.png",
+          "n_exposures": 18,
+          "flagged_frac": 0.001,
+          "lambda_range_um": [
+            4.428,
+            4.981
+          ]
+        }
+      ],
+      "expected_position": {
+        "ra": 76.95609029053762,
+        "dec": 30.401123199929575,
+        "x": 15.0,
+        "y": 15.002
+      }
+    }
+  ],
+  "spectrum_url": null,
+  "autotype_url": null,
+  "lightcurve_url": null,
+  "sources_url": null,
+  "catalogs_url": null
+}
