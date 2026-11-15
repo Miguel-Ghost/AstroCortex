@@ -12,8 +12,12 @@ RULES: dict[str, str] = {
     "BR-FIELD-02": "All epochs of one detector share one stretch, so brightness changes are real.",
     "BR-FIELD-03": "Data built from synthetic exposures always says synthetic: true.",
     "BR-FIELD-04": "An epoch may miss detectors; the gap is shown, never filled.",
-    "BR-FIELD-05": "Positions are propagated to each date; a field is found only within 1 arcmin (true angular "
-    "separation) of its published centre, never from the challenge's 2010 coordinate of WISE 0855.",
+    "BR-FIELD-05": "Positions are propagated to each date. A position opens a field when it is within 1 arcmin "
+    "(true angular separation) of the field centre or of the target's proper-motion track between 1990 and 2030, "
+    "so catalog coordinates of any epoch (the challenge's 2010 coordinate of WISE 0855 included) find the field "
+    "where the target is now; the response says which way it matched.",
+    "BR-FIELD-06": "A field is named by its manifest field_id; target ids, folder names and aliases resolve to it, "
+    "and responses and stored votes always carry the canonical field_id.",
     # Image pipeline -------------------------------------------------------------------
     "BR-PIPE-01": "SOURCE and OUTLIER flags are never excluded from a coadd (moving objects carry them).",
     "BR-PIPE-02": "Exposures are capped per epoch and detector, never globally.",
@@ -27,9 +31,17 @@ RULES: dict[str, str] = {
     "threshold, the catalog disagrees, the source moves without catalog motion, a cold dwarf is not "
     "known, it appears in one epoch, it has no counterpart or most pixels are flagged; otherwise "
     "classified. Order: needs_review, classified, known. needs_review is a candidate, not a discovery.",
+    "BR-CLS-06": "A published field always answers /api/sources: with its measured list, or, if that list is "
+    "missing, with its target from the catalog (method rule); a field without catalog cross-match says "
+    "catalog not_checked, never uncatalogued.",
+    "BR-CLS-07": "Source evidence is measured on the published coadds (forced PSF photometry at catalog "
+    "positions per date); a motion is reported only above 3 sigma and only for sources not dominated by a "
+    "neighbour.",
     # Live fields ----------------------------------------------------------------------
-    "BR-JOB-01": "No live-field job stays running: time limit, final safety net and expiry on read.",
-    "BR-JOB-02": "A provider failure ends in technical_error; a field without exposures ends in no_data.",
+    "BR-JOB-01": "No request waits on a live field longer than LIVE_TIMEOUT_S (60 s); the build continues and "
+    "fills the disk cache, and a field folder is published atomically, never half-written.",
+    "BR-JOB-02": "IRSA unavailable (503/429 after retries, timeouts) answers 503 upstream_unavailable; a position "
+    "without exposures answers 404 no_coverage and is remembered for an hour.",
     # Agent ----------------------------------------------------------------------------
     "BR-AGENT-01": "The agent only emits actions from the closed vocabulary; invalid actions are dropped.",
     "BR-AGENT-02": "The live agent only uses facts returned by this API; actions that reference unknown "

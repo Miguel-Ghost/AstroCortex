@@ -16,11 +16,15 @@ app/                FastAPI application
   main.py           app factory, CORS, /health, /static
   schemas.py        API contracts (mirror section 7 of the frontend guide)
   routers/          /api/targets, /api/field, /api/sources, /api/catalogs, /api/marks, /api/agent
-  services/         static store, classifier (rule + ONNX), marks (Postgres/memory), agent
+  services/         static store (field index), classifier (rule + ONNX), engine, guide (rule agent),
+                    live fields, marks (Postgres/memory)
 pipeline/           image pipeline (query, read, grid, epochs, coadd, render, build_field, synthetic)
-scripts/            make_mock_static.py: demo data built with the real pipeline on synthetic exposures
+                    and sources.py (forced PSF photometry + catalog cross-match on the coadds)
+scripts/            fetch_catalogs, build_real_sources, build_agent_tours, make_mock_static (demo data)
 data/targets.json   the 5 test targets with astrometry (positions propagated by proper motion)
-static/fields/      real SPHEREx fields of the 5 targets (manifest.json, PNG, flags PNG, float32 .bin), served at /static/fields
+static/fields/      real SPHEREx fields of the 5 targets: manifest.json, PNG, flags PNG, float32 .bin,
+                    catalogs.json (Gaia DR3 + CatWISE2020), sources.json (measured sources)
+static/agent/       the guide's tour of each field (frontend fallback), served at /static/agent
 tests/              pytest suite (API, classifier, pipeline on synthetic SPHEREx-like FITS)
 ```
 
@@ -37,18 +41,48 @@ pytest                                  # full test suite
 
 ## Data for the 5 test targets
 
-```bash
-# demo data with sources, catalogs and agent tours (synthetic images; written to data/mock/fields, never to static/fields)
-python -m scripts.make_mock_static
+Everything Render serves is committed: nothing is generated at runtime (its disk is rebuilt on deploy).
 
-# real data for one target (needs internet access to IRSA and S3; run it offline, not on Render)
-python -m pipeline.build_field --target wise0855
+```bash
+python -m scripts.fetch_catalogs        # Gaia DR3 + CatWISE2020 per field (needs internet; NOIRLab Data Lab)
+python -m scripts.build_real_sources    # sources.json per field, measured on the coadds
+python -m scripts.build_agent_tours     # static/agent/<target_id>.json
+python -m scripts.make_mock_static      # demo fields for the tests (data/mock, never static/fields)
+python -m pipeline.build_field --target wise0855   # rebuild a field from IRSA + S3 (offline)
 ```
 
 Each real field folder contains `manifest.json`, `e<k>_d<n>.png`, `e<k>_d<n>_flags.png` and `e<k>_d<n>.bin`
 (float32 little-endian, 31x31, row 0 = north, NaN = no data). URLs in the manifest start with
-`/static/fields/<target_id>/` and are relative to the API host. `GET /api/field?ra=&dec=` returns the manifest
-unchanged when (ra, dec) is within 1 arcmin of a field centre; otherwise 404 `no_coverage`.
+`/static/fields/<target_id>/` and are relative to the API host.
+
+### Finding a field (`GET /api/field?ra=&dec=`)
+
+The manifest is returned unchanged when (ra, dec) is within 1 arcmin of a field centre **or of the
+target's proper-motion track between 1990 and 2030**, so a catalog coordinate of any epoch (the
+challenge's 2010 coordinate of WISE 0855, J2000 tables) opens the field where the target is now.
+How it matched travels in headers exposed by CORS: `X-Field-Match` (`center`, `track`, `target`,
+`live`), `X-Field-Match-Epoch`, `X-Field-Offset-Arcmin`, `X-Target-Id`. Field names resolve from
+the manifest `field_id`, the `target_id`, the folder or any alias (`f_wise0855`, `wise0855`,
+`WISE 0855` are the same field) in every route.
+
+### Live fields (`LIVE_FIELDS=true`)
+
+Any other position gets a field built on request with the same pipeline: IRSA SIA (spherex_dr1,
+spherex_qr3), at most 6 exposures per epoch and detector, partial reads from S3, coadd and manifest
+with `field_id` `live_<ra>_<dec>` and `expected_position: null`, cached on disk per 0.01 deg cell and
+served at `/static/live/`. A request waits at most `LIVE_TIMEOUT_S` (60 s, then 504
+`live_field_timeout` while the build finishes in the background); IRSA down is 503
+`upstream_unavailable`; no exposures is 404 `no_coverage`.
+
+### Sources of a field (`pipeline/sources.py`)
+
+Rows are Gaia DR3 / CatWISE2020 objects inside the cutout, placed at the date of each epoch with
+their proper motion, plus SPHEREx detections without counterpart; only objects SPHEREx sees
+(S/N >= 3 in some detector) are rows, and the target always is. Fluxes come from joint forced
+photometry with a pixel-integrated Gaussian PSF per detector (width fitted on bright isolated stars),
+so blends are separated; motion is a per-epoch position fit, reported above 3 sigma for sources not
+dominated by a neighbour. `methane_index` = F(D5)/F(D4) (a lower limit when D4 is not detected).
+Without catalogs a field still gets its rows, with `catalog.status = not_checked`.
 
 ## How the pipeline works
 
@@ -64,7 +98,7 @@ unchanged when (ra, dec) is within 1 arcmin of a field centre; otherwise 404 `no
 
 `app/services/classifier.py` defines the interface used by `/api/sources`:
 
-- `RulePredictor` (default): methane index F(3.83–4.41 µm)/F(3.20–3.45 µm) + motion. Provisional thresholds.
+- `RulePredictor` (default): methane index (D5/D4 on the coadds) + motion. Provisional thresholds.
 - `OnnxPredictor`: loads `MODEL_PATH` (`model.onnx`) and `metadata.json` from the model repo.
 
 Contract for each model version: input float32 `[1, n_features]`, last output = class probabilities
@@ -89,11 +123,12 @@ minute to wake up. Use the Starter plan or an external ping during the demo.
 | API contracts, static fields, marks, CORS, error format | done, tested |
 | Pipeline (grid, epochs, coadd, render, manifest) | done, tested on synthetic FITS |
 | IRSA SIA query and S3 reads | written, **not yet tested against IRSA/S3** |
-| Live fields for any coordinate | TODO (`/api/field` returns 404 outside the 5 targets) |
-| Real sources/features per field | TODO (photometry + catalog cross-match) |
-| ONNX model | interface ready; model expected Sunday |
-| Live LLM agent | TODO; recorded tours work |
-| Difference images | frontend can use the `.f32` data; server-side PNG diffs TODO |
+| Field lookup (centre or catalog track), field-id resolution | done, tested |
+| Real sources per field (forced photometry + Gaia/CatWISE) | done for the 5 targets, tested |
+| Live fields for any coordinate | written behind `LIVE_FIELDS`, tested with synthetic exposures; **IRSA/S3 path not yet run** |
+| ONNX model | interface ready; model not trained yet (`method: "rule"` until then) |
+| Guide agent | rule-based guide over the API data works; live LLM agent TODO |
+| Difference images | frontend uses the `.bin` data |
 
 ## Data credits
 

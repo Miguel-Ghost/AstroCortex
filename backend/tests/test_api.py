@@ -30,6 +30,7 @@ def test_field_returns_the_manifest_unchanged(client):
     on_disk = client.get("/static/fields/wise0855/manifest.json").json()
     assert r.json() == on_disk  # same field names and values, nothing re-serialised
     assert r.json()["target_id"] == "wise0855" and len(r.json()["epochs"]) == 3
+    assert r.headers["x-field-match"] == "center" and r.headers["x-target-id"] == "wise0855"
 
 
 def test_field_ignores_fov_and_uses_true_angular_separation(client):
@@ -37,11 +38,41 @@ def test_field_ignores_fov_and_uses_true_angular_separation(client):
     # R Draconis is at dec +66.75: 0.03 deg of RA there is only ~0.71 arcmin on the sky -> covered
     near = client.get("/api/field", params={"ra": 248.16723 + 0.03, "dec": 66.75502, "fov_arcmin": 99})
     assert near.status_code == 200 and near.json()["target_id"] == "rdra"
-    # 0.03 deg of RA at WISE 0855 (dec -7.2) is ~1.79 arcmin -> not covered
-    far = client.get("/api/field", params={"ra": 133.75945 + 0.03, "dec": -7.24286})
+    # 0.03 deg north of WISE 0855 is 1.8 arcmin off the centre and off its (east-west) track -> not covered
+    far = client.get("/api/field", params={"ra": 133.75945, "dec": -7.24286 + 0.03})
     assert far.status_code == 404
-    # the challenge's 2010 coordinate of WISE 0855 is ~2 arcmin from the field centre
-    assert client.get("/api/field", params={"ra": 133.79513, "dec": -7.24515}).status_code == 404
+
+
+def test_catalog_coordinates_of_any_epoch_open_the_field_where_the_target_is_now(client):
+    """BR-FIELD-05: the challenge's 2010 coordinate of WISE 0855 and J2000 positions find the field."""
+    cases = {
+        "wise0855": (133.79513, -7.24515, 2010.5),  # challenge statement (AllWISE epoch)
+        "barnard": (269.452071, 4.693364, 2000.0),  # SIMBAD J2000
+        "epsindib": (331.04383, -56.78269, 2000.0),  # SIMBAD J2000
+    }
+    for target_id, (ra, dec, year) in cases.items():
+        r = client.get("/api/field", params={"ra": ra, "dec": dec, "fov_arcmin": 3})
+        assert r.status_code == 200 and r.json()["target_id"] == target_id, target_id
+        assert r.headers["x-field-match"] == "track" and r.headers["x-target-id"] == target_id
+        assert abs(float(r.headers["x-field-match-epoch"]) - year) < 1.0
+        assert float(r.headers["x-field-offset-arcmin"]) > 1.5  # the target has moved since
+
+
+def test_lookup_headers_are_exposed_to_the_browser(client):
+    r = client.get("/api/field", params={"ra": 133.79513, "dec": -7.24515}, headers={"Origin": "http://localhost:5173"})
+    exposed = r.headers["access-control-expose-headers"]
+    for header in ("X-Field-Match", "X-Field-Match-Epoch", "X-Field-Offset-Arcmin", "X-Target-Id"):
+        assert header in exposed
+
+
+def test_field_ids_resolve_from_any_name(client):
+    """BR-FIELD-06: field_id, target_id and aliases all name the same field."""
+    for name in ("wise0855", "f_wise0855", "WISE 0855", "WISE J085510.83-071442.5"):
+        r = client.get("/api/field", params={"target_id": name})
+        assert r.status_code == 200 and r.json()["field_id"] == "wise0855", name
+        assert client.get("/api/sources", params={"field_id": name}).json()["field_id"] == "wise0855"
+    r = client.get("/api/sources", params={"field_id": "../wise0855"})
+    assert r.status_code == 404 and r.json()["error"]["code"] == "field_not_found"
 
 
 def test_no_coverage_uses_the_exact_error_body(client):
@@ -147,9 +178,54 @@ def test_sources_carry_review_status_and_summary(mock_client):
     assert body.sources[-1].source_id == "wise0855_s000" and body.sources[-1].review_status.value == "known"
 
 
-def test_real_fields_have_no_sources_yet(client):
-    r = client.get("/api/sources", params={"field_id": "wise0855"})
-    assert r.status_code == 404 and r.json()["error"]["code"] == "sources_not_available"
+def test_every_real_field_has_classified_sources_with_its_target(client):
+    """BR-CLS-05/06: every published field answers, its target is a row, the summary matches the rows."""
+    from app.domain.vocab import ReviewReason
+
+    closed = {r.value for r in ReviewReason}
+    for target in client.get("/api/targets").json():
+        body = SourcesResponse.model_validate(
+            client.get("/api/sources", params={"field_id": target["target_id"]}).json()
+        )
+        assert body.field_id == target["target_id"] and body.method == "rule" and not body.synthetic
+        assert body.catalogs_checked is True
+        rows = body.sources
+        assert body.summary.n_sources == len(rows)
+        assert body.summary.needs_review == sum(r.review_status.value == "needs_review" for r in rows)
+        targets = [r for r in rows if r.is_target]
+        assert len(targets) == 1 and targets[0].catalog.status.value == "known_typed"
+        epoch_ids = {e["epoch_id"] for e in client.get(target["static_manifest_url"]).json()["epochs"]}
+        for r in rows:
+            assert set(r.positions) == epoch_ids
+            assert {x.value for x in r.review_reasons} <= closed
+
+
+def test_wise0855_is_measured_as_a_red_moving_known_dwarf(client):
+    """Measured on the real coadds: only seen in D5-D6, methane index >= 5, moves with the catalog motion."""
+    rows = client.get("/api/sources", params={"field_id": "f_wise0855"}).json()["sources"]
+    t = next(r for r in rows if r["is_target"])
+    assert t["source_id"] == "wise0855_s00" and t["name"] == "WISE 0855-0714"
+    assert (t["label"], t["review_status"], t["agreement"]) == ("cold_brown_dwarf", "known", "agrees")
+    ev = t["evidence"]
+    assert ev["detected_in"] == [5, 6] and ev["methane_index"] >= 5 and ev["in_gaia"] is False
+    assert ev["in_catwise"] is True
+
+
+def test_barnards_star_moves_north_about_1_6_px_in_a_year(client):
+    rows = client.get("/api/sources", params={"field_id": "barnard"}).json()["sources"]
+    t = next(r for r in rows if r["is_target"])
+    assert t["label"] == "star" and t["review_status"] == "known"
+    assert 1.4 < t["evidence"]["motion_px"] < 2.0
+    p = t["positions"]
+    assert p["e3"]["y"] < p["e1"]["y"] - 1.4  # row 0 is north: moving north lowers y
+
+
+def test_catalog_layers_are_real_and_inside_the_cutout(client):
+    body = CatalogsResponse.model_validate(client.get("/api/catalogs", params={"field_id": "barnard"}).json())
+    assert body.field_id == "barnard" and not body.synthetic and body.gaia and body.wise
+    centre = client.get("/api/field", params={"target_id": "barnard"}).json()["center"]
+    for row in body.gaia:
+        assert abs(row.dec - centre["dec"]) < 2.0 / 60
 
 
 def test_catalogs(mock_client):
@@ -159,7 +235,7 @@ def test_catalogs(mock_client):
 
 def test_marks_roundtrip(client):
     mark = {
-        "field_id": "wise0855",
+        "field_id": "f_wise0855",
         "source_id": "wise0855_s000",
         "ra": 133.76,
         "dec": -7.24,
@@ -170,17 +246,76 @@ def test_marks_roundtrip(client):
     assert created.status_code == 201 and created.json()["mark_id"] == 1
     listed = client.get("/api/marks", params={"field_id": "wise0855"}).json()
     assert len(listed) == 1 and listed[0]["user_label"] == "real"
+    assert listed[0]["field_id"] == "wise0855"  # BR-FIELD-06: stored under the canonical id
     assert client.post("/api/marks", json={**mark, "user_label": "maybe"}).status_code == 400
+    unknown = client.post("/api/marks", json={**mark, "field_id": "nowhere"})
+    assert unknown.status_code == 404 and unknown.json()["error"]["code"] == "field_not_found"
 
 
-def test_agent_returns_the_recorded_tour(mock_client):
-    """BR-AGENT-01: only actions from the closed vocabulary reach the viewer."""
-    r = mock_client.post("/api/agent", json={"message": "Guide me", "view_state": {"target_id": "wise0855"}})
+def test_agent_builds_a_tour_from_the_real_field(client):
+    """BR-AGENT-01/02: closed vocabulary, ids that exist, numbers from this API."""
+    r = client.post("/api/agent", json={"message": "Guide me", "view_state": {"target_id": "f_wise0855"}})
     body = AgentResponse.model_validate(r.json())
-    assert body.recorded and body.steps
-    assert {a.type for s in body.steps for a in s.actions} >= {"select_target", "blink", "show_detector_grid"}
+    assert body.mode == "rule" and not body.recorded and len(body.steps) >= 4
+    actions = [a for s in body.steps for a in s.actions]
+    assert {"select_target", "play_flipbook", "blink", "show_detector_grid", "select_source"} <= {
+        a.type for a in actions
+    }
+    assert actions[0].model_dump()["target_id"] == "wise0855"
+    source_ids = {s["source_id"] for s in client.get("/api/sources", params={"field_id": "wise0855"}).json()["sources"]}
+    epoch_ids = {"e1", "e2", "e3"}
+    for a in actions:
+        d = a.model_dump()
+        if "source_id" in d:
+            assert d["source_id"] in source_ids
+        for key in ("epoch_id", "epoch_a", "epoch_b"):
+            if key in d:
+                assert d[key] in epoch_ids
+    text = " ".join(s.say for s in body.steps)
+    assert "D5, D6" in text and "discover" not in text.lower()
+    assert "/api/sources?field_id=wise0855" in body.sources_used
 
 
-def test_agent_without_tour_is_unavailable(client):
+def test_agent_explains_the_selected_source(client):
+    rows = client.get("/api/sources", params={"field_id": "epsindib"}).json()["sources"]
+    target = next(r for r in rows if r["is_target"])
+    r = client.post(
+        "/api/agent",
+        json={
+            "message": "Explain the selected source",
+            "view_state": {"target_id": "epsindib", "selected_source_id": target["source_id"]},
+        },
+    )
+    body = AgentResponse.model_validate(r.json())
+    assert body.steps[0].actions[0].model_dump() == {"type": "select_source", "source_id": target["source_id"]}
+    assert "Epsilon Indi B" in body.reply and "methane index" in body.reply
+
+
+def test_agent_without_a_field_starts_with_a_test_target(client):
+    body = client.post("/api/agent", json={"message": "hi"}).json()
+    assert body["mode"] == "rule" and body["reply"].startswith("No field is open")
+
+
+def test_agent_on_demo_fields(mock_client):
+    r = mock_client.post("/api/agent", json={"message": "Guide me", "view_state": {"target_id": "wise0855"}})
+    assert r.status_code == 200 and AgentResponse.model_validate(r.json()).steps
+
+
+def test_agent_with_nothing_published_is_unavailable(tmp_path, monkeypatch):
+    from tests.conftest import _make_client
+
+    client = _make_client(monkeypatch, tmp_path)
     r = client.post("/api/agent", json={"message": "hi"})
     assert r.status_code == 503 and r.json()["error"]["code"] == "agent_unavailable"
+
+
+def test_static_tours_are_served_for_the_frontend_fallback(client):
+    r = client.get("/static/agent/wise0855.json")
+    assert r.status_code == 200 and AgentResponse.model_validate(r.json()).steps
+
+
+def test_meta_lists_the_review_reason_texts(client):
+    from app.domain.vocab import ReviewReason
+
+    texts = client.get("/api/meta").json()["review_reasons"]
+    assert set(texts) == {r.value for r in ReviewReason}

@@ -77,7 +77,7 @@ def test_onnx_predictor_follows_the_contract(tiny_model):
     assert dwarf["label"] == "cold_brown_dwarf"
     assert sum(dwarf["class_probs"].values()) == pytest.approx(1.0, abs=1e-5)
     weak = predictor.predict({"methane_index": None, "in_gaia": False})  # filled with 1.0 -> p = 0.65 < 0.7
-    assert weak["label"] == "unknown" and weak["reasons"] == ["below_threshold"]
+    assert weak["label"] == "unknown" and weak["reasons"] == ["low_confidence"]
 
 
 def test_model_cannot_use_catalog_types_as_input(tiny_model):

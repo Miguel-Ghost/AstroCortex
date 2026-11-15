@@ -80,7 +80,7 @@ def test_motion_without_catalog_motion_needs_review():
 def test_single_epoch_and_flagged_sources_need_review():
     one_epoch = {"source_id": "a", "evidence": {"methane_index": 1.0, "in_gaia": True, "n_epochs_detected": 1}}
     flagged = {"source_id": "b", "evidence": {"methane_index": 1.0, "in_gaia": True, "flagged_frac": 0.8}}
-    assert review(one_epoch)["review_reasons"] == ["only_in_one_epoch"]
+    assert review(one_epoch)["review_reasons"] == ["only_one_epoch"]
     assert review(flagged)["review_reasons"] == ["high_flagged_fraction"]
 
 
