@@ -96,7 +96,7 @@ class LLMClient:
             except httpx.HTTPError as exc:
                 errors.append(f"{model}: {type(exc).__name__}")
                 continue
-            if r.status_code == 429 or r.status_code >= 500:
+            if r.status_code in (404, 429) or r.status_code >= 500:  # missing or busy model: try the next one
                 errors.append(f"{model}: HTTP {r.status_code}")
                 continue
             if r.status_code >= 400:

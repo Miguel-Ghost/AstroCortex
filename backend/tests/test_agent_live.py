@@ -184,6 +184,14 @@ def test_client_asks_for_low_reasoning_and_drops_it_when_unsupported():
     assert bodies[0]["reasoning_effort"] == "low" and "reasoning_effort" not in bodies[1]
 
 
+def test_client_skips_a_model_the_provider_no_longer_serves():
+    def handler(request):
+        model = __import__("json").loads(request.content)["model"]
+        return httpx.Response(404) if model == "main" else _ok('{"intent": "answer", "reply": "ok"}')
+
+    assert _client(handler).json("s", "u")["reply"] == "ok"
+
+
 def test_client_bad_key_does_not_try_other_models():
     calls = []
 
