@@ -3,7 +3,19 @@ name: CI
 on:
   push:
     branches: [main, backend-skeleton]
+    # a push that touches only the frontend or repository-level files neither tests nor redeploys
+    # the backend (deploy.yml runs after this workflow)
+    paths-ignore:
+      - "Frontend/**"
+      - ".github/workflows/frontend.yml"
+      - ".github/workflows/keepalive.yml"
+      - "README.md"
   pull_request:
+    paths-ignore:
+      - "Frontend/**"
+      - ".github/workflows/frontend.yml"
+      - ".github/workflows/keepalive.yml"
+      - "README.md"
 
 jobs:
   backend:
