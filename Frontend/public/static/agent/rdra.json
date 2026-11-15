@@ -1,0 +1,82 @@
+{
+ "reply": "Guided tour of R Draconis: 6 steps. Touch any control to take over.",
+ "steps": [
+  {
+   "say": "This is R Draconis: Mira variable (pulsating red giant) with a period of about 245 days. SPHEREx imaged it on 3 dates in D3, from 2025-06-20 to 2026-06-07 (352 days). The view starts on D3 (1.63–2.41 µm).",
+   "actions": [
+    {
+     "type": "select_target",
+     "target_id": "rdra"
+    },
+    {
+     "type": "set_detector",
+     "detector": 3
+    },
+    {
+     "type": "set_epoch",
+     "epoch_id": "e1"
+    }
+   ]
+  },
+  {
+   "say": "Play the dates in order. This object does not move at SPHEREx scale; look at its brightness from one date to the next.",
+   "actions": [
+    {
+     "type": "play_flipbook",
+     "fps": 2
+    }
+   ]
+  },
+  {
+   "say": "Blink compares two dates directly: 2025-06-20 against 2026-06-07. A moving source jumps; a still one only changes brightness, if at all.",
+   "actions": [
+    {
+     "type": "pause"
+    },
+    {
+     "type": "blink",
+     "epoch_a": "e1",
+     "epoch_b": "e3"
+    }
+   ]
+  },
+  {
+   "say": "The six detectors cover 0.75–5.0 µm, from left to right. In the measurements it is detected in D1, D3, D5, D6 and not in D2, D4.",
+   "actions": [
+    {
+     "type": "show_detector_grid"
+    }
+   ]
+  },
+  {
+   "say": "Its core is saturated in some detectors: those pixels have no data and are shown in purple. The flags layer marks the pixels the SPHEREx pipeline flagged.",
+   "actions": [
+    {
+     "type": "toggle_layer",
+     "layer": "flags",
+     "on": true
+    }
+   ]
+  },
+  {
+   "say": "The rule-based engine labels it a star; that agrees with the catalog type (star, SIMBAD).",
+   "actions": [
+    {
+     "type": "open_tab",
+     "tab": "classification"
+    },
+    {
+     "type": "select_source",
+     "source_id": "rdra_s00"
+    }
+   ]
+  }
+ ],
+ "sources_used": [
+  "/api/targets",
+  "/api/field?target_id=rdra",
+  "/api/sources?field_id=rdra"
+ ],
+ "recorded": true,
+ "mode": "recorded"
+}

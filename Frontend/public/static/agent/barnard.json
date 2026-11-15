@@ -1,0 +1,95 @@
+{
+ "reply": "Guided tour of Barnard's Star: 7 steps. Touch any control to take over.",
+ "steps": [
+  {
+   "say": "This is Barnard's Star: Red dwarf about 1.8 pc away with the largest known proper motion. SPHEREx imaged it on 3 dates in D2, from 2025-08-29 to 2026-08-22 (358 days). The view starts on D2 (1.1–1.62 µm).",
+   "actions": [
+    {
+     "type": "select_target",
+     "target_id": "barnard"
+    },
+    {
+     "type": "set_detector",
+     "detector": 2
+    },
+    {
+     "type": "set_epoch",
+     "epoch_id": "e1"
+    }
+   ]
+  },
+  {
+   "say": "Play the dates in order. At 10.4″/yr it should move about 1.6 px (pixels are 6.2″) between the first and last date; the crosshair marks where the catalog motion puts it on each date. Measured between 2025-08-29 and 2026-08-22, the dates where it is bright enough to fit: 1.72 px, against 1.6 px expected for that interval.",
+   "actions": [
+    {
+     "type": "play_flipbook",
+     "fps": 2
+    }
+   ]
+  },
+  {
+   "say": "Blink compares two dates directly: 2025-08-29 against 2026-08-22. A moving source jumps; a still one only changes brightness, if at all.",
+   "actions": [
+    {
+     "type": "pause"
+    },
+    {
+     "type": "blink",
+     "epoch_a": "e1",
+     "epoch_b": "e3"
+    }
+   ]
+  },
+  {
+   "say": "The six detectors cover 0.75–5.0 µm, from left to right. In the measurements it is detected in D1, D2, D3, D4, D5, D6. Its D5/D4 flux ratio (methane index) is 1.0; ordinary stars sit near 0.5–1.5 and methane-rich cold dwarfs far above.",
+   "actions": [
+    {
+     "type": "show_detector_grid"
+    }
+   ]
+  },
+  {
+   "say": "Its core is saturated in some detectors: those pixels have no data and are shown in purple. The flags layer marks the pixels the SPHEREx pipeline flagged.",
+   "actions": [
+    {
+     "type": "toggle_layer",
+     "layer": "flags",
+     "on": true
+    }
+   ]
+  },
+  {
+   "say": "The rule-based engine labels it a star; that agrees with the catalog type (star, SIMBAD).",
+   "actions": [
+    {
+     "type": "open_tab",
+     "tab": "classification"
+    },
+    {
+     "type": "select_source",
+     "source_id": "barnard_s00"
+    }
+   ]
+  },
+  {
+   "say": "2 of 14 sources in this field need a human look. The first one, Gaia DR3 4472835983521060096, is flagged for: Only in one date. Is it real or an artefact?",
+   "actions": [
+    {
+     "type": "select_source",
+     "source_id": "barnard_s11"
+    },
+    {
+     "type": "ask_vote",
+     "source_id": "barnard_s11"
+    }
+   ]
+  }
+ ],
+ "sources_used": [
+  "/api/targets",
+  "/api/field?target_id=barnard",
+  "/api/sources?field_id=barnard"
+ ],
+ "recorded": true,
+ "mode": "recorded"
+}
