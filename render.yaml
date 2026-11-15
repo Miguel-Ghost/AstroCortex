@@ -24,7 +24,13 @@ services:
       - key: MODEL_PATH
         sync: false       # e.g. models/model.onnx once the model repo publishes a version
       - key: LLM_API_KEY
-        sync: false
+        sync: false       # set in the dashboard only; never in the frontend
+      - key: LLM_BASE_URL
+        value: https://generativelanguage.googleapis.com/v1beta/openai   # any OpenAI-compatible endpoint
+      - key: LLM_MODEL
+        sync: false       # e.g. the current Gemini Flash model id from Google AI Studio
+      - key: LLM_TIMEOUT_S
+        value: "6"
       - key: LIVE_FIELDS
         value: "true"     # any RA/Dec without a published field is built from IRSA + S3 on request
       - key: LIVE_CACHE_DIR

@@ -106,6 +106,22 @@ Contract for each model version: input float32 `[1, n_features]`, last output = 
 `thresholds`, `fill_values` and optional `scaler`. The preprocessing used in training must be
 described there so serving repeats it exactly.
 
+## Guide agent (`POST /api/agent`)
+
+- **Rule-based guide** (always available): tours, explanations and review queues built from the
+  manifest and the classified sources.
+- **Live agent** (when `LLM_API_KEY` and `LLM_MODEL` are set): the language model reads a context
+  built from this API, picks the intent (tour, navigate, explain_source, review, answer) and writes
+  the reply in the user's language; the steps still come from the rule-based guide. Unknown ids are
+  dropped, and a reply with a number that is not in the data is replaced by the guide's text
+  (`mode: "rule"`). Any failure falls back to the rule-based guide.
+- **Provider** = configuration: any OpenAI-compatible `/chat/completions` endpoint
+  (`LLM_BASE_URL`, default Gemini's), `LLM_MODEL`, optional `LLM_FALLBACK_MODELS`, total budget
+  `LLM_TIMEOUT_S` (6 s). The key lives only in Render.
+- **Limits**: `AGENT_RPM_PER_IP` (20/min, then 429 `rate_limited`); model budget per client
+  `LLM_RPM_PER_IP` (6/min), `LLM_RPD_PER_IP` (100/day) and global `LLM_DAILY_MAX` (1000/day),
+  beyond which the rule-based guide answers. `GET /api/meta` reports `agent.mode`.
+
 ## Deploy on Render
 
 1. Push this repo to GitHub.
@@ -127,7 +143,7 @@ minute to wake up. Use the Starter plan or an external ping during the demo.
 | Real sources per field (forced photometry + Gaia/CatWISE) | done for the 5 targets, tested |
 | Live fields for any coordinate | written behind `LIVE_FIELDS`, tested with synthetic exposures; **IRSA/S3 path not yet run** |
 | ONNX model | interface ready; model not trained yet (`method: "rule"` until then) |
-| Guide agent | rule-based guide over the API data works; live LLM agent TODO |
+| Guide agent | rule-based guide + live agent (model intent and reply, rule steps), tested with a fake model |
 | Difference images | frontend uses the `.bin` data |
 
 ## Data credits
