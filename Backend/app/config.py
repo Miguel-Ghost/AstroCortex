@@ -18,7 +18,10 @@ def _csv(value: str) -> list[str]:
 class Settings:
     static_dir: Path = field(default_factory=lambda: Path(os.getenv("STATIC_DIR", ROOT / "static")))
     targets_file: Path = field(default_factory=lambda: Path(os.getenv("TARGETS_FILE", ROOT / "data" / "targets.json")))
-    cors_origins: list[str] = field(default_factory=lambda: _csv(os.getenv("CORS_ORIGINS", "http://localhost:5173")))
+    # a browser Origin never ends in "/": "https://x.vercel.app/" pasted from the address bar is normalised
+    cors_origins: list[str] = field(
+        default_factory=lambda: [o.rstrip("/") for o in _csv(os.getenv("CORS_ORIGINS", "http://localhost:5173"))]
+    )
     cors_origin_regex: str | None = field(default_factory=lambda: os.getenv("CORS_ORIGIN_REGEX") or None)
     database_url: str | None = field(default_factory=lambda: os.getenv("DATABASE_URL") or None)
     model_path: Path | None = field(default_factory=lambda: Path(p) if (p := os.getenv("MODEL_PATH")) else None)

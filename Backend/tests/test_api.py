@@ -116,6 +116,19 @@ def test_cors_allows_the_frontend_origin(client):
     assert r.headers.get("access-control-allow-origin") == "http://localhost:5173"
 
 
+def test_cors_origins_pasted_with_a_trailing_slash_still_match(monkeypatch):
+    from tests.conftest import _make_client
+
+    monkeypatch.setenv("CORS_ORIGINS", "https://astrocortex.example.org/, http://localhost:5173")
+    monkeypatch.setenv("CORS_ORIGIN_REGEX", "")
+    client = _make_client(monkeypatch)
+    r = client.get("/api/targets", headers={"Origin": "https://astrocortex.example.org"})
+    assert r.headers.get("access-control-allow-origin") == "https://astrocortex.example.org"
+    from app.deps import reset_caches
+
+    reset_caches()
+
+
 def test_every_response_carries_a_request_id(client):
     r = client.get("/health", headers={"X-Request-ID": "abc123"})
     assert r.headers["X-Request-ID"] == "abc123"
