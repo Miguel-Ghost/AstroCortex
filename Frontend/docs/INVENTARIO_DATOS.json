@@ -1,0 +1,257 @@
+{
+  "source_archive": "static_fields.zip",
+  "source_archive_sha256": "8e2985897d46d23f3c96fd8c50e2ec1cca63975b66723baa1d489d9bb3269c01",
+  "static_root": "public/static/fields",
+  "targets": [
+    {
+      "target_id": "barnard",
+      "field_id": "f_barnard",
+      "name": "Barnard's Star",
+      "center": {
+        "ra": 269.446221,
+        "dec": 4.768807
+      },
+      "dimensions_px": [
+        31,
+        31
+      ],
+      "fov_arcmin": 3.2,
+      "epochs": 3,
+      "frames": 18,
+      "date_iso": [
+        "2025-08-29",
+        "2026-03-20",
+        "2026-08-22"
+      ],
+      "detectors_per_epoch": {
+        "e1": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "e2": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "e3": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "data_release": "spherex_dr1+spherex_qr3"
+    },
+    {
+      "target_id": "epsindib",
+      "field_id": "f_epsindib",
+      "name": "Epsilon Indi B",
+      "center": {
+        "ra": 331.096285,
+        "dec": -56.800457
+      },
+      "dimensions_px": [
+        31,
+        31
+      ],
+      "fov_arcmin": 3.2,
+      "epochs": 4,
+      "frames": 22,
+      "date_iso": [
+        "2025-05-09",
+        "2025-10-11",
+        "2026-04-25",
+        "2026-09-27"
+      ],
+      "detectors_per_epoch": {
+        "e1": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "e2": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "e3": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "e4": [
+          2,
+          3,
+          5,
+          6
+        ]
+      },
+      "data_release": "spherex_dr1+spherex_qr3"
+    },
+    {
+      "target_id": "rdra",
+      "field_id": "f_rdra",
+      "name": "R Draconis",
+      "center": {
+        "ra": 248.167234,
+        "dec": 66.755024
+      },
+      "dimensions_px": [
+        31,
+        31
+      ],
+      "fov_arcmin": 3.2,
+      "epochs": 3,
+      "frames": 18,
+      "date_iso": [
+        "2025-06-20",
+        "2025-11-26",
+        "2026-06-07"
+      ],
+      "detectors_per_epoch": {
+        "e1": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "e2": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "e3": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "data_release": "spherex_dr1+spherex_qr3"
+    },
+    {
+      "target_id": "rwaur",
+      "field_id": "f_rwaur",
+      "name": "RW Aurigae",
+      "center": {
+        "ra": 76.95609,
+        "dec": 30.401127
+      },
+      "dimensions_px": [
+        31,
+        31
+      ],
+      "fov_arcmin": 3.2,
+      "epochs": 3,
+      "frames": 18,
+      "date_iso": [
+        "2025-09-10",
+        "2026-03-03",
+        "2026-09-11"
+      ],
+      "detectors_per_epoch": {
+        "e1": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "e2": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "e3": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "data_release": "spherex_dr1+spherex_qr3"
+    },
+    {
+      "target_id": "wise0855",
+      "field_id": "f_wise0855",
+      "name": "WISE 0855-0714",
+      "center": {
+        "ra": 133.759453,
+        "dec": -7.242859
+      },
+      "dimensions_px": [
+        31,
+        31
+      ],
+      "fov_arcmin": 3.2,
+      "epochs": 3,
+      "frames": 18,
+      "date_iso": [
+        "2025-05-06",
+        "2025-11-12",
+        "2026-05-01"
+      ],
+      "detectors_per_epoch": {
+        "e1": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "e2": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "e3": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "data_release": "spherex_dr1"
+    }
+  ],
+  "file_count_data": 288,
+  "total_frames": 94,
+  "warnings": []
+}
