@@ -397,9 +397,9 @@
       }
     }
   ],
-  "spectrum_url": null,
+  "spectrum_url": "/static/fields/epsindib/spectrum.json",
   "autotype_url": null,
-  "lightcurve_url": null,
+  "lightcurve_url": "/static/fields/epsindib/lightcurve.json",
   "sources_url": null,
   "catalogs_url": null
 }

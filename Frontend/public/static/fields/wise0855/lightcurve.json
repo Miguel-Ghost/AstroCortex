@@ -1,0 +1,49 @@
+{
+ "target_id": "wise0855",
+ "name": "WISE 0855-0714",
+ "kind": "lightcurve",
+ "generated_by": "scripts.build_series (photometry of the target on SPHEREx DR1 exposures and coadds)",
+ "data_release": "spherex_dr1",
+ "method": "Each exposure of the spectrum with SNR >= 5 is divided by the median flux of all exposures within 0.05 um of its wavelength (any date); the ratios of one date are averaged (weighted, 5-sigma clipped). 1.0 is the target's mean brightness; a date at 0.8 is 20 % fainter. This removes the spectral shape: each date samples different wavelengths.",
+ "x": "mjd",
+ "flux_unit": "relative to the mean spectrum at the same wavelength",
+ "data": [
+  {
+   "mjd": 61002.737,
+   "date_iso": "2025-11-12",
+   "epoch_id": "e2",
+   "flux": 0.9879,
+   "flux_err": 0.0569,
+   "n_exposures": 9,
+   "wavelength_min_um": 1.2098,
+   "wavelength_max_um": 1.9431
+  },
+  {
+   "mjd": 61170.123,
+   "date_iso": "2026-05-01",
+   "epoch_id": "e3",
+   "flux": 1.0256,
+   "flux_err": 0.0994,
+   "n_exposures": 3,
+   "wavelength_min_um": 1.2496,
+   "wavelength_max_um": 4.3686
+  }
+ ],
+ "by_detector": {
+  "2": [
+   {
+    "mjd": 61001.91,
+    "date_iso": "2025-11-12",
+    "epoch_id": "e2",
+    "flux": 0.9808,
+    "flux_err": 0.0703,
+    "n_exposures": 7,
+    "wavelength_min_um": 1.2098,
+    "wavelength_max_um": 1.4473,
+    "detector": 2
+   }
+  ]
+ },
+ "n_exposures_used": 14,
+ "warning": null
+}

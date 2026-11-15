@@ -1,0 +1,39 @@
+{
+ "target_id": "rdra",
+ "name": "R Draconis",
+ "kind": "lightcurve",
+ "generated_by": "scripts.build_series (photometry of the target on SPHEREx DR1 exposures and coadds)",
+ "data_release": "spherex_dr1+spherex_qr3",
+ "method": "Each exposure of the spectrum with SNR >= 5 is divided by the median flux of all exposures within 0.05 um of its wavelength (any date); the ratios of one date are averaged (weighted, 5-sigma clipped). 1.0 is the target's mean brightness; a date at 0.8 is 20 % fainter. This removes the spectral shape: each date samples different wavelengths.",
+ "x": "mjd",
+ "flux_unit": "relative to the mean spectrum at the same wavelength",
+ "data": [
+  {
+   "mjd": 60974.782,
+   "date_iso": "2025-11-26",
+   "epoch_id": "e2",
+   "flux": 0.9475,
+   "flux_err": 0.1113,
+   "n_exposures": 4,
+   "wavelength_min_um": 0.7363,
+   "wavelength_max_um": 0.7808
+  }
+ ],
+ "by_detector": {
+  "1": [
+   {
+    "mjd": 60974.782,
+    "date_iso": "2025-11-26",
+    "epoch_id": "e2",
+    "flux": 0.9475,
+    "flux_err": 0.1113,
+    "n_exposures": 4,
+    "wavelength_min_um": 0.7363,
+    "wavelength_max_um": 0.7808,
+    "detector": 1
+   }
+  ]
+ },
+ "n_exposures_used": 4,
+ "warning": null
+}
