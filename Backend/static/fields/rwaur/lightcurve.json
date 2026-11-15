@@ -1,0 +1,262 @@
+{
+ "target_id": "rwaur",
+ "name": "RW Aurigae",
+ "kind": "lightcurve",
+ "generated_by": "scripts.build_series (photometry of the target on SPHEREx DR1 exposures and coadds)",
+ "data_release": "spherex_dr1+spherex_qr3",
+ "method": "Each exposure of the spectrum with SNR >= 5 is divided by the median flux of all exposures within 0.05 um of its wavelength (any date); the ratios of one date are averaged (weighted, 5-sigma clipped). 1.0 is the target's mean brightness; a date at 0.8 is 20 % fainter. This removes the spectral shape: each date samples different wavelengths.",
+ "x": "mjd",
+ "flux_unit": "relative to the mean spectrum at the same wavelength",
+ "data": [
+  {
+   "mjd": 60928.246,
+   "date_iso": "2025-09-10",
+   "epoch_id": "e1",
+   "flux": 0.8444,
+   "flux_err": 0.0258,
+   "n_exposures": 111,
+   "wavelength_min_um": 0.7469,
+   "wavelength_max_um": 4.9964,
+   "detector_chi2": 51.1,
+   "detectors_agree": false
+  },
+  {
+   "mjd": 61102.229,
+   "date_iso": "2026-03-03",
+   "epoch_id": "e2",
+   "flux": 1.0199,
+   "flux_err": 0.0093,
+   "n_exposures": 113,
+   "wavelength_min_um": 0.7409,
+   "wavelength_max_um": 5.0115,
+   "detector_chi2": 2.2,
+   "detectors_agree": true
+  },
+  {
+   "mjd": 61294.719,
+   "date_iso": "2026-09-11",
+   "epoch_id": "e3",
+   "flux": 0.7774,
+   "flux_err": 0.0256,
+   "n_exposures": 108,
+   "wavelength_min_um": 0.7537,
+   "wavelength_max_um": 4.9814,
+   "detector_chi2": 89.4,
+   "detectors_agree": false
+  }
+ ],
+ "by_detector": {
+  "1": [
+   {
+    "mjd": 60921.134,
+    "date_iso": "2025-09-10",
+    "epoch_id": "e1",
+    "flux": 0.6516,
+    "flux_err": 0.0365,
+    "n_exposures": 19,
+    "wavelength_min_um": 0.7469,
+    "wavelength_max_um": 1.1195,
+    "detector": 1
+   },
+   {
+    "mjd": 61106.838,
+    "date_iso": "2026-03-03",
+    "epoch_id": "e2",
+    "flux": 0.9858,
+    "flux_err": 0.0207,
+    "n_exposures": 19,
+    "wavelength_min_um": 0.7409,
+    "wavelength_max_um": 1.1116,
+    "detector": 1
+   },
+   {
+    "mjd": 61289.607,
+    "date_iso": "2026-09-11",
+    "epoch_id": "e3",
+    "flux": 1.2733,
+    "flux_err": 0.042,
+    "n_exposures": 18,
+    "wavelength_min_um": 0.7537,
+    "wavelength_max_um": 1.1041,
+    "detector": 1
+   }
+  ],
+  "2": [
+   {
+    "mjd": 60927.422,
+    "date_iso": "2025-09-10",
+    "epoch_id": "e1",
+    "flux": 0.7322,
+    "flux_err": 0.0311,
+    "n_exposures": 18,
+    "wavelength_min_um": 1.1055,
+    "wavelength_max_um": 1.6234,
+    "detector": 2
+   },
+   {
+    "mjd": 61103.46,
+    "date_iso": "2026-03-03",
+    "epoch_id": "e2",
+    "flux": 1.0707,
+    "flux_err": 0.0239,
+    "n_exposures": 19,
+    "wavelength_min_um": 1.0941,
+    "wavelength_max_um": 1.646,
+    "detector": 2
+   },
+   {
+    "mjd": 61296.093,
+    "date_iso": "2026-09-11",
+    "epoch_id": "e3",
+    "flux": 1.0913,
+    "flux_err": 0.0311,
+    "n_exposures": 18,
+    "wavelength_min_um": 1.1217,
+    "wavelength_max_um": 1.6462,
+    "detector": 2
+   }
+  ],
+  "3": [
+   {
+    "mjd": 60935.974,
+    "date_iso": "2025-09-10",
+    "epoch_id": "e1",
+    "flux": 0.8373,
+    "flux_err": 0.0371,
+    "n_exposures": 19,
+    "wavelength_min_um": 1.6211,
+    "wavelength_max_um": 2.4058,
+    "detector": 3
+   },
+   {
+    "mjd": 61096.467,
+    "date_iso": "2026-03-03",
+    "epoch_id": "e2",
+    "flux": 1.0147,
+    "flux_err": 0.0199,
+    "n_exposures": 19,
+    "wavelength_min_um": 1.6394,
+    "wavelength_max_um": 2.4212,
+    "detector": 3
+   },
+   {
+    "mjd": 61298.185,
+    "date_iso": "2026-09-11",
+    "epoch_id": "e3",
+    "flux": 0.9639,
+    "flux_err": 0.0167,
+    "n_exposures": 18,
+    "wavelength_min_um": 1.6437,
+    "wavelength_max_um": 2.3849,
+    "detector": 3
+   }
+  ],
+  "4": [
+   {
+    "mjd": 60921.086,
+    "date_iso": "2025-09-10",
+    "epoch_id": "e1",
+    "flux": 1.0503,
+    "flux_err": 0.0258,
+    "n_exposures": 18,
+    "wavelength_min_um": 2.4348,
+    "wavelength_max_um": 3.8484,
+    "detector": 4
+   },
+   {
+    "mjd": 61106.927,
+    "date_iso": "2026-03-03",
+    "epoch_id": "e2",
+    "flux": 0.973,
+    "flux_err": 0.0294,
+    "n_exposures": 18,
+    "wavelength_min_um": 2.4195,
+    "wavelength_max_um": 3.8178,
+    "detector": 4
+   },
+   {
+    "mjd": 61289.872,
+    "date_iso": "2026-09-11",
+    "epoch_id": "e3",
+    "flux": 0.8193,
+    "flux_err": 0.0443,
+    "n_exposures": 17,
+    "wavelength_min_um": 2.4521,
+    "wavelength_max_um": 3.7891,
+    "detector": 4
+   }
+  ],
+  "5": [
+   {
+    "mjd": 60927.422,
+    "date_iso": "2025-09-10",
+    "epoch_id": "e1",
+    "flux": 1.1119,
+    "flux_err": 0.0331,
+    "n_exposures": 18,
+    "wavelength_min_um": 3.8271,
+    "wavelength_max_um": 4.4015,
+    "detector": 5
+   },
+   {
+    "mjd": 61103.46,
+    "date_iso": "2026-03-03",
+    "epoch_id": "e2",
+    "flux": 1.0298,
+    "flux_err": 0.0161,
+    "n_exposures": 19,
+    "wavelength_min_um": 3.8129,
+    "wavelength_max_um": 4.4235,
+    "detector": 5
+   },
+   {
+    "mjd": 61296.029,
+    "date_iso": "2026-09-11",
+    "epoch_id": "e3",
+    "flux": 0.6067,
+    "flux_err": 0.0227,
+    "n_exposures": 19,
+    "wavelength_min_um": 3.8149,
+    "wavelength_max_um": 4.4224,
+    "detector": 5
+   }
+  ],
+  "6": [
+   {
+    "mjd": 60935.974,
+    "date_iso": "2025-09-10",
+    "epoch_id": "e1",
+    "flux": 1.2797,
+    "flux_err": 0.0471,
+    "n_exposures": 19,
+    "wavelength_min_um": 4.4093,
+    "wavelength_max_um": 4.9964,
+    "detector": 6
+   },
+   {
+    "mjd": 61096.467,
+    "date_iso": "2026-03-03",
+    "epoch_id": "e2",
+    "flux": 1.0019,
+    "flux_err": 0.0209,
+    "n_exposures": 19,
+    "wavelength_min_um": 4.4245,
+    "wavelength_max_um": 5.0115,
+    "detector": 6
+   },
+   {
+    "mjd": 61298.185,
+    "date_iso": "2026-09-11",
+    "epoch_id": "e3",
+    "flux": 0.6274,
+    "flux_err": 0.031,
+    "n_exposures": 18,
+    "wavelength_min_um": 4.4281,
+    "wavelength_max_um": 4.9814,
+    "detector": 6
+   }
+  ]
+ },
+ "n_exposures_used": 332,
+ "warning": "The detectors disagree on e1, e3: the change is not the same at all wavelengths (colour-dependent variability, or a calibration or data-release difference between dates); see by_detector."
+}

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pytest
+
 from app.schemas import AgentResponse, CatalogsResponse, SourcesResponse, Target
 
 WISE = {"ra": 133.75945, "dec": -7.24286, "fov_arcmin": 3}
@@ -332,3 +334,29 @@ def test_meta_lists_the_review_reason_texts(client):
 
     texts = client.get("/api/meta").json()["review_reasons"]
     assert set(texts) == {r.value for r in ReviewReason}
+
+
+@pytest.mark.parametrize("field", ["barnard", "epsindib", "rdra", "rwaur", "wise0855"])
+def test_spectrum_and_lightcurve_are_served_in_the_format_the_viewer_plots(client, field):
+    manifest = client.get(f"/api/field?target_id={field}").json()
+    spec = client.get(manifest["spectrum_url"])
+    curve = client.get(manifest["lightcurve_url"])
+    assert spec.status_code == curve.status_code == 200
+    spec, curve = spec.json(), curve.json()
+    assert spec["kind"] == "spectrum" and spec["flux_unit"] == "mJy"
+    assert spec["n_points"] == len(spec["data"]) and spec["n_points"] + len(spec["excluded"]) == spec["n_exposures"]
+    for row in spec["data"]:
+        assert 0.7 < row["wavelength_um"] < 5.1 and row["flux_err"] > 0
+        assert row["epoch_id"] in {e["epoch_id"] for e in manifest["epochs"]}
+    assert curve["kind"] == "lightcurve" and curve["x"] == "mjd"
+    for row in curve["data"]:
+        assert row["flux"] > 0 and row["flux_err"] > 0 and row["mjd"] > 60000
+
+
+def test_wise0855_spectrum_peaks_beyond_4_um_and_matches_its_known_brightness(client):
+    """Y dwarf: almost nothing below 3.5 um, the flux comes out at 4-5 um (W2 about 0.5 mJy)."""
+    rows = client.get("/static/fields/wise0855/spectrum.json").json()["data"]
+    short = [r["flux"] for r in rows if r["wavelength_um"] < 3.5]
+    long = [r["flux"] for r in rows if 4.4 <= r["wavelength_um"] < 5.0]
+    assert abs(sorted(short)[len(short) // 2]) < 0.1
+    assert 0.25 < sorted(long)[len(long) // 2] < 0.8

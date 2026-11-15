@@ -1,0 +1,3337 @@
+{
+ "target_id": "rdra",
+ "name": "R Draconis",
+ "kind": "spectrum",
+ "generated_by": "scripts.build_series (photometry of the target on SPHEREx DR1 exposures and coadds)",
+ "data_release": "spherex_dr1+spherex_qr3",
+ "method": "Aperture photometry (1.5 px radius, 4-7 px background annulus) of the target in each exposure, corrected by the PSF fraction on the aperture; neighbours inside the aperture subtracted with their coadd fluxes interpolated in wavelength. One point per exposure at its wavelength at the target's position. Errors include a 5 % systematic floor; exposures more than 5 robust sigma from those at nearby wavelengths are rejected.",
+ "x": "wavelength_um",
+ "flux_unit": "mJy",
+ "psf_sigma_px": {
+  "1": 0.362,
+  "2": 0.346,
+  "3": 0.356,
+  "4": 0.445,
+  "5": 0.503,
+  "6": 0.517
+ },
+ "n_exposures": 548,
+ "n_points": 4,
+ "n_detected": 4,
+ "data": [
+  {
+   "wavelength_um": 0.7363,
+   "bandwidth_um": 0.0169,
+   "flux": 3785.0,
+   "flux_err": 189.2,
+   "snr": 20.0,
+   "detected": true,
+   "mjd": 60982.31821,
+   "obs_id": "2025W45_1A_0067_1",
+   "epoch_id": "e2",
+   "detector": 1
+  },
+  {
+   "wavelength_um": 0.7591,
+   "bandwidth_um": 0.0179,
+   "flux": 3077.0,
+   "flux_err": 153.9,
+   "snr": 20.0,
+   "detected": true,
+   "mjd": 60966.90502,
+   "obs_id": "2025W42_2A_0499_2",
+   "epoch_id": "e2",
+   "detector": 1
+  },
+  {
+   "wavelength_um": 0.7713,
+   "bandwidth_um": 0.0185,
+   "flux": 4409.0,
+   "flux_err": 220.5,
+   "snr": 20.0,
+   "detected": true,
+   "mjd": 60984.28828,
+   "obs_id": "2025W45_1A_0515_1",
+   "epoch_id": "e2",
+   "detector": 1
+  },
+  {
+   "wavelength_um": 0.7808,
+   "bandwidth_um": 0.0186,
+   "flux": 2685.0,
+   "flux_err": 134.2,
+   "snr": 20.0,
+   "detected": true,
+   "mjd": 60965.61517,
+   "obs_id": "2025W42_2A_0244_1",
+   "epoch_id": "e2",
+   "detector": 1
+  }
+ ],
+ "excluded": [
+  {
+   "obs_id": "2025W20_2D_0243_1",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W20_2D_0243_1",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W20_2D_0243_2",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W20_2D_0243_2",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W20_2D_0243_3",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W20_2D_0243_3",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W20_2D_0243_4",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W20_2D_0243_4",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W21_1B_0329_1",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W21_1B_0329_1",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W21_1B_0329_2",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W21_1B_0329_2",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_1C_0021_1",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_1C_0021_1",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_1C_0021_2",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_1C_0021_2",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_1C_0021_3",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_1C_0021_3",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_1C_0021_4",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_1C_0021_4",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_1C_0607_3",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_1C_0607_3",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_2B_0129_2",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_2B_0129_2",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_2B_0130_1",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_2B_0130_1",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_2B_0206_1",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_2B_0206_1",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_2B_0206_2",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_2B_0206_2",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_2B_0206_3",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_2B_0206_3",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_2B_0206_4",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_2B_0206_4",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_2B_0696_1",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_2B_0696_1",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_2B_0696_2",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_2B_0696_2",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_2B_0696_3",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_2B_0696_3",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_2B_0696_4",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W23_2B_0696_4",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0123_1",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0123_1",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0123_2",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0123_2",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0123_3",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0123_3",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0215_1",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0215_1",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0215_2",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0215_2",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0215_3",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0215_3",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0215_4",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0215_4",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0358_1",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0358_1",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0457_1",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0457_1",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0631_1",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0631_1",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0631_2",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0631_2",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0631_3",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0631_3",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_1A_0631_4",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_2D_0033_1",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_2D_0033_1",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_2D_0033_2",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_2D_0033_2",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_2D_0033_3",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_2D_0033_3",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_2D_0033_4",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_2D_0033_4",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_2D_0074_1",
+   "epoch_id": "e1",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_2D_0074_1",
+   "epoch_id": "e1",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_2D_0534_1",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_2D_0534_1",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_2D_0534_2",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_2D_0534_2",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_2D_0534_3",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_2D_0534_3",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_2D_0534_4",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W24_2D_0534_4",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W25_2A_0441_1",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W25_2A_0441_1",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W25_2A_0441_2",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W25_2A_0441_2",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W25_2A_0441_3",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W25_2A_0441_3",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W25_2A_0633_1",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W25_2A_0633_2",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W25_2A_0633_2",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W25_2A_0633_3",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W25_2A_0633_3",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W26_1A_0506_1",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W26_1A_0506_1",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W26_1A_0506_2",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W26_1A_0506_2",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W26_1A_0506_3",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W26_1A_0506_3",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W26_1A_0506_4",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W26_1A_0506_4",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W26_1A_0517_1",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W26_1A_0517_1",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W26_1A_0517_2",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W26_1A_0517_2",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W26_2A_0170_4",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W26_2A_0170_4",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_1A_0331_2",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_1A_0331_2",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_1A_0331_3",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_1A_0331_4",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_1A_0331_4",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_1A_0541_1",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_1A_0541_1",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_1A_0555_1",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_1A_0555_1",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_1A_0555_2",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_1A_0555_2",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_1A_0555_3",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_1A_0555_3",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_1A_0555_4",
+   "epoch_id": "e1",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_1A_0555_4",
+   "epoch_id": "e1",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_2A_0243_1",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_2A_0243_1",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_2A_0331_1",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_2A_0557_1",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_2A_0557_1",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_2A_0557_2",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W27_2A_0557_2",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W28_1B_0100_1",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W28_1B_0100_1",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_1A_0141_2",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_1A_0141_2",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_1A_0141_3",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_1A_0141_4",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_1A_0141_4",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_1A_0676_1",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_1A_0676_1",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_1A_0676_2",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_1A_0676_2",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_1A_0676_3",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_1A_0676_3",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_1A_0676_4",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_1A_0676_4",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_2A_0288_1",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_2A_0288_1",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_2A_0288_2",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_2A_0288_2",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_2A_0288_3",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_2A_0288_3",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_2A_0351_1",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_2A_0351_1",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_2A_0733_1",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_2A_0805_1",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_2A_0805_1",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W30_1B_0289_1",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W30_1B_0289_1",
+   "epoch_id": "e1",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0244_1",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0244_2",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0244_2",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0244_3",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0244_3",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0244_4",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0244_4",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0499_1",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0499_2",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0513_1",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0513_1",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0513_2",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0513_2",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0513_3",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0513_3",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0526_1",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0526_1",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0526_2",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0526_2",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0526_3",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0526_3",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0526_4",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0526_4",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0617_1",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0617_1",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0617_2",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0617_2",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0617_3",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0617_3",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0617_4",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W42_2A_0617_4",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W43_2A_0320_1",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W43_2A_0320_1",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W43_2A_0464_1",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W43_2A_0464_1",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W43_2A_0464_2",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W43_2A_0464_2",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_1A_0067_1",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_1A_0067_2",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_1A_0067_2",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_1A_0515_1",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_1A_0515_2",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_1A_0515_2",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_1A_0515_3",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_1A_0515_3",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_1A_0638_1",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_1A_0638_1",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_1A_0638_2",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_1A_0638_2",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_1A_0638_3",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_1A_0638_3",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_1A_0638_4",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_1A_0638_4",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_2A_0430_1",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_2A_0430_1",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_2A_0430_2",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_2A_0430_2",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_2A_0430_3",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_2A_0430_3",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_2A_0430_4",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_2A_0430_4",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_2A_0458_1",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_2A_0458_1",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_2A_0458_2",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W45_2A_0458_2",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W46_2A_0002_4",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W46_2A_0002_4",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W46_2A_0163_1",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W46_2A_0163_1",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W46_2A_0163_2",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W46_2A_0163_2",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W46_2A_0163_3",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W46_2A_0163_3",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W46_2A_0163_4",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W46_2A_0205_1",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W46_2A_0205_1",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W46_2A_0205_2",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W46_2A_0205_2",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W46_2A_0205_3",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W46_2A_0205_3",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W46_2A_0205_4",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W46_2A_0205_4",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W46_2A_0592_1",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W46_2A_0592_1",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W47_1A_0388_1",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W47_1A_0388_1",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W47_1A_0388_2",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W47_1A_0388_2",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W47_1A_0388_3",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W47_1A_0388_3",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W47_1A_0388_4",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W47_1A_0388_4",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W47_2A_0033_1",
+   "epoch_id": "e2",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W47_2A_0033_1",
+   "epoch_id": "e2",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W48_2A_0243_1",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W48_2A_0243_1",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W48_2A_0243_2",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W48_2A_0243_2",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W48_2A_0243_3",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W48_2A_0243_3",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W48_2A_0693_2",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W48_2A_0693_3",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W48_2A_0693_3",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W48_2A_0693_4",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W48_2A_0693_4",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W49_1A_0009_1",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W49_1A_0009_1",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W49_1A_0009_2",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W49_1A_0009_2",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W49_1A_0009_3",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W49_1A_0009_3",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W49_1A_0009_4",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W49_1A_0009_4",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W49_1A_0280_1",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W49_1A_0280_1",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W49_1A_0280_2",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W49_1A_0280_2",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W49_1A_0280_3",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W49_1A_0280_3",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W49_1A_0280_4",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W49_1A_0280_4",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W49_1A_0473_1",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W49_1A_0473_1",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_1A_0661_1",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_1A_0661_1",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_1A_0661_2",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_1A_0661_2",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_1A_0661_3",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_1A_0661_3",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_1A_0661_4",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_1A_0661_4",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0214_3",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0214_3",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0214_4",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0214_4",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0259_1",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0259_1",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0259_2",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0259_2",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0259_3",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0259_3",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0259_4",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0259_4",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0301_1",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0301_1",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0301_2",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0301_2",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0301_3",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0301_3",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0301_4",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0301_4",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0333_3",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0333_3",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0333_4",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0333_4",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0602_1",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0602_1",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0602_2",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0602_2",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0799_1",
+   "epoch_id": "e2",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W50_2A_0799_1",
+   "epoch_id": "e2",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W52_2A_0161_2",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W52_2A_0161_2",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W52_2A_0161_3",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W52_2A_0161_3",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W52_2A_0161_4",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W52_2A_0161_4",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W52_2A_0227_1",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W52_2A_0227_1",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W52_2A_0227_2",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W52_2A_0227_2",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W52_2A_0227_3",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W52_2A_0227_3",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W52_2A_0227_4",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W52_2A_0227_4",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_1A_0257_1",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_1A_0257_1",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_1A_0257_2",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_1A_0257_2",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_1A_0257_3",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_1A_0257_3",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_1A_0257_4",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_1A_0257_4",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_1A_0404_1",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_1A_0404_1",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_1A_0534_3",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_1A_0534_3",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_1A_0534_4",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_1A_0534_4",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_1A_0656_1",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_1A_0656_1",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_1A_0656_2",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_1A_0656_2",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_1A_0656_3",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_1A_0656_3",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_2A_0426_1",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_2A_0426_1",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_2A_0426_2",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_2A_0426_2",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_2A_0426_3",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W01_2A_0426_3",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W03_1A_0304_1",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W03_1A_0304_1",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W03_1A_0304_2",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W03_1A_0304_2",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W03_1A_0304_3",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W03_1A_0304_3",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W03_1A_0304_4",
+   "epoch_id": "e2",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W03_1A_0304_4",
+   "epoch_id": "e2",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_1B_0434_1",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_1B_0434_1",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_1B_0434_2",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_1B_0434_2",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_1B_0434_3",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_1B_0434_3",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_1B_0434_4",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_1B_0434_4",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_1B_0517_1",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_1B_0517_1",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_1B_0517_2",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_1B_0517_2",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_1B_0517_3",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_1B_0517_3",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_1B_0517_4",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_1B_0517_4",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_2A_0255_1",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_2A_0255_1",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_2A_0255_2",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_2A_0255_2",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_2A_0255_3",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W17_2A_0255_3",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W19_1A_0842_1",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W19_1A_0842_1",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W19_1A_0842_2",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W19_1A_0842_2",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W19_2A_0976_1",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W19_2A_0976_1",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W19_2A_1286_1",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W19_2A_1286_1",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W19_2A_1286_2",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W19_2A_1286_2",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W19_2A_1339_1",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W19_2A_1339_1",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W19_2A_1339_2",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W19_2A_1339_2",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W20_1A_0101_1",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W20_1A_0101_1",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W20_1A_0101_2",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W20_1A_0101_2",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W20_1A_0101_3",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W20_1A_0101_3",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W20_1A_0795_1",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W20_1A_0795_1",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W20_1A_0795_2",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W20_1A_0795_2",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W20_1A_0795_3",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W20_1A_0795_3",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W20_2A_0294_2",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W20_2A_0294_2",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W20_2A_0294_3",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W20_2A_0294_3",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W20_2A_0294_4",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W20_2A_0294_4",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W21_2A_0035_1",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W21_2A_0035_1",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W21_2A_0104_1",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W21_2A_0104_1",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W21_2A_0104_2",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W21_2A_0104_2",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W21_2A_0104_3",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W21_2A_0104_3",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W21_2A_0104_4",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W21_2A_0104_4",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W21_2A_0325_1",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W21_2A_0325_1",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W21_2A_0325_2",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W21_2A_0325_2",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W21_2A_0325_3",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W21_2A_0325_4",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W21_2A_0325_4",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W23_2A_0642_4",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W23_2A_0642_4",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W24_1A_0125_1",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W24_1A_0125_1",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W24_1A_0125_2",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W24_1A_0125_2",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W24_1A_0125_3",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W24_1A_0125_3",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W24_1A_0125_4",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W24_1A_0125_4",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W24_2B_0242_1",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W24_2B_0242_1",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W24_2B_0242_2",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W24_2B_0242_2",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W24_2B_0242_3",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W24_2B_0242_3",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W24_2B_0242_4",
+   "epoch_id": "e3",
+   "detector": 6,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W24_2B_0242_4",
+   "epoch_id": "e3",
+   "detector": 3,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W25_2A_0573_1",
+   "epoch_id": "e3",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W25_2A_0573_1",
+   "epoch_id": "e3",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W25_2A_0573_2",
+   "epoch_id": "e3",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W25_2A_0573_2",
+   "epoch_id": "e3",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W25_2A_0573_3",
+   "epoch_id": "e3",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W25_2A_0573_3",
+   "epoch_id": "e3",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W25_2A_0573_4",
+   "epoch_id": "e3",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W25_2A_0573_4",
+   "epoch_id": "e3",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W25_2A_0661_1",
+   "epoch_id": "e3",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W25_2A_0661_1",
+   "epoch_id": "e3",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W25_2A_0661_2",
+   "epoch_id": "e3",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W25_2A_0661_2",
+   "epoch_id": "e3",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W25_2A_0661_3",
+   "epoch_id": "e3",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W25_2A_0661_3",
+   "epoch_id": "e3",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W25_2A_0661_4",
+   "epoch_id": "e3",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W25_2A_0661_4",
+   "epoch_id": "e3",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W25_2A_0674_1",
+   "epoch_id": "e3",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W25_2A_0674_1",
+   "epoch_id": "e3",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W25_2A_0674_2",
+   "epoch_id": "e3",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W25_2A_0674_2",
+   "epoch_id": "e3",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W26_1A_0047_1",
+   "epoch_id": "e3",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W26_1A_0047_1",
+   "epoch_id": "e3",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W26_1A_0047_2",
+   "epoch_id": "e3",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W26_1A_0047_2",
+   "epoch_id": "e3",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W26_1A_0242_1",
+   "epoch_id": "e3",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W26_1A_0242_1",
+   "epoch_id": "e3",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W26_1A_0242_2",
+   "epoch_id": "e3",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W26_1A_0242_2",
+   "epoch_id": "e3",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W26_1A_0274_3",
+   "epoch_id": "e3",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W26_1A_0274_3",
+   "epoch_id": "e3",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W26_1A_0274_4",
+   "epoch_id": "e3",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W26_1A_0274_4",
+   "epoch_id": "e3",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W26_1A_0324_1",
+   "epoch_id": "e3",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W26_1A_0324_1",
+   "epoch_id": "e3",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W26_1A_0324_2",
+   "epoch_id": "e3",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W26_1A_0324_2",
+   "epoch_id": "e3",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W26_1A_0324_3",
+   "epoch_id": "e3",
+   "detector": 2,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W26_1A_0324_3",
+   "epoch_id": "e3",
+   "detector": 5,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_1A_0104_1",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_1A_0104_1",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_1A_0104_2",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_1A_0104_2",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_1A_0104_3",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_1A_0104_3",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_1A_0104_4",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_1A_0104_4",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_1A_0201_1",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_1A_0201_1",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_1A_0671_2",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_1A_0671_2",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_1A_0671_3",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_1A_0671_3",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_2A_0106_1",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_2A_0106_1",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_2A_0106_2",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_2A_0106_2",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_2A_0364_2",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_2A_0364_2",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_2A_0364_3",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_2A_0364_3",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_2A_0364_4",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_2A_0364_4",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_2A_0376_1",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_2A_0376_1",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_2A_0376_2",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_2A_0376_2",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_2A_0376_3",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W28_2A_0376_3",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W29_1A_0015_1",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W29_1A_0015_1",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W29_1A_0015_2",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W29_1A_0015_2",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W29_1A_0015_3",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W29_1A_0015_3",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W29_1A_0015_4",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W29_1A_0015_4",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W29_1A_0364_1",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W29_1A_0364_1",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W29_1A_0430_1",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W29_1A_0430_1",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W29_2A_0079_1",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W29_2A_0079_1",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W29_2A_0079_2",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W29_2A_0079_2",
+   "epoch_id": "e3",
+   "detector": 4,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2026W29_2A_0079_3",
+   "epoch_id": "e3",
+   "detector": 1,
+   "reason": "core pixel masked (saturated or no data)"
+  },
+  {
+   "obs_id": "2025W29_1A_0141_3",
+   "epoch_id": "e1",
+   "detector": 1,
+   "reason": "outlier against exposures at nearby wavelengths (+7 sigma)"
+  }
+ ]
+}

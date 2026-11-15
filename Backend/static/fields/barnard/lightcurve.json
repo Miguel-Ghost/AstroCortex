@@ -1,0 +1,148 @@
+{
+ "target_id": "barnard",
+ "name": "Barnard's Star",
+ "kind": "lightcurve",
+ "generated_by": "scripts.build_series (photometry of the target on SPHEREx DR1 exposures and coadds)",
+ "data_release": "spherex_dr1+spherex_qr3",
+ "method": "Each exposure of the spectrum with SNR >= 5 is divided by the median flux of all exposures within 0.05 um of its wavelength (any date); the ratios of one date are averaged (weighted, 5-sigma clipped). 1.0 is the target's mean brightness; a date at 0.8 is 20 % fainter. This removes the spectral shape: each date samples different wavelengths.",
+ "x": "mjd",
+ "flux_unit": "relative to the mean spectrum at the same wavelength",
+ "data": [
+  {
+   "mjd": 60912.367,
+   "date_iso": "2025-08-29",
+   "epoch_id": "e1",
+   "flux": 0.9752,
+   "flux_err": 0.0133,
+   "n_exposures": 40,
+   "wavelength_min_um": 0.7501,
+   "wavelength_max_um": 5.0008,
+   "detector_chi2": 0.7,
+   "detectors_agree": true
+  },
+  {
+   "mjd": 61123.285,
+   "date_iso": "2026-03-20",
+   "epoch_id": "e2",
+   "flux": 1.0078,
+   "flux_err": 0.0097,
+   "n_exposures": 41,
+   "wavelength_min_um": 0.78,
+   "wavelength_max_um": 5.0022,
+   "detector_chi2": 0.2,
+   "detectors_agree": true
+  },
+  {
+   "mjd": 61273.856,
+   "date_iso": "2026-08-22",
+   "epoch_id": "e3",
+   "flux": 0.9734,
+   "flux_err": 0.0087,
+   "n_exposures": 45,
+   "wavelength_min_um": 0.7586,
+   "wavelength_max_um": 4.9774,
+   "detector_chi2": 1.2,
+   "detectors_agree": true
+  }
+ ],
+ "by_detector": {
+  "1": [
+   {
+    "mjd": 60921.834,
+    "date_iso": "2025-08-29",
+    "epoch_id": "e1",
+    "flux": 0.9239,
+    "flux_err": 0.0557,
+    "n_exposures": 5,
+    "wavelength_min_um": 0.7501,
+    "wavelength_max_um": 0.823,
+    "detector": 1
+   }
+  ],
+  "3": [
+   {
+    "mjd": 61281.189,
+    "date_iso": "2026-08-22",
+    "epoch_id": "e3",
+    "flux": 0.7122,
+    "flux_err": 0.1754,
+    "n_exposures": 3,
+    "wavelength_min_um": 2.3791,
+    "wavelength_max_um": 2.423,
+    "detector": 3
+   }
+  ],
+  "5": [
+   {
+    "mjd": 60913.736,
+    "date_iso": "2025-08-29",
+    "epoch_id": "e1",
+    "flux": 0.9817,
+    "flux_err": 0.0116,
+    "n_exposures": 18,
+    "wavelength_min_um": 3.8214,
+    "wavelength_max_um": 4.4069,
+    "detector": 5
+   },
+   {
+    "mjd": 61116.513,
+    "date_iso": "2026-03-20",
+    "epoch_id": "e2",
+    "flux": 1.0124,
+    "flux_err": 0.0132,
+    "n_exposures": 18,
+    "wavelength_min_um": 3.8105,
+    "wavelength_max_um": 4.4074,
+    "detector": 5
+   },
+   {
+    "mjd": 61274.997,
+    "date_iso": "2026-08-22",
+    "epoch_id": "e3",
+    "flux": 0.9756,
+    "flux_err": 0.0108,
+    "n_exposures": 24,
+    "wavelength_min_um": 3.8043,
+    "wavelength_max_um": 4.4297,
+    "detector": 5
+   }
+  ],
+  "6": [
+   {
+    "mjd": 60908.134,
+    "date_iso": "2025-08-29",
+    "epoch_id": "e1",
+    "flux": 0.9851,
+    "flux_err": 0.0254,
+    "n_exposures": 17,
+    "wavelength_min_um": 4.4183,
+    "wavelength_max_um": 5.0008,
+    "detector": 6
+   },
+   {
+    "mjd": 61129.426,
+    "date_iso": "2026-03-20",
+    "epoch_id": "e2",
+    "flux": 1.0026,
+    "flux_err": 0.0146,
+    "n_exposures": 22,
+    "wavelength_min_um": 4.412,
+    "wavelength_max_um": 5.0022,
+    "detector": 6
+   },
+   {
+    "mjd": 61270.282,
+    "date_iso": "2026-08-22",
+    "epoch_id": "e3",
+    "flux": 0.9775,
+    "flux_err": 0.0119,
+    "n_exposures": 17,
+    "wavelength_min_um": 4.434,
+    "wavelength_max_um": 4.9774,
+    "detector": 6
+   }
+  ]
+ },
+ "n_exposures_used": 126,
+ "warning": null
+}

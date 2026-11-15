@@ -336,9 +336,9 @@
       }
     }
   ],
-  "spectrum_url": null,
+  "spectrum_url": "/static/fields/wise0855/spectrum.json",
   "autotype_url": null,
-  "lightcurve_url": null,
+  "lightcurve_url": "/static/fields/wise0855/lightcurve.json",
   "sources_url": "/api/sources?field_id=wise0855",
   "catalogs_url": "/api/catalogs?field_id=wise0855"
 }

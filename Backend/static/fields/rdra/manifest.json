@@ -336,9 +336,9 @@
       }
     }
   ],
-  "spectrum_url": null,
+  "spectrum_url": "/static/fields/rdra/spectrum.json",
   "autotype_url": null,
-  "lightcurve_url": null,
+  "lightcurve_url": "/static/fields/rdra/lightcurve.json",
   "sources_url": "/api/sources?field_id=rdra",
   "catalogs_url": "/api/catalogs?field_id=rdra"
 }
