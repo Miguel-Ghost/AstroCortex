@@ -25,6 +25,12 @@ services:
         sync: false       # e.g. models/model.onnx once the model repo publishes a version
       - key: LLM_API_KEY
         sync: false
+      - key: LIVE_FIELDS
+        value: "true"     # any RA/Dec without a published field is built from IRSA + S3 on request
+      - key: LIVE_CACHE_DIR
+        value: /tmp/astrocortex-live   # disk cache of live fields (lost on restart; rebuilt on demand)
+      - key: LIVE_TIMEOUT_S
+        value: "60"
 
 databases:
   - name: spherex-db

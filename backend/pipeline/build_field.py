@@ -54,7 +54,15 @@ def build_field(
     synthetic: bool = False,
     exclude_bits: int = 0,
     write_data: bool = True,
+    field_id: str | None = None,
+    expected_positions: bool = True,
+    data_suffix: str = ".bin",
 ) -> dict:
+    """Write PNG, flags PNG and float32 data per epoch and detector, then manifest.json.
+
+    `field_id` defaults to the target id. Live fields (a bare RA/Dec, no catalog object) pass
+    expected_positions=False: their epochs carry expected_position = null and target_id = null.
+    """
     if not cutouts:
         raise ValueError(f"No cutouts for {target.target_id}")
     out_dir = Path(out_dir)
@@ -104,8 +112,10 @@ def build_field(
             save_flags_png(flags, out_dir / f"{stem}_flags.png")
             data_url = None
             if write_data:
-                save_float32(image, out_dir / f"{stem}.f32")
-                data_url = f"{url_prefix}/{stem}.f32"
+                save_float32(image, out_dir / f"{stem}{data_suffix}")
+                data_url = f"{url_prefix}/{stem}{data_suffix}"
+            lams = [cutouts[i].wavelength_um for i in groups[e] if cutouts[i].detector == det]
+            lams = [lam for lam in lams if lam is not None]
             frame_list.append(
                 {
                     "detector": det,
@@ -114,6 +124,7 @@ def build_field(
                     "flags_url": f"{url_prefix}/{stem}_flags.png",
                     "n_exposures": n,
                     "flagged_frac": round(float((flags != 0).mean()), 4),
+                    "lambda_range_um": [round(min(lams), 3), round(max(lams), 3)] if lams else None,
                 }
             )
         epochs.append(
@@ -127,15 +138,19 @@ def build_field(
                     "dec": round(dec_e, 6),
                     "x": round(px, 2),
                     "y": round(py, 2),
-                },
+                }
+                if expected_positions
+                else None,
             }
         )
 
+    field_id = field_id or target.target_id
     manifest = {
-        "field_id": target.target_id,
-        "target_id": target.target_id,
+        "field_id": field_id,
+        "target_id": target.target_id if expected_positions else None,
         "center": {"ra": round(ra_c, 6), "dec": round(dec_c, 6)},
         "center_mjd": round(center_mjd, 4),
+        "center_ref_mjd": round(center_mjd, 4),
         "fov_arcmin": round(size_px * PIXSCALE_ARCSEC / 60.0, 3),
         "pixscale_arcsec": PIXSCALE_ARCSEC,
         "nx": size_px,
@@ -158,8 +173,8 @@ def build_field(
         "spectrum_url": None,
         "autotype_url": None,
         "lightcurve_url": None,
-        "sources_url": f"/api/sources?field_id={target.target_id}",
-        "catalogs_url": f"/api/catalogs?field_id={target.target_id}",
+        "sources_url": f"/api/sources?field_id={field_id}" if expected_positions else None,
+        "catalogs_url": f"/api/catalogs?field_id={field_id}" if expected_positions else None,
     }
     (out_dir / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     return manifest
@@ -186,12 +201,23 @@ def select_rows(rows: list[dict], max_per_epoch_detector: int) -> list[dict]:
     return kept
 
 
-def fetch_cutouts(target: Target, size_px: int, max_per_epoch_detector: int = 6, workers: int = 4) -> list[Cutout]:
-    """Query IRSA and read the cutouts from S3 (4 parallel reads, as agreed in the plan)."""
-    from .query import exposures_for
+def fetch_cutouts(
+    target: Target,
+    size_px: int,
+    max_per_epoch_detector: int = 6,
+    workers: int = 4,
+    collections: tuple[str, ...] | None = None,
+) -> list[Cutout]:
+    """Query IRSA and read the cutouts from S3 (4 parallel reads, as agreed in the plan).
+
+    SIA failures (503/429 after the retries, timeouts) propagate to the caller; a single unreadable
+    exposure is skipped.
+    """
+    from .query import DEFAULT_COLLECTIONS, exposures_for
 
     ra, dec = propagate(target, jyear_to_mjd(2026.0))
-    rows = select_rows(exposures_for(ra, dec, radius_deg=0.05), max_per_epoch_detector)
+    rows = exposures_for(ra, dec, radius_deg=0.05, collections=collections or DEFAULT_COLLECTIONS)
+    rows = select_rows(rows, max_per_epoch_detector)
     read_size = cutout_read_size(size_px)
 
     def work(row: dict) -> Cutout | None:
