@@ -7,7 +7,7 @@ A public web tool that shows how a small region of the sky changes in SPHEREx im
 
 | Folder | Content |
 |---|---|
-| `backend/` | FastAPI API, SPHEREx image pipeline, classification engine interface, demo data and tests |
+| `Backend/` | FastAPI API, SPHEREx image pipeline, classification engine interface, demo data and tests |
 | `render.yaml` | Render Blueprint for the backend (web service + Postgres) |
 
-See `backend/README.md` to run, test and deploy the backend.
+See `Backend/README.md` to run, test and deploy the backend.

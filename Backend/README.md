@@ -30,7 +30,7 @@ tests/              pytest suite (API, classifier, pipeline on synthetic SPHEREx
 
 ## Run locally
 
-All commands run from the `backend/` folder.
+All commands run from the `Backend/` folder.
 
 ```bash
 python -m venv .venv && source .venv/bin/activate

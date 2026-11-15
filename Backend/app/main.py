@@ -69,7 +69,7 @@ def create_app() -> FastAPI:
     app.include_router(marks.router)
     app.include_router(agent.router)
 
-    # The fields ship inside the repository (backend/static/fields): Render's disk is rebuilt on every
+    # The fields ship inside the repository (Backend/static/fields): Render's disk is rebuilt on every
     # deploy and wiped on restart, so nothing is generated at runtime.
     settings.fields_dir.mkdir(parents=True, exist_ok=True)
     app.mount("/static/fields", CachedStaticFiles(directory=settings.fields_dir), name="fields")

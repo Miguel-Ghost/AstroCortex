@@ -1,10 +1,10 @@
-# Render Blueprint (repo root): one free web service from backend/ (API + model inside) and a free Postgres for marks.
+# Render Blueprint (repo root): one free web service from Backend/ (API + model inside) and a free Postgres for marks.
 # Virginia is the region closest to the SPHEREx bucket in AWS us-east-1.
 services:
   - type: web
     name: spherex-api
     runtime: python
-    rootDir: backend
+    rootDir: Backend
     region: virginia
     plan: free            # switch to "starter" for the demo to avoid the 15-minute spin-down
     buildCommand: pip install -r requirements.txt
