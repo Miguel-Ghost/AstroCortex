@@ -47,6 +47,10 @@ RULES: dict[str, str] = {
     "BR-AGENT-02": "The live agent only uses facts returned by this API; actions that reference unknown "
     "ids are dropped; every response declares its mode and the endpoints it used.",
     "BR-AGENT-03": "If the language model fails, the response falls back to the recorded tour and says why.",
+    "BR-AGENT-04": "/api/agent refuses more than AGENT_RPM_PER_IP requests a minute per client (429); the "
+    "language model has a per-client and a global daily budget, beyond which the rule-based guide answers.",
+    "BR-AGENT-05": "The language model only chooses the intent and writes the reply; steps come from the "
+    "rule-based guide, and a reply with a number that is not in the API data is replaced by the guide's text.",
     # Marks ----------------------------------------------------------------------------
     "BR-MARK-01": "One vote per client and source; a new vote replaces the previous one.",
     "BR-MARK-02": "Responses declare where votes are stored and whether they survive a restart.",

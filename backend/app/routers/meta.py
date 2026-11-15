@@ -7,7 +7,7 @@ import logging
 from fastapi import APIRouter
 
 from app.config import get_settings
-from app.deps import get_marks_repo, get_predictor, get_store
+from app.deps import get_llm, get_marks_repo, get_predictor, get_store
 from app.domain.vocab import REVIEW_REASON_TEXT
 from app.schemas import Health, Meta
 
@@ -62,5 +62,10 @@ def meta() -> dict:
         "classifier": {"method": predictor.method, "version": predictor.version, "calibrated": predictor.calibrated},
         "marks": {"storage": repo.storage, "persistent": repo.persistent},
         "live_fields": settings.live_fields,
+        "agent": {
+            "mode": "live" if get_llm() is not None else "rule",
+            "provider": get_llm().provider if get_llm() is not None else None,
+            "model": settings.llm_model if get_llm() is not None else None,
+        },
         "review_reasons": {str(k): v for k, v in REVIEW_REASON_TEXT.items()},
     }

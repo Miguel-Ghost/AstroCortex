@@ -51,12 +51,12 @@ class Guide:
         self.store, self.predictor, self.settings = store, predictor, settings
 
     # -- entry point ----------------------------------------------------------------------------
-    def answer(self, request: AgentRequest) -> AgentResponse | None:
-        vs = request.view_state
-        ref = self.store.resolve(vs.target_id) if vs.target_id else None
+    def context(self, view_state) -> dict | None:
+        """The field the request is about, with its manifest and classified sources (all from this API)."""
+        ref = self.store.resolve(view_state.target_id) if view_state.target_id else None
         note = ""
-        if ref is None and vs.ra is not None and vs.dec is not None:
-            match = self.store.locate(vs.ra, vs.dec, self.settings.target_match_arcmin)
+        if ref is None and view_state.ra is not None and view_state.dec is not None:
+            match = self.store.locate(view_state.ra, view_state.dec, self.settings.target_match_arcmin)
             ref = self.store.resolve(match.target_id) if match else None
         if ref is None:
             ref = self.store.resolve(DEFAULT_TARGET) or next(iter(self.store.fields()), None)
@@ -64,26 +64,44 @@ class Guide:
                 return None
             note = "No field is open, so the tour starts with a test target. "
         manifest = self.store.manifest(ref.field_id)
-        sources = classify_field(ref.field_id, self.store, self.predictor, self.settings)
         if manifest is None:
             return None
+        sources = classify_field(ref.field_id, self.store, self.predictor, self.settings)
         used = ["/api/targets", f"/api/field?target_id={ref.target_id or ref.field_id}"]
         if sources:
             used.append(f"/api/sources?field_id={ref.field_id}")
-
         rows = (sources or {}).get("sources", [])
-        selected = next((s for s in rows if s["source_id"] == vs.selected_source_id), None)
-        if selected and _EXPLAIN.search(request.message):
-            raw = self.explain(manifest, sources, selected)
-        elif _REVIEW.search(request.message) and rows:
-            raw = self.review(manifest, sources)
-        else:
-            raw = self.tour(ref, manifest, sources)
-        raw["reply"] = note + raw["reply"]
-        raw["sources_used"] = used
+        selected = next((s for s in rows if s["source_id"] == view_state.selected_source_id), None)
+        return {"ref": ref, "manifest": manifest, "sources": sources, "selected": selected, "note": note, "used": used}
+
+    def build(self, ctx: dict, intent: str, source_id: str | None = None) -> dict:
+        """Steps for an intent: tour, explain_source, review. Unknown ids fall back to the tour."""
+        rows = (ctx["sources"] or {}).get("sources", [])
+        if intent == "explain_source":
+            row = next((s for s in rows if s["source_id"] == source_id), None) or ctx["selected"]
+            if row is not None:
+                return self.explain(ctx["manifest"], ctx["sources"], row)
+        if intent == "review" and rows:
+            return self.review(ctx["manifest"], ctx["sources"])
+        return self.tour(ctx["ref"], ctx["manifest"], ctx["sources"])
+
+    def respond(self, ctx: dict, raw: dict, mode: str = "rule") -> AgentResponse:
+        raw = {**raw, "reply": ctx["note"] + raw["reply"], "sources_used": ctx["used"]}
         response = sanitize(raw)
-        response.mode = "rule"
+        response.mode = mode
         return response
+
+    def answer(self, request: AgentRequest) -> AgentResponse | None:
+        ctx = self.context(request.view_state)
+        if ctx is None:
+            return None
+        if ctx["selected"] and _EXPLAIN.search(request.message):
+            intent = "explain_source"
+        elif _REVIEW.search(request.message):
+            intent = "review"
+        else:
+            intent = "tour"
+        return self.respond(ctx, self.build(ctx, intent, request.view_state.selected_source_id))
 
     # -- pieces ---------------------------------------------------------------------------------
     def _epochs(self, manifest: dict, detector: int | None) -> list[dict]:

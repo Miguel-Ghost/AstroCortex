@@ -31,6 +31,7 @@ class Meta(BaseModel):
     classifier: dict
     marks: dict
     live_fields: bool = False
+    agent: dict = {}
     review_reasons: dict[str, str] = {}
 
 

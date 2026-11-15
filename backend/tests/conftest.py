@@ -4,12 +4,13 @@ import pytest
 from fastapi.testclient import TestClient
 
 
-def _make_client(monkeypatch, static_dir=None):
+def _make_client(monkeypatch, static_dir=None, keep_llm=False):
+    """The API with a clean environment: no database, no model file and, unless keep_llm, no LLM key."""
     if static_dir is None:
         monkeypatch.delenv("STATIC_DIR", raising=False)
     else:
         monkeypatch.setenv("STATIC_DIR", str(static_dir))
-    for var in ("DATABASE_URL", "MODEL_PATH", "LLM_API_KEY"):
+    for var in ("DATABASE_URL", "MODEL_PATH", *(() if keep_llm else ("LLM_API_KEY", "LLM_MODEL"))):
         monkeypatch.delenv(var, raising=False)
     from app.deps import reset_caches
     from app.main import create_app
