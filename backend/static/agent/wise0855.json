@@ -1,0 +1,85 @@
+{
+ "reply": "Guided tour of WISE 0855-0714: 6 steps. Touch any control to take over.",
+ "steps": [
+  {
+   "say": "This is WISE 0855-0714: Coldest known brown dwarf (Y type), about 2.3 pc away. SPHEREx imaged it on 3 dates in D5, from 2025-05-06 to 2026-05-01 (360 days). The view starts on D5 (3.83–4.41 µm).",
+   "actions": [
+    {
+     "type": "select_target",
+     "target_id": "wise0855"
+    },
+    {
+     "type": "set_detector",
+     "detector": 5
+    },
+    {
+     "type": "set_epoch",
+     "epoch_id": "e1"
+    }
+   ]
+  },
+  {
+   "say": "Play the dates in order. At 8.1″/yr it should move about 1.3 px (pixels are 6.2″) between the first and last date; the crosshair marks where the catalog motion puts it on each date. Measured between 2025-05-06 and 2025-11-12, the dates where it is bright enough to fit: 0.67 px, against 0.7 px expected for that interval.",
+   "actions": [
+    {
+     "type": "play_flipbook",
+     "fps": 2
+    }
+   ]
+  },
+  {
+   "say": "Blink compares two dates directly: 2025-05-06 against 2026-05-01. A moving source jumps; a still one only changes brightness, if at all.",
+   "actions": [
+    {
+     "type": "pause"
+    },
+    {
+     "type": "blink",
+     "epoch_a": "e1",
+     "epoch_b": "e3"
+    }
+   ]
+  },
+  {
+   "say": "The six detectors cover 0.75–5.0 µm, from left to right. In the measurements it is detected in D5, D6 and not in D1, D2, D3, D4. Its D5/D4 flux ratio (methane index) is at least 10.6; ordinary stars sit near 0.5–1.5 and methane-rich cold dwarfs far above.",
+   "actions": [
+    {
+     "type": "show_detector_grid"
+    }
+   ]
+  },
+  {
+   "say": "The rule-based engine labels it a candidate cold brown dwarf; that agrees with the catalog type (cold brown dwarf, SIMBAD).",
+   "actions": [
+    {
+     "type": "open_tab",
+     "tab": "classification"
+    },
+    {
+     "type": "select_source",
+     "source_id": "wise0855_s00"
+    }
+   ]
+  },
+  {
+   "say": "7 of 33 sources in this field need a human look. The first one, CWISE J085505.62-071320.6, is flagged for: Not enough data to classify; Only in one date; No Gaia counterpart. Is it real or an artefact?",
+   "actions": [
+    {
+     "type": "select_source",
+     "source_id": "wise0855_s28"
+    },
+    {
+     "type": "ask_vote",
+     "source_id": "wise0855_s28"
+    }
+   ]
+  }
+ ],
+ "sources_used": [
+  "/api/targets",
+  "/api/field?target_id=wise0855",
+  "/api/sources?field_id=wise0855"
+ ],
+ "recorded": true,
+ "mode": "recorded"
+}

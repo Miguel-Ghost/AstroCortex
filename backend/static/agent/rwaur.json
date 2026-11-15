@@ -1,0 +1,99 @@
+{
+ "reply": "Guided tour of RW Aurigae: 7 steps. Touch any control to take over.",
+ "steps": [
+  {
+   "say": "This is RW Aurigae: Young T Tauri star with a disk; its brightness changes irregularly. SPHEREx imaged it on 3 dates in D3, from 2025-09-10 to 2026-09-11 (366 days). The view starts on D3 (1.63–2.41 µm).",
+   "actions": [
+    {
+     "type": "select_target",
+     "target_id": "rwaur"
+    },
+    {
+     "type": "set_detector",
+     "detector": 3
+    },
+    {
+     "type": "set_epoch",
+     "epoch_id": "e1"
+    }
+   ]
+  },
+  {
+   "say": "Play the dates in order. This object does not move at SPHEREx scale; look at its brightness from one date to the next.",
+   "actions": [
+    {
+     "type": "play_flipbook",
+     "fps": 2
+    }
+   ]
+  },
+  {
+   "say": "Blink compares two dates directly: 2025-09-10 against 2026-09-11. A moving source jumps; a still one only changes brightness, if at all.",
+   "actions": [
+    {
+     "type": "pause"
+    },
+    {
+     "type": "blink",
+     "epoch_a": "e1",
+     "epoch_b": "e3"
+    }
+   ]
+  },
+  {
+   "say": "The six detectors cover 0.75–5.0 µm, from left to right. In the measurements it is detected in D1, D2, D3, D4, D5, D6. Its D5/D4 flux ratio (methane index) is 1.7; ordinary stars sit near 0.5–1.5 and methane-rich cold dwarfs far above.",
+   "actions": [
+    {
+     "type": "show_detector_grid"
+    }
+   ]
+  },
+  {
+   "say": "Its flux changes between dates beyond the noise. The difference image 2026-09-11 minus 2025-09-10 shows it: white is brighter in the later date.",
+   "actions": [
+    {
+     "type": "set_detector",
+     "detector": 3
+    },
+    {
+     "type": "show_difference",
+     "epoch_a": "e1",
+     "epoch_b": "e3"
+    }
+   ]
+  },
+  {
+   "say": "The rule-based engine labels it a star; that agrees with the catalog type (star, SIMBAD).",
+   "actions": [
+    {
+     "type": "open_tab",
+     "tab": "classification"
+    },
+    {
+     "type": "select_source",
+     "source_id": "rwaur_s00"
+    }
+   ]
+  },
+  {
+   "say": "5 of 52 sources in this field need a human look. The first one, Gaia DR3 156430100561810560, is flagged for: Moves, no catalog motion. Is it real or an artefact?",
+   "actions": [
+    {
+     "type": "select_source",
+     "source_id": "rwaur_s18"
+    },
+    {
+     "type": "ask_vote",
+     "source_id": "rwaur_s18"
+    }
+   ]
+  }
+ ],
+ "sources_used": [
+  "/api/targets",
+  "/api/field?target_id=rwaur",
+  "/api/sources?field_id=rwaur"
+ ],
+ "recorded": true,
+ "mode": "recorded"
+}
