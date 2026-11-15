@@ -1,5 +1,5 @@
 {
-  "field_id": "f_epsindib",
+  "field_id": "epsindib",
   "target_id": "epsindib",
   "name": "Epsilon Indi B",
   "center": {
@@ -400,6 +400,6 @@
   "spectrum_url": null,
   "autotype_url": null,
   "lightcurve_url": null,
-  "sources_url": null,
-  "catalogs_url": null
+  "sources_url": "/api/sources?field_id=epsindib",
+  "catalogs_url": "/api/catalogs?field_id=epsindib"
 }

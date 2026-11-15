@@ -1,5 +1,5 @@
 {
-  "field_id": "f_rwaur",
+  "field_id": "rwaur",
   "target_id": "rwaur",
   "name": "RW Aurigae",
   "center": {
@@ -339,6 +339,6 @@
   "spectrum_url": null,
   "autotype_url": null,
   "lightcurve_url": null,
-  "sources_url": null,
-  "catalogs_url": null
+  "sources_url": "/api/sources?field_id=rwaur",
+  "catalogs_url": "/api/catalogs?field_id=rwaur"
 }

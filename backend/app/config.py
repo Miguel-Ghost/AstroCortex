@@ -27,6 +27,18 @@ class Settings:
     llm_api_key: str | None = field(default_factory=lambda: os.getenv("LLM_API_KEY") or None)
     max_fov_arcmin: float = field(default_factory=lambda: float(os.getenv("MAX_FOV_ARCMIN", "5")))
     target_match_arcmin: float = field(default_factory=lambda: float(os.getenv("TARGET_MATCH_ARCMIN", "1")))
+    # span of each target's proper-motion track accepted as a lookup position (BR-FIELD-05)
+    track_epoch_min: float = field(default_factory=lambda: float(os.getenv("TRACK_EPOCH_MIN", "1990")))
+    track_epoch_max: float = field(default_factory=lambda: float(os.getenv("TRACK_EPOCH_MAX", "2030")))
+    # live fields for any RA/Dec (IRSA SIA + S3); off unless LIVE_FIELDS=true
+    live_fields: bool = field(default_factory=lambda: os.getenv("LIVE_FIELDS", "false").lower() == "true")
+    live_cache_dir: Path = field(
+        default_factory=lambda: Path(
+            os.getenv("LIVE_CACHE_DIR", Path(os.getenv("TMPDIR", "/tmp")) / "astrocortex-live")
+        )
+    )
+    live_timeout_s: float = field(default_factory=lambda: float(os.getenv("LIVE_TIMEOUT_S", "60")))
+    live_max_per_epoch_detector: int = field(default_factory=lambda: int(os.getenv("LIVE_MAX_PER_EPOCH_DETECTOR", "6")))
     log_level: str = field(default_factory=lambda: os.getenv("LOG_LEVEL", "INFO"))
     log_json: bool = field(default_factory=lambda: os.getenv("LOG_JSON", "true").lower() == "true")
     app_version: str = field(default_factory=lambda: os.getenv("APP_VERSION", "0.2.0"))

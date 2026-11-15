@@ -62,7 +62,7 @@ def create_app() -> FastAPI:
         allow_origin_regex=settings.cors_origin_regex,
         allow_methods=["GET", "POST"],
         allow_headers=["*"],
-        expose_headers=["X-Request-ID"],
+        expose_headers=["X-Request-ID", "X-Field-Match", "X-Field-Match-Epoch", "X-Field-Offset-Arcmin", "X-Target-Id"],
     )
     app.include_router(meta.router)
     app.include_router(fields.router)
@@ -73,6 +73,11 @@ def create_app() -> FastAPI:
     # deploy and wiped on restart, so nothing is generated at runtime.
     settings.fields_dir.mkdir(parents=True, exist_ok=True)
     app.mount("/static/fields", CachedStaticFiles(directory=settings.fields_dir), name="fields")
+    # recorded tours (frontend fallback) and live fields built on request (cache on local disk)
+    app.mount(
+        "/static/agent", CachedStaticFiles(directory=settings.static_dir / "agent", check_dir=False), name="agent"
+    )
+    app.mount("/static/live", CachedStaticFiles(directory=settings.live_cache_dir, check_dir=False), name="live")
     log.info("service started", extra={"commit": settings.commit, "version": settings.app_version})
     return app
 

@@ -1,5 +1,5 @@
 {
-  "field_id": "f_wise0855",
+  "field_id": "wise0855",
   "target_id": "wise0855",
   "name": "WISE 0855-0714",
   "center": {
@@ -339,6 +339,6 @@
   "spectrum_url": null,
   "autotype_url": null,
   "lightcurve_url": null,
-  "sources_url": null,
-  "catalogs_url": null
+  "sources_url": "/api/sources?field_id=wise0855",
+  "catalogs_url": "/api/catalogs?field_id=wise0855"
 }

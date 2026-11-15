@@ -26,6 +26,13 @@ def get_marks_repo():
     return make_marks_repo(get_settings().database_url)
 
 
+@lru_cache
+def get_live_fields():
+    from app.services.live import LiveFields
+
+    return LiveFields(get_settings())
+
+
 def reset_caches() -> None:
-    for fn in (get_settings, get_store, get_predictor, get_marks_repo):
+    for fn in (get_settings, get_store, get_predictor, get_marks_repo, get_live_fields):
         fn.cache_clear()

@@ -56,9 +56,43 @@ def propagate(target: Target, mjd: float) -> tuple[float, float]:
     Parallax is ignored on purpose: for Barnard's Star it is 0.55" = 0.09 SPHEREx pixels.
     The linear approximation is far below a pixel for these targets over ~20 years.
     """
-    dt = mjd_to_jyear(mjd) - target.ref_epoch_yr
+    return position_at_year(target, mjd_to_jyear(mjd))
+
+
+def position_at_year(target: Target, jyear: float) -> tuple[float, float]:
+    dt = jyear - target.ref_epoch_yr
     ddec_deg = target.pmdec_masyr * dt / 3.6e6
     dec = target.dec + ddec_deg
     cos_dec = math.cos(math.radians(target.dec + ddec_deg / 2.0))
     dra_deg = target.pmra_masyr * dt / 3.6e6 / cos_dec
     return (target.ra + dra_deg) % 360.0, dec
+
+
+def angular_sep_arcmin(ra1: float, dec1: float, ra2: float, dec2: float) -> float:
+    """True angular separation on the sphere (haversine, stable for small angles)."""
+    r1, d1, r2, d2 = map(math.radians, (ra1, dec1, ra2, dec2))
+    h = math.sin((d2 - d1) / 2) ** 2 + math.cos(d1) * math.cos(d2) * math.sin((r2 - r1) / 2) ** 2
+    return math.degrees(2 * math.asin(min(1.0, math.sqrt(h)))) * 60.0
+
+
+def closest_point_on_track(
+    target: Target, ra: float, dec: float, epoch_min: float, epoch_max: float
+) -> tuple[float, float]:
+    """(separation in arcmin, Julian year) of the point of the target's track nearest to (ra, dec).
+
+    The track is the target's position under its catalog proper motion between `epoch_min` and
+    `epoch_max`. Any catalog position of the target (2MASS ~1999, J2000 tables, AllWISE 2010, Gaia
+    2016, the SPHEREx dates) lies on it, so a coordinate copied from any of them finds the field.
+    """
+    pm2 = target.pmra_masyr**2 + target.pmdec_masyr**2
+    if pm2 == 0.0:
+        year = min(max(target.ref_epoch_yr, epoch_min), epoch_max)
+    else:
+        # offsets of the query from the reference position on the tangent plane, in mas
+        cos_d = math.cos(math.radians(target.dec))
+        dra = ((ra - target.ra + 180.0) % 360.0 - 180.0) * cos_d * 3.6e6
+        ddec = (dec - target.dec) * 3.6e6
+        year = target.ref_epoch_yr + (dra * target.pmra_masyr + ddec * target.pmdec_masyr) / pm2
+        year = min(max(year, epoch_min), epoch_max)
+    ra_t, dec_t = position_at_year(target, year)
+    return angular_sep_arcmin(ra, dec, ra_t, dec_t), year
