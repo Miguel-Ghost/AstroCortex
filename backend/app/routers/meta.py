@@ -28,7 +28,8 @@ def health() -> dict:
         log.exception("classifier failed to load")
         checks["classifier"] = False
     try:
-        static_fields = sum(1 for t in get_store().list_targets() if t["static_manifest_url"])
+        store = get_store()
+        static_fields = sum(1 for t in store.targets if store.has_manifest(t))
     except Exception:  # noqa: BLE001
         log.exception("static store unavailable")
         static_fields = 0

@@ -8,12 +8,12 @@ import uuid
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
 
 from app.config import get_settings
 from app.errors import install_error_handlers, internal_error_response
 from app.logging_setup import configure_logging, request_id
 from app.routers import agent, fields, marks, meta
+from app.static_files import CachedStaticFiles
 
 log = logging.getLogger("api")
 
@@ -69,8 +69,10 @@ def create_app() -> FastAPI:
     app.include_router(marks.router)
     app.include_router(agent.router)
 
-    settings.static_dir.mkdir(parents=True, exist_ok=True)
-    app.mount("/static", StaticFiles(directory=settings.static_dir), name="static")
+    # The fields ship inside the repository (backend/static/fields): Render's disk is rebuilt on every
+    # deploy and wiped on restart, so nothing is generated at runtime.
+    settings.fields_dir.mkdir(parents=True, exist_ok=True)
+    app.mount("/static/fields", CachedStaticFiles(directory=settings.fields_dir), name="fields")
     log.info("service started", extra={"commit": settings.commit, "version": settings.app_version})
     return app
 

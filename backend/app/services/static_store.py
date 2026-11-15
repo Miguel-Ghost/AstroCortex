@@ -7,9 +7,7 @@ import math
 from pathlib import Path
 from typing import Any
 
-from astropy.time import Time
-
-from pipeline.targets import Target, load_targets, propagate
+from pipeline.targets import Target, load_targets
 
 
 class StaticStore:
@@ -34,37 +32,39 @@ class StaticStore:
         return self.read_json(field_id, "manifest.json")
 
     def list_targets(self) -> list[dict]:
-        out = []
-        for t in self.targets.values():
-            folder = self._field_dir(t.target_id)
-            has_manifest = folder is not None and (folder / "manifest.json").is_file()
-            out.append(
-                {
-                    "target_id": t.target_id,
-                    "name": t.name,
-                    "kind": t.kind,
-                    "behavior": list(t.behavior),
-                    "short_description": t.short_description,
-                    "static_manifest_url": f"/static/fields/{t.target_id}/manifest.json" if has_manifest else None,
-                }
-            )
-        return out
+        return [
+            {
+                "target_id": t.target_id,
+                "name": t.name,
+                "short": t.short_description,
+                "motion_arcsec_yr": t.motion_arcsec_yr,
+                "default_detector": t.default_detector,
+                "aliases": list(t.aliases),
+                "approx_center": dict(t.approx_center),
+                "static_manifest_url": f"/static/fields/{t.target_id}/manifest.json",
+            }
+            for t in self.targets.values()
+        ]
+
+    def has_manifest(self, field_id: str) -> bool:
+        folder = self._field_dir(field_id)
+        return folder is not None and (folder / "manifest.json").is_file()
 
     def find_target_near(self, ra: float, dec: float, radius_arcmin: float) -> str | None:
-        """Target whose current position is within `radius_arcmin` of (ra, dec).
+        """Target whose published field centre is less than `radius_arcmin` from (ra, dec).
 
-        BR-FIELD-05: the catalog position (e.g. the 2010 coordinate in the challenge) only finds the
-        target; the field itself is always centred on the propagated position.
+        BR-FIELD-05: the separation is the true angular distance on the sphere, and the reference is
+        the centre of the published field (the target propagated to the epochs), never the
+        challenge's 2010 coordinate.
         """
-        now_mjd = float(Time.now().mjd)
         best, best_sep = None, radius_arcmin
         for t in self.targets.values():
-            # current position first, then the catalog position (e.g. the statement's 2010 coordinates)
-            for mjd in (now_mjd, None):
-                tra, tdec = propagate(t, mjd) if mjd else (t.ra, t.dec)
-                sep = _sep_arcmin(ra, dec, tra, tdec)
-                if sep <= best_sep:
-                    best, best_sep = t.target_id, sep
+            center = t.approx_center
+            if not center:
+                continue
+            sep = _sep_arcmin(ra, dec, float(center["ra"]), float(center["dec"]))
+            if sep < best_sep:
+                best, best_sep = t.target_id, sep
         return best
 
 

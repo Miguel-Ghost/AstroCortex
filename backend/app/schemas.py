@@ -33,21 +33,23 @@ class Meta(BaseModel):
 
 
 # 7.1 -------------------------------------------------------------------------
-class Target(BaseModel):
-    target_id: str
-    name: str
-    kind: str
-    behavior: list[Literal["moves", "varies"]]
-    short_description: str
-    static_manifest_url: str | None = None
-
-
-# 7.2 -------------------------------------------------------------------------
 class Sky(BaseModel):
     ra: float
     dec: float
 
 
+class Target(BaseModel):
+    target_id: str
+    name: str
+    short: str
+    motion_arcsec_yr: float
+    default_detector: int = Field(ge=1, le=6)
+    aliases: list[str]
+    approx_center: Sky
+    static_manifest_url: str
+
+
+# 7.2 -------------------------------------------------------------------------
 class Stretch(BaseModel):
     type: Literal["asinh", "linear"] = "asinh"
     vmin: float

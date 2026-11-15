@@ -1,4 +1,6 @@
-"""Error envelope (BR-ERR-01): every error leaves as {"error": {"code", "message", "details"}}.
+"""Error envelope (BR-ERR-01): every error leaves as {"error": {"code", "message"}}.
+
+`details` is added only when there is something to report (validation errors, request id).
 
 Adapted from the Quality Opportunities backend: stable codes the frontend can branch on, every
 validation error (made JSON-safe), and a 500 that carries the request id instead of a stack trace.
@@ -20,11 +22,14 @@ log = logging.getLogger("api")
 
 class ApiError(HTTPException):
     def __init__(self, status_code: int, code: str, message: str, details: dict | None = None):
-        super().__init__(status_code=status_code, detail={"code": code, "message": message, "details": details or {}})
+        super().__init__(status_code=status_code, detail=envelope(code, message, details)["error"])
 
 
 def envelope(code: str, message: str, details: dict | None = None) -> dict:
-    return {"error": {"code": code, "message": message, "details": details or {}}}
+    error: dict = {"code": code, "message": message}
+    if details:
+        error["details"] = details
+    return {"error": error}
 
 
 def internal_error_response() -> JSONResponse:
@@ -40,7 +45,7 @@ def install_error_handlers(app: FastAPI) -> None:
     @app.exception_handler(HTTPException)
     async def http_error(_: Request, exc: HTTPException) -> JSONResponse:
         if isinstance(exc.detail, dict) and "code" in exc.detail:
-            body = {"error": {"details": {}, **exc.detail}}
+            body = {"error": exc.detail}
         else:
             body = envelope(f"http_{exc.status_code}", str(exc.detail))
         return JSONResponse(status_code=exc.status_code, content=body, headers=getattr(exc, "headers", None))
@@ -53,6 +58,6 @@ def install_error_handlers(app: FastAPI) -> None:
         first = errors[0] if errors else {}
         where = ".".join(str(p) for p in first.get("loc", []))
         return JSONResponse(
-            status_code=422,
-            content=envelope("invalid_request", f"{where}: {first.get('msg', 'invalid value')}", {"errors": errors}),
+            status_code=400,
+            content=envelope("bad_request", f"{where}: {first.get('msg', 'invalid value')}", {"errors": errors}),
         )

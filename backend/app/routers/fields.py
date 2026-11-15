@@ -3,14 +3,16 @@
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, Query
+from fastapi.responses import JSONResponse
 
 from app.config import Settings, get_settings
 from app.deps import get_predictor, get_store
 from app.errors import ApiError
-from app.schemas import CatalogsResponse, FieldManifest, SourcesResponse, Target
+from app.schemas import CatalogsResponse, SourcesResponse, Target
 from app.services.classifier import Predictor
 from app.services.engine import classify_field
 from app.services.static_store import StaticStore
+from app.static_files import CACHE_CONTROL
 
 router = APIRouter(prefix="/api", tags=["fields"])
 
@@ -20,30 +22,28 @@ def list_targets(store: StaticStore = Depends(get_store)) -> list[dict]:
     return store.list_targets()
 
 
-@router.get("/field", response_model=FieldManifest)
+@router.get("/field", responses={200: {"description": "The field's manifest.json, unchanged"}})
 def get_field(
-    target_id: str | None = Query(None, max_length=50),
     ra: float | None = Query(None, ge=0, lt=360),
     dec: float | None = Query(None, ge=-90, le=90),
-    fov_arcmin: float = Query(3.0, gt=0),
+    fov_arcmin: float | None = Query(None, gt=0),  # accepted and ignored: the published field has its own size
+    target_id: str | None = Query(None, max_length=50),
     store: StaticStore = Depends(get_store),
     settings: Settings = Depends(get_settings),
-) -> dict:
-    if fov_arcmin > settings.max_fov_arcmin:
-        raise ApiError(422, "fov_too_large", f"fov_arcmin must be <= {settings.max_fov_arcmin}")
+) -> JSONResponse:
+    """The manifest of the field whose centre is within 1 arcmin of (ra, dec), returned as it is on disk.
+
+    The frontend reads the manifest's field names as they are, so it is not re-serialised through a
+    schema that could rename, drop or add fields.
+    """
     if target_id is None:
         if ra is None or dec is None:
-            raise ApiError(422, "missing_position", "Give target_id or both ra and dec")
+            raise ApiError(400, "bad_request", "ra and dec are required.")
         target_id = store.find_target_near(ra, dec, settings.target_match_arcmin)
     manifest = store.manifest(target_id) if target_id else None
-    if manifest is not None:
-        return manifest
-    # TODO(Brian): live fields -> run the pipeline for (ra, dec) with a small cap of exposures and a timeout.
-    raise ApiError(
-        404,
-        "field_not_available",
-        "This version serves the 5 test targets; live fields for any coordinate are not ready yet",
-    )
+    if manifest is None:
+        raise ApiError(404, "no_coverage", "No SPHEREx images cover this position yet.")
+    return JSONResponse(content=manifest, headers={"Cache-Control": CACHE_CONTROL})
 
 
 @router.get("/sources", response_model=SourcesResponse)

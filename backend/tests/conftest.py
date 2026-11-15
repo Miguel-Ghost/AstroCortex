@@ -4,9 +4,32 @@ import pytest
 from fastapi.testclient import TestClient
 
 
+def _make_client(monkeypatch, static_dir=None):
+    if static_dir is None:
+        monkeypatch.delenv("STATIC_DIR", raising=False)
+    else:
+        monkeypatch.setenv("STATIC_DIR", str(static_dir))
+    for var in ("DATABASE_URL", "MODEL_PATH", "LLM_API_KEY"):
+        monkeypatch.delenv(var, raising=False)
+    from app.deps import reset_caches
+    from app.main import create_app
+
+    reset_caches()
+    return TestClient(create_app())
+
+
+@pytest.fixture()
+def client(monkeypatch):
+    """The API serving the real fields committed in static/fields (what Render serves)."""
+    yield _make_client(monkeypatch)
+    from app.deps import reset_caches
+
+    reset_caches()
+
+
 @pytest.fixture(scope="session")
-def static_dir(tmp_path_factory):
-    """Demo data for two targets, built with the real pipeline code on synthetic exposures."""
+def mock_static_dir(tmp_path_factory):
+    """Demo fields with sources, catalogs and agent tours, built with the pipeline on synthetic exposures."""
     from pipeline.targets import load_targets
     from scripts.make_mock_static import build_target
 
@@ -19,13 +42,9 @@ def static_dir(tmp_path_factory):
 
 
 @pytest.fixture()
-def client(static_dir, monkeypatch):
-    monkeypatch.setenv("STATIC_DIR", str(static_dir))
-    for var in ("DATABASE_URL", "MODEL_PATH", "LLM_API_KEY"):
-        monkeypatch.delenv(var, raising=False)
+def mock_client(mock_static_dir, monkeypatch):
+    """The API over demo fields: used where real sources, catalogs or tours do not exist yet."""
+    yield _make_client(monkeypatch, mock_static_dir)
     from app.deps import reset_caches
-    from app.main import create_app
 
-    reset_caches()
-    yield TestClient(create_app())
     reset_caches()

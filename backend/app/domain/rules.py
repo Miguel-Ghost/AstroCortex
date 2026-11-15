@@ -12,8 +12,8 @@ RULES: dict[str, str] = {
     "BR-FIELD-02": "All epochs of one detector share one stretch, so brightness changes are real.",
     "BR-FIELD-03": "Data built from synthetic exposures always says synthetic: true.",
     "BR-FIELD-04": "An epoch may miss detectors; the gap is shown, never filled.",
-    "BR-FIELD-05": "Positions are propagated to each date; the challenge's 2010 coordinate of WISE 0855 "
-    "is accepted as a lookup, never used as a centre.",
+    "BR-FIELD-05": "Positions are propagated to each date; a field is found only within 1 arcmin (true angular "
+    "separation) of its published centre, never from the challenge's 2010 coordinate of WISE 0855.",
     # Image pipeline -------------------------------------------------------------------
     "BR-PIPE-01": "SOURCE and OUTLIER flags are never excluded from a coadd (moving objects carry them).",
     "BR-PIPE-02": "Exposures are capped per epoch and detector, never globally.",
