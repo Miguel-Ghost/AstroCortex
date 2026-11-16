@@ -29,7 +29,7 @@ Los cinco blancos y sus 94 coadds están completos en `public/static/fields/`, s
 - NaN morado, píxel entero sin interpolación, flags a 0.55, retícula y trayectoria de `expected_position` o de la fuente seleccionada. Diferencia en gris con percentil 99 de |B−A|; suma con el stretch lineal del original.
 - Unidades, fecha, MJD, banda efectiva, número de exposiciones, flags, release y pipeline del manifiesto.
 - Ausencias reales de Epsilon Indi B e4 D1/D4 explícitas. Las parejas A/B pueden incluir una fecha ausente: se muestra el aviso, no se crea un cuadro.
-- Solo FOV 3.2′. Espectro y curva no se deducen de los seis detectores: sus URLs son null y se muestra `Not available yet.`.
+- Solo FOV 3.2′. Spectrum y Light curve cargan las mediciones de exposiciones reales desde las URLs del manifiesto. Espectro en mJy con barras de error y colores por época; curva relativa (1.0 = brillo medio), con opción de seguir D1–D6. Se conservan las advertencias y los detalles de fotometría. Todos los espectros y curvas incluyen zoom con la rueda del ratón centrado en el cursor, desplazamiento mediante arrastre (ratón o un dedo) y doble clic para restaurar, sin botones adicionales. Al cambiar objetivo, pestaña o detector se restablece el rango. Con foco en el gráfico: +/− acerca/aleja, flechas desplazan y 0/Home restaura. R Draconis muestra `Saturated in SPHEREx` por su escasa cobertura utilizable.
 
 Buscar los alias de los cinco objetivos o coordenadas RA/Dec decimales o sexagesimales. Las coordenadas arbitrarias requieren `/api/field`; no se simula cobertura. Espacio reproduce/pausa y flechas recorren fechas cuando el foco no está en un control. Escape cierra el chat y sale de vista ampliada. Paneles redimensionables con puntero o flechas y restaurables con doble clic.
 
@@ -47,16 +47,19 @@ Es una variable de compilación; reconstruir y volver a desplegar después de ca
 
 Contratos implementados: GET `/api/field`, `/api/sources`, `/api/catalogs`, POST `/api/agent` con `view_state` e historial, POST `/api/marks` con `user_label`, coordenadas, época y client_id. Ninguno se ha validado contra el servidor del equipo. Los votos solo se confirman después de HTTP exitoso. GET `/api/marks` y la visualización del historial de votos están pendientes.
 
-Fuentes: filtro de clase, revisión y movimiento, razones, resumen, símbolo de clase, selección, seguimiento y marcadores. Gaia/WISE quedan desactivados sin catálogo. El agente tiene texto, voz cuando el navegador la soporta, pasos de tour y validación de acciones. Su respaldo intenta `/static/agent/<target_id>.json`; esos archivos no fueron entregados. Sin respuesta válida muestra el aviso de indisponibilidad, conservando el control manual. Los controles manuales del panel interrumpen un tour automático.
+Fuentes: filtro de clase, revisión y movimiento, razones, resumen, símbolo de clase, selección, seguimiento y marcadores. Gaia/WISE quedan desactivados sin catálogo. El agente tiene texto, voz cuando el navegador la soporta, pasos de tour y validación de acciones. Su respaldo intenta `/static/agent/<target_id>.json`; esos archivos están incluidos para los cinco objetivos. Sin respuesta válida muestra el aviso de indisponibilidad, conservando el control manual. Los controles manuales del panel interrumpen un tour automático.
 
 El cielo usa Aladin v3.9.0-beta (la misma versión del HTML), empaquetado localmente. Si falta WebGL2, carga automáticamente el renderizador Canvas de Aladin v2, con fuente y licencia incluidas en `public/vendor/`. La esfera AllWISE y sus marcadores están verificados en esta sesión. El atlas de vista general está guardado sin modificaciones en `public/static/sky/allwise/`; los detalles de mayor resolución se solicitan al espejo IRSA. El botón circular «Sky overview» vuelve a la esfera; «Center field» acerca al campo científico. Este panorama AllWISE es contexto, no pertenece a los 94 coadds SPHEREx. `Targets · 94` muestra el reparto por objetivo calculado desde sus manifiestos.
 
 ## Vercel
 
-Importar el proyecto, preset **Vite**, comando `npm run build`, salida `dist`. Configurar `VITE_API_BASE` únicamente si se dispone del backend real. `vercel.json` resuelve `/embed`; los estáticos conservan sus rutas. El build también crea `dist/embed/index.html` para hosting estático. No hay claves ni secretos del backend en este proyecto.
+Conectar `Miguel-Ghost/AstroCortex` a Vercel con **Root Directory: Frontend** y la rama de producción correspondiente para desplegar cada push. Importar el proyecto, preset **Vite**, comando `npm run build`, salida `dist`. Configurar `VITE_API_BASE` únicamente si se dispone del backend real. `vercel.json` resuelve `/embed`; los estáticos conservan sus rutas. El build también crea `dist/embed/index.html` para hosting estático. No hay claves ni secretos del backend en este proyecto.
 
 ## Estructura
 
 `src/components/` contiene la interfaz; `src/store.js` es el estado común; `src/hooks/` gestiona reproducción, URL y tamaño; `src/lib/` contiene recursos, coordenadas, matemáticas, dibujo y acciones del agente. `docs/` conserva las guías entregadas. `tests/science.test.js` cubre los contratos científicos que pueden comprobarse sin backend.
 
 Consultar `QA_REPORT.md` antes de considerar cerrada la integración externa.
+
+
+El agente oculta la bola mientras el chat está abierto. Su barra superior permite arrastrar la ventana sin interferir con las gráficas; la X vuelve a mostrar la bola en su posición anterior. El canvas del orbe permanece montado para conservar su animación. La intro, branding y motor de la esfera no se modifican.

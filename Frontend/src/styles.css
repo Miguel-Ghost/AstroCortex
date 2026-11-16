@@ -1736,3 +1736,28 @@ body.resizing canvas {
   z-index: 6;
 }
 #aladin .aladin-imageCanvas{filter:brightness(1.7)}
+
+.series-toolbar, .series-details {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  font-size: 11px;
+  color: #aaaaba;
+}
+.series-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.series-toolbar label { display: flex; align-items: center; gap: 5px; }
+.series-details { max-height: 150px; overflow: auto; line-height: 1.5; }
+.series-details p { margin: 5px 0; }
+.series-details a { color: #a8cfff; }
+.series-warning { color: #e8c28d; }
+.series-empty { position: absolute; inset: 0; display: flex; flex-direction: column;
+  justify-content: center; align-items: center; gap: 10px; padding: 20px;
+  text-align: center; color: #aaaaba; font-size: 12px; }
+.series-empty strong { color: #e8c28d; font-size: 15px; }
+
+#frame.interactive-plot { touch-action: none; cursor: grab; image-rendering: auto; }
+#frame.interactive-plot:active { cursor: grabbing; }
+#frame.interactive-plot:focus-visible { outline: 1px solid #a8cfff; outline-offset: -2px; }
+
+#chat header { cursor: grab; touch-action: none; user-select: none; }
+#chat header:active { cursor: grabbing; }
+#chat header button { cursor: pointer; }

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useStore } from "../store";
 import { startOrb } from "../lib/orb";
 import { runAction } from "../lib/actions";
@@ -6,6 +6,9 @@ export function Agent() {
   const s = useStore(),
     canvas = useRef(),
     drag = useRef(),
+    chat = useRef(),
+    chatDrag = useRef(),
+    [chatPosition, setChatPosition] = useState(null),
     [position, setPosition] = useState(null),
     [question, setQuestion] = useState(""),
     recognition = useRef(),
@@ -15,6 +18,29 @@ export function Agent() {
     [],
   );
   useEffect(() => () => recognition.current?.abort(), []);
+  function keepChatVisible(x, y) {
+    const rect = chat.current?.getBoundingClientRect();
+    return {
+      x: Math.max(8, Math.min(Math.max(8, innerWidth - (rect?.width || 342) - 8), x)),
+      y: Math.max(8, Math.min(Math.max(8, innerHeight - (rect?.height || 160) - 8), y)),
+    };
+  }
+  useLayoutEffect(() => {
+    if (!s.chatOpen) return;
+    const clamp = () => {
+      const rect = chat.current?.getBoundingClientRect();
+      if (rect) setChatPosition(keepChatVisible(rect.left, rect.top));
+    };
+    clamp();
+    const observer = new ResizeObserver(clamp);
+    if (chat.current) observer.observe(chat.current);
+    window.addEventListener("resize", clamp);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", clamp);
+      chatDrag.current = null;
+    };
+  }, [s.chatOpen]);
   async function step(i) {
     const next = s.tour.steps[i];
     if (!next) return;
@@ -70,7 +96,9 @@ export function Agent() {
         id="agentOrb"
         className={s.agentBusy ? "working" : ""}
         style={
-          position
+          {
+            display: s.chatOpen ? "none" : undefined,
+            ...(position
             ? {
                 left: position.x,
                 top: position.y,
@@ -80,11 +108,14 @@ export function Agent() {
             : {
                 right: s.expanded ? 24 : s.sideWidth + 96,
                 bottom: s.bottomHeight + 25,
-              }
+              })
+          }
         }
         aria-label="Open Cortex"
         aria-expanded={s.chatOpen}
         onPointerDown={(e) => {
+          if (e.button !== 0 || !e.isPrimary) return;
+          e.stopPropagation();
           const r = e.currentTarget.getBoundingClientRect();
           drag.current = {
             sx: e.clientX,
@@ -106,11 +137,13 @@ export function Agent() {
               y: Math.max(52, Math.min(innerHeight - 116, e.clientY - d.dy)),
             });
         }}
-        onPointerUp={() => {
+        onPointerUp={(e) => {
+          e.stopPropagation();
           if (drag.current && !drag.current.moved)
-            s.patch({ chatOpen: !s.chatOpen });
+            s.patch({ chatOpen: true });
           drag.current = null;
         }}
+        onLostPointerCapture={() => { drag.current = null; }}
         onPointerCancel={() => {
           drag.current = null;
         }}
@@ -126,9 +159,14 @@ export function Agent() {
       {s.chatOpen && (
         <aside
           id="chat"
+          ref={chat}
+          onPointerDown={e => e.stopPropagation()}
+          onWheel={e => e.stopPropagation()}
           aria-label="Cortex guide"
           style={
-            position
+            chatPosition ? {
+              left: chatPosition.x, top: chatPosition.y, right: "auto", bottom: "auto",
+            } : position
               ? {
                   left: Math.max(
                     10,
@@ -147,12 +185,33 @@ export function Agent() {
                 }
           }
         >
-          <header>
+          <header
+            onPointerDown={e => {
+              if (e.button !== 0 || !e.isPrimary || e.target.closest("button")) return;
+              e.preventDefault();
+              e.stopPropagation();
+              const rect = chat.current.getBoundingClientRect();
+              chatDrag.current = { dx: e.clientX - rect.left, dy: e.clientY - rect.top, id: e.pointerId };
+              e.currentTarget.setPointerCapture(e.pointerId);
+            }}
+            onPointerMove={e => {
+              const d = chatDrag.current;
+              if (!d || d.id !== e.pointerId) return;
+              e.stopPropagation();
+              setChatPosition(keepChatVisible(e.clientX - d.dx, e.clientY - d.dy));
+            }}
+            onPointerUp={e => {
+              e.stopPropagation();
+              chatDrag.current = null;
+            }}
+            onPointerCancel={() => { chatDrag.current = null; }}
+            onLostPointerCapture={() => { chatDrag.current = null; }}
+          >
             <strong>Cortex</strong>
             <button
               id="chatClose"
               aria-label="Close chat"
-              onClick={() => s.patch({ chatOpen: false })}
+              onClick={() => { chatDrag.current = null; s.patch({ chatOpen: false }); }}
             >
               ×
             </button>

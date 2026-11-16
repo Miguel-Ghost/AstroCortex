@@ -35,9 +35,9 @@ export function FieldPanel() {
       </nav>
       <div className="field-head">
         <strong id="fieldName">{m?.name || "Field"}</strong>
-        <span id="fieldUnit">{m?.flux_unit}</span>
+        <span id="fieldUnit">{s.tab === "flipbook" ? m?.flux_unit : s.tab === "spectrum" ? "mJy" : s.tab === "lightcurve" ? "Relative flux" : ""}</span>
         <span id="sequenceInfo">
-          {e && `${s.epochIndex + 1} / ${m.epochs.length}`}
+          {s.tab === "flipbook" && e && `${s.epochIndex + 1} / ${m.epochs.length}`}
         </span>
       </div>
       {selected && (
@@ -100,6 +100,7 @@ export function FieldPanel() {
           ))}
         </div>
       )}
+      {s.tab === "flipbook" && <>
       <div id="frameMeta">
         {s.progress ||
           (e && (
@@ -217,6 +218,7 @@ export function FieldPanel() {
           </label>
         ))}
       </div>
+      </>}
       <details className="data-provenance">
         <summary>
           {m?.epochs.reduce((n, e) => n + e.frames.length, 0) || 0} frames ·
