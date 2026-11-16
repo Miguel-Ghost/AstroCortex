@@ -8,12 +8,14 @@ on:
     paths-ignore:
       - "Frontend/**"
       - ".github/workflows/frontend.yml"
+      - ".github/workflows/deploy-frontend.yml"
       - ".github/workflows/keepalive.yml"
       - "README.md"
   pull_request:
     paths-ignore:
       - "Frontend/**"
       - ".github/workflows/frontend.yml"
+      - ".github/workflows/deploy-frontend.yml"
       - ".github/workflows/keepalive.yml"
       - "README.md"
 

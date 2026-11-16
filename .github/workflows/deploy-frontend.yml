@@ -1,0 +1,79 @@
+# Deploys the frontend to the existing Vercel project (same domain) after Frontend CI passes on main.
+# The Vercel project is not connected to GitHub (only the repository owner can connect it, and Vercel
+# deploy hooks need that connection), so this workflow deploys with the Vercel CLI instead.
+# Repository secrets (Settings -> Secrets and variables -> Actions):
+#   VERCEL_TOKEN       vercel.com -> Account Settings -> Tokens, from the account that owns the project
+#   VERCEL_ORG_ID      "orgId" in Frontend/.vercel/project.json after `npx vercel link`
+#   VERCEL_PROJECT_ID  "projectId" in the same file
+# Without them the workflow only warns. Optional repository variable FRONTEND_URL (the production
+# address) makes it check that the site answers after the deploy.
+name: Deploy frontend
+
+on:
+  workflow_run:
+    workflows: [Frontend CI]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-frontend
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    # only after a green Frontend CI run started by a push to main (pull requests never deploy)
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push')
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      FRONTEND_URL: ${{ vars.FRONTEND_URL }}
+    steps:
+      - name: Check the Vercel secrets
+        id: secrets
+        run: |
+          if [ -n "$VERCEL_TOKEN" ] && [ -n "$VERCEL_ORG_ID" ] && [ -n "$VERCEL_PROJECT_ID" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::VERCEL_TOKEN, VERCEL_ORG_ID or VERCEL_PROJECT_ID is not set; the frontend was not deployed"
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.secrets.outputs.ready == 'true'
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - uses: actions/setup-node@v4
+        if: steps.secrets.outputs.ready == 'true'
+        with:
+          node-version: "22"
+
+      - name: Build with the project's settings and environment variables
+        if: steps.secrets.outputs.ready == 'true'
+        working-directory: Frontend
+        run: |
+          npm install --global vercel@latest
+          vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
+          vercel build --prod --token="$VERCEL_TOKEN"
+
+      - name: Deploy to production
+        if: steps.secrets.outputs.ready == 'true'
+        working-directory: Frontend
+        run: vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
+
+      - name: Check that the site answers
+        if: steps.secrets.outputs.ready == 'true' && env.FRONTEND_URL != ''
+        run: |
+          url="${FRONTEND_URL%/}/static/fields/wise0855/manifest.json"
+          for i in $(seq 1 12); do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$url")
+            if [ "$code" = "200" ]; then echo "site answers ($url)"; exit 0; fi
+            sleep 10
+          done
+          echo "::error::$url answered $code after the deploy"
+          exit 1
