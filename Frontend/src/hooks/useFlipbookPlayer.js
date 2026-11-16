@@ -3,6 +3,7 @@ import { useStore } from "../store";
 import { availableEpochs } from "../lib/manifest";
 export function useFlipbookPlayer() {
   const {
+    tutorialOpen,
     field,
     playing,
     mode,
@@ -15,7 +16,7 @@ export function useFlipbookPlayer() {
     grid,
   } = useStore();
   useEffect(() => {
-    if (!field || !preloaded || !(playing || mode === "blink")) return;
+    if (tutorialOpen || !field || !preloaded || !(playing || mode === "blink")) return;
     const a = availableEpochs(field, detector, grid),
       delay =
         mode === "blink"
@@ -33,6 +34,7 @@ export function useFlipbookPlayer() {
     }, delay);
     return () => clearTimeout(timer);
   }, [
+    tutorialOpen,
     field,
     playing,
     mode,

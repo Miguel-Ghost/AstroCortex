@@ -1,9 +1,18 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useStore } from "../store";
 import { TARGETS } from "../targets";
-export function Header() {
+export function Header({ onGuide }) {
   const s = useStore(),
-    dialog = useRef();
+    dialog = useRef(),
+    [guideUnread, setGuideUnread] = useState(() => {
+      try { return localStorage.getItem("astrocortex-guide-seen-v1") !== "1"; }
+      catch { return true; }
+    });
+  function showGuide() {
+    setGuideUnread(false);
+    try { localStorage.setItem("astrocortex-guide-seen-v1", "1"); } catch { /* Session-only when storage is unavailable. */ }
+    onGuide();
+  }
   useEffect(() => {
     s.loadTargetStats();
   }, []);
@@ -55,8 +64,9 @@ export function Header() {
           </select>
         </label>
         <div className="spacer" />
-        <button id="guideBtn" onClick={() => s.askAgent("Guide me")}>
+        <button id="guideBtn" className={guideUnread ? "guide-unread" : undefined} aria-expanded={s.tutorialOpen} onClick={showGuide}>
           Guide me
+          {guideUnread && <span className="guide-notification" aria-hidden="true" />}
         </button>
         <button
           id="share"

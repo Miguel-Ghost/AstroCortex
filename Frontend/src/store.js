@@ -63,6 +63,7 @@ export const useStore = create((set, get) => ({
   reviewTab: "needs_review",
   classFilter: "all",
   movingOnly: false,
+  tutorialOpen: false,
   chatOpen: false,
   messages: [],
   agentBusy: false,

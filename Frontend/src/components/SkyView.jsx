@@ -138,6 +138,7 @@ export function SkyView({ ready }) {
     <section
       className="sky"
       id="sky"
+      inert={s.tutorialOpen || undefined}
     >
       <div id="aladin" ref={host} style={{ width: "100%", height: "100%" }} />
       <MeshCanvas />

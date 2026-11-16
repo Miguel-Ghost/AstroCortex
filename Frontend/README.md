@@ -63,3 +63,22 @@ Consultar `QA_REPORT.md` antes de considerar cerrada la integración externa.
 
 
 El agente oculta la bola mientras el chat está abierto. Su barra superior permite arrastrar la ventana sin interferir con las gráficas; la X vuelve a mostrar la bola en su posición anterior. El canvas del orbe permanece montado para conservar su animación. La intro, branding y motor de la esfera no se modifican.
+
+
+## Guide me — tutorial films
+
+Guide me abre tres películas locales, en este orden: Your sky (esfera celeste),
+Cortex (agente) y Explore AstroCortex (recorrido de la app). Los paneles conservan
+sus dimensiones y se desplazan suavemente hasta dejar 36 px visibles. La flecha
+vuelve del video al selector y del selector al cielo. El modo ampliado y el chat
+previos se restauran al salir; la reproducción del flipbook queda pausada.
+
+El reproductor conserva la proporción original del video y usa play/pausa,
+tiempo y barra de progreso. Los controles se ocultan después de 2.2 segundos
+sin movimiento durante reproducción y reaparecen con el puntero o el teclado.
+Escape vuelve un nivel. Los videos se cargan al seleccionarlos, no al iniciar
+la app; las miniaturas son verticales y los videos mantienen su audio original.
+
+Recursos: public/static/tutorials/. No se requieren dependencias nuevas.
+
+Guide me tiene un borde ligeramente resaltado y un punto rojo hasta la primera apertura. La preferencia se guarda localmente por navegador; no requiere cuenta ni servidor.
