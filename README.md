@@ -199,3 +199,15 @@ More detail in [`Backend/README.md`](Backend/README.md), [`Frontend/README.md`](
 | **Alessandro** | Frontend and viewer design |
 
 AI assistants were used to help write code and documentation. Results were checked against the data.
+
+---
+
+<div align="center">
+
+### Open AstroCortex on your phone
+
+<a href="https://astrocortex.vercel.app/"><img src="qr-astrocortex.png" alt="QR code to https://astrocortex.vercel.app/" width="220"></a>
+
+[astrocortex.vercel.app](https://astrocortex.vercel.app/)
+
+</div>
