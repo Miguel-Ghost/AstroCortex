@@ -48,23 +48,12 @@ jobs:
         with:
           ref: ${{ github.event.workflow_run.head_sha || github.sha }}
 
-      - uses: actions/setup-node@v4
-        if: steps.secrets.outputs.ready == 'true'
-        with:
-          node-version: "22"
-
-      - name: Build with the project's settings and environment variables
+      - name: Deploy to production (Vercel builds it with the project's settings and variables)
         if: steps.secrets.outputs.ready == 'true'
         working-directory: Frontend
         run: |
           npm install --global vercel@latest
-          vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
-          vercel build --prod --token="$VERCEL_TOKEN"
-
-      - name: Deploy to production
-        if: steps.secrets.outputs.ready == 'true'
-        working-directory: Frontend
-        run: vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
+          vercel deploy --prod --yes --token="$VERCEL_TOKEN"
 
       - name: Check that the site answers
         if: steps.secrets.outputs.ready == 'true' && env.FRONTEND_URL != ''
