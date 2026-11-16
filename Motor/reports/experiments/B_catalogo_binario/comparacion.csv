@@ -1,0 +1,4 @@
+experimento,modelo,elegido_por_cv,potencia_peso,n_variables,poblacion,cv_balanced_accuracy,cv_macro_f1,cv_ap_positivas,cv_precision_positivas,cv_recall_positivas,cv_recall_star,cv_recall_cold_brown_dwarf,test_balanced_accuracy,test_macro_f1,test_ap_positivas,test_precision_positivas,test_recall_positivas,test_recall_star,test_recall_cold_brown_dwarf
+B_catalogo_binario,rf,True,0.25,21,todos,0.9129,0.9384,0.9277,0.9512,0.8297,0.9962,0.8297,0.9122,0.9359,0.9385,0.9412,0.829,0.9954,0.829
+B_catalogo_binario,xgb,False,0.25,21,todos,0.9151,0.9377,0.9254,0.9418,0.8348,0.9954,0.8348,0.9162,0.9326,0.9459,0.9153,0.8394,0.9931,0.8394
+B_catalogo_binario,mlp,False,0.25,21,todos,0.9157,0.9378,0.9311,0.9405,0.8361,0.9953,0.8361,0.9184,0.9316,0.9405,0.9056,0.8446,0.9922,0.8446

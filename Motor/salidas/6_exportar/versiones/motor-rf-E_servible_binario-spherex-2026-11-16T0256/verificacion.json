@@ -1,0 +1,109 @@
+{
+  "onnx_salidas": [
+    "label",
+    "probabilities"
+  ],
+  "max_dif_probabilidades": 3.3872626226116864e-07,
+  "acuerdo_clase": 1.0,
+  "n_test": 151,
+  "evidencia_vacia": {
+    "label": "cold_brown_dwarf",
+    "class_probs": {
+      "star": 0.2160620093345642,
+      "cold_brown_dwarf": 0.7839379906654358
+    }
+  },
+  "ejemplos": [
+    {
+      "oid": 28,
+      "label_real": "L",
+      "label": "star",
+      "class_probs": {
+        "star": 0.9690757989883423,
+        "cold_brown_dwarf": 0.030924228951334953
+      }
+    },
+    {
+      "oid": 106,
+      "label_real": "T",
+      "label": "cold_brown_dwarf",
+      "class_probs": {
+        "star": 0.010316610336303711,
+        "cold_brown_dwarf": 0.9896833896636963
+      }
+    },
+    {
+      "oid": 129,
+      "label_real": "M",
+      "label": "star",
+      "class_probs": {
+        "star": 0.9575784802436829,
+        "cold_brown_dwarf": 0.04242153465747833
+      }
+    },
+    {
+      "oid": 148,
+      "label_real": "L",
+      "label": "star",
+      "class_probs": {
+        "star": 0.9334776997566223,
+        "cold_brown_dwarf": 0.06652230024337769
+      }
+    },
+    {
+      "oid": 151,
+      "label_real": "M",
+      "label": "star",
+      "class_probs": {
+        "star": 0.9868988990783691,
+        "cold_brown_dwarf": 0.01310109905898571
+      }
+    },
+    {
+      "oid": 161,
+      "label_real": "M",
+      "label": "star",
+      "class_probs": {
+        "star": 0.9944666624069214,
+        "cold_brown_dwarf": 0.005533333867788315
+      }
+    },
+    {
+      "oid": 168,
+      "label_real": "T",
+      "label": "star",
+      "class_probs": {
+        "star": 0.5269396305084229,
+        "cold_brown_dwarf": 0.47306033968925476
+      }
+    },
+    {
+      "oid": 189,
+      "label_real": "T",
+      "label": "cold_brown_dwarf",
+      "class_probs": {
+        "star": 0.0482630729675293,
+        "cold_brown_dwarf": 0.9517369270324707
+      }
+    },
+    {
+      "oid": 229,
+      "label_real": "T",
+      "label": "cold_brown_dwarf",
+      "class_probs": {
+        "star": 0.14380013942718506,
+        "cold_brown_dwarf": 0.8561998605728149
+      }
+    },
+    {
+      "oid": 235,
+      "label_real": "T",
+      "label": "cold_brown_dwarf",
+      "class_probs": {
+        "star": -2.384185791015625e-07,
+        "cold_brown_dwarf": 1.000000238418579
+      }
+    }
+  ],
+  "ok": true
+}

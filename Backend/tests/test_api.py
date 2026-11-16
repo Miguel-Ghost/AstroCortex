@@ -11,7 +11,7 @@ WISE = {"ra": 133.75945, "dec": -7.24286, "fov_arcmin": 3}
 
 def test_health(client):
     body = client.get("/health").json()
-    assert body["status"] == "ok" and body["classifier_method"] == "rule"
+    assert body["status"] == "ok" and body["classifier_method"] == "model"
     assert body["static_fields"] == 5
     assert body["checks"] == {"classifier": True, "static_fields": True, "marks": True}
 
@@ -151,8 +151,12 @@ def test_health_reports_degraded_when_a_dependency_fails(client, monkeypatch):
 
 def test_meta_declares_the_engines(client):
     """BR-CLS-01 and BR-MARK-02: the API says how its answers are produced and stored."""
+    import json
+    from pathlib import Path
+
+    bundled = json.loads((Path(__file__).resolve().parents[1] / "models" / "metadata.json").read_text(encoding="utf-8"))
     body = client.get("/api/meta").json()
-    assert body["classifier"] == {"method": "rule", "version": "rule-v0", "calibrated": False}
+    assert body["classifier"] == {"method": "model", "version": bundled["model_version"], "calibrated": False}
     assert body["marks"] == {"storage": "memory", "persistent": False}
 
 
@@ -202,7 +206,7 @@ def test_every_real_field_has_classified_sources_with_its_target(client):
         body = SourcesResponse.model_validate(
             client.get("/api/sources", params={"field_id": target["target_id"]}).json()
         )
-        assert body.field_id == target["target_id"] and body.method == "rule" and not body.synthetic
+        assert body.field_id == target["target_id"] and body.method == "model" and not body.synthetic
         assert body.catalogs_checked is True
         rows = body.sources
         assert body.summary.n_sources == len(rows)

@@ -1,0 +1,33 @@
+{
+  "comparacion_cv": {
+    "1.0": {
+      "bal_acc": 0.7588,
+      "macro_f1": 0.6941,
+      "ap_TY": 0.9187,
+      "recall_T": 0.831,
+      "recall_Y": 0.45,
+      "precision_Y": 0.034,
+      "precision_TY": 0.5797448165869219
+    },
+    "0.5": {
+      "bal_acc": 0.7496,
+      "macro_f1": 0.7426,
+      "ap_TY": 0.9236,
+      "recall_T": 0.841,
+      "recall_Y": 0.375,
+      "precision_Y": 0.5,
+      "precision_TY": 0.6401151631477927
+    },
+    "0.25": {
+      "bal_acc": 0.7492,
+      "macro_f1": 0.7786,
+      "ap_TY": 0.9248,
+      "recall_T": 0.819,
+      "recall_Y": 0.35,
+      "precision_Y": 0.56,
+      "precision_TY": 0.9335260115606936
+    }
+  },
+  "elegida": 0.25,
+  "regla": "max macro-F1 en CV de desarrollo (E1)"
+}

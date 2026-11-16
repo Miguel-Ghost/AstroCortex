@@ -1,0 +1,23 @@
+{
+  "service": "https://datalab.noirlab.edu/query/query",
+  "started_utc": "2026-11-15T07:32:00+00:00",
+  "objects_sha256": "1af75a55d9ece4196a5b497616cce6379d4bd7fcc7c2c83d27357bd6bead3b20",
+  "tables": {
+    "catwise_full": {
+      "table": "catwise2020.main",
+      "batches": 119,
+      "done": 119,
+      "bytes": 13688179,
+      "status": "COMPLETE"
+    },
+    "allwise_full": {
+      "table": "allwise.source",
+      "batches": 119,
+      "done": 119,
+      "bytes": 6398246,
+      "status": "COMPLETE"
+    }
+  },
+  "finished_utc": "2026-11-15T07:36:03+00:00",
+  "all_complete": true
+}

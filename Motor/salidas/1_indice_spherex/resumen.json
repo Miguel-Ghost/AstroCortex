@@ -1,0 +1,22 @@
+{
+  "objetos_seleccionados": 855,
+  "objetos_con_cache": 834,
+  "objetos_con_error": 21,
+  "filas_sia": 240384,
+  "filas_sin_clave_s3": 0,
+  "filas_qr2_descartadas": 0,
+  "duplicados_entre_colecciones": 0,
+  "filas_indice": 240384,
+  "objetos_con_exposiciones": 834,
+  "exposiciones_por_objeto_mediana": 267.0,
+  "epocas_por_objeto_mediana": 3.0,
+  "por_detector": {
+    "1": 40163,
+    "2": 39970,
+    "3": 40691,
+    "4": 39724,
+    "5": 39629,
+    "6": 40207
+  },
+  "filas_crudas": 240384
+}

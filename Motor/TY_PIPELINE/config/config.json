@@ -1,0 +1,68 @@
+{
+  "_nota": "Config portátil para la máquina Vast. run_004 se genera allí; run_003 queda como referencia. Las etapas 06 y 07 necesitan los FITS de los pilotos (no vienen) y no se ejecutan.",
+  "paths": {
+    "input_root": "../../datos_entrada",
+    "processed": "../../datos_entrada/processed",
+    "ultracoolsheet": "../../datos_entrada/ultracoolsheet/UltracoolSheet_-_Main.csv",
+    "noirlab_catalogs": "../../datos_entrada/catalogos_noirlab",
+    "spherex_index": "../../datos_entrada/spherex_index/pilot_image_index.jsonl",
+    "spherex_raw": "../../datos_entrada/spherex_raw_mef",
+    "fits_status": "../../datos_entrada/logs/run_2.status",
+    "extra_catalogs": "../../datos_extra_TY",
+    "output_root": "../../resultados_TY"
+  },
+  "run_id": "run_004",
+  "seed": 20261115,
+  "catalogs": [
+    "catwise",
+    "allwise",
+    "tmass",
+    "unwise"
+  ],
+  "match_radius_arcsec": 3.0,
+  "split": {
+    "sky_dec_bands": 12,
+    "sky_ra_bins": 24,
+    "test_fraction_folds": 5,
+    "cv_folds": 5,
+    "min_y_in_test": 8
+  },
+  "quality": {
+    "mask_artifact_photometry": true,
+    "mu_floor_arcsec_yr": 0.005
+  },
+  "model": {
+    "max_iter": 300,
+    "learning_rate": 0.06,
+    "max_leaf_nodes": 31,
+    "min_samples_leaf": 20,
+    "l2_regularization": 1.0,
+    "class_weight_power": 0.5,
+    "class_weight_power_candidates": [
+      1.0,
+      0.5,
+      0.25
+    ]
+  },
+  "robustness": {
+    "corr_cluster_threshold": 0.8,
+    "dominance_warning_share": 0.5,
+    "dropout_probability": 0.3,
+    "dropout_copies": 2,
+    "max_clean_loss_for_robust": 0.02
+  },
+  "importance": {
+    "permutation_repeats": 10,
+    "boruta_iterations": 40,
+    "boruta_trees": 150
+  },
+  "abstention": {
+    "target_precision_ty": 0.9
+  },
+  "spherex": {
+    "scan_fits_headers": true,
+    "fits_sample_stride": 64,
+    "verify_fits_sha256": false,
+    "max_fits": 1927
+  }
+}

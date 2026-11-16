@@ -1,0 +1,111 @@
+{
+  "A_catalogo_5clases": {
+    "estado": "OK",
+    "elegido": "xgb",
+    "n_variables": 21,
+    "poblacion": "todos",
+    "cv_macro_f1": {
+      "rf": 0.7531,
+      "xgb": 0.7808,
+      "mlp": 0.7469
+    },
+    "test_elegido": {
+      "balanced_accuracy": 0.7625,
+      "macro_f1": 0.7814,
+      "ap_positivas": 0.9456,
+      "precision_positivas": 0.9205,
+      "recall_positivas": 0.8394,
+      "recall_star": 0.9919,
+      "recall_M": 0.6467,
+      "recall_L": 0.8706,
+      "recall_T": 0.8033,
+      "recall_Y": 0.5
+    }
+  },
+  "B_catalogo_binario": {
+    "estado": "OK",
+    "elegido": "rf",
+    "n_variables": 21,
+    "poblacion": "todos",
+    "cv_macro_f1": {
+      "rf": 0.9384,
+      "xgb": 0.9377,
+      "mlp": 0.9378
+    },
+    "test_elegido": {
+      "balanced_accuracy": 0.9122,
+      "macro_f1": 0.9359,
+      "ap_positivas": 0.9385,
+      "precision_positivas": 0.9412,
+      "recall_positivas": 0.829,
+      "recall_star": 0.9954,
+      "recall_cold_brown_dwarf": 0.829
+    }
+  },
+  "C_catalogo_5clases_subconjunto": {
+    "estado": "OK",
+    "elegido": "rf",
+    "n_variables": 21,
+    "poblacion": "spherex",
+    "cv_macro_f1": {
+      "rf": 0.75,
+      "xgb": 0.7358,
+      "mlp": 0.7181
+    },
+    "test_elegido": {
+      "balanced_accuracy": 0.748,
+      "macro_f1": 0.7729,
+      "ap_positivas": 0.9951,
+      "precision_positivas": 0.95,
+      "recall_positivas": 0.9661,
+      "recall_star": 0.9487,
+      "recall_M": 0.5714,
+      "recall_L": 0.7812,
+      "recall_T": 0.9388,
+      "recall_Y": 0.5
+    }
+  },
+  "D_catalogo_spherex_5clases": {
+    "estado": "OK",
+    "elegido": "rf",
+    "n_variables": 28,
+    "poblacion": "spherex",
+    "cv_macro_f1": {
+      "rf": 0.7563,
+      "xgb": 0.7459,
+      "mlp": 0.7385
+    },
+    "test_elegido": {
+      "balanced_accuracy": 0.8066,
+      "macro_f1": 0.8325,
+      "ap_positivas": 0.9934,
+      "precision_positivas": 0.9344,
+      "recall_positivas": 0.9661,
+      "recall_star": 1.0,
+      "recall_M": 0.619,
+      "recall_L": 0.875,
+      "recall_T": 0.9388,
+      "recall_Y": 0.6
+    }
+  },
+  "E_servible_binario": {
+    "estado": "OK",
+    "elegido": "rf",
+    "n_variables": 10,
+    "poblacion": "spherex",
+    "cv_macro_f1": {
+      "rf": 0.9455,
+      "xgb": 0.941,
+      "mlp": 0.9197
+    },
+    "test_elegido": {
+      "balanced_accuracy": 0.9583,
+      "macro_f1": 0.9583,
+      "ap_positivas": 0.9924,
+      "precision_positivas": 0.9492,
+      "recall_positivas": 0.9492,
+      "recall_star": 0.9674,
+      "recall_cold_brown_dwarf": 0.9492
+    }
+  }
+}

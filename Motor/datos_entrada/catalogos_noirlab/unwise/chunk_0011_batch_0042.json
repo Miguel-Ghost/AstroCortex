@@ -1,0 +1,17 @@
+{
+  "source": "NOIRLab Astro Data Lab",
+  "catalog": "unwise_dr1.object",
+  "service": "https://datalab.noirlab.edu/query/query",
+  "queried_utc": "2026-11-14T19:46:44.815965+00:00",
+  "input": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\data\\processed\\objects.parquet",
+  "input_sha256": "1af75a55d9ece4196a5b497616cce6379d4bd7fcc7c2c83d27357bd6bead3b20",
+  "query_sql": "SELECT t.oid,t.ra_q,t.dec_q,c.unwise_objid,c.ra,c.dec,c.flux_w1,c.dflux_w1,c.flux_w2,c.dflux_w2,c.qf_w1,c.qf_w2,c.fracflux_w1,c.fracflux_w2,c.flags_unwise_w1,c.flags_unwise_w2,c.primary FROM (VALUES (11840,152.2971050337,-7.0027562196),(11841,152.1983067588,-7.4198712495),(11842,152.2564381926,-7.2293730734),(11843,152.3785467485,-7.3040165002),(11844,152.0284975530,-7.2359529225),(11845,152.1318970738,-7.1110460086),(11846,152.2396905693,-7.1128217966),(11847,152.0740203683,-7.0484266439),(11848,152.1517049112,-7.0027875783),(11849,152.4864091140,-7.0756334751)) AS t(oid,ra_q,dec_q), unwise_dr1.object AS c WHERE q3c_join(t.ra_q,t.dec_q,c.ra,c.dec,0.000833333333)",
+  "epoch_jyear": 2013.0,
+  "radius_arcsec": 3.0,
+  "rows_in": 10,
+  "rows_out": 10,
+  "response_bytes": 1672,
+  "response_sha256": "1ed3458517763657e29700d5178d4451da24f79839521aef92b037cde8e1bce3",
+  "seconds": 0.631,
+  "complete": true
+}

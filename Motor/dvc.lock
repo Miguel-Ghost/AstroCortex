@@ -1,0 +1,264 @@
+schema: '2.0'
+stages:
+  ty:
+    cmd: python main.py ty
+    deps:
+    - path: TY_PIPELINE/config/config.json
+      hash: md5
+      md5: 72a6a7cbfe9284391fcdc9b20a7b5013
+      size: 1864
+    - path: TY_PIPELINE/typipe
+      hash: md5
+      md5: b9ec922f87392e3b5ebf4f9bdd4607ae.dir
+      size: 128472
+      nfiles: 16
+    - path: datos_entrada
+      hash: md5
+      md5: 0eee3a01d762c58b1510a110690174ac.dir
+      size: 24853960
+      nfiles: 4758
+    - path: datos_extra_TY
+      hash: md5
+      md5: 9281968cb1a3d888e428e06f930864a2.dir
+      size: 21080745
+      nfiles: 477
+    outs:
+    - path: resultados_TY/run_004
+      hash: md5
+      md5: 3f6d25c9d74a0c30c59125e66c8bfceb.dir
+      size: 5965995
+      nfiles: 76
+  spherex:
+    cmd: python main.py descargar
+    deps:
+    - path: datos_entrada/processed/objects.parquet
+      hash: md5
+      md5: 1b2ae8283edea7ed5247638fbc7446ea
+      size: 937294
+    - path: motor/e1_indice.py
+      hash: md5
+      md5: a0fa84abbf59cd475d4b795bc6a24159
+      size: 10384
+    - path: motor/e2_fotometria.py
+      hash: md5
+      md5: 7e1b0056f17bf8526f74d4e8c4e1271a
+      size: 7447
+    - path: motor/e3_features_spherex.py
+      hash: md5
+      md5: 544f32a99b944a70ae6023e3cc30cb3f
+      size: 5180
+    - path: motor/spherex_io.py
+      hash: md5
+      md5: 1fbe906f0cd63601494569f4b562f9a7
+      size: 11570
+    params:
+      config/motor.json:
+        spherex.colecciones:
+        - spherex_dr1
+        spherex.exposiciones_por_detector: 3
+        spherex.psf_sigma_px:
+          '1': 0.415
+          '2': 0.383
+          '3': 0.391
+          '4': 0.516
+          '5': 0.517
+          '6': 0.522
+        spherex.recorte_px: 15
+        spherex.seleccion_por_clase:
+          star: 200
+          M: 100
+          L: 200
+          T: 300
+          Y: -1
+        spherex.snr_color_min: 3.0
+    outs:
+    - path: salidas/1_indice_spherex
+      hash: md5
+      md5: 0415b86b2652d472dd6b71a5174a822c.dir
+      size: 8729282
+      nfiles: 4
+    - path: salidas/2_fotometria_spherex
+      hash: md5
+      md5: e789a69b084839af16f40edbc183c383.dir
+      size: 2653026
+      nfiles: 3
+    - path: salidas/3_features_spherex
+      hash: md5
+      md5: aba5d4d862fae1a1b684793e06b01d68.dir
+      size: 262188
+      nfiles: 4
+  entrenar:
+    cmd: python main.py entrenar
+    deps:
+    - path: motor/e4_preprocesamiento.py
+      hash: md5
+      md5: aec26f35131afc6dfcafe5b716706258
+      size: 11166
+    - path: motor/e5_modelos.py
+      hash: md5
+      md5: 7a27ea4bf6464070ff13e53e16083392
+      size: 15802
+    - path: motor/e6_exportar.py
+      hash: md5
+      md5: 0a2461fe4e1c43e4d6baa881ce73f7a4
+      size: 10986
+    - path: motor/e7_informe.py
+      hash: md5
+      md5: 037f7c89059187f654eee096adc5f127
+      size: 5400
+    - path: motor/modelos.py
+      hash: md5
+      md5: f8018a3d67c61632ea7a23c5edea4d34
+      size: 8457
+    - path: resultados_TY/run_004
+      hash: md5
+      md5: 3f6d25c9d74a0c30c59125e66c8bfceb.dir
+      size: 5965995
+      nfiles: 76
+    - path: salidas/3_features_spherex
+      hash: md5
+      md5: aba5d4d862fae1a1b684793e06b01d68.dir
+      size: 262188
+      nfiles: 4
+    params:
+      config/motor.json:
+        conjuntos:
+          catalogo:
+            conjunto_ty: E1_nucleo_fisico
+            spherex: false
+          catalogo_mas_spherex:
+            conjunto_ty: E1_nucleo_fisico
+            spherex: true
+          servible:
+            variables:
+            - cw_W1_W2
+            - cw_mu
+            - Hrpm_W2
+            spherex: true
+        experimentos:
+        - nombre: A_catalogo_5clases
+          conjunto: catalogo
+          objetivo: 5clases
+          poblacion: todos
+        - nombre: B_catalogo_binario
+          conjunto: catalogo
+          objetivo: servible
+          poblacion: todos
+        - nombre: C_catalogo_5clases_subconjunto
+          conjunto: catalogo
+          objetivo: 5clases
+          poblacion: spherex
+        - nombre: D_catalogo_spherex_5clases
+          conjunto: catalogo_mas_spherex
+          objetivo: 5clases
+          poblacion: spherex
+        - nombre: E_servible_binario
+          conjunto: servible
+          objetivo: servible
+          poblacion: spherex_o_todos
+        exportar:
+          experimento: E_servible_binario
+          clase_fria: cold_brown_dwarf
+        modelos:
+          potencias_peso_clase:
+          - 0.25
+          rf:
+            n_estimators: 500
+            min_samples_leaf: 2
+            max_features: sqrt
+          xgb:
+            n_estimators: 400
+            max_depth: 6
+            learning_rate: 0.05
+            subsample: 0.8
+            colsample_bytree: 0.8
+            min_child_weight: 1.0
+            reg_lambda: 1.0
+          mlp:
+            capas:
+            - 128
+            - 64
+            dropout: 0.2
+            lr: 0.001
+            weight_decay: 0.0001
+            epocas_max: 150
+            paciencia: 15
+            batch: 256
+            recorte_percentil:
+            - 0.5
+            - 99.5
+          permutaciones: 2
+          precision_objetivo_fria: 0.9
+          regla_eleccion: mayor macro-F1 en la CV espacial de desarrollo; el 
+            test se evalua una sola vez, despues de elegir
+        objetivos:
+          5clases:
+            star: star
+            M: M
+            L: L
+            T: T
+            Y: Y
+          servible:
+            star: star
+            M: star
+            L: star
+            T: cold_brown_dwarf
+            Y: cold_brown_dwarf
+        preprocesamiento:
+          radio_duplicado_arcsec: 2.0
+          epoca_comun_duplicados: 2016.0
+          limite_fisico_color_mag: 15.0
+          outlier_mad_k: 6.0
+          max_faltante_dev: 0.97
+    outs:
+    - path: salidas/4_preprocesamiento
+      hash: md5
+      md5: d7e814a09969da0d005f5b257736340c.dir
+      size: 1185946
+      nfiles: 7
+    - path: salidas/5_modelos
+      hash: md5
+      md5: e8403f61a47a0ca0eab98de52e74c959.dir
+      size: 2937656
+      nfiles: 82
+    - path: salidas/6_exportar
+      hash: md5
+      md5: e410259a9a45f26565a62bba93c3aab6.dir
+      size: 2163946
+      nfiles: 8
+  promover:
+    cmd: python main.py promover
+    deps:
+    - path: salidas/5_modelos
+      hash: md5
+      md5: e8403f61a47a0ca0eab98de52e74c959.dir
+      size: 2937656
+      nfiles: 82
+    - path: salidas/6_exportar
+      hash: md5
+      md5: e410259a9a45f26565a62bba93c3aab6.dir
+      size: 2163946
+      nfiles: 8
+    outs:
+    - path: artifacts/models/actual
+      hash: md5
+      md5: d134919a8b41d155a0189689c33644a2.dir
+      size: 1081973
+      nfiles: 4
+    - path: reports/INFORME_MOTOR.md
+      hash: md5
+      md5: 74bc3cd3d35bbb7a61d35a9a6ace41ae
+      size: 8412
+    - path: reports/experiments
+      hash: md5
+      md5: 21ca0976624e2756e90265dfaf07b463.dir
+      size: 986028
+      nfiles: 70
+    - path: reports/metrics/comparacion_global.csv
+      hash: md5
+      md5: 6f0d40e372c71433ee136f78cbe19713
+      size: 2999
+    - path: reports/metrics/resumen.json
+      hash: md5
+      md5: 08a72f24a05e92b5000f6484bc0cc074
+      size: 2542

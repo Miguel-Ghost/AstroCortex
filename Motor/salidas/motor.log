@@ -1,0 +1,110 @@
+2026-11-16 01:34:19,328 INFO === 1_indice_spherex ===
+2026-11-16 01:34:20,401 INFO posiciones: 10971 por CatWISE, 879 por objects
+2026-11-16 01:34:20,417 INFO selección SPHEREx: {'T': 918, 'star': 200, 'L': 200, 'M': 100, 'Y': 50, "control:Barnard's Star": 1, 'control:Epsilon Indi B': 1, 'control:WISE 0855-0714': 1, 'control:RW Aurigae': 1, 'control:R Draconis': 1}
+2026-11-16 01:34:20,453 INFO SIA: 1473 objetos pendientes de 1473 (concurrencia 6)
+2026-11-16 01:40:46,733 INFO === 1_indice_spherex ===
+2026-11-16 01:40:47,025 INFO selección existente: 1473 objetos
+2026-11-16 01:40:47,047 INFO SIA: 1425 objetos pendientes de 1473 (concurrencia 6)
+2026-11-16 01:47:13,338 INFO SIA 50/1425 (0.13 obj/s, faltan ~177 min, errores 0)
+2026-11-16 01:53:45,455 INFO === 1_indice_spherex ===
+2026-11-16 01:53:46,851 INFO posiciones: 10971 por CatWISE, 879 por objects
+2026-11-16 01:53:46,876 INFO selección SPHEREx: {'T': 300, 'star': 200, 'L': 200, 'M': 100, 'Y': 50, "control:Barnard's Star": 1, 'control:Epsilon Indi B': 1, 'control:WISE 0855-0714': 1, 'control:RW Aurigae': 1, 'control:R Draconis': 1}
+2026-11-16 01:53:46,892 INFO SIA: 717 objetos pendientes de 855 (concurrencia 16)
+2026-11-16 01:55:15,371 INFO SIA 50/717 (0.57 obj/s, faltan ~20 min, errores 0)
+2026-11-16 01:56:20,690 INFO SIA 100/717 (0.65 obj/s, faltan ~16 min, errores 0)
+2026-11-16 01:57:31,920 INFO SIA 150/717 (0.67 obj/s, faltan ~14 min, errores 0)
+2026-11-16 01:59:06,784 INFO SIA 200/717 (0.63 obj/s, faltan ~14 min, errores 17)
+2026-11-16 02:00:20,177 INFO SIA 250/717 (0.64 obj/s, faltan ~12 min, errores 17)
+2026-11-16 02:01:39,159 INFO SIA 300/717 (0.64 obj/s, faltan ~11 min, errores 19)
+2026-11-16 02:02:47,760 INFO SIA 350/717 (0.65 obj/s, faltan ~9 min, errores 19)
+2026-11-16 02:03:56,792 INFO SIA 400/717 (0.66 obj/s, faltan ~8 min, errores 19)
+2026-11-16 02:05:13,886 INFO SIA 450/717 (0.66 obj/s, faltan ~7 min, errores 19)
+2026-11-16 02:06:28,122 INFO SIA 500/717 (0.66 obj/s, faltan ~6 min, errores 20)
+2026-11-16 02:07:38,729 INFO SIA 550/717 (0.66 obj/s, faltan ~4 min, errores 20)
+2026-11-16 02:08:46,801 INFO SIA 600/717 (0.67 obj/s, faltan ~3 min, errores 20)
+2026-11-16 02:09:59,655 INFO SIA 650/717 (0.67 obj/s, faltan ~2 min, errores 21)
+2026-11-16 02:11:12,739 INFO SIA 700/717 (0.67 obj/s, faltan ~0 min, errores 21)
+2026-11-16 02:11:40,553 INFO SIA 717/717 (0.67 obj/s, faltan ~0 min, errores 21)
+2026-11-16 02:11:44,106 INFO === 2_fotometria_spherex ===
+2026-11-16 02:11:48,122 INFO fotometría: 15012 lecturas pendientes de 15012 (concurrencia 64)
+2026-11-16 02:12:35,534 INFO fotometría 500/15012 (10.5 lecturas/s, faltan ~23 min)
+2026-11-16 02:13:17,197 INFO fotometría 1000/15012 (11.2 lecturas/s, faltan ~21 min)
+2026-11-16 02:13:58,422 INFO fotometría 1500/15012 (11.5 lecturas/s, faltan ~20 min)
+2026-11-16 02:14:41,215 INFO fotometría 2000/15012 (11.6 lecturas/s, faltan ~19 min)
+2026-11-16 02:15:23,260 INFO fotometría 2500/15012 (11.6 lecturas/s, faltan ~18 min)
+2026-11-16 02:16:03,648 INFO fotometría 3000/15012 (11.7 lecturas/s, faltan ~17 min)
+2026-11-16 02:16:45,859 INFO fotometría 3500/15012 (11.8 lecturas/s, faltan ~16 min)
+2026-11-16 02:17:27,877 INFO fotometría 4000/15012 (11.8 lecturas/s, faltan ~16 min)
+2026-11-16 02:18:09,483 INFO fotometría 4500/15012 (11.8 lecturas/s, faltan ~15 min)
+2026-11-16 02:18:50,132 INFO fotometría 5000/15012 (11.8 lecturas/s, faltan ~14 min)
+2026-11-16 02:19:32,386 INFO fotometría 5500/15012 (11.8 lecturas/s, faltan ~13 min)
+2026-11-16 02:20:16,402 INFO fotometría 6000/15012 (11.8 lecturas/s, faltan ~13 min)
+2026-11-16 02:20:59,711 INFO fotometría 6500/15012 (11.8 lecturas/s, faltan ~12 min)
+2026-11-16 02:21:42,501 INFO fotometría 7000/15012 (11.8 lecturas/s, faltan ~11 min)
+2026-11-16 02:22:24,855 INFO fotometría 7500/15012 (11.8 lecturas/s, faltan ~11 min)
+2026-11-16 02:23:07,553 INFO fotometría 8000/15012 (11.8 lecturas/s, faltan ~10 min)
+2026-11-16 02:23:50,508 INFO fotometría 8500/15012 (11.8 lecturas/s, faltan ~9 min)
+2026-11-16 02:24:32,405 INFO fotometría 9000/15012 (11.8 lecturas/s, faltan ~9 min)
+2026-11-16 02:25:18,078 INFO fotometría 9500/15012 (11.7 lecturas/s, faltan ~8 min)
+2026-11-16 02:26:01,513 INFO fotometría 10000/15012 (11.7 lecturas/s, faltan ~7 min)
+2026-11-16 02:26:43,410 INFO fotometría 10500/15012 (11.7 lecturas/s, faltan ~6 min)
+2026-11-16 02:27:25,464 INFO fotometría 11000/15012 (11.7 lecturas/s, faltan ~6 min)
+2026-11-16 02:28:08,304 INFO fotometría 11500/15012 (11.7 lecturas/s, faltan ~5 min)
+2026-11-16 02:28:49,018 INFO fotometría 12000/15012 (11.8 lecturas/s, faltan ~4 min)
+2026-11-16 02:29:33,108 INFO fotometría 12500/15012 (11.7 lecturas/s, faltan ~4 min)
+2026-11-16 02:30:14,647 INFO fotometría 13000/15012 (11.7 lecturas/s, faltan ~3 min)
+2026-11-16 02:30:57,181 INFO fotometría 13500/15012 (11.7 lecturas/s, faltan ~2 min)
+2026-11-16 02:31:46,626 INFO fotometría 14000/15012 (11.7 lecturas/s, faltan ~1 min)
+2026-11-16 02:31:50,701 INFO === 4_preprocesamiento ===
+2026-11-16 02:31:51,043 INFO TY_PIPELINE usado: /workspace/CLASIFICADOR_VAST/resultados_TY/run_004
+2026-11-16 02:31:51,043 INFO sin variables SPHEREx (etapas 1-3 no ejecutadas): solo catálogo
+2026-11-16 02:31:52,107 INFO duplicados: 34 grupos, 35 filas quitadas
+2026-11-16 02:31:52,295 INFO === 5_modelos ===
+2026-11-16 02:31:52,761 INFO == A_catalogo_5clases: 21 variables, dev 9445, test 2370, clases {'star': 6371, 'M': 736, 'L': 1563, 'T': 735, 'Y': 40}
+2026-11-16 02:32:01,037 INFO A_catalogo_5clases rf: potencia 0.25, CV {'balanced_accuracy': 0.7241, 'macro_f1': 0.7531, 'ap_positivas': 0.9257, 'precision_positivas': 0.9442, 'recall_positivas': 0.8297, 'recall_star': 0.9851, 'recall_M': 0.7092, 'recall_L': 0.8637, 'recall_T': 0.8122, 'recall_Y': 0.25} (8 s)
+2026-11-16 02:32:29,764 INFO A_catalogo_5clases xgb: potencia 0.25, CV {'balanced_accuracy': 0.7528, 'macro_f1': 0.7808, 'ap_positivas': 0.9257, 'precision_positivas': 0.9338, 'recall_positivas': 0.8374, 'recall_star': 0.9846, 'recall_M': 0.7188, 'recall_L': 0.865, 'recall_T': 0.8204, 'recall_Y': 0.375} (29 s)
+2026-11-16 02:32:32,075 INFO fotometría 14500/15012 (11.7 lecturas/s, faltan ~1 min)
+2026-11-16 02:33:42,869 INFO A_catalogo_5clases mlp: potencia 0.25, CV {'balanced_accuracy': 0.7291, 'macro_f1': 0.7469, 'ap_positivas': 0.9149, 'precision_positivas': 0.9349, 'recall_positivas': 0.8335, 'recall_star': 0.9832, 'recall_M': 0.7011, 'recall_L': 0.8362, 'recall_T': 0.8, 'recall_Y': 0.325} (73 s)
+2026-11-16 02:33:44,056 INFO fotometría 15000/15012 (11.4 lecturas/s, faltan ~0 min)
+2026-11-16 02:33:44,902 INFO fotometría 15012/15012 (11.4 lecturas/s, faltan ~0 min)
+2026-11-16 02:33:45,243 INFO === 3_features_spherex ===
+2026-11-16 02:33:45,313 INFO FIN: {'terminadas': '4/7', 'en_curso': ['5_modelos'], 'fallidas': [], 'global': 'EN_CURSO'}
+2026-11-16 02:36:49,267 INFO A_catalogo_5clases: elegido xgb → test {'balanced_accuracy': 0.7625, 'macro_f1': 0.7814, 'ap_positivas': 0.9456, 'precision_positivas': 0.9205, 'recall_positivas': 0.8394, 'recall_star': 0.9919, 'recall_M': 0.6467, 'recall_L': 0.8706, 'recall_T': 0.8033, 'recall_Y': 0.5}
+2026-11-16 02:36:49,560 INFO == B_catalogo_binario: 21 variables, dev 9445, test 2370, clases {'star': 8670, 'cold_brown_dwarf': 775}
+2026-11-16 02:36:58,967 INFO B_catalogo_binario rf: potencia 0.25, CV {'balanced_accuracy': 0.9129, 'macro_f1': 0.9384, 'ap_positivas': 0.9277, 'precision_positivas': 0.9512, 'recall_positivas': 0.8297, 'recall_star': 0.9962, 'recall_cold_brown_dwarf': 0.8297} (9 s)
+2026-11-16 02:37:01,807 INFO B_catalogo_binario xgb: potencia 0.25, CV {'balanced_accuracy': 0.9151, 'macro_f1': 0.9377, 'ap_positivas': 0.9254, 'precision_positivas': 0.9418, 'recall_positivas': 0.8348, 'recall_star': 0.9954, 'recall_cold_brown_dwarf': 0.8348} (3 s)
+2026-11-16 02:37:40,882 INFO B_catalogo_binario mlp: potencia 0.25, CV {'balanced_accuracy': 0.9157, 'macro_f1': 0.9378, 'ap_positivas': 0.9311, 'precision_positivas': 0.9405, 'recall_positivas': 0.8361, 'recall_star': 0.9953, 'recall_cold_brown_dwarf': 0.8361} (39 s)
+2026-11-16 02:41:54,969 INFO === 4_preprocesamiento ===
+2026-11-16 02:41:55,270 INFO TY_PIPELINE usado: /workspace/CLASIFICADOR_VAST/resultados_TY/run_004
+2026-11-16 02:41:55,274 INFO variables SPHEREx: 850 objetos
+2026-11-16 02:41:56,357 INFO duplicados: 34 grupos, 35 filas quitadas
+2026-11-16 02:41:56,619 INFO === 5_modelos ===
+2026-11-16 02:41:57,093 INFO == A_catalogo_5clases: 21 variables, dev 9445, test 2370, clases {'star': 6371, 'M': 736, 'L': 1563, 'T': 735, 'Y': 40}
+2026-11-16 02:42:05,703 INFO A_catalogo_5clases rf: potencia 0.25, CV {'balanced_accuracy': 0.7241, 'macro_f1': 0.7531, 'ap_positivas': 0.9257, 'precision_positivas': 0.9442, 'recall_positivas': 0.8297, 'recall_star': 0.9851, 'recall_M': 0.7092, 'recall_L': 0.8637, 'recall_T': 0.8122, 'recall_Y': 0.25} (9 s)
+2026-11-16 02:42:47,350 INFO A_catalogo_5clases xgb: potencia 0.25, CV {'balanced_accuracy': 0.7528, 'macro_f1': 0.7808, 'ap_positivas': 0.9257, 'precision_positivas': 0.9338, 'recall_positivas': 0.8374, 'recall_star': 0.9846, 'recall_M': 0.7188, 'recall_L': 0.865, 'recall_T': 0.8204, 'recall_Y': 0.375} (42 s)
+2026-11-16 02:43:45,964 INFO A_catalogo_5clases mlp: potencia 0.25, CV {'balanced_accuracy': 0.7291, 'macro_f1': 0.7469, 'ap_positivas': 0.9149, 'precision_positivas': 0.9349, 'recall_positivas': 0.8335, 'recall_star': 0.9832, 'recall_M': 0.7011, 'recall_L': 0.8362, 'recall_T': 0.8, 'recall_Y': 0.325} (59 s)
+2026-11-16 02:47:21,404 INFO A_catalogo_5clases: elegido xgb → test {'balanced_accuracy': 0.7625, 'macro_f1': 0.7814, 'ap_positivas': 0.9456, 'precision_positivas': 0.9205, 'recall_positivas': 0.8394, 'recall_star': 0.9919, 'recall_M': 0.6467, 'recall_L': 0.8706, 'recall_T': 0.8033, 'recall_Y': 0.5}
+2026-11-16 02:47:21,427 INFO == B_catalogo_binario: 21 variables, dev 9445, test 2370, clases {'star': 8670, 'cold_brown_dwarf': 775}
+2026-11-16 02:47:29,610 INFO B_catalogo_binario rf: potencia 0.25, CV {'balanced_accuracy': 0.9129, 'macro_f1': 0.9384, 'ap_positivas': 0.9277, 'precision_positivas': 0.9512, 'recall_positivas': 0.8297, 'recall_star': 0.9962, 'recall_cold_brown_dwarf': 0.8297} (8 s)
+2026-11-16 02:47:36,644 INFO B_catalogo_binario xgb: potencia 0.25, CV {'balanced_accuracy': 0.9151, 'macro_f1': 0.9377, 'ap_positivas': 0.9254, 'precision_positivas': 0.9418, 'recall_positivas': 0.8348, 'recall_star': 0.9954, 'recall_cold_brown_dwarf': 0.8348} (7 s)
+2026-11-16 02:48:15,650 INFO B_catalogo_binario mlp: potencia 0.25, CV {'balanced_accuracy': 0.9157, 'macro_f1': 0.9378, 'ap_positivas': 0.9311, 'precision_positivas': 0.9405, 'recall_positivas': 0.8361, 'recall_star': 0.9953, 'recall_cold_brown_dwarf': 0.8361} (39 s)
+2026-11-16 02:50:24,322 INFO B_catalogo_binario: elegido rf → test {'balanced_accuracy': 0.9122, 'macro_f1': 0.9359, 'ap_positivas': 0.9385, 'precision_positivas': 0.9412, 'recall_positivas': 0.829, 'recall_star': 0.9954, 'recall_cold_brown_dwarf': 0.829}
+2026-11-16 02:50:24,337 INFO == C_catalogo_5clases_subconjunto: 21 variables, dev 697, test 151, clases {'star': 160, 'M': 79, 'L': 167, 'T': 251, 'Y': 40}
+2026-11-16 02:50:30,913 INFO C_catalogo_5clases_subconjunto rf: potencia 0.25, CV {'balanced_accuracy': 0.7325, 'macro_f1': 0.75, 'ap_positivas': 0.9845, 'precision_positivas': 0.9094, 'recall_positivas': 0.9656, 'recall_star': 0.8938, 'recall_M': 0.5949, 'recall_L': 0.8443, 'recall_T': 0.9044, 'recall_Y': 0.425} (7 s)
+2026-11-16 02:50:50,541 INFO C_catalogo_5clases_subconjunto xgb: potencia 0.25, CV {'balanced_accuracy': 0.7203, 'macro_f1': 0.7358, 'ap_positivas': 0.985, 'precision_positivas': 0.9128, 'recall_positivas': 0.9347, 'recall_star': 0.8812, 'recall_M': 0.6456, 'recall_L': 0.8443, 'recall_T': 0.8805, 'recall_Y': 0.35} (20 s)
+2026-11-16 02:50:56,944 INFO C_catalogo_5clases_subconjunto mlp: potencia 0.25, CV {'balanced_accuracy': 0.7156, 'macro_f1': 0.7181, 'ap_positivas': 0.9757, 'precision_positivas': 0.9438, 'recall_positivas': 0.866, 'recall_star': 0.8938, 'recall_M': 0.6329, 'recall_L': 0.7006, 'recall_T': 0.8008, 'recall_Y': 0.55} (6 s)
+2026-11-16 02:52:27,636 INFO C_catalogo_5clases_subconjunto: elegido rf → test {'balanced_accuracy': 0.748, 'macro_f1': 0.7729, 'ap_positivas': 0.9951, 'precision_positivas': 0.95, 'recall_positivas': 0.9661, 'recall_star': 0.9487, 'recall_M': 0.5714, 'recall_L': 0.7812, 'recall_T': 0.9388, 'recall_Y': 0.5}
+2026-11-16 02:52:27,650 INFO == D_catalogo_spherex_5clases: 28 variables, dev 697, test 151, clases {'star': 160, 'M': 79, 'L': 167, 'T': 251, 'Y': 40}
+2026-11-16 02:52:34,545 INFO D_catalogo_spherex_5clases rf: potencia 0.25, CV {'balanced_accuracy': 0.7433, 'macro_f1': 0.7563, 'ap_positivas': 0.9879, 'precision_positivas': 0.942, 'recall_positivas': 0.9485, 'recall_star': 0.9313, 'recall_M': 0.6456, 'recall_L': 0.8802, 'recall_T': 0.8845, 'recall_Y': 0.375} (7 s)
+2026-11-16 02:52:52,376 INFO D_catalogo_spherex_5clases xgb: potencia 0.25, CV {'balanced_accuracy': 0.7325, 'macro_f1': 0.7459, 'ap_positivas': 0.9869, 'precision_positivas': 0.9394, 'recall_positivas': 0.9588, 'recall_star': 0.9125, 'recall_M': 0.6582, 'recall_L': 0.8743, 'recall_T': 0.8924, 'recall_Y': 0.325} (18 s)
+2026-11-16 02:52:58,358 INFO D_catalogo_spherex_5clases mlp: potencia 0.25, CV {'balanced_accuracy': 0.7297, 'macro_f1': 0.7385, 'ap_positivas': 0.9785, 'precision_positivas': 0.9255, 'recall_positivas': 0.8969, 'recall_star': 0.925, 'recall_M': 0.6203, 'recall_L': 0.8204, 'recall_T': 0.8327, 'recall_Y': 0.45} (6 s)
+2026-11-16 02:55:13,377 INFO D_catalogo_spherex_5clases: elegido rf → test {'balanced_accuracy': 0.8066, 'macro_f1': 0.8325, 'ap_positivas': 0.9934, 'precision_positivas': 0.9344, 'recall_positivas': 0.9661, 'recall_star': 1.0, 'recall_M': 0.619, 'recall_L': 0.875, 'recall_T': 0.9388, 'recall_Y': 0.6}
+2026-11-16 02:55:13,391 INFO == E_servible_binario: 10 variables, dev 697, test 151, clases {'star': 406, 'cold_brown_dwarf': 291}
+2026-11-16 02:55:20,681 INFO E_servible_binario rf: potencia 0.25, CV {'balanced_accuracy': 0.9457, 'macro_f1': 0.9455, 'ap_positivas': 0.983, 'precision_positivas': 0.9349, 'recall_positivas': 0.9381, 'recall_star': 0.9532, 'recall_cold_brown_dwarf': 0.9381} (7 s)
+2026-11-16 02:55:24,223 INFO E_servible_binario xgb: potencia 0.25, CV {'balanced_accuracy': 0.941, 'macro_f1': 0.941, 'ap_positivas': 0.9818, 'precision_positivas': 0.9313, 'recall_positivas': 0.9313, 'recall_star': 0.9507, 'recall_cold_brown_dwarf': 0.9313} (4 s)
+2026-11-16 02:55:31,531 INFO E_servible_binario mlp: potencia 0.25, CV {'balanced_accuracy': 0.9165, 'macro_f1': 0.9197, 'ap_positivas': 0.9741, 'precision_positivas': 0.9309, 'recall_positivas': 0.8797, 'recall_star': 0.9532, 'recall_cold_brown_dwarf': 0.8797} (7 s)
+2026-11-16 02:56:18,303 INFO E_servible_binario: elegido rf → test {'balanced_accuracy': 0.9583, 'macro_f1': 0.9583, 'ap_positivas': 0.9924, 'precision_positivas': 0.9492, 'recall_positivas': 0.9492, 'recall_star': 0.9674, 'recall_cold_brown_dwarf': 0.9492}
+2026-11-16 02:56:18,308 INFO === 6_exportar ===
+2026-11-16 02:56:21,182 INFO === 7_informe ===
+2026-11-16 02:56:21,400 INFO FIN: {'terminadas': '7/7', 'en_curso': [], 'fallidas': [], 'global': 'COMPLETO'}
+2026-11-15 22:45:21,580 INFO posiciones: 10971 por CatWISE, 879 por objects

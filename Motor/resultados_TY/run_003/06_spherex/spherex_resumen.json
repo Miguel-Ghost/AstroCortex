@@ -1,0 +1,31 @@
+{
+  "espectros": {
+    "objetos": 2,
+    "filas_ok": 545,
+    "filas_total": 1591,
+    "uso": "DESCRIPTIVO_N_PEQUENO; no entra al clasificador"
+  },
+  "fits_qa": {
+    "status": "OK",
+    "archivos": 1927,
+    "por_objetivo_estado": {
+      "Barnard's Star": {
+        "OK": 364
+      },
+      "Epsilon Indi B": {
+        "OK": 421
+      },
+      "R Draconis": {
+        "OK": 548
+      },
+      "RW Aurigae": {
+        "OK": 336
+      },
+      "WISE 0855-0714": {
+        "OK": 258
+      }
+    },
+    "errores": 0,
+    "faltantes": 0
+  }
+}

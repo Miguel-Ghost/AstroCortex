@@ -1,0 +1,69 @@
+2026-11-15 02:36:04,224 INFO typipe 1.0.0 | salida C:\Users\Paolo\Downloads\NASA SPACE APPS\CLASIFICADOR_TY\resultados_TY\run_003
+2026-11-15 02:36:04,230 INFO === 00_inventario ===
+2026-11-15 02:36:04,780 INFO inventario: 11850 objetos {'star': 8000, 'L': 1958, 'M': 924, 'T': 918, 'Y': 50}; FITS 1927/1927
+2026-11-15 02:36:04,793 INFO === 01_variables ===
+2026-11-15 02:36:05,778 INFO catwise: {'files': 593, 'rows': 11242, 'objects_with_candidates': 10971, 'matched': 10971, 'ambiguous': 269}
+2026-11-15 02:36:06,757 INFO allwise: {'files': 593, 'rows': 9802, 'objects_with_candidates': 9801, 'matched': 9801, 'ambiguous': 1}
+2026-11-15 02:36:07,795 INFO tmass: {'files': 593, 'rows': 9279, 'objects_with_candidates': 9236, 'matched': 9236, 'ambiguous': 43}
+2026-11-15 02:36:08,869 INFO unwise: {'files': 593, 'rows': 12593, 'objects_with_candidates': 11287, 'matched': 11287, 'ambiguous': 1206}
+2026-11-15 02:36:12,379 INFO catwise_full: {'files': 119, 'rows': 11242, 'objects_with_candidates': 10971, 'columnas': ['w1mpro_pm', 'w1sigmpro_pm', 'w2mpro_pm', 'w2sigmpro_pm', 'sigpmra', 'sigpmdec', 'par_pm', 'par_pmsig', 'pmra', 'pmdec', 'w1rchi2_pm', 'w2rchi2_pm', 'nb', 'na'], 'faltan': []}
+2026-11-15 02:36:15,263 INFO allwise_full: {'files': 119, 'rows': 9802, 'objects_with_candidates': 9801, 'columnas': ['w3mpro', 'w3sigmpro', 'w3snr', 'w4mpro', 'w4sigmpro', 'w4snr', 'ph_qual', 'cc_flags', 'w1mpro', 'w2mpro', 'ext_flg'], 'faltan': []}
+2026-11-15 02:36:15,394 INFO === 02_particion ===
+2026-11-15 02:36:16,588 INFO partición: test {'star': 1605, 'L': 394, 'M': 184, 'T': 183, 'Y': 10}
+2026-11-15 02:36:16,599 INFO === 03_eda ===
+2026-11-15 02:36:21,801 INFO EDA descriptivo: 16 tablas
+2026-11-15 02:36:27,039 INFO === 04_importancia ===
+2026-11-15 02:41:21,216 INFO importancia E1_nucleo_fisico: {'n_variables': 21, 'bal_acc_oof': 0.7495915437752576, 'n_clusters': 8, 'cluster_dominante': 'cw_W1_W2+6más', 'cuota_dominante': 0.6493669109329225, 'boruta_confirmadas': ['cw_W1_W2', 'aw_W1_W2', 'uw_W1_W2', 'J_H', 'H_Ks', 'J_Ks', 'J_W1', 'J_W2', 'H_W2', 'Ks_W2', 'cw_mu', 'cw_log_mu', 'Hrpm_W2', 'Hrpm_J', 'W2_W3', 'W1_W3', 'cw_W1_W2_pm', 'Hrpm_W2_pm', 'cw_mu_snr'], 'top_consenso': ['uw_W1_W2', 'cw_W1_W2_pm', 'aw_W1_W2', 'cw_W1_W2', 'J_W2', 'Ks_W2', 'H_W2', 'cw_mu_snr']}
+2026-11-15 02:49:10,956 INFO importancia E2_nucleo_mas_gaia: {'n_variables': 30, 'bal_acc_oof': 0.8090690872909894, 'n_clusters': 13, 'cluster_dominante': 'cw_W1_W2+6más', 'cuota_dominante': 0.35892154616946714, 'boruta_confirmadas': ['cw_W1_W2', 'aw_W1_W2', 'uw_W1_W2', 'J_H', 'H_Ks', 'J_Ks', 'J_W1', 'J_W2', 'H_W2', 'Ks_W2', 'cw_mu', 'cw_log_mu', 'Hrpm_W2', 'Hrpm_J', 'W1_W3', 'Hrpm_W2_pm', 'cw_mu_snr', 'cw_W1_W2_pm', 'gaia_parallax', 'gaia_Cstar', 'gaia_BP_RP', 'gaia_plx_snr', 'gaia_G_J', 'gaia_G_W2', 'gaia_M_W2', 'gaia_mu', 'W2_W3', 'gaia_ruwe'], 'top_consenso': ['cw_W1_W2_pm', 'uw_W1_W2', 'aw_W1_W2', 'H_W2', 'gaia_parallax', 'gaia_BP_RP', 'cw_W1_W2', 'Ks_W2']}
+2026-11-15 02:49:11,019 INFO === 05_modelo ===
+2026-11-15 02:49:34,291 INFO peso de clase potencia 1.0: {'bal_acc': 0.7588, 'macro_f1': 0.6941, 'ap_TY': 0.9187, 'recall_T': 0.831, 'recall_Y': 0.45, 'precision_Y': 0.034, 'precision_TY': 0.5797448165869219}
+2026-11-15 02:49:58,021 INFO peso de clase potencia 0.5: {'bal_acc': 0.7496, 'macro_f1': 0.7426, 'ap_TY': 0.9236, 'recall_T': 0.841, 'recall_Y': 0.375, 'precision_Y': 0.5, 'precision_TY': 0.6401151631477927}
+2026-11-15 02:50:22,126 INFO peso de clase potencia 0.25: {'bal_acc': 0.7492, 'macro_f1': 0.7786, 'ap_TY': 0.9248, 'recall_T': 0.819, 'recall_Y': 0.35, 'precision_Y': 0.56, 'precision_TY': 0.9335260115606936}
+2026-11-15 02:50:47,020 INFO experimento E1_nucleo_fisico: {'bal_acc': 0.7492, 'macro_f1': 0.7786, 'ap_TY': 0.9248, 'recall_T': 0.819, 'recall_Y': 0.35, 'precision_Y': 0.56, 'precision_TY': 0.9335260115606936} | repesado {'bal_acc': 0.6486, 'macro_f1': 0.6853, 'ap_TY': 0.9638, 'recall_T': 0.819, 'recall_Y': 0.35, 'precision_Y': 0.583, 'precision_TY': 0.9335260115606936}
+2026-11-15 02:51:08,901 INFO experimento E1b_sin_extra: {'bal_acc': 0.7079, 'macro_f1': 0.7247, 'ap_TY': 0.921, 'recall_T': 0.81, 'recall_Y': 0.175, 'precision_Y': 0.233, 'precision_TY': 0.918918918918919} | repesado {'bal_acc': 0.615, 'macro_f1': 0.6424, 'ap_TY': 0.9595, 'recall_T': 0.81, 'recall_Y': 0.175, 'precision_Y': 0.284, 'precision_TY': 0.918918918918919}
+2026-11-15 02:51:33,954 INFO experimento E1c_mas_paralaje_wise: {'bal_acc': 0.7194, 'macro_f1': 0.7428, 'ap_TY': 0.9259, 'recall_T': 0.814, 'recall_Y': 0.225, 'precision_Y': 0.36, 'precision_TY': 0.934971098265896} | repesado {'bal_acc': 0.6161, 'macro_f1': 0.6449, 'ap_TY': 0.9636, 'recall_T': 0.814, 'recall_Y': 0.225, 'precision_Y': 0.375, 'precision_TY': 0.934971098265896}
+2026-11-15 02:51:59,956 INFO experimento E2_nucleo_mas_gaia: {'bal_acc': 0.8057, 'macro_f1': 0.8228, 'ap_TY': 0.9835, 'recall_T': 0.928, 'recall_Y': 0.375, 'precision_Y': 0.556, 'precision_TY': 0.9494163424124513} | repesado {'bal_acc': 0.7209, 'macro_f1': 0.7402, 'ap_TY': 0.9724, 'recall_T': 0.928, 'recall_Y': 0.375, 'precision_Y': 0.577, 'precision_TY': 0.9494163424124513}
+2026-11-15 02:52:23,875 INFO experimento E3_nucleo_mas_brillo: {'bal_acc': 0.7162, 'macro_f1': 0.7365, 'ap_TY': 0.9299, 'recall_T': 0.816, 'recall_Y': 0.175, 'precision_Y': 0.28, 'precision_TY': 0.9376811594202898} | repesado {'bal_acc': 0.6201, 'macro_f1': 0.653, 'ap_TY': 0.9648, 'recall_T': 0.816, 'recall_Y': 0.175, 'precision_Y': 0.35, 'precision_TY': 0.9376811594202898}
+2026-11-15 02:52:45,707 INFO experimento E0_solo_atajos: {'bal_acc': 0.6839, 'macro_f1': 0.6742, 'ap_TY': 0.9541, 'recall_T': 0.846, 'recall_Y': 0.1, 'precision_Y': 0.222, 'precision_TY': 0.9221311475409836} | repesado {'bal_acc': 0.6013, 'macro_f1': 0.5997, 'ap_TY': 0.9479, 'recall_T': 0.846, 'recall_Y': 0.1, 'precision_Y': 0.222, 'precision_TY': 0.9221311475409836}
+2026-11-15 03:00:45,489 INFO E1_nucleo_fisico base {'limpio': {'bal_acc': 0.7492, 'macro_f1': 0.7786, 'ap_TY': 0.9248, 'recall_T': 0.819, 'recall_Y': 0.35, 'precision_Y': 0.56, 'precision_TY': 0.9335260115606936}, 'peor_caso_estres': 0.5463863125910196, 'cluster_mas_critico': 'cw_W1_W2+6más'} | robusto {'limpio': {'bal_acc': 0.7421, 'macro_f1': 0.7707, 'ap_TY': 0.9243, 'recall_T': 0.815, 'recall_Y': 0.325, 'precision_Y': 0.542, 'precision_TY': 0.9280575539568345}, 'peor_caso_estres': 0.6342006710229737, 'cluster_mas_critico': 'cw_W1_W2+6más'}
+2026-11-15 03:14:32,643 INFO E2_nucleo_mas_gaia base {'limpio': {'bal_acc': 0.8057, 'macro_f1': 0.8228, 'ap_TY': 0.9835, 'recall_T': 0.928, 'recall_Y': 0.375, 'precision_Y': 0.556, 'precision_TY': 0.9494163424124513}, 'peor_caso_estres': 0.7297018303163438, 'cluster_mas_critico': 'cw_W1_W2+6más'} | robusto {'limpio': {'bal_acc': 0.785, 'macro_f1': 0.8043, 'ap_TY': 0.9847, 'recall_T': 0.92, 'recall_Y': 0.275, 'precision_Y': 0.524, 'precision_TY': 0.9552042160737813}, 'peor_caso_estres': 0.7251500498456412, 'cluster_mas_critico': 'cw_W1_W2+6más'}
+2026-11-15 03:15:09,273 INFO === 06_spherex ===
+2026-11-15 03:15:09,411 INFO SPHEREx espectros: 2 objetos
+2026-11-15 03:15:09,755 INFO FITS QA 0/1927
+2026-11-15 03:15:24,107 INFO FITS QA 200/1927
+2026-11-15 03:15:39,588 INFO FITS QA 400/1927
+2026-11-15 03:15:59,765 INFO FITS QA 600/1927
+2026-11-15 03:16:20,183 INFO FITS QA 800/1927
+2026-11-15 03:16:40,070 INFO FITS QA 1000/1927
+2026-11-15 03:16:58,462 INFO FITS QA 1200/1927
+2026-11-15 03:17:16,255 INFO FITS QA 1400/1927
+2026-11-15 03:17:36,086 INFO FITS QA 1600/1927
+2026-11-15 03:17:55,738 INFO FITS QA 1800/1927
+2026-11-15 03:18:08,097 INFO === 07_extraccion_fits ===
+2026-11-15 03:18:08,407 INFO extracción FITS 0/1927
+2026-11-15 03:18:17,944 INFO extracción FITS 100/1927
+2026-11-15 03:18:27,763 INFO extracción FITS 200/1927
+2026-11-15 03:18:37,970 INFO extracción FITS 300/1927
+2026-11-15 03:18:48,437 INFO extracción FITS 400/1927
+2026-11-15 03:19:00,154 INFO extracción FITS 500/1927
+2026-11-15 03:19:12,662 INFO extracción FITS 600/1927
+2026-11-15 03:19:24,573 INFO extracción FITS 700/1927
+2026-11-15 03:19:36,386 INFO extracción FITS 800/1927
+2026-11-15 03:19:48,619 INFO extracción FITS 900/1927
+2026-11-15 03:20:00,850 INFO extracción FITS 1000/1927
+2026-11-15 03:20:12,616 INFO extracción FITS 1100/1927
+2026-11-15 03:20:23,714 INFO extracción FITS 1200/1927
+2026-11-15 03:20:34,162 INFO extracción FITS 1300/1927
+2026-11-15 03:20:45,191 INFO extracción FITS 1400/1927
+2026-11-15 03:20:56,262 INFO extracción FITS 1500/1927
+2026-11-15 03:21:07,973 INFO extracción FITS 1600/1927
+2026-11-15 03:21:20,105 INFO extracción FITS 1700/1927
+2026-11-15 03:21:32,925 INFO extracción FITS 1800/1927
+2026-11-15 03:21:45,487 INFO extracción FITS 1900/1927
+2026-11-15 03:21:48,578 INFO Barnard's Star: {'exposiciones': 364, 'limpias_para_astrometria': 0, 'mjd_rango': [60902.865380738, 61305.628686814], 'pm_catalogo_mas_yr': [-801.5509783684709, 10362.394206546573], 'plx_catalogo_mas': 546.975939730948}
+2026-11-15 03:21:48,756 INFO Epsilon Indi B: {'exposiciones': 421, 'limpias_para_astrometria': 314, 'mjd_rango': [60789.85618796, 61315.478741768], 'pm_catalogo_mas_yr': [3982.0, -2466.8], 'plx_catalogo_mas': 270.7, 'movimiento_propio': {'pmra': {'delta_mas_yr': -66.41436845624526, 'err_mas_yr': 11.093982357536047, 'catalogo_mas_yr': 3982.0, 'medido_mas_yr': 3915.585631543755, 'offset_medio_arcsec': 0.084990049031422, 'n': 209, 'chi2_red': 2.111811893381885}, 'pmdec': {'delta_mas_yr': -76.69957934248671, 'err_mas_yr': 12.50971709601336, 'catalogo_mas_yr': -2466.8, 'medido_mas_yr': -2543.499579342487, 'offset_medio_arcsec': -0.7827489426319271, 'n': 189, 'chi2_red': 2.198028693553976}}, 'residuo_mediano_arcsec': 0.8043272186113875, 'exposiciones_con_fotometria_limpia': 326}
+2026-11-15 03:21:48,759 INFO R Draconis: {'exposiciones': 548, 'limpias_para_astrometria': 0, 'mjd_rango': [60811.956495321, 61237.873900124], 'pm_catalogo_mas_yr': [-20.642811719160797, 6.148818852711324], 'plx_catalogo_mas': 1.2509180143740992}
+2026-11-15 03:21:48,929 INFO RW Aurigae: {'exposiciones': 336, 'limpias_para_astrometria': 18, 'mjd_rango': [60919.420312786, 61299.896562983], 'pm_catalogo_mas_yr': [2.6406431770317083, -27.397582540455325], 'plx_catalogo_mas': 6.406249329219477, 'movimiento_propio': {'pmra': {'delta_mas_yr': 157.11372471173777, 'err_mas_yr': 51.74576096016955, 'catalogo_mas_yr': 2.6406431770317083, 'medido_mas_yr': 159.75436788876948, 'offset_medio_arcsec': 0.4884645092772599, 'n': 16, 'chi2_red': 1.529564729416307}, 'pmdec': {'delta_mas_yr': 164.68618043416427, 'err_mas_yr': 48.3549812178665, 'catalogo_mas_yr': -27.397582540455325, 'medido_mas_yr': 137.28859789370895, 'offset_medio_arcsec': 0.15817708644278092, 'n': 16, 'chi2_red': 1.776332803556656}}, 'residuo_mediano_arcsec': 0.49913652863665625, 'exposiciones_con_fotometria_limpia': 18}
+2026-11-15 03:21:49,153 INFO WISE 0855-0714: {'exposiciones': 258, 'limpias_para_astrometria': 44, 'mjd_rango': [60800.70069465, 61174.287883944], 'pm_catalogo_mas_yr': [-8123.7, 673.2], 'plx_catalogo_mas': 439.0, 'movimiento_propio': {'pmra': {'delta_mas_yr': 8999.868429060576, 'err_mas_yr': 296.8856450067791, 'catalogo_mas_yr': -8123.7, 'medido_mas_yr': 876.1684290605763, 'offset_medio_arcsec': -3.3928385949904434, 'n': 42, 'chi2_red': 1.305260881181484}, 'pmdec': {'delta_mas_yr': -1056.308075709999, 'err_mas_yr': 262.8848850599391, 'catalogo_mas_yr': 673.2, 'medido_mas_yr': -383.10807570999896, 'offset_medio_arcsec': 5.8492924281804815, 'n': 41, 'chi2_red': 0.8040322098940776}}, 'residuo_mediano_arcsec': 7.395472627388081, 'exposiciones_con_fotometria_limpia': 218}
+2026-11-15 03:21:49,163 INFO === 08_informe ===
+2026-11-15 03:21:49,212 INFO FIN: {'completadas': '9/9', 'en_curso': [], 'fallidas': [], 'global': 'COMPLETO'}

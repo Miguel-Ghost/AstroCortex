@@ -1,0 +1,236 @@
+{
+  "pipeline_version": "1.0.0",
+  "created_utc": "2026-11-16T01:45:07+00:00",
+  "stages": {
+    "00_inventario": {
+      "status": "OK_WITH_WARNINGS",
+      "started_utc": "2026-11-16T01:45:07+00:00",
+      "finished_utc": "2026-11-16T01:45:08+00:00",
+      "seconds": 0.4,
+      "summary": {
+        "n_objects": 11850,
+        "classes": {
+          "star": 8000,
+          "L": 1958,
+          "M": 924,
+          "T": 918,
+          "Y": 50
+        },
+        "fits_on_disk": 0,
+        "fits_index": 1927
+      },
+      "warnings": [
+        "FITS en disco 0 != índice 1927"
+      ]
+    },
+    "01_variables": {
+      "status": "OK",
+      "started_utc": "2026-11-16T01:45:08+00:00",
+      "finished_utc": "2026-11-16T01:45:13+00:00",
+      "seconds": 4.9,
+      "summary": {
+        "rows": 11850,
+        "columns": 122,
+        "table": "features.parquet",
+        "match": {
+          "catwise": 10971,
+          "allwise": 9801,
+          "tmass": 9236,
+          "unwise": 11287
+        }
+      }
+    },
+    "02_particion": {
+      "status": "OK",
+      "started_utc": "2026-11-16T01:45:13+00:00",
+      "finished_utc": "2026-11-16T01:45:15+00:00",
+      "seconds": 2.1,
+      "summary": {
+        "cells_total": 286,
+        "cells_test": 58,
+        "test_counts": {
+          "star": 1605,
+          "L": 394,
+          "M": 184,
+          "T": 183,
+          "Y": 10
+        }
+      }
+    },
+    "03_eda": {
+      "status": "OK",
+      "started_utc": "2026-11-16T01:45:15+00:00",
+      "finished_utc": "2026-11-16T01:45:28+00:00",
+      "seconds": 12.9,
+      "summary": {
+        "tablas_descritas": 16,
+        "n_pruebas": 636,
+        "top_kruskal": [
+          "aw_W1_W2",
+          "cw_W1_W2",
+          "cw_W1_W2_pm",
+          "gaia_M_W2",
+          "has_gaia"
+        ]
+      }
+    },
+    "04_importancia": {
+      "status": "OK_WITH_WARNINGS",
+      "started_utc": "2026-11-16T01:45:28+00:00",
+      "finished_utc": "2026-11-16T02:31:50+00:00",
+      "seconds": 2782.2,
+      "summary": {
+        "E1_nucleo_fisico": {
+          "n_variables": 21,
+          "bal_acc_oof": 0.7495915437752576,
+          "n_clusters": 8,
+          "cluster_dominante": "cw_W1_W2+6más",
+          "cuota_dominante": 0.6493669109329225,
+          "boruta_confirmadas": [
+            "cw_W1_W2",
+            "aw_W1_W2",
+            "uw_W1_W2",
+            "J_H",
+            "H_Ks",
+            "J_Ks",
+            "J_W1",
+            "J_W2",
+            "H_W2",
+            "Ks_W2",
+            "cw_mu",
+            "cw_log_mu",
+            "Hrpm_W2",
+            "Hrpm_J",
+            "W2_W3",
+            "W1_W3",
+            "cw_W1_W2_pm",
+            "Hrpm_W2_pm",
+            "cw_mu_snr"
+          ],
+          "top_consenso": [
+            "uw_W1_W2",
+            "cw_W1_W2_pm",
+            "aw_W1_W2",
+            "cw_W1_W2",
+            "J_W2",
+            "Ks_W2",
+            "H_W2",
+            "cw_mu_snr"
+          ]
+        },
+        "E2_nucleo_mas_gaia": {
+          "n_variables": 30,
+          "bal_acc_oof": 0.8090690872909894,
+          "n_clusters": 13,
+          "cluster_dominante": "cw_W1_W2+6más",
+          "cuota_dominante": 0.35892154616946714,
+          "boruta_confirmadas": [
+            "cw_W1_W2",
+            "aw_W1_W2",
+            "uw_W1_W2",
+            "J_H",
+            "H_Ks",
+            "J_Ks",
+            "J_W1",
+            "J_W2",
+            "H_W2",
+            "Ks_W2",
+            "cw_mu",
+            "cw_log_mu",
+            "Hrpm_W2",
+            "Hrpm_J",
+            "W1_W3",
+            "Hrpm_W2_pm",
+            "cw_mu_snr",
+            "cw_W1_W2_pm",
+            "gaia_parallax",
+            "gaia_Cstar",
+            "gaia_BP_RP",
+            "gaia_plx_snr",
+            "gaia_G_J",
+            "gaia_G_W2",
+            "gaia_M_W2",
+            "gaia_mu",
+            "W2_W3",
+            "gaia_ruwe"
+          ],
+          "top_consenso": [
+            "cw_W1_W2_pm",
+            "uw_W1_W2",
+            "aw_W1_W2",
+            "H_W2",
+            "gaia_parallax",
+            "gaia_BP_RP",
+            "cw_W1_W2",
+            "Ks_W2"
+          ]
+        },
+        "T_vs_Y_top": [
+          {
+            "variable": "spitzer_ch1_ch2",
+            "auc_simetrica": 0.9828952239911144,
+            "n_Y": 37
+          },
+          {
+            "variable": "cw_W1_W2_pm",
+            "auc_simetrica": 0.9034884942734055,
+            "n_Y": 31
+          },
+          {
+            "variable": "cw_W1_W2",
+            "auc_simetrica": 0.8926132184511926,
+            "n_Y": 31
+          },
+          {
+            "variable": "Hrpm_W2_pm",
+            "auc_simetrica": 0.8255250403877221,
+            "n_Y": 31
+          },
+          {
+            "variable": "Hrpm_W2",
+            "auc_simetrica": 0.8210954192506124,
+            "n_Y": 31
+          },
+          {
+            "variable": "cw_log_mu",
+            "auc_simetrica": 0.778959923664122,
+            "n_Y": 32
+          }
+        ]
+      },
+      "warnings": [
+        "E1_nucleo_fisico: el cluster 'cw_W1_W2+6más' concentra 65% de la importancia"
+      ]
+    },
+    "05_modelo": {
+      "status": "PENDING"
+    },
+    "06_spherex": {
+      "status": "PENDING"
+    },
+    "07_extraccion_fits": {
+      "status": "PENDING"
+    },
+    "08_informe": {
+      "status": "PENDING"
+    }
+  },
+  "stage_order": [
+    "00_inventario",
+    "01_variables",
+    "02_particion",
+    "03_eda",
+    "04_importancia",
+    "05_modelo",
+    "06_spherex",
+    "07_extraccion_fits",
+    "08_informe"
+  ],
+  "updated_utc": "2026-11-16T02:31:50+00:00",
+  "resumen": {
+    "completadas": "5/9",
+    "en_curso": [],
+    "fallidas": [],
+    "global": "PARCIAL"
+  }
+}

@@ -1,0 +1,37 @@
+# Engine model repository checks: unit rules, offline SPHEREx stages (synthetic files), the contract of the
+# promoted model (artifacts/models/actual) and that Backend/models holds that same model. Runs when Motor/ or
+# Backend/models changes.
+name: Motor
+
+on:
+  push:
+    branches: [main, backend-skeleton]
+    paths:
+      - "Motor/**"
+      - "Backend/models/**"
+      - ".github/workflows/motor.yml"
+  pull_request:
+    paths:
+      - "Motor/**"
+      - "Backend/models/**"
+      - ".github/workflows/motor.yml"
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Motor
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: Motor/requirements-ci.txt
+      - name: Install dependencies
+        run: pip install -r requirements-ci.txt
+      - name: Tests
+        run: pytest -q
+      - name: Promoted model contract
+        run: python main.py verificar

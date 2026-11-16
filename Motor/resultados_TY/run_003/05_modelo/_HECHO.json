@@ -1,0 +1,11 @@
+{
+  "finished_utc": "2026-11-15T08:15:09+00:00",
+  "fingerprint": {
+    "code": "fd63b516be6a36afb024b92bb020d9084c6e6059ebaf404574712204ade94752",
+    "config": "38ce2d23a006ca565fc5b0fd66faabadb6c53499c33982d0b6fc4552655fc145",
+    "objects": "1af75a55d9ece4196a5b497616cce6379d4bd7fcc7c2c83d27357bd6bead3b20",
+    "upstream": {
+      "04_importancia": "2026-11-15T07:49:11+00:00"
+    }
+  }
+}

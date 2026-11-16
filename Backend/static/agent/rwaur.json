@@ -63,7 +63,7 @@
    ]
   },
   {
-   "say": "The rule-based engine labels it a star; that agrees with the catalog type (star, SIMBAD).",
+   "say": "The model motor-rf-E_servible_binario-spherex-2026-11-16T0256 labels it a star; that agrees with the catalog type (star, SIMBAD).",
    "actions": [
     {
      "type": "open_tab",
@@ -76,7 +76,7 @@
    ]
   },
   {
-   "say": "5 of 52 sources in this field need a human look. The first one, Gaia DR3 156430100561810560, is flagged for: Moves, no catalog motion. Is it real or an artefact?",
+   "say": "15 of 52 sources in this field need a human look. The first one, Gaia DR3 156430100561810560, is flagged for: Not enough data to classify; Moves, no catalog motion. Is it real or an artefact?",
    "actions": [
     {
      "type": "select_source",

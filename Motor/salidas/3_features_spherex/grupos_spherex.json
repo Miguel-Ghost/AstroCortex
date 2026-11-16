@@ -1,0 +1,17 @@
+{
+  "spherex_color": [
+    "spx_c21",
+    "spx_c32",
+    "spx_c43",
+    "spx_c54",
+    "spx_c65",
+    "spx_c64",
+    "spx_ch4"
+  ],
+  "AUDIT_spherex": [
+    "spx_snr_max",
+    "spx_n_det",
+    "spx_n_ok",
+    "spx_ch4_limite"
+  ]
+}

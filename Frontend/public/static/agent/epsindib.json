@@ -49,7 +49,7 @@
    ]
   },
   {
-   "say": "The rule-based engine labels it a star; that disagrees with the catalog type (cold brown dwarf, SIMBAD).",
+   "say": "The model motor-rf-E_servible_binario-spherex-2026-11-16T0256 labels it a candidate cold brown dwarf; that agrees with the catalog type (cold brown dwarf, SIMBAD).",
    "actions": [
     {
      "type": "open_tab",
@@ -62,15 +62,15 @@
    ]
   },
   {
-   "say": "8 of 33 sources in this field need a human look. The first one, SPHEREx detection, is flagged for: Not in Gaia or CatWISE; No Gaia counterpart. Is it real or an artefact?",
+   "say": "6 of 33 sources in this field need a human look. The first one, Gaia DR3 6412596458823395456, is flagged for: Not enough data to classify. Is it real or an artefact?",
    "actions": [
     {
      "type": "select_source",
-     "source_id": "epsindib_s15"
+     "source_id": "epsindib_s05"
     },
     {
      "type": "ask_vote",
-     "source_id": "epsindib_s15"
+     "source_id": "epsindib_s05"
     }
    ]
   }

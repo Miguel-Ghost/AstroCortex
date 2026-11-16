@@ -1,0 +1,93 @@
+{
+  "objetos": 850,
+  "con_alguna_medicion_ok": 826,
+  "cobertura_colores_por_clase": {
+    "L": {
+      "spx_c21": 0.615,
+      "spx_c32": 0.88,
+      "spx_c43": 0.88,
+      "spx_c54": 0.85,
+      "spx_c65": 0.68,
+      "spx_c64": 0.675,
+      "spx_ch4": 0.85
+    },
+    "M": {
+      "spx_c21": 0.85,
+      "spx_c32": 0.91,
+      "spx_c43": 0.91,
+      "spx_c54": 0.91,
+      "spx_c65": 0.89,
+      "spx_c64": 0.87,
+      "spx_ch4": 0.91
+    },
+    "T": {
+      "spx_c21": 0.233,
+      "spx_c32": 0.377,
+      "spx_c43": 0.37,
+      "spx_c54": 0.427,
+      "spx_c65": 0.38,
+      "spx_c64": 0.277,
+      "spx_ch4": 0.69
+    },
+    "Y": {
+      "spx_c21": 0.1,
+      "spx_c32": 0.16,
+      "spx_c43": 0.16,
+      "spx_c54": 0.2,
+      "spx_c65": 0.3,
+      "spx_c64": 0.12,
+      "spx_ch4": 0.54
+    },
+    "star": {
+      "spx_c21": 0.975,
+      "spx_c32": 0.97,
+      "spx_c43": 0.875,
+      "spx_c54": 0.635,
+      "spx_c65": 0.475,
+      "spx_c64": 0.47,
+      "spx_ch4": 0.635
+    }
+  },
+  "controles": [
+    {
+      "oid": -1,
+      "label": "control:Barnard's Star",
+      "spx_c54": null,
+      "spx_c65": null,
+      "spx_ch4": null,
+      "spx_n_det": 0
+    },
+    {
+      "oid": -2,
+      "label": "control:Epsilon Indi B",
+      "spx_c54": -1.2088873466142886,
+      "spx_c65": 1.091039476052188,
+      "spx_ch4": 0.4835549386457154,
+      "spx_n_det": 6
+    },
+    {
+      "oid": -3,
+      "label": "control:WISE 0855-0714",
+      "spx_c54": -1.6690231712434813,
+      "spx_c65": -0.011136390574288352,
+      "spx_ch4": 0.6676092684973925,
+      "spx_n_det": 3
+    },
+    {
+      "oid": -4,
+      "label": "control:RW Aurigae",
+      "spx_c54": null,
+      "spx_c65": null,
+      "spx_ch4": null,
+      "spx_n_det": 2
+    },
+    {
+      "oid": -5,
+      "label": "control:R Draconis",
+      "spx_c54": null,
+      "spx_c65": null,
+      "spx_ch4": null,
+      "spx_n_det": 0
+    }
+  ]
+}

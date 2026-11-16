@@ -1,0 +1,497 @@
+[
+  {
+    "columna": "cw_W1_W2",
+    "grupo": "color_wise",
+    "rol": "PREDICTOR",
+    "formula": "CatWISE w1mpro − w2mpro [mag Vega]",
+    "cobertura": 0.829282700421941
+  },
+  {
+    "columna": "aw_W1_W2",
+    "grupo": "color_wise",
+    "rol": "PREDICTOR",
+    "formula": "AllWISE w1mpro − w2mpro (sin límites U) [mag Vega]",
+    "cobertura": 0.6968776371308016
+  },
+  {
+    "columna": "uw_W1_W2",
+    "grupo": "color_wise",
+    "rol": "PREDICTOR",
+    "formula": "−2.5 log10(flux_w1/flux_w2) unWISE [mag Vega]",
+    "cobertura": 0.8129113924050633
+  },
+  {
+    "columna": "J_H",
+    "grupo": "color_2mass",
+    "rol": "PREDICTOR",
+    "formula": null,
+    "cobertura": 0.6831223628691984
+  },
+  {
+    "columna": "H_Ks",
+    "grupo": "color_2mass",
+    "rol": "PREDICTOR",
+    "formula": null,
+    "cobertura": 0.6325738396624473
+  },
+  {
+    "columna": "J_Ks",
+    "grupo": "color_2mass",
+    "rol": "PREDICTOR",
+    "formula": null,
+    "cobertura": 0.629198312236287
+  },
+  {
+    "columna": "J_W1",
+    "grupo": "color_nir_mir",
+    "rol": "PREDICTOR",
+    "formula": null,
+    "cobertura": 0.6315611814345992
+  },
+  {
+    "columna": "J_W2",
+    "grupo": "color_nir_mir",
+    "rol": "PREDICTOR",
+    "formula": "2MASS J − CatWISE W2 [mag Vega; épocas distintas]",
+    "cobertura": 0.6270886075949367
+  },
+  {
+    "columna": "H_W2",
+    "grupo": "color_nir_mir",
+    "rol": "PREDICTOR",
+    "formula": null,
+    "cobertura": 0.6187341772151899
+  },
+  {
+    "columna": "Ks_W2",
+    "grupo": "color_nir_mir",
+    "rol": "PREDICTOR",
+    "formula": null,
+    "cobertura": 0.5718143459915612
+  },
+  {
+    "columna": "cw_mu",
+    "grupo": "movimiento",
+    "rol": "PREDICTOR",
+    "formula": "hypot(pmra, pmdec) CatWISE [arcsec/año]",
+    "cobertura": 0.9258227848101266
+  },
+  {
+    "columna": "cw_log_mu",
+    "grupo": "movimiento",
+    "rol": "PREDICTOR",
+    "formula": null,
+    "cobertura": 0.9258227848101266
+  },
+  {
+    "columna": "Hrpm_W2",
+    "grupo": "movimiento",
+    "rol": "PREDICTOR",
+    "formula": "W2 + 5 log10(max(μ, piso)) + 5 [mag]; movimiento propio reducido",
+    "cobertura": 0.8508016877637131
+  },
+  {
+    "columna": "Hrpm_J",
+    "grupo": "movimiento",
+    "rol": "PREDICTOR",
+    "formula": "J + 5 log10(max(μ, piso)) + 5 [mag]",
+    "cobertura": 0.6869198312236287
+  },
+  {
+    "columna": "aw_var_w2",
+    "grupo": "variabilidad",
+    "rol": "PREDICTOR",
+    "formula": null,
+    "cobertura": 0.5571308016877637
+  },
+  {
+    "columna": "W2_W3",
+    "grupo": "color_w3",
+    "rol": "PREDICTOR",
+    "formula": "AllWISE w2mpro − w3mpro, W3 solo con ph_qual A/B/C y cc_flags 0 [mag Vega]",
+    "cobertura": 0.2270042194092827
+  },
+  {
+    "columna": "W1_W3",
+    "grupo": "color_w3",
+    "rol": "PREDICTOR",
+    "formula": "AllWISE w1mpro − w3mpro, misma regla [mag Vega]",
+    "cobertura": 0.2270042194092827
+  },
+  {
+    "columna": "W3_detectada",
+    "grupo": "color_w3",
+    "rol": "PREDICTOR",
+    "formula": null,
+    "cobertura": 1.0
+  },
+  {
+    "columna": "cw_W1_W2_pm",
+    "grupo": "wise_pm",
+    "rol": "PREDICTOR",
+    "formula": "CatWISE w1mpro_pm − w2mpro_pm (ajuste con movimiento) [mag Vega]",
+    "cobertura": 0.829282700421941
+  },
+  {
+    "columna": "cw_mu_snr",
+    "grupo": "wise_pm",
+    "rol": "PREDICTOR",
+    "formula": "μ / σμ CatWISE [adim.]",
+    "cobertura": 0.9258227848101266
+  },
+  {
+    "columna": "Hrpm_W2_pm",
+    "grupo": "wise_pm",
+    "rol": "PREDICTOR",
+    "formula": "w2mpro_pm + 5 log10(max(μ, piso)) + 5 [mag]",
+    "cobertura": 0.8508016877637131
+  },
+  {
+    "columna": "cw_par",
+    "grupo": "paralaje_wise",
+    "rol": "PREDICTOR",
+    "formula": "paralaje CatWISE par_pm [arcsec]; señal débil, grupo aparte",
+    "cobertura": 0.920084388185654
+  },
+  {
+    "columna": "cw_par_snr",
+    "grupo": "paralaje_wise",
+    "rol": "PREDICTOR",
+    "formula": "par_pm / par_pmsig [adim.]",
+    "cobertura": 0.920084388185654
+  },
+  {
+    "columna": "gaia_parallax",
+    "grupo": "gaia",
+    "rol": "PREDICTOR",
+    "formula": null,
+    "cobertura": 0.8176371308016878
+  },
+  {
+    "columna": "gaia_plx_snr",
+    "grupo": "gaia",
+    "rol": "PREDICTOR",
+    "formula": null,
+    "cobertura": 0.8176371308016878
+  },
+  {
+    "columna": "gaia_ruwe",
+    "grupo": "gaia",
+    "rol": "PREDICTOR",
+    "formula": null,
+    "cobertura": 0.8176371308016878
+  },
+  {
+    "columna": "gaia_BP_RP",
+    "grupo": "gaia",
+    "rol": "PREDICTOR",
+    "formula": null,
+    "cobertura": 0.8359493670886076
+  },
+  {
+    "columna": "gaia_Cstar",
+    "grupo": "gaia",
+    "rol": "PREDICTOR",
+    "formula": "exceso BP/RP corregido (Riello+2021) [adim.]",
+    "cobertura": 0.8359493670886076
+  },
+  {
+    "columna": "gaia_mu",
+    "grupo": "gaia",
+    "rol": "PREDICTOR",
+    "formula": null,
+    "cobertura": 0.8176371308016878
+  },
+  {
+    "columna": "gaia_G_W2",
+    "grupo": "gaia",
+    "rol": "PREDICTOR",
+    "formula": null,
+    "cobertura": 0.7122362869198312
+  },
+  {
+    "columna": "gaia_G_J",
+    "grupo": "gaia",
+    "rol": "PREDICTOR",
+    "formula": null,
+    "cobertura": 0.6413502109704642
+  },
+  {
+    "columna": "gaia_M_W2",
+    "grupo": "gaia",
+    "rol": "PREDICTOR",
+    "formula": "W2 + 5 log10(ϖ/1000) + 5, solo ϖ/σ>5 [mag]",
+    "cobertura": 0.39848101265822783
+  },
+  {
+    "columna": "cw_w1mpro",
+    "grupo": "AUDIT_brillo",
+    "rol": "SOLO_AUDITORIA",
+    "formula": null,
+    "cobertura": 0.8539240506329114
+  },
+  {
+    "columna": "cw_w2mpro",
+    "grupo": "AUDIT_brillo",
+    "rol": "SOLO_AUDITORIA",
+    "formula": null,
+    "cobertura": 0.8508016877637131
+  },
+  {
+    "columna": "tm_j_m",
+    "grupo": "AUDIT_brillo",
+    "rol": "SOLO_AUDITORIA",
+    "formula": null,
+    "cobertura": 0.710042194092827
+  },
+  {
+    "columna": "cw_w2snr",
+    "grupo": "AUDIT_brillo",
+    "rol": "SOLO_AUDITORIA",
+    "formula": null,
+    "cobertura": 0.9247257383966244
+  },
+  {
+    "columna": "cw_W1_W2_err",
+    "grupo": "AUDIT_brillo",
+    "rol": "SOLO_AUDITORIA",
+    "formula": null,
+    "cobertura": 0.8233755274261604
+  },
+  {
+    "columna": "has_cw",
+    "grupo": "AUDIT_artefacto",
+    "rol": "SOLO_AUDITORIA",
+    "formula": null,
+    "cobertura": 1.0
+  },
+  {
+    "columna": "has_aw",
+    "grupo": "AUDIT_artefacto",
+    "rol": "SOLO_AUDITORIA",
+    "formula": null,
+    "cobertura": 1.0
+  },
+  {
+    "columna": "has_tm",
+    "grupo": "AUDIT_artefacto",
+    "rol": "SOLO_AUDITORIA",
+    "formula": null,
+    "cobertura": 1.0
+  },
+  {
+    "columna": "has_uw",
+    "grupo": "AUDIT_artefacto",
+    "rol": "SOLO_AUDITORIA",
+    "formula": null,
+    "cobertura": 1.0
+  },
+  {
+    "columna": "cw_n_cand",
+    "grupo": "AUDIT_artefacto",
+    "rol": "SOLO_AUDITORIA",
+    "formula": null,
+    "cobertura": 1.0
+  },
+  {
+    "columna": "aw_n_cand",
+    "grupo": "AUDIT_artefacto",
+    "rol": "SOLO_AUDITORIA",
+    "formula": null,
+    "cobertura": 1.0
+  },
+  {
+    "columna": "tm_n_cand",
+    "grupo": "AUDIT_artefacto",
+    "rol": "SOLO_AUDITORIA",
+    "formula": null,
+    "cobertura": 1.0
+  },
+  {
+    "columna": "uw_n_cand",
+    "grupo": "AUDIT_artefacto",
+    "rol": "SOLO_AUDITORIA",
+    "formula": null,
+    "cobertura": 1.0
+  },
+  {
+    "columna": "cw_sep_arcsec",
+    "grupo": "AUDIT_artefacto",
+    "rol": "SOLO_AUDITORIA",
+    "formula": null,
+    "cobertura": 0.9258227848101266
+  },
+  {
+    "columna": "aw_sep_arcsec",
+    "grupo": "AUDIT_artefacto",
+    "rol": "SOLO_AUDITORIA",
+    "formula": null,
+    "cobertura": 0.8270886075949367
+  },
+  {
+    "columna": "tm_sep_arcsec",
+    "grupo": "AUDIT_artefacto",
+    "rol": "SOLO_AUDITORIA",
+    "formula": null,
+    "cobertura": 0.779409282700422
+  },
+  {
+    "columna": "uw_sep_arcsec",
+    "grupo": "AUDIT_artefacto",
+    "rol": "SOLO_AUDITORIA",
+    "formula": null,
+    "cobertura": 0.9524894514767932
+  },
+  {
+    "columna": "has_gaia",
+    "grupo": "AUDIT_artefacto",
+    "rol": "SOLO_AUDITORIA",
+    "formula": null,
+    "cobertura": 1.0
+  },
+  {
+    "columna": "glat",
+    "grupo": "AUDIT_posicion",
+    "rol": "SOLO_AUDITORIA",
+    "formula": null,
+    "cobertura": 1.0
+  },
+  {
+    "columna": "oid",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "identificador"
+  },
+  {
+    "columna": "name",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "identificador"
+  },
+  {
+    "columna": "source",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "procedencia de la muestra: delata la clase"
+  },
+  {
+    "columna": "label",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "etiqueta"
+  },
+  {
+    "columna": "subdwarf",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "metadato de la etiqueta"
+  },
+  {
+    "columna": "sptnum",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "tipo espectral: es la etiqueta"
+  },
+  {
+    "columna": "spt_opt",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "tipo espectral: es la etiqueta"
+  },
+  {
+    "columna": "spt_ir",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "tipo espectral: es la etiqueta"
+  },
+  {
+    "columna": "ucs_ref_spt",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "referencia de la etiqueta"
+  },
+  {
+    "columna": "exoplanet",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "solo existe para enanas"
+  },
+  {
+    "columna": "young",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "solo existe para enanas"
+  },
+  {
+    "columna": "multiple_unresolved",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "solo existe para enanas"
+  },
+  {
+    "columna": "has_companion",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "solo existe para enanas"
+  },
+  {
+    "columna": "ucs_W1",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "solo existe para enanas (UltracoolSheet)"
+  },
+  {
+    "columna": "ucs_W2",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "solo existe para enanas (UltracoolSheet)"
+  },
+  {
+    "columna": "gaia_source_id",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "identificador; su ausencia delata la clase"
+  },
+  {
+    "columna": "gaia_field",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "solo existe para estrellas de control"
+  },
+  {
+    "columna": "epoch",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "estrellas=2016.0 por construcción; delata la clase"
+  },
+  {
+    "columna": "plx",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "procedencia distinta por clase (Gaia vs literatura)"
+  },
+  {
+    "columna": "pmra",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "procedencia distinta por clase; se usa el μ medido por CatWISE"
+  },
+  {
+    "columna": "pmdec",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "procedencia distinta por clase; se usa el μ medido por CatWISE"
+  },
+  {
+    "columna": "ra",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "posición: solo para agrupar en zonas del cielo"
+  },
+  {
+    "columna": "dec",
+    "grupo": "objects.parquet",
+    "rol": "PROHIBIDO",
+    "motivo": "posición: solo para agrupar en zonas del cielo"
+  }
+]

@@ -14,6 +14,19 @@ def _csv(value: str) -> list[str]:
     return [item.strip() for item in value.split(",") if item.strip()]
 
 
+BUNDLED_MODEL = ROOT / "models" / "model.onnx"
+
+
+def _model_path(value: str | None) -> Path | None:
+    value = (value or "").strip()
+    if value.lower() in {"rule", "none", "off"}:
+        return None
+    if not value:  # unset or left empty in the dashboard
+        return BUNDLED_MODEL if BUNDLED_MODEL.is_file() else None
+    path = Path(value)
+    return path if path.is_absolute() else ROOT / path
+
+
 @dataclass
 class Settings:
     static_dir: Path = field(default_factory=lambda: Path(os.getenv("STATIC_DIR", ROOT / "static")))
@@ -24,7 +37,9 @@ class Settings:
     )
     cors_origin_regex: str | None = field(default_factory=lambda: os.getenv("CORS_ORIGIN_REGEX") or None)
     database_url: str | None = field(default_factory=lambda: os.getenv("DATABASE_URL") or None)
-    model_path: Path | None = field(default_factory=lambda: Path(p) if (p := os.getenv("MODEL_PATH")) else None)
+    # engine model: MODEL_PATH unset or empty -> the version bundled in models/ (published from Motor/);
+    # MODEL_PATH=rule -> the rule-based v0
+    model_path: Path | None = field(default_factory=lambda: _model_path(os.environ.get("MODEL_PATH")))
     data_release: str = field(default_factory=lambda: os.getenv("DATA_RELEASE", "spherex_dr1"))
     commit: str = field(default_factory=lambda: os.getenv("RENDER_GIT_COMMIT", "dev")[:7])
     # live agent: any /chat/completions endpoint compatible with OpenAI (key only here, never in the frontend)

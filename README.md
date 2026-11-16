@@ -9,6 +9,8 @@ A public web tool that shows how a small region of the sky changes in SPHEREx im
 |---|---|
 | `Backend/` | FastAPI API, SPHEREx image pipeline, classification engine interface, demo data and tests |
 | `Frontend/` | React + Vite viewer (sky view, flipbook, classification panel, guide agent), deployed on Vercel by `.github/workflows/deploy-frontend.yml` after Frontend CI passes |
+| `Motor/` | Classification engine (motor clasificatorio): SPHEREx download and photometry, preprocessing, RF / XGBoost / MLP comparison, notebooks, promoted ONNX model and reports; the backend serves its copy in `Backend/models/` |
 | `render.yaml` | Render Blueprint for the backend (web service + Postgres) |
 
-See `Backend/README.md` to run, test and deploy the backend and `Frontend/README.md` for the viewer.
+See `Backend/README.md` to run, test and deploy the backend, `Frontend/README.md` for the viewer and
+`Motor/README.md` to train, evaluate, promote and publish the classifier.

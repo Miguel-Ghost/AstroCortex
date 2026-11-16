@@ -108,8 +108,19 @@ Without catalogs a field still gets its rows, with `catalog.status = not_checked
 
 `app/services/classifier.py` defines the interface used by `/api/sources`:
 
-- `RulePredictor` (default): methane index (D5/D4 on the coadds) + motion. Provisional thresholds.
-- `OnnxPredictor`: loads `MODEL_PATH` (`model.onnx`) and `metadata.json` from the model repo.
+- `OnnxPredictor` (default): the engine model bundled in `models/` (`model.onnx` + `metadata.json`), trained and
+  promoted in `Motor/` and copied here with `python Motor/main.py publicar`. `MODEL_PATH` points to another file;
+  `MODEL_PATH=rule` switches to the rule.
+- `RulePredictor`: methane index (D5/D4 on the coadds) + motion. Provisional thresholds.
+
+The model's inputs are computed per source in `app/services/features.py` with the training formulas: CatWISE colour
+`cw_W1_W2`, motion `cw_mu` and reduced proper motion `Hrpm_W2` (from the `catalogs.json` row named in
+`catalog.catwise_id`) and the SPHEREx colours `spx_c21` … `spx_c64`, `spx_ch4` (from the row's `photometry`, S/N ≥ 3).
+They are added to each source's `evidence` in the response. Around the model: a JPL match is `asteroid_comet` and an
+extended source `galaxy`; a source with no CatWISE colour and fewer than three SPHEREx colours is `unknown` with
+`insufficient_data`; a cold-dwarf answer without motion becomes `unknown` with `methane_without_motion` (BR-CLS-04).
+On the five published fields: WISE 0855 and Epsilon Indi B → cold brown dwarf, Barnard's Star and RW Aurigae → star,
+R Draconis → insufficient data (saturated, no CatWISE counterpart).
 
 Contract for each model version: input float32 `[1, n_features]`, last output = class probabilities
 `[1, n_classes]`; `metadata.json` with `model_version`, `features`, `classes`, `calibrated`,

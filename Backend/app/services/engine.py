@@ -5,6 +5,7 @@ from __future__ import annotations
 from app.config import Settings
 from app.schemas import CLASSES
 from app.services.classifier import Predictor
+from app.services.features import model_features, wise_index
 from app.services.review import assess, sort_for_review, summarize
 from app.services.static_store import StaticStore
 
@@ -20,9 +21,14 @@ def classify_field(field_id: str, store: StaticStore, predictor: Predictor, sett
             return None
     field_id = ref.field_id  # canonical id in every response (BR-FIELD-06)
     rows = raw["sources"] if isinstance(raw, dict) else raw
+    # the model's inputs (CatWISE colour and motion, SPHEREx colours) join the evidence, so the response shows
+    # exactly what the classifier saw
+    wise = wise_index(store.read_json(field_id, "catalogs.json"))
     sources = []
     for row in rows:
-        prediction = predictor.predict(row.get("evidence") or {})
+        evidence = {**(row.get("evidence") or {}), **model_features(row, wise)}
+        row = {**row, "evidence": evidence}
+        prediction = predictor.predict(evidence)
         review = assess(row, prediction)
         sources.append({**row, "label": prediction["label"], "class_probs": prediction["class_probs"], **review})
     sources = sort_for_review(sources)

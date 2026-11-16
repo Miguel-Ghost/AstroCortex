@@ -1,0 +1,18 @@
+2026-11-16 01:45:07,903 INFO typipe 1.0.0 | salida /workspace/CLASIFICADOR_VAST/resultados_TY/run_004
+2026-11-16 01:45:07,903 INFO === 00_inventario ===
+2026-11-16 01:45:08,269 INFO inventario: 11850 objetos {'star': 8000, 'L': 1958, 'M': 924, 'T': 918, 'Y': 50}; FITS 0/1927
+2026-11-16 01:45:08,270 INFO === 01_variables ===
+2026-11-16 01:45:09,047 INFO catwise: {'files': 593, 'rows': 11242, 'objects_with_candidates': 10971, 'matched': 10971, 'ambiguous': 269}
+2026-11-16 01:45:09,845 INFO allwise: {'files': 593, 'rows': 9802, 'objects_with_candidates': 9801, 'matched': 9801, 'ambiguous': 1}
+2026-11-16 01:45:10,645 INFO tmass: {'files': 593, 'rows': 9279, 'objects_with_candidates': 9236, 'matched': 9236, 'ambiguous': 43}
+2026-11-16 01:45:11,473 INFO unwise: {'files': 593, 'rows': 12593, 'objects_with_candidates': 11287, 'matched': 11287, 'ambiguous': 1206}
+2026-11-16 01:45:12,470 INFO catwise_full: {'files': 119, 'rows': 11242, 'objects_with_candidates': 10971, 'columnas': ['w1mpro_pm', 'w1sigmpro_pm', 'w2mpro_pm', 'w2sigmpro_pm', 'sigpmra', 'sigpmdec', 'par_pm', 'par_pmsig', 'pmra', 'pmdec', 'w1rchi2_pm', 'w2rchi2_pm', 'nb', 'na'], 'faltan': []}
+2026-11-16 01:45:13,044 INFO allwise_full: {'files': 119, 'rows': 9802, 'objects_with_candidates': 9801, 'columnas': ['w3mpro', 'w3sigmpro', 'w3snr', 'w4mpro', 'w4sigmpro', 'w4snr', 'ph_qual', 'cc_flags', 'w1mpro', 'w2mpro', 'ext_flg'], 'faltan': []}
+2026-11-16 01:45:13,172 INFO === 02_particion ===
+2026-11-16 01:45:15,314 INFO partición: test {'star': 1605, 'L': 394, 'M': 184, 'T': 183, 'Y': 10}
+2026-11-16 01:45:15,316 INFO === 03_eda ===
+2026-11-16 01:45:20,945 INFO EDA descriptivo: 16 tablas
+2026-11-16 01:45:28,188 INFO === 04_importancia ===
+2026-11-16 02:03:15,337 INFO importancia E1_nucleo_fisico: {'n_variables': 21, 'bal_acc_oof': 0.7495915437752576, 'n_clusters': 8, 'cluster_dominante': 'cw_W1_W2+6más', 'cuota_dominante': 0.6493669109329225, 'boruta_confirmadas': ['cw_W1_W2', 'aw_W1_W2', 'uw_W1_W2', 'J_H', 'H_Ks', 'J_Ks', 'J_W1', 'J_W2', 'H_W2', 'Ks_W2', 'cw_mu', 'cw_log_mu', 'Hrpm_W2', 'Hrpm_J', 'W2_W3', 'W1_W3', 'cw_W1_W2_pm', 'Hrpm_W2_pm', 'cw_mu_snr'], 'top_consenso': ['uw_W1_W2', 'cw_W1_W2_pm', 'aw_W1_W2', 'cw_W1_W2', 'J_W2', 'Ks_W2', 'H_W2', 'cw_mu_snr']}
+2026-11-16 02:31:50,310 INFO importancia E2_nucleo_mas_gaia: {'n_variables': 30, 'bal_acc_oof': 0.8090690872909894, 'n_clusters': 13, 'cluster_dominante': 'cw_W1_W2+6más', 'cuota_dominante': 0.35892154616946714, 'boruta_confirmadas': ['cw_W1_W2', 'aw_W1_W2', 'uw_W1_W2', 'J_H', 'H_Ks', 'J_Ks', 'J_W1', 'J_W2', 'H_W2', 'Ks_W2', 'cw_mu', 'cw_log_mu', 'Hrpm_W2', 'Hrpm_J', 'W1_W3', 'Hrpm_W2_pm', 'cw_mu_snr', 'cw_W1_W2_pm', 'gaia_parallax', 'gaia_Cstar', 'gaia_BP_RP', 'gaia_plx_snr', 'gaia_G_J', 'gaia_G_W2', 'gaia_M_W2', 'gaia_mu', 'W2_W3', 'gaia_ruwe'], 'top_consenso': ['cw_W1_W2_pm', 'uw_W1_W2', 'aw_W1_W2', 'H_W2', 'gaia_parallax', 'gaia_BP_RP', 'cw_W1_W2', 'Ks_W2']}
+2026-11-16 02:31:50,365 INFO FIN: {'completadas': '5/9', 'en_curso': [], 'fallidas': [], 'global': 'PARCIAL'}

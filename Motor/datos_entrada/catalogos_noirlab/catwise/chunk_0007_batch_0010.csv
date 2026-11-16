@@ -1,0 +1,2 @@
+oid,ra_q,dec_q,source_id,ra,dec,w1mpro,w1sigmpro,w2mpro,w2sigmpro,pmra,pmdec,cc_flags,ab_flags,w1snr,w2snr
+7204,266.8478219195,-30.2047098087,2660m303_b0-098215,266.8476705,-30.2039102,10.789,0.009,10.902,0.007,0.10046,-0.01437,"",D0,114.6,155.4

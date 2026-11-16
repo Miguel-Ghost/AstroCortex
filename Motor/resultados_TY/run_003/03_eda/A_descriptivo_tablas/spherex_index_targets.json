@@ -1,0 +1,258 @@
+{
+  "tabla": "spherex_index_targets.parquet",
+  "filas": 1591,
+  "columnas": 14,
+  "detalle": [
+    {
+      "columna": "access_url",
+      "dtype": "str",
+      "n": 1591,
+      "nulos": 0,
+      "frac_nulos": 0.0,
+      "distintos": 1591,
+      "top": {
+        "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W17_4B/l2b-v27-2026-196/5/level2_2025W17_4B_0017_1D5_spx_l2b-v27-2026-196.fits": 1,
+        "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W17_4B/l2b-v27-2026-196/2/level2_2025W17_4B_0017_1D2_spx_l2b-v27-2026-196.fits": 1,
+        "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W17_4B/l2b-v27-2026-196/5/level2_2025W17_4B_0017_2D5_spx_l2b-v27-2026-196.fits": 1,
+        "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W17_4B/l2b-v27-2026-196/2/level2_2025W17_4B_0017_2D2_spx_l2b-v27-2026-196.fits": 1,
+        "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W17_4B/l2b-v27-2026-196/5/level2_2025W17_4B_0027_2D5_spx_l2b-v27-2026-196.fits": 1,
+        "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W17_4B/l2b-v27-2026-196/5/level2_2025W17_4B_0027_3D5_spx_l2b-v27-2026-196.fits": 1,
+        "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W17_4B/l2b-v27-2026-196/2/level2_2025W17_4B_0027_3D2_spx_l2b-v27-2026-196.fits": 1,
+        "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W17_4B/l2b-v27-2026-196/2/level2_2025W17_4B_0027_4D2_spx_l2b-v27-2026-196.fits": 1,
+        "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W17_4B/l2b-v27-2026-196/5/level2_2025W17_4B_0027_4D5_spx_l2b-v27-2026-196.fits": 1,
+        "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W17_4B/l2b-v27-2026-196/4/level2_2025W17_4B_0077_2D4_spx_l2b-v27-2026-196.fits": 1
+      }
+    },
+    {
+      "columna": "cloud_access",
+      "dtype": "str",
+      "n": 1591,
+      "nulos": 0,
+      "frac_nulos": 0.0,
+      "distintos": 1591,
+      "top": {
+        "{\"aws\": {\"bucket_name\": \"nasa-irsa-spherex\", \"key\":\"dr1/level2/2025W17_4B/l2b-v27-2026-196/5/level2_2025W17_4B_0017_1D5_spx_l2b-v27-2026-196.fits\", \"region\": \"us-east-1\"}}": 1,
+        "{\"aws\": {\"bucket_name\": \"nasa-irsa-spherex\", \"key\":\"dr1/level2/2025W17_4B/l2b-v27-2026-196/2/level2_2025W17_4B_0017_1D2_spx_l2b-v27-2026-196.fits\", \"region\": \"us-east-1\"}}": 1,
+        "{\"aws\": {\"bucket_name\": \"nasa-irsa-spherex\", \"key\":\"dr1/level2/2025W17_4B/l2b-v27-2026-196/5/level2_2025W17_4B_0017_2D5_spx_l2b-v27-2026-196.fits\", \"region\": \"us-east-1\"}}": 1,
+        "{\"aws\": {\"bucket_name\": \"nasa-irsa-spherex\", \"key\":\"dr1/level2/2025W17_4B/l2b-v27-2026-196/2/level2_2025W17_4B_0017_2D2_spx_l2b-v27-2026-196.fits\", \"region\": \"us-east-1\"}}": 1,
+        "{\"aws\": {\"bucket_name\": \"nasa-irsa-spherex\", \"key\":\"dr1/level2/2025W17_4B/l2b-v27-2026-196/5/level2_2025W17_4B_0027_2D5_spx_l2b-v27-2026-196.fits\", \"region\": \"us-east-1\"}}": 1,
+        "{\"aws\": {\"bucket_name\": \"nasa-irsa-spherex\", \"key\":\"dr1/level2/2025W17_4B/l2b-v27-2026-196/5/level2_2025W17_4B_0027_3D5_spx_l2b-v27-2026-196.fits\", \"region\": \"us-east-1\"}}": 1,
+        "{\"aws\": {\"bucket_name\": \"nasa-irsa-spherex\", \"key\":\"dr1/level2/2025W17_4B/l2b-v27-2026-196/2/level2_2025W17_4B_0027_3D2_spx_l2b-v27-2026-196.fits\", \"region\": \"us-east-1\"}}": 1,
+        "{\"aws\": {\"bucket_name\": \"nasa-irsa-spherex\", \"key\":\"dr1/level2/2025W17_4B/l2b-v27-2026-196/2/level2_2025W17_4B_0027_4D2_spx_l2b-v27-2026-196.fits\", \"region\": \"us-east-1\"}}": 1,
+        "{\"aws\": {\"bucket_name\": \"nasa-irsa-spherex\", \"key\":\"dr1/level2/2025W17_4B/l2b-v27-2026-196/5/level2_2025W17_4B_0027_4D5_spx_l2b-v27-2026-196.fits\", \"region\": \"us-east-1\"}}": 1,
+        "{\"aws\": {\"bucket_name\": \"nasa-irsa-spherex\", \"key\":\"dr1/level2/2025W17_4B/l2b-v27-2026-196/4/level2_2025W17_4B_0077_2D4_spx_l2b-v27-2026-196.fits\", \"region\": \"us-east-1\"}}": 1
+      }
+    },
+    {
+      "columna": "t_min",
+      "dtype": "float64",
+      "n": 1591,
+      "nulos": 0,
+      "frac_nulos": 0.0,
+      "distintos": 820,
+      "min": 60789.855522,
+      "p01": 60791.2119548,
+      "p05": 60799.702706,
+      "p25": 60916.72348,
+      "mediana": 61020.803689,
+      "p75": 61166.254694,
+      "p95": 61308.217456,
+      "p99": 61314.2559262,
+      "max": 61315.478076,
+      "media": 61046.7405342181,
+      "desv": 159.38020440754173,
+      "asimetria": 0.06314870070780061,
+      "curtosis": -1.1803046943757425
+    },
+    {
+      "columna": "t_max",
+      "dtype": "float64",
+      "n": 1591,
+      "nulos": 0,
+      "frac_nulos": 0.0,
+      "distintos": 821,
+      "min": 60789.856854,
+      "p01": 60791.2132878,
+      "p05": 60799.704038,
+      "p25": 60916.724812,
+      "mediana": 61020.805022,
+      "p75": 61166.256026,
+      "p95": 61308.218788,
+      "p99": 61314.2572582,
+      "max": 61315.479408,
+      "media": 61046.74186659271,
+      "desv": 159.38020439407637,
+      "asimetria": 0.0631487006892419,
+      "curtosis": -1.1803046943897744
+    },
+    {
+      "columna": "obs_id",
+      "dtype": "str",
+      "n": 1591,
+      "nulos": 0,
+      "frac_nulos": 0.0,
+      "distintos": 818,
+      "top": {
+        "2025W17_4B_0017_1": 2,
+        "2025W17_4B_0017_2": 2,
+        "2025W17_4B_0027_3": 2,
+        "2025W17_4B_0027_4": 2,
+        "2025W17_4B_0077_2": 2,
+        "2025W17_4B_0077_3": 2,
+        "2025W17_4B_0202_1": 2,
+        "2025W17_4B_0222_2": 2,
+        "2025W17_4B_0222_3": 2,
+        "2025W17_4B_0222_4": 2
+      }
+    },
+    {
+      "columna": "energy_bandpassname",
+      "dtype": "str",
+      "n": 1591,
+      "nulos": 0,
+      "frac_nulos": 0.0,
+      "distintos": 6,
+      "top": {
+        "SPHEREx-D5": 283,
+        "SPHEREx-D2": 281,
+        "SPHEREx-D3": 281,
+        "SPHEREx-D6": 280,
+        "SPHEREx-D1": 236,
+        "SPHEREx-D4": 230
+      }
+    },
+    {
+      "columna": "dataproduct_subtype",
+      "dtype": "str",
+      "n": 1591,
+      "nulos": 0,
+      "frac_nulos": 0.0,
+      "distintos": 1,
+      "top": {
+        "science": 1591
+      }
+    },
+    {
+      "columna": "obs_collection",
+      "dtype": "str",
+      "n": 1591,
+      "nulos": 0,
+      "frac_nulos": 0.0,
+      "distintos": 2,
+      "top": {
+        "spherex_dr1": 1236,
+        "spherex_qr3": 355
+      }
+    },
+    {
+      "columna": "collection",
+      "dtype": "str",
+      "n": 1591,
+      "nulos": 0,
+      "frac_nulos": 0.0,
+      "distintos": 2,
+      "top": {
+        "spherex_dr1": 1236,
+        "spherex_qr3": 355
+      }
+    },
+    {
+      "columna": "oid",
+      "dtype": "int64",
+      "n": 1591,
+      "nulos": 0,
+      "frac_nulos": 0.0,
+      "distintos": 4,
+      "min": -5.0,
+      "p01": -5.0,
+      "p05": -5.0,
+      "p25": -5.0,
+      "mediana": -3.0,
+      "p75": -2.0,
+      "p95": -1.0,
+      "p99": -1.0,
+      "max": -1.0,
+      "media": -2.9666876178504085,
+      "desv": 1.599377717775581,
+      "asimetria": -0.2241314366048982,
+      "curtosis": -1.5400186339970778
+    },
+    {
+      "columna": "key",
+      "dtype": "str",
+      "n": 1591,
+      "nulos": 0,
+      "frac_nulos": 0.0,
+      "distintos": 1591,
+      "top": {
+        "dr1/level2/2025W17_4B/l2b-v27-2026-196/5/level2_2025W17_4B_0017_1D5_spx_l2b-v27-2026-196.fits": 1,
+        "dr1/level2/2025W17_4B/l2b-v27-2026-196/2/level2_2025W17_4B_0017_1D2_spx_l2b-v27-2026-196.fits": 1,
+        "dr1/level2/2025W17_4B/l2b-v27-2026-196/5/level2_2025W17_4B_0017_2D5_spx_l2b-v27-2026-196.fits": 1,
+        "dr1/level2/2025W17_4B/l2b-v27-2026-196/2/level2_2025W17_4B_0017_2D2_spx_l2b-v27-2026-196.fits": 1,
+        "dr1/level2/2025W17_4B/l2b-v27-2026-196/5/level2_2025W17_4B_0027_2D5_spx_l2b-v27-2026-196.fits": 1,
+        "dr1/level2/2025W17_4B/l2b-v27-2026-196/5/level2_2025W17_4B_0027_3D5_spx_l2b-v27-2026-196.fits": 1,
+        "dr1/level2/2025W17_4B/l2b-v27-2026-196/2/level2_2025W17_4B_0027_3D2_spx_l2b-v27-2026-196.fits": 1,
+        "dr1/level2/2025W17_4B/l2b-v27-2026-196/2/level2_2025W17_4B_0027_4D2_spx_l2b-v27-2026-196.fits": 1,
+        "dr1/level2/2025W17_4B/l2b-v27-2026-196/5/level2_2025W17_4B_0027_4D5_spx_l2b-v27-2026-196.fits": 1,
+        "dr1/level2/2025W17_4B/l2b-v27-2026-196/4/level2_2025W17_4B_0077_2D4_spx_l2b-v27-2026-196.fits": 1
+      }
+    },
+    {
+      "columna": "filename",
+      "dtype": "str",
+      "n": 1591,
+      "nulos": 0,
+      "frac_nulos": 0.0,
+      "distintos": 1591,
+      "top": {
+        "level2_2025W17_4B_0017_1D5_spx_l2b-v27-2026-196.fits": 1,
+        "level2_2025W17_4B_0017_1D2_spx_l2b-v27-2026-196.fits": 1,
+        "level2_2025W17_4B_0017_2D5_spx_l2b-v27-2026-196.fits": 1,
+        "level2_2025W17_4B_0017_2D2_spx_l2b-v27-2026-196.fits": 1,
+        "level2_2025W17_4B_0027_2D5_spx_l2b-v27-2026-196.fits": 1,
+        "level2_2025W17_4B_0027_3D5_spx_l2b-v27-2026-196.fits": 1,
+        "level2_2025W17_4B_0027_3D2_spx_l2b-v27-2026-196.fits": 1,
+        "level2_2025W17_4B_0027_4D2_spx_l2b-v27-2026-196.fits": 1,
+        "level2_2025W17_4B_0027_4D5_spx_l2b-v27-2026-196.fits": 1,
+        "level2_2025W17_4B_0077_2D4_spx_l2b-v27-2026-196.fits": 1
+      }
+    },
+    {
+      "columna": "detector",
+      "dtype": "str",
+      "n": 1591,
+      "nulos": 0,
+      "frac_nulos": 0.0,
+      "distintos": 6,
+      "top": {
+        "D5": 283,
+        "D2": 281,
+        "D3": 281,
+        "D6": 280,
+        "D1": 236,
+        "D4": 230
+      }
+    },
+    {
+      "columna": "epoch_idx",
+      "dtype": "int64",
+      "n": 1591,
+      "nulos": 0,
+      "frac_nulos": 0.0,
+      "distintos": 4,
+      "min": -1.0,
+      "p01": 0.0,
+      "p05": 0.0,
+      "p25": 0.0,
+      "mediana": 1.0,
+      "p75": 2.0,
+      "p95": 2.0,
+      "p99": 2.0,
+      "max": 2.0,
+      "media": 0.957259585166562,
+      "desv": 0.8245805687342913,
+      "asimetria": 0.018788130097091127,
+      "curtosis": -1.389609554005827
+    }
+  ]
+}

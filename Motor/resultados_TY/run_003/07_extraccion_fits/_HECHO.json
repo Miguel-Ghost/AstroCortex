@@ -1,0 +1,11 @@
+{
+  "finished_utc": "2026-11-15T08:21:49+00:00",
+  "fingerprint": {
+    "code": "fce1121d99cb8a4a883301c77b1d799a41373d70fff7847782f7d10e0d468f82",
+    "config": "38ce2d23a006ca565fc5b0fd66faabadb6c53499c33982d0b6fc4552655fc145",
+    "objects": "1af75a55d9ece4196a5b497616cce6379d4bd7fcc7c2c83d27357bd6bead3b20",
+    "upstream": {
+      "00_inventario": "2026-11-15T07:36:04+00:00"
+    }
+  }
+}

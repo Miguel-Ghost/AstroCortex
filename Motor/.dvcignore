@@ -1,0 +1,9 @@
+# Add patterns of files dvc should ignore, which could improve
+# the performance. Learn more at
+# https://dvc.org/doc/user-guide/dvcignore
+# fitted estimators are git-ignored, so they stay out of the output hashes too
+*.joblib
+*.pt
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

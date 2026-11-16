@@ -22,7 +22,7 @@ services:
           name: spherex-db
           property: connectionString
       - key: MODEL_PATH
-        sync: false       # e.g. models/model.onnx once the model repo publishes a version
+        sync: false       # leave empty: the bundled models/model.onnx (from Motor/) is used; rule -> rule-based v0
       - key: LLM_API_KEY
         sync: false       # set in the dashboard only; never in the frontend
       - key: LLM_BASE_URL

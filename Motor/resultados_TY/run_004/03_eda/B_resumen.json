@@ -1,0 +1,187 @@
+{
+  "n_dev": 9474,
+  "n_tests": 636,
+  "top_kruskal_epsilon2": [
+    {
+      "variable": "aw_W1_W2",
+      "epsilon2": 0.6650286914907856,
+      "q_bh": 0.0
+    },
+    {
+      "variable": "cw_W1_W2",
+      "epsilon2": 0.6558314550879817,
+      "q_bh": 0.0
+    },
+    {
+      "variable": "cw_W1_W2_pm",
+      "epsilon2": 0.6551746495838832,
+      "q_bh": 0.0
+    },
+    {
+      "variable": "gaia_M_W2",
+      "epsilon2": 0.6214851124963795,
+      "q_bh": 0.0
+    },
+    {
+      "variable": "has_gaia",
+      "epsilon2": 0.6214544695590029,
+      "q_bh": 0.0
+    },
+    {
+      "variable": "H_W2",
+      "epsilon2": 0.6205404425138399,
+      "q_bh": 0.0
+    },
+    {
+      "variable": "J_W2",
+      "epsilon2": 0.6130218263387193,
+      "q_bh": 0.0
+    },
+    {
+      "variable": "uw_W1_W2",
+      "epsilon2": 0.5997788751634078,
+      "q_bh": 0.0
+    },
+    {
+      "variable": "Ks_W2",
+      "epsilon2": 0.5777156221470405,
+      "q_bh": 0.0
+    },
+    {
+      "variable": "J_Ks",
+      "epsilon2": 0.519292805367627,
+      "q_bh": 0.0
+    }
+  ],
+  "faltantes_mas_asociados": [
+    {
+      "variable": "gaia_ruwe",
+      "cramers_v": 0.7856485512958715
+    },
+    {
+      "variable": "gaia_mu",
+      "cramers_v": 0.7856485512958715
+    },
+    {
+      "variable": "gaia_parallax",
+      "cramers_v": 0.7856485512958715
+    },
+    {
+      "variable": "gaia_plx_snr",
+      "cramers_v": 0.7856485512958715
+    },
+    {
+      "variable": "gaia_BP_RP",
+      "cramers_v": 0.7632999872172472
+    },
+    {
+      "variable": "gaia_Cstar",
+      "cramers_v": 0.7632999872172472
+    },
+    {
+      "variable": "gaia_G_W2",
+      "cramers_v": 0.5038984313148018
+    },
+    {
+      "variable": "gaia_G_J",
+      "cramers_v": 0.4158541424625241
+    }
+  ],
+  "zonas_heterogeneas_D>0.2": [
+    {
+      "variable": "J_H",
+      "clase": "T",
+      "D": 0.20586832061068705
+    },
+    {
+      "variable": "H_Ks",
+      "clase": "T",
+      "D": 0.22360248447204972
+    },
+    {
+      "variable": "J_Ks",
+      "clase": "T",
+      "D": 0.2195652173913043
+    },
+    {
+      "variable": "J_W2",
+      "clase": "T",
+      "D": 0.21357742181540806
+    },
+    {
+      "variable": "W2_W3",
+      "clase": "T",
+      "D": 0.29981760145918834
+    },
+    {
+      "variable": "W1_W3",
+      "clase": "T",
+      "D": 0.2753474009264024
+    },
+    {
+      "variable": "gaia_mu",
+      "clase": "star",
+      "D": 0.23380681403330153
+    },
+    {
+      "variable": "tm_j_m",
+      "clase": "T",
+      "D": 0.21534883720930229
+    },
+    {
+      "variable": "has_cw",
+      "clase": "star",
+      "D": 0.24804512436440893
+    },
+    {
+      "variable": "has_aw",
+      "clase": "star",
+      "D": 0.325535490501746
+    },
+    {
+      "variable": "has_uw",
+      "clase": "star",
+      "D": 0.2011196335712234
+    },
+    {
+      "variable": "cw_n_cand",
+      "clase": "star",
+      "D": 0.24804512436440893
+    },
+    {
+      "variable": "aw_n_cand",
+      "clase": "star",
+      "D": 0.325535490501746
+    },
+    {
+      "variable": "uw_n_cand",
+      "clase": "star",
+      "D": 0.2011196335712234
+    },
+    {
+      "variable": "cw_sep_arcsec",
+      "clase": "star",
+      "D": 0.21592048656181217
+    },
+    {
+      "variable": "tm_sep_arcsec",
+      "clase": "T",
+      "D": 0.21805555555555556
+    },
+    {
+      "variable": "uw_sep_arcsec",
+      "clase": "star",
+      "D": 0.2609987509122957
+    },
+    {
+      "variable": "glat",
+      "clase": "star",
+      "D": 0.5305844158235704
+    },
+    {
+      "variable": "glat",
+      "clase": "T",
+      "D": 0.30102040816326536
+    }
+  ]
+}

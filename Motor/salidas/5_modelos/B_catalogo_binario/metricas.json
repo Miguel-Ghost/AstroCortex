@@ -1,0 +1,522 @@
+{
+  "variables": [
+    "cw_W1_W2",
+    "aw_W1_W2",
+    "uw_W1_W2",
+    "J_H",
+    "H_Ks",
+    "J_Ks",
+    "J_W1",
+    "J_W2",
+    "H_W2",
+    "Ks_W2",
+    "cw_mu",
+    "cw_log_mu",
+    "Hrpm_W2",
+    "Hrpm_J",
+    "aw_var_w2",
+    "W2_W3",
+    "W1_W3",
+    "W3_detectada",
+    "cw_W1_W2_pm",
+    "cw_mu_snr",
+    "Hrpm_W2_pm"
+  ],
+  "poblacion": "todos",
+  "clases": [
+    "star",
+    "cold_brown_dwarf"
+  ],
+  "n_dev": 9445,
+  "n_test": 2370,
+  "modelos": {
+    "rf": {
+      "potencia_elegida": 0.25,
+      "cv_por_potencia": {
+        "0.25": {
+          "balanced_accuracy": 0.9129,
+          "macro_f1": 0.9384,
+          "ap_positivas": 0.9277,
+          "precision_positivas": 0.9512,
+          "recall_positivas": 0.8297,
+          "recall_star": 0.9962,
+          "recall_cold_brown_dwarf": 0.8297
+        }
+      },
+      "cv": {
+        "balanced_accuracy": 0.9129355954905682,
+        "macro_f1": 0.9384118843870821,
+        "ap_positivas": 0.9277182300037503,
+        "precision_positivas": 0.9511834319526628,
+        "recall_positivas": 0.8296774193548387,
+        "por_clase": {
+          "star": {
+            "precision": 0.9849469722887444,
+            "recall": 0.9961937716262976,
+            "f1": 0.9905384483055221,
+            "n": 8670
+          },
+          "cold_brown_dwarf": {
+            "precision": 0.9511834319526628,
+            "recall": 0.8296774193548387,
+            "f1": 0.8862853204686423,
+            "n": 775
+          }
+        },
+        "confusion_etiquetas": [
+          "star",
+          "cold_brown_dwarf"
+        ],
+        "confusion": [
+          [
+            8637,
+            33
+          ],
+          [
+            132,
+            643
+          ]
+        ]
+      },
+      "segundos_cv": 8.2,
+      "test": {
+        "balanced_accuracy": 0.9122110333895816,
+        "macro_f1": 0.9358593096520693,
+        "ap_positivas": 0.9385441910028002,
+        "precision_positivas": 0.9411764705882353,
+        "recall_positivas": 0.8290155440414507,
+        "por_clase": {
+          "star": {
+            "precision": 0.985,
+            "recall": 0.9954065227377125,
+            "f1": 0.9901759195796207,
+            "n": 2177
+          },
+          "cold_brown_dwarf": {
+            "precision": 0.9411764705882353,
+            "recall": 0.8290155440414507,
+            "f1": 0.8815426997245179,
+            "n": 193
+          }
+        },
+        "confusion_etiquetas": [
+          "star",
+          "cold_brown_dwarf"
+        ],
+        "confusion": [
+          [
+            2167,
+            10
+          ],
+          [
+            33,
+            160
+          ]
+        ],
+        "ic95_recall_positivas": [
+          0.772020725388601,
+          0.8808290155440415
+        ]
+      },
+      "importancia_top": [
+        {
+          "variable": "uw_W1_W2",
+          "caida_macro_f1": 0.0436212668469668
+        },
+        {
+          "variable": "cw_W1_W2_pm",
+          "caida_macro_f1": 0.03888878632743886
+        },
+        {
+          "variable": "aw_W1_W2",
+          "caida_macro_f1": 0.016913809284217575
+        },
+        {
+          "variable": "cw_W1_W2",
+          "caida_macro_f1": 0.01533347822367962
+        },
+        {
+          "variable": "aw_var_w2",
+          "caida_macro_f1": 0.002609850840024941
+        },
+        {
+          "variable": "J_W1",
+          "caida_macro_f1": 0.0021819687920425325
+        },
+        {
+          "variable": "H_W2",
+          "caida_macro_f1": 0.0016704216733066323
+        },
+        {
+          "variable": "cw_mu_snr",
+          "caida_macro_f1": 0.0011547491267456466
+        }
+      ],
+      "importancia_grupos": [
+        {
+          "grupo": "color_wise",
+          "caida_macro_f1": 0.25466712913221995
+        },
+        {
+          "grupo": "wise_pm",
+          "caida_macro_f1": 0.03442047321056104
+        },
+        {
+          "grupo": "movimiento",
+          "caida_macro_f1": 0.005681219912205248
+        },
+        {
+          "grupo": "color_2mass",
+          "caida_macro_f1": 0.002592883812251023
+        },
+        {
+          "grupo": "variabilidad",
+          "caida_macro_f1": 0.002242791829749502
+        },
+        {
+          "grupo": "color_w3",
+          "caida_macro_f1": 0.0014666717464393187
+        },
+        {
+          "grupo": "color_nir_mir",
+          "caida_macro_f1": 0.0006439356268585162
+        }
+      ],
+      "umbral_clase_fria": {
+        "tau": 0.5,
+        "oof": {
+          "precision": 0.9511834319526628,
+          "recall": 0.8296774193548387,
+          "cobertura": 0.07157226045526734
+        }
+      },
+      "archivo": "modelo_rf.joblib"
+    },
+    "xgb": {
+      "potencia_elegida": 0.25,
+      "cv_por_potencia": {
+        "0.25": {
+          "balanced_accuracy": 0.9151,
+          "macro_f1": 0.9377,
+          "ap_positivas": 0.9254,
+          "precision_positivas": 0.9418,
+          "recall_positivas": 0.8348,
+          "recall_star": 0.9954,
+          "recall_cold_brown_dwarf": 0.8348
+        }
+      },
+      "cv": {
+        "balanced_accuracy": 0.9151125497637385,
+        "macro_f1": 0.9377246294859569,
+        "ap_positivas": 0.9254003434935375,
+        "precision_positivas": 0.9417758369723436,
+        "recall_positivas": 0.8348387096774194,
+        "por_clase": {
+          "star": {
+            "precision": 0.9853847910481845,
+            "recall": 0.9953863898500577,
+            "f1": 0.9903603396832683,
+            "n": 8670
+          },
+          "cold_brown_dwarf": {
+            "precision": 0.9417758369723436,
+            "recall": 0.8348387096774194,
+            "f1": 0.8850889192886456,
+            "n": 775
+          }
+        },
+        "confusion_etiquetas": [
+          "star",
+          "cold_brown_dwarf"
+        ],
+        "confusion": [
+          [
+            8630,
+            40
+          ],
+          [
+            128,
+            647
+          ]
+        ]
+      },
+      "segundos_cv": 7.0,
+      "test": {
+        "balanced_accuracy": 0.9162440112242688,
+        "macro_f1": 0.932574679943101,
+        "ap_positivas": 0.9459273931085067,
+        "precision_positivas": 0.9152542372881356,
+        "recall_positivas": 0.8393782383419689,
+        "por_clase": {
+          "star": {
+            "precision": 0.9858641130870953,
+            "recall": 0.9931097841065687,
+            "f1": 0.9894736842105263,
+            "n": 2177
+          },
+          "cold_brown_dwarf": {
+            "precision": 0.9152542372881356,
+            "recall": 0.8393782383419689,
+            "f1": 0.8756756756756757,
+            "n": 193
+          }
+        },
+        "confusion_etiquetas": [
+          "star",
+          "cold_brown_dwarf"
+        ],
+        "confusion": [
+          [
+            2162,
+            15
+          ],
+          [
+            31,
+            162
+          ]
+        ],
+        "ic95_recall_positivas": [
+          0.7875647668393783,
+          0.8911917098445595
+        ]
+      },
+      "importancia_top": [
+        {
+          "variable": "cw_W1_W2_pm",
+          "caida_macro_f1": 0.04367248817977819
+        },
+        {
+          "variable": "uw_W1_W2",
+          "caida_macro_f1": 0.03075475291840134
+        },
+        {
+          "variable": "cw_W1_W2",
+          "caida_macro_f1": 0.02082132823102868
+        },
+        {
+          "variable": "cw_mu",
+          "caida_macro_f1": 0.013235343016827494
+        },
+        {
+          "variable": "aw_W1_W2",
+          "caida_macro_f1": 0.01304077967632462
+        },
+        {
+          "variable": "Hrpm_J",
+          "caida_macro_f1": 0.01286921260886067
+        },
+        {
+          "variable": "cw_log_mu",
+          "caida_macro_f1": 0.010660941879430752
+        },
+        {
+          "variable": "Ks_W2",
+          "caida_macro_f1": 0.010450928709324792
+        }
+      ],
+      "importancia_grupos": [
+        {
+          "grupo": "color_wise",
+          "caida_macro_f1": 0.27272486207960345
+        },
+        {
+          "grupo": "wise_pm",
+          "caida_macro_f1": 0.04509731917406969
+        },
+        {
+          "grupo": "movimiento",
+          "caida_macro_f1": 0.01882809627116492
+        },
+        {
+          "grupo": "color_2mass",
+          "caida_macro_f1": 0.009843153515466618
+        },
+        {
+          "grupo": "color_w3",
+          "caida_macro_f1": 0.004808317581122134
+        },
+        {
+          "grupo": "color_nir_mir",
+          "caida_macro_f1": 0.003176848710235147
+        },
+        {
+          "grupo": "variabilidad",
+          "caida_macro_f1": 0.0007353714806375922
+        }
+      ],
+      "umbral_clase_fria": {
+        "tau": 0.5,
+        "oof": {
+          "precision": 0.9417758369723436,
+          "recall": 0.8348387096774194,
+          "cobertura": 0.07273689782953943
+        }
+      },
+      "archivo": "modelo_xgb.joblib"
+    },
+    "mlp": {
+      "potencia_elegida": 0.25,
+      "cv_por_potencia": {
+        "0.25": {
+          "balanced_accuracy": 0.9157,
+          "macro_f1": 0.9378,
+          "ap_positivas": 0.9311,
+          "precision_positivas": 0.9405,
+          "recall_positivas": 0.8361,
+          "recall_star": 0.9953,
+          "recall_cold_brown_dwarf": 0.8361
+        }
+      },
+      "cv": {
+        "balanced_accuracy": 0.9157000409271868,
+        "macro_f1": 0.9378025674844259,
+        "ap_positivas": 0.9310536236237151,
+        "precision_positivas": 0.9404934687953556,
+        "recall_positivas": 0.8361290322580646,
+        "por_clase": {
+          "star": {
+            "precision": 0.9854956601187757,
+            "recall": 0.9952710495963091,
+            "f1": 0.9903592333295076,
+            "n": 8670
+          },
+          "cold_brown_dwarf": {
+            "precision": 0.9404934687953556,
+            "recall": 0.8361290322580646,
+            "f1": 0.8852459016393442,
+            "n": 775
+          }
+        },
+        "confusion_etiquetas": [
+          "star",
+          "cold_brown_dwarf"
+        ],
+        "confusion": [
+          [
+            8629,
+            41
+          ],
+          [
+            127,
+            648
+          ]
+        ]
+      },
+      "segundos_cv": 39.0,
+      "test": {
+        "balanced_accuracy": 0.9183753370731695,
+        "macro_f1": 0.9316160504294027,
+        "ap_positivas": 0.9404754763236691,
+        "precision_positivas": 0.9055555555555556,
+        "recall_positivas": 0.844559585492228,
+        "por_clase": {
+          "star": {
+            "precision": 0.9863013698630136,
+            "recall": 0.9921910886541112,
+            "f1": 0.9892374627891001,
+            "n": 2177
+          },
+          "cold_brown_dwarf": {
+            "precision": 0.9055555555555556,
+            "recall": 0.844559585492228,
+            "f1": 0.8739946380697051,
+            "n": 193
+          }
+        },
+        "confusion_etiquetas": [
+          "star",
+          "cold_brown_dwarf"
+        ],
+        "confusion": [
+          [
+            2160,
+            17
+          ],
+          [
+            30,
+            163
+          ]
+        ],
+        "ic95_recall_positivas": [
+          0.7927461139896373,
+          0.8963730569948186
+        ]
+      },
+      "importancia_top": [
+        {
+          "variable": "uw_W1_W2",
+          "caida_macro_f1": 0.07437161680047502
+        },
+        {
+          "variable": "aw_W1_W2",
+          "caida_macro_f1": 0.05301707093278052
+        },
+        {
+          "variable": "cw_W1_W2_pm",
+          "caida_macro_f1": 0.05289139561726347
+        },
+        {
+          "variable": "W1_W3",
+          "caida_macro_f1": 0.04683207752898583
+        },
+        {
+          "variable": "cw_W1_W2",
+          "caida_macro_f1": 0.04282522310001859
+        },
+        {
+          "variable": "W2_W3",
+          "caida_macro_f1": 0.024379268338563763
+        },
+        {
+          "variable": "cw_mu_snr",
+          "caida_macro_f1": 0.018610773040271433
+        },
+        {
+          "variable": "cw_log_mu",
+          "caida_macro_f1": 0.01484311319800533
+        }
+      ],
+      "importancia_grupos": [
+        {
+          "grupo": "color_wise",
+          "caida_macro_f1": 0.19710620926807698
+        },
+        {
+          "grupo": "wise_pm",
+          "caida_macro_f1": 0.0706718445628369
+        },
+        {
+          "grupo": "movimiento",
+          "caida_macro_f1": 0.029047407212118105
+        },
+        {
+          "grupo": "color_2mass",
+          "caida_macro_f1": 0.016797781949109747
+        },
+        {
+          "grupo": "color_w3",
+          "caida_macro_f1": 0.014081955547954782
+        },
+        {
+          "grupo": "color_nir_mir",
+          "caida_macro_f1": 0.007089907681716456
+        },
+        {
+          "grupo": "variabilidad",
+          "caida_macro_f1": 0.0018832091095059233
+        }
+      ],
+      "umbral_clase_fria": {
+        "tau": 0.5,
+        "oof": {
+          "precision": 0.9404934687953556,
+          "recall": 0.8361290322580646,
+          "cobertura": 0.0729486500794071
+        }
+      },
+      "archivo": "modelo_mlp.pt"
+    }
+  },
+  "elegido": "rf",
+  "regla": "mayor macro-F1 en la CV espacial de desarrollo; el test se evalua una sola vez, despues de elegir"
+}

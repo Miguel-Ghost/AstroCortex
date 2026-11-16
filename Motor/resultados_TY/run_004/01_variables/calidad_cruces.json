@@ -1,0 +1,87 @@
+{
+  "match": {
+    "catwise": {
+      "files": 593,
+      "rows": 11242,
+      "objects_with_candidates": 10971,
+      "matched": 10971,
+      "ambiguous": 269
+    },
+    "allwise": {
+      "files": 593,
+      "rows": 9802,
+      "objects_with_candidates": 9801,
+      "matched": 9801,
+      "ambiguous": 1
+    },
+    "tmass": {
+      "files": 593,
+      "rows": 9279,
+      "objects_with_candidates": 9236,
+      "matched": 9236,
+      "ambiguous": 43
+    },
+    "unwise": {
+      "files": 593,
+      "rows": 12593,
+      "objects_with_candidates": 11287,
+      "matched": 11287,
+      "ambiguous": 1206
+    }
+  },
+  "quality_masks": {
+    "cw_w1_artifact": 852,
+    "aw_w1_bad_or_upper": 993,
+    "cw_w2_artifact": 884,
+    "aw_w2_bad_or_upper": 1267,
+    "tm_j_bad_or_upper": 822,
+    "tm_h_bad_or_upper": 974,
+    "tm_k_bad_or_upper": 1590,
+    "uw_w1_flagged_or_nonpositive": 979,
+    "uw_w2_flagged_or_nonpositive": 1189
+  },
+  "extra": {
+    "catwise_full": {
+      "files": 119,
+      "rows": 11242,
+      "objects_with_candidates": 10971,
+      "columnas": [
+        "w1mpro_pm",
+        "w1sigmpro_pm",
+        "w2mpro_pm",
+        "w2sigmpro_pm",
+        "sigpmra",
+        "sigpmdec",
+        "par_pm",
+        "par_pmsig",
+        "pmra",
+        "pmdec",
+        "w1rchi2_pm",
+        "w2rchi2_pm",
+        "nb",
+        "na"
+      ],
+      "faltan": []
+    },
+    "allwise_full": {
+      "files": 119,
+      "rows": 9802,
+      "objects_with_candidates": 9801,
+      "columnas": [
+        "w3mpro",
+        "w3sigmpro",
+        "w3snr",
+        "w4mpro",
+        "w4sigmpro",
+        "w4snr",
+        "ph_qual",
+        "cc_flags",
+        "w1mpro",
+        "w2mpro",
+        "ext_flg"
+      ],
+      "faltan": []
+    }
+  },
+  "radius_arcsec": 3.0
+}

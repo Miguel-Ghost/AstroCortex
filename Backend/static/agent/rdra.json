@@ -59,7 +59,7 @@
    ]
   },
   {
-   "say": "The rule-based engine labels it a star; that agrees with the catalog type (star, SIMBAD).",
+   "say": "The model motor-rf-E_servible_binario-spherex-2026-11-16T0256 labels it not classifiable with the current evidence; that disagrees with the catalog type (star, SIMBAD).",
    "actions": [
     {
      "type": "open_tab",

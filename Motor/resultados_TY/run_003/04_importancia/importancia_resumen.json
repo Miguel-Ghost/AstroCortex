@@ -1,0 +1,119 @@
+{
+  "E1_nucleo_fisico": {
+    "n_variables": 21,
+    "bal_acc_oof": 0.7495915437752576,
+    "n_clusters": 8,
+    "cluster_dominante": "cw_W1_W2+6más",
+    "cuota_dominante": 0.6493669109329225,
+    "boruta_confirmadas": [
+      "cw_W1_W2",
+      "aw_W1_W2",
+      "uw_W1_W2",
+      "J_H",
+      "H_Ks",
+      "J_Ks",
+      "J_W1",
+      "J_W2",
+      "H_W2",
+      "Ks_W2",
+      "cw_mu",
+      "cw_log_mu",
+      "Hrpm_W2",
+      "Hrpm_J",
+      "W2_W3",
+      "W1_W3",
+      "cw_W1_W2_pm",
+      "Hrpm_W2_pm",
+      "cw_mu_snr"
+    ],
+    "top_consenso": [
+      "uw_W1_W2",
+      "cw_W1_W2_pm",
+      "aw_W1_W2",
+      "cw_W1_W2",
+      "J_W2",
+      "Ks_W2",
+      "H_W2",
+      "cw_mu_snr"
+    ]
+  },
+  "E2_nucleo_mas_gaia": {
+    "n_variables": 30,
+    "bal_acc_oof": 0.8090690872909894,
+    "n_clusters": 13,
+    "cluster_dominante": "cw_W1_W2+6más",
+    "cuota_dominante": 0.35892154616946714,
+    "boruta_confirmadas": [
+      "cw_W1_W2",
+      "aw_W1_W2",
+      "uw_W1_W2",
+      "J_H",
+      "H_Ks",
+      "J_Ks",
+      "J_W1",
+      "J_W2",
+      "H_W2",
+      "Ks_W2",
+      "cw_mu",
+      "cw_log_mu",
+      "Hrpm_W2",
+      "Hrpm_J",
+      "W1_W3",
+      "Hrpm_W2_pm",
+      "cw_mu_snr",
+      "cw_W1_W2_pm",
+      "gaia_parallax",
+      "gaia_Cstar",
+      "gaia_BP_RP",
+      "gaia_plx_snr",
+      "gaia_G_J",
+      "gaia_G_W2",
+      "gaia_M_W2",
+      "gaia_mu",
+      "W2_W3",
+      "gaia_ruwe"
+    ],
+    "top_consenso": [
+      "cw_W1_W2_pm",
+      "uw_W1_W2",
+      "aw_W1_W2",
+      "H_W2",
+      "gaia_parallax",
+      "gaia_BP_RP",
+      "cw_W1_W2",
+      "Ks_W2"
+    ]
+  },
+  "T_vs_Y_top": [
+    {
+      "variable": "spitzer_ch1_ch2",
+      "auc_simetrica": 0.9828952239911144,
+      "n_Y": 37
+    },
+    {
+      "variable": "cw_W1_W2_pm",
+      "auc_simetrica": 0.9034884942734055,
+      "n_Y": 31
+    },
+    {
+      "variable": "cw_W1_W2",
+      "auc_simetrica": 0.8926132184511926,
+      "n_Y": 31
+    },
+    {
+      "variable": "Hrpm_W2_pm",
+      "auc_simetrica": 0.8255250403877221,
+      "n_Y": 31
+    },
+    {
+      "variable": "Hrpm_W2",
+      "auc_simetrica": 0.8210954192506124,
+      "n_Y": 31
+    },
+    {
+      "variable": "cw_log_mu",
+      "auc_simetrica": 0.778959923664122,
+      "n_Y": 32
+    }
+  ]
+}

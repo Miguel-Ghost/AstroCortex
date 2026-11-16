@@ -1,0 +1,660 @@
+{
+  "generado_utc": "2026-11-16T02:56:21+00:00",
+  "versiones": {
+    "python": "3.13.16",
+    "platform": "Linux-5.15.0-173-generic-x86_64-with-glibc2.39",
+    "numpy": "2.5.5",
+    "pandas": "3.1.1",
+    "pyarrow": "26.0.1",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "xgboost": "3.4.1",
+    "torch": "2.15.0+cpu",
+    "astropy": "8.0.2",
+    "fsspec": "2026.9.0",
+    "aiohttp": "3.14.5",
+    "requests": "2.34.2",
+    "onnx": "1.23.2",
+    "onnxruntime": "1.32.0",
+    "skl2onnx": "1.20.0",
+    "onnxmltools": "1.16.0"
+  },
+  "config_sha256": "125c37dd18b27d8e497d7706e4d8cfbcd82e12cb27b5fde86ecf17d4e539e5d6",
+  "archivos": [
+    {
+      "ruta": "1_indice_spherex/errores_sia.json",
+      "bytes": 4357,
+      "sha256": "8b2d4daffe7b7827a4d500d9a1cf58187cc7755552db2ff05da0325307a739d0"
+    },
+    {
+      "ruta": "1_indice_spherex/indice_spherex.parquet",
+      "bytes": 8686659,
+      "sha256": "e5df568d6813c1ba61c8288b7d7c7c3043ec2477df24e8aa2d9bd37223c1cee7"
+    },
+    {
+      "ruta": "1_indice_spherex/resumen.json",
+      "bytes": 494,
+      "sha256": "d39ee3140e13203af9987c897816dda7d1b85e7e32f70058f0feaa888f6e0064"
+    },
+    {
+      "ruta": "1_indice_spherex/seleccion.parquet",
+      "bytes": 37772,
+      "sha256": "c82762887fb53a52530452e00acfcf6c4b832371375db2f3d261a0a0f7e2d1d8"
+    },
+    {
+      "ruta": "2_fotometria_spherex/fotometria.parquet",
+      "bytes": 1859748,
+      "sha256": "c2e9d5b27c970ea4af4c753bac54950190bf008c9c6d78106c16431f633bf526"
+    },
+    {
+      "ruta": "2_fotometria_spherex/plan.parquet",
+      "bytes": 792940,
+      "sha256": "94fd34beed00036706c25fbcb013f720211848c4a580e020171ef6aa6fb58e7c"
+    },
+    {
+      "ruta": "2_fotometria_spherex/resumen.json",
+      "bytes": 338,
+      "sha256": "be23ce80d62294e48e707352349d026ae79cdfb81dd29e8421ea5938a2fd36c6"
+    },
+    {
+      "ruta": "3_features_spherex/controles_pilotos.csv",
+      "bytes": 2279,
+      "sha256": "a9d3363598820b7a85773765e8fe690ffc69b2908d631425ecacae8bce784eb3"
+    },
+    {
+      "ruta": "3_features_spherex/features_spherex.parquet",
+      "bytes": 257777,
+      "sha256": "9927e5cae049155c9ffafef392ae51f81af91f82d0731199f0d20367b5d0590c"
+    },
+    {
+      "ruta": "3_features_spherex/grupos_spherex.json",
+      "bytes": 232,
+      "sha256": "53d1133478a08435d0c174e3e8f74ef584f102b253aea379c882d1621f60ce25"
+    },
+    {
+      "ruta": "3_features_spherex/resumen.json",
+      "bytes": 1900,
+      "sha256": "bb065147eae55a6991e69422f08c50a975e7c5d8a76c86d98048d1c7c8952921"
+    },
+    {
+      "ruta": "4_preprocesamiento/balance.json",
+      "bytes": 797,
+      "sha256": "b8acd024095a6ebf9fcafd8b4e9ce00de20ee53af2421d6aa7238ed1e81ceddb"
+    },
+    {
+      "ruta": "4_preprocesamiento/duplicados.csv",
+      "bytes": 4727,
+      "sha256": "764edd57374fb62aa62624ea154cc33c9da9e038f99564e199f0c631041f1275"
+    },
+    {
+      "ruta": "4_preprocesamiento/faltantes_por_clase.csv",
+      "bytes": 1344,
+      "sha256": "f94102c3f9427673a04eee7d693e6400dffc744bbde400d53f2aa9b6afdae681"
+    },
+    {
+      "ruta": "4_preprocesamiento/outliers_por_clase.csv",
+      "bytes": 7877,
+      "sha256": "3bc01cf5907f9597179fbcd7b23f1246c24a3110c8846a32108e218ce97820d1"
+    },
+    {
+      "ruta": "4_preprocesamiento/preprocesamiento.json",
+      "bytes": 391,
+      "sha256": "4c06ca317ec6a88737d6ce6cc1c64d7fdc21baea82a918596c04e378ba894af1"
+    },
+    {
+      "ruta": "4_preprocesamiento/tabla_modelo.parquet",
+      "bytes": 1168002,
+      "sha256": "68f7e23bfb4b5f59203149e2c8ffc0b047812fb5978a14d96d1c901ba566c5ad"
+    },
+    {
+      "ruta": "4_preprocesamiento/variables.json",
+      "bytes": 2808,
+      "sha256": "d5b85f070b4c771fd03e8b9105909b430c6433d08d0d8a1901c4c92a07449652"
+    },
+    {
+      "ruta": "5_modelos/A_catalogo_5clases/comparacion.csv",
+      "bytes": 930,
+      "sha256": "9e85421836e8c530dbaa93553ba7b1a48e6d730b316905011a30316dbbbf61f6"
+    },
+    {
+      "ruta": "5_modelos/A_catalogo_5clases/confusion_cv_mlp.png",
+      "bytes": 38832,
+      "sha256": "c858dcff352f6ed85a770d7a235277f425ba1d281b0e2aa52ebd933a688e0d09"
+    },
+    {
+      "ruta": "5_modelos/A_catalogo_5clases/confusion_cv_rf.png",
+      "bytes": 37885,
+      "sha256": "c52b014ebb4b0df36630006a36374db6c5f261cedfd830f2ee9ce69d7ff9559d"
+    },
+    {
+      "ruta": "5_modelos/A_catalogo_5clases/confusion_cv_xgb.png",
+      "bytes": 39366,
+      "sha256": "0b3211b5ae119bb4b981506c8260e020000bfcaa43ce1c2f1a5983c2f622e6c1"
+    },
+    {
+      "ruta": "5_modelos/A_catalogo_5clases/confusion_test_mlp.png",
+      "bytes": 35822,
+      "sha256": "67575630fec0433154d612034f846290bbbba4911427af8e4bcbd92848ddff00"
+    },
+    {
+      "ruta": "5_modelos/A_catalogo_5clases/confusion_test_rf.png",
+      "bytes": 36706,
+      "sha256": "37755118b6aa813ca6807fd77380662dcd2f67f804ca3e86b27557649fdfd172"
+    },
+    {
+      "ruta": "5_modelos/A_catalogo_5clases/confusion_test_xgb.png",
+      "bytes": 36784,
+      "sha256": "17221d38b90e777cbb1245232432d706c95d70d6c5f20a8b9971132c69b3f1f5"
+    },
+    {
+      "ruta": "5_modelos/A_catalogo_5clases/importancia_grupos_mlp.csv",
+      "bytes": 564,
+      "sha256": "c8b34c3542130baebf6f3ecf9bf62cf29f308f7fe72f8213a1d93700700b951c"
+    },
+    {
+      "ruta": "5_modelos/A_catalogo_5clases/importancia_grupos_rf.csv",
+      "bytes": 561,
+      "sha256": "48a924c016aacc403bf7ceff570b695ed04df7dbb638804911a77f753eeefb61"
+    },
+    {
+      "ruta": "5_modelos/A_catalogo_5clases/importancia_grupos_xgb.csv",
+      "bytes": 563,
+      "sha256": "77d45e4661d92972b9a55b72c0ffd77f8590f56739a3f18f1f8a3d3c55401ed1"
+    },
+    {
+      "ruta": "5_modelos/A_catalogo_5clases/importancia_variables_mlp.csv",
+      "bytes": 1047,
+      "sha256": "e91b0378066544991eb4dd2b5b2e4896905f2c42a5134c55142bda9939427a4f"
+    },
+    {
+      "ruta": "5_modelos/A_catalogo_5clases/importancia_variables_rf.csv",
+      "bytes": 1072,
+      "sha256": "dbedd18daed7eeb963a07b85e34a60569acf3e57f165d80a74551ede76166cf5"
+    },
+    {
+      "ruta": "5_modelos/A_catalogo_5clases/importancia_variables_xgb.csv",
+      "bytes": 1070,
+      "sha256": "802f6aae05a95146be34a322adb65bf0820d92f8f0f47354ec187f816773c543"
+    },
+    {
+      "ruta": "5_modelos/A_catalogo_5clases/metricas.json",
+      "bytes": 18400,
+      "sha256": "5732474e39389cd1fe294269d770ad85c78cabb01591f4c39d1ebbd0c1c15b8c"
+    },
+    {
+      "ruta": "5_modelos/A_catalogo_5clases/modelo_mlp.pt",
+      "bytes": 51445,
+      "sha256": "a286ee015503b07a570c6b090b5359cc5cd8a015b5216b4425b9555563f8d2ec"
+    },
+    {
+      "ruta": "5_modelos/A_catalogo_5clases/modelo_rf.joblib",
+      "bytes": 44491941,
+      "sha256": "51f1de1995fc68b47c5d4e58e9cba9f07c408a4a328b28eaef264560dbc5d75e"
+    },
+    {
+      "ruta": "5_modelos/A_catalogo_5clases/modelo_xgb.joblib",
+      "bytes": 4514209,
+      "sha256": "0975032030cae66127eabb3fa84c9bdf5fb788b9bd43a2fe7701c13e4afd2d98"
+    },
+    {
+      "ruta": "5_modelos/A_catalogo_5clases/oof.parquet",
+      "bytes": 976789,
+      "sha256": "9cf1285486b26523eaca3f642ff4f6cc850a2db0e670a8297ef241e816501b8c"
+    },
+    {
+      "ruta": "5_modelos/A_catalogo_5clases/test.parquet",
+      "bytes": 226011,
+      "sha256": "d6cf8e28a97ee0a245d61635b17ebbe87a4841791cf3343535cf2c85d5a1ebc1"
+    },
+    {
+      "ruta": "5_modelos/B_catalogo_binario/comparacion.csv",
+      "bytes": 771,
+      "sha256": "3b7e89a27e38162d6b838598c14d2648b145ab3065f1b714576c7741e3760265"
+    },
+    {
+      "ruta": "5_modelos/B_catalogo_binario/confusion_cv_mlp.png",
+      "bytes": 18374,
+      "sha256": "3015f8ad33b64b057ba1e2309ee56c0697c61488b5cd0284cb52d44d84c9e23c"
+    },
+    {
+      "ruta": "5_modelos/B_catalogo_binario/confusion_cv_rf.png",
+      "bytes": 18142,
+      "sha256": "e6746292460b0b548c6bc814f4e9c156e754004c59f0033a4982742e3a6889a2"
+    },
+    {
+      "ruta": "5_modelos/B_catalogo_binario/confusion_cv_xgb.png",
+      "bytes": 18458,
+      "sha256": "8db88801556b32318bf9ca45bcdac25d81563ee76c7d8a9f8579a567121345a8"
+    },
+    {
+      "ruta": "5_modelos/B_catalogo_binario/confusion_test_mlp.png",
+      "bytes": 17924,
+      "sha256": "c2d87fb27861b0f721ca373a83c3c6613c0740c1541a62e042218689ab8c1690"
+    },
+    {
+      "ruta": "5_modelos/B_catalogo_binario/confusion_test_rf.png",
+      "bytes": 17716,
+      "sha256": "47d5961b8d514f70974b546b56c8fb3b8c4bdcca27c1f8c4d273de6be2e0112e"
+    },
+    {
+      "ruta": "5_modelos/B_catalogo_binario/confusion_test_xgb.png",
+      "bytes": 17561,
+      "sha256": "ee9680d965b605abcdc74a2af593327f3d6b9b8cb4fb501f1d3bfab28d5cd5a0"
+    },
+    {
+      "ruta": "5_modelos/B_catalogo_binario/importancia_grupos_mlp.csv",
+      "bytes": 564,
+      "sha256": "8b1a08952a51831747afde417b84f77e74c089029744129c92c2b9fd189c0c9f"
+    },
+    {
+      "ruta": "5_modelos/B_catalogo_binario/importancia_grupos_rf.csv",
+      "bytes": 570,
+      "sha256": "c13f20e5d1d83cbc6d8a2d153744df343b1d9d218c1ae0543d5acf95c6154f29"
+    },
+    {
+      "ruta": "5_modelos/B_catalogo_binario/importancia_grupos_xgb.csv",
+      "bytes": 566,
+      "sha256": "48f8a4c2722a853e548972f68cbcadac502b609229c3ecdf2af5df5ab7b5f97e"
+    },
+    {
+      "ruta": "5_modelos/B_catalogo_binario/importancia_variables_mlp.csv",
+      "bytes": 1070,
+      "sha256": "74dcd6bf66285d0c3db6ea424d30e3e1af39e3d006a917876bc2625bf9278398"
+    },
+    {
+      "ruta": "5_modelos/B_catalogo_binario/importancia_variables_rf.csv",
+      "bytes": 1100,
+      "sha256": "820604d961d048655a6d6fd4a5404d2515f9ed9840c4ba3f4065128e3aef763c"
+    },
+    {
+      "ruta": "5_modelos/B_catalogo_binario/importancia_variables_xgb.csv",
+      "bytes": 1077,
+      "sha256": "96777df8eecc891d17a4767e843a64accb6bbfc4c389393fd4f49974dba45842"
+    },
+    {
+      "ruta": "5_modelos/B_catalogo_binario/metricas.json",
+      "bytes": 13082,
+      "sha256": "e2deb663de8aaa9bc512874a806b43363a10f4066cb62f1333c7e5d74a1076d5"
+    },
+    {
+      "ruta": "5_modelos/B_catalogo_binario/modelo_mlp.pt",
+      "bytes": 50549,
+      "sha256": "518909b7afc085b6c0d7dde9aa785afca927a2abc1c6976fa5a0a06f4098addb"
+    },
+    {
+      "ruta": "5_modelos/B_catalogo_binario/modelo_rf.joblib",
+      "bytes": 8056270,
+      "sha256": "67e387ac03e62f0324835edfa0948ccf7e33acca1a21ab012d546b643062a832"
+    },
+    {
+      "ruta": "5_modelos/B_catalogo_binario/modelo_xgb.joblib",
+      "bytes": 660645,
+      "sha256": "47c3f528805760e723db39bc784705c2365dd01552522c7f214193cc8adefadd"
+    },
+    {
+      "ruta": "5_modelos/B_catalogo_binario/oof.parquet",
+      "bytes": 367944,
+      "sha256": "983d4871bba2ee574d1025f601a2c83d2256dbfcf4ea32ef7fd11757fd29c109"
+    },
+    {
+      "ruta": "5_modelos/B_catalogo_binario/test.parquet",
+      "bytes": 88322,
+      "sha256": "7881b1527499b6fbf5ad5f22105f8a5907063dff0fd8fd6e231825c79a50f27d"
+    },
+    {
+      "ruta": "5_modelos/C_catalogo_5clases_subconjunto/comparacion.csv",
+      "bytes": 962,
+      "sha256": "969dee00a5d7e3a7ac77986dbe25023cb438569a6b1e96080d70d1a353aeec82"
+    },
+    {
+      "ruta": "5_modelos/C_catalogo_5clases_subconjunto/confusion_cv_mlp.png",
+      "bytes": 37758,
+      "sha256": "a8b4199132954163d8fe1e0b182bd919de985404e8a8f00ba00769091f6fcb5c"
+    },
+    {
+      "ruta": "5_modelos/C_catalogo_5clases_subconjunto/confusion_cv_rf.png",
+      "bytes": 36734,
+      "sha256": "f531b94dd79f51b52177e2e8aa026eca89625d05c589949f738eb028298e1f11"
+    },
+    {
+      "ruta": "5_modelos/C_catalogo_5clases_subconjunto/confusion_cv_xgb.png",
+      "bytes": 36325,
+      "sha256": "17588867f25d59b8b59d4fa4176acab2496f4b6ca49188eb1a6937be3197cb54"
+    },
+    {
+      "ruta": "5_modelos/C_catalogo_5clases_subconjunto/confusion_test_mlp.png",
+      "bytes": 36137,
+      "sha256": "4542d6267a135aabdae1b67313bb97cb90cab34ee50a329349d2bad452bd5a1e"
+    },
+    {
+      "ruta": "5_modelos/C_catalogo_5clases_subconjunto/confusion_test_rf.png",
+      "bytes": 35732,
+      "sha256": "fe306874696088284a1604225702fcd998ccf7b2d931f5066f3b009641079eed"
+    },
+    {
+      "ruta": "5_modelos/C_catalogo_5clases_subconjunto/confusion_test_xgb.png",
+      "bytes": 35168,
+      "sha256": "22d0ad3426660f1f52cc82a5e1c6efb63834ca67827c5b7c0de6d972fdc23fed"
+    },
+    {
+      "ruta": "5_modelos/C_catalogo_5clases_subconjunto/importancia_grupos_mlp.csv",
+      "bytes": 554,
+      "sha256": "90f1fcffab1b3453dd378c36e93141a34eafe02ca3ceac766feb8939b70b095d"
+    },
+    {
+      "ruta": "5_modelos/C_catalogo_5clases_subconjunto/importancia_grupos_rf.csv",
+      "bytes": 563,
+      "sha256": "e57fe18ee774517ed4a5aa95b50c67e04cf56250d2d2648ff4351a90a15cc335"
+    },
+    {
+      "ruta": "5_modelos/C_catalogo_5clases_subconjunto/importancia_grupos_xgb.csv",
+      "bytes": 565,
+      "sha256": "2e5474180253e2678214d1cdaa76c16403995a6dd9fefdaa6feefb2ef5417736"
+    },
+    {
+      "ruta": "5_modelos/C_catalogo_5clases_subconjunto/importancia_variables_mlp.csv",
+      "bytes": 1064,
+      "sha256": "2b8bc1d73235799ab42192bede1e2f069cadde217c7d411e185bf374c5ce4405"
+    },
+    {
+      "ruta": "5_modelos/C_catalogo_5clases_subconjunto/importancia_variables_rf.csv",
+      "bytes": 1080,
+      "sha256": "2bb9782ba65f2aefb348b7cbf56fa3d0d4881b4103e0551d2bfe9f77f5044489"
+    },
+    {
+      "ruta": "5_modelos/C_catalogo_5clases_subconjunto/importancia_variables_xgb.csv",
+      "bytes": 1082,
+      "sha256": "8f60eb4f339d1f6fa25426f3674a19c8841d056afdda739f807aae0b21a57e18"
+    },
+    {
+      "ruta": "5_modelos/C_catalogo_5clases_subconjunto/metricas.json",
+      "bytes": 18167,
+      "sha256": "5bc5ef2c7fe46c742ccf138d54510194f143925cf556e9405aa2245ad5e363eb"
+    },
+    {
+      "ruta": "5_modelos/C_catalogo_5clases_subconjunto/modelo_mlp.pt",
+      "bytes": 51445,
+      "sha256": "cfa084aecb5ff0fce9da068e88d88d9fea24c68d1a0fec491b8e5958ba863f80"
+    },
+    {
+      "ruta": "5_modelos/C_catalogo_5clases_subconjunto/modelo_rf.joblib",
+      "bytes": 6867153,
+      "sha256": "3367ea4f6869d5ee642e456bd8235e17368133ee1e6070c2de2afd8f2d892c87"
+    },
+    {
+      "ruta": "5_modelos/C_catalogo_5clases_subconjunto/modelo_xgb.joblib",
+      "bytes": 2617625,
+      "sha256": "22f75aeb59d44adcc424e753069d4986d83edd92b46308366741a064d208274d"
+    },
+    {
+      "ruta": "5_modelos/C_catalogo_5clases_subconjunto/oof.parquet",
+      "bytes": 90118,
+      "sha256": "d12457f215f5380fe5aa13da70f405fe585165161c6406f0a0294933d1a60c4d"
+    },
+    {
+      "ruta": "5_modelos/C_catalogo_5clases_subconjunto/test.parquet",
+      "bytes": 25321,
+      "sha256": "7031eaecd7fb28ea87dc208e94ed5279cafe2aa600b9786c8f1cbf9458f2017c"
+    },
+    {
+      "ruta": "5_modelos/D_catalogo_spherex_5clases/comparacion.csv",
+      "bytes": 948,
+      "sha256": "5e335e49e74ab10be8f1e404e845d47354f2d8aa51fde61b2c5f038dc2c19fb5"
+    },
+    {
+      "ruta": "5_modelos/D_catalogo_spherex_5clases/confusion_cv_mlp.png",
+      "bytes": 37996,
+      "sha256": "c0095641d07e3a66a6d48519861c85a84621c45a0cae28b837463831701e4fca"
+    },
+    {
+      "ruta": "5_modelos/D_catalogo_spherex_5clases/confusion_cv_rf.png",
+      "bytes": 36832,
+      "sha256": "f6388db52fb6ce0614cf289bf160fa0a5347ef49163018ce4dcf2ccb8f18bc43"
+    },
+    {
+      "ruta": "5_modelos/D_catalogo_spherex_5clases/confusion_cv_xgb.png",
+      "bytes": 37488,
+      "sha256": "386cf5ab313ff780692a69e85bf629c2cdd90b447b5b0f7acc9fa5163c28fc1c"
+    },
+    {
+      "ruta": "5_modelos/D_catalogo_spherex_5clases/confusion_test_mlp.png",
+      "bytes": 37187,
+      "sha256": "6aa072fb5308dd79340e8c407067cbc910dd4149ed4b2794b89c1aad1b6c3d7c"
+    },
+    {
+      "ruta": "5_modelos/D_catalogo_spherex_5clases/confusion_test_rf.png",
+      "bytes": 36531,
+      "sha256": "15027b4ad2d599813f60eeda14b4649b7b09cd7aff92afadbafbf8747afcdb9e"
+    },
+    {
+      "ruta": "5_modelos/D_catalogo_spherex_5clases/confusion_test_xgb.png",
+      "bytes": 36570,
+      "sha256": "d88d01679fb5748955a443794a1592f41dc42fa4dd72ca44de5330ac6fa697da"
+    },
+    {
+      "ruta": "5_modelos/D_catalogo_spherex_5clases/importancia_grupos_mlp.csv",
+      "bytes": 671,
+      "sha256": "fc8c5fabad47ef454e9050e9e07d715870464b07008753178895b500e96fe199"
+    },
+    {
+      "ruta": "5_modelos/D_catalogo_spherex_5clases/importancia_grupos_rf.csv",
+      "bytes": 676,
+      "sha256": "dbce0f29593940597df61620820526e1429e268db8228bca6faa210f51ef0966"
+    },
+    {
+      "ruta": "5_modelos/D_catalogo_spherex_5clases/importancia_grupos_xgb.csv",
+      "bytes": 677,
+      "sha256": "2c8f3627e29958b337c4fa193411546b83ea9d1a4796465091f08e78f4f5f35a"
+    },
+    {
+      "ruta": "5_modelos/D_catalogo_spherex_5clases/importancia_variables_mlp.csv",
+      "bytes": 1415,
+      "sha256": "5063ddf48200fbcc069090702efcfd5a0487bfdd313212b7db316f1c68c582c4"
+    },
+    {
+      "ruta": "5_modelos/D_catalogo_spherex_5clases/importancia_variables_rf.csv",
+      "bytes": 1443,
+      "sha256": "b4c84cac0a5113e9d2573914e6ea6191e3f69ca80c3094fc8d8bf890f7c4d4e9"
+    },
+    {
+      "ruta": "5_modelos/D_catalogo_spherex_5clases/importancia_variables_xgb.csv",
+      "bytes": 1428,
+      "sha256": "b42088f78ce135f3a89103f64e41dcc51feade766973958fcdc2d6cb06fb9fae"
+    },
+    {
+      "ruta": "5_modelos/D_catalogo_spherex_5clases/metricas.json",
+      "bytes": 18524,
+      "sha256": "44ba9c8754848a3ef3f43b273476cef1728647f9f68a86b9a26fcd0385e87e03"
+    },
+    {
+      "ruta": "5_modelos/D_catalogo_spherex_5clases/modelo_mlp.pt",
+      "bytes": 55221,
+      "sha256": "001c06b324d7fa60e2afbb050d917468d9e3e9b892d6aa672f3cd3b488902855"
+    },
+    {
+      "ruta": "5_modelos/D_catalogo_spherex_5clases/modelo_rf.joblib",
+      "bytes": 7020786,
+      "sha256": "7e3d0a121b27c4a9d49db496448a7bd9c6622b0765095f7ada0a2d20416d93f7"
+    },
+    {
+      "ruta": "5_modelos/D_catalogo_spherex_5clases/modelo_xgb.joblib",
+      "bytes": 2552447,
+      "sha256": "d55727a64332cff7c93915120758bb3cc446885491ba888a7aa0aadacc411005"
+    },
+    {
+      "ruta": "5_modelos/D_catalogo_spherex_5clases/oof.parquet",
+      "bytes": 93021,
+      "sha256": "5f324ec8f00cf37eb6f176a51b00354ef0036348cb7ddba6a896c2fc723fb479"
+    },
+    {
+      "ruta": "5_modelos/D_catalogo_spherex_5clases/test.parquet",
+      "bytes": 25657,
+      "sha256": "23a077330069008c83455e4666ce455dd0ba7b37776de6b078a68092bc79676b"
+    },
+    {
+      "ruta": "5_modelos/E_servible_binario/comparacion.csv",
+      "bytes": 770,
+      "sha256": "97a14adaa64b91d777789246494ad32833ae3a960ced367767890abac2f4c24b"
+    },
+    {
+      "ruta": "5_modelos/E_servible_binario/confusion_cv_mlp.png",
+      "bytes": 17902,
+      "sha256": "4fd9c7d60ff5abfe6977c4ab77fba9c2375d9a772ec013360e980bf967e6d625"
+    },
+    {
+      "ruta": "5_modelos/E_servible_binario/confusion_cv_rf.png",
+      "bytes": 17636,
+      "sha256": "d477342369ed641175e1629233ed59920f5a30040e7771bb0ff1276ae269a3c9"
+    },
+    {
+      "ruta": "5_modelos/E_servible_binario/confusion_cv_xgb.png",
+      "bytes": 18092,
+      "sha256": "ad2b7ee21f900a84c0aae68ee04e1682ecedb68804febc692105dd21defc9fb2"
+    },
+    {
+      "ruta": "5_modelos/E_servible_binario/confusion_test_mlp.png",
+      "bytes": 16729,
+      "sha256": "1815fd7db455153584169883c440e9a58bea461e03cbb616392231d26b496603"
+    },
+    {
+      "ruta": "5_modelos/E_servible_binario/confusion_test_rf.png",
+      "bytes": 16786,
+      "sha256": "d62bbf4fa6f74590a27dc90147bb9770ccb372ab765b41973e7bd5dddb15483f"
+    },
+    {
+      "ruta": "5_modelos/E_servible_binario/confusion_test_xgb.png",
+      "bytes": 17269,
+      "sha256": "ddbc195183176cac5013abe998e27d75bc18f76fea0720f603c27310e8899a09"
+    },
+    {
+      "ruta": "5_modelos/E_servible_binario/importancia_grupos_mlp.csv",
+      "bytes": 273,
+      "sha256": "6a2b0d00496f9104ed70f09018ea35c9b1ac90a8e9930826a2ff775ee0ac7229"
+    },
+    {
+      "ruta": "5_modelos/E_servible_binario/importancia_grupos_rf.csv",
+      "bytes": 271,
+      "sha256": "feab861eb548416bbc7fe8b19ebf5699768c0e1774aeaa8689247953414823ae"
+    },
+    {
+      "ruta": "5_modelos/E_servible_binario/importancia_grupos_xgb.csv",
+      "bytes": 273,
+      "sha256": "63844b90b9e58b9a8ddf83313038bb0549af4e7a31398d6305d07b8eb64bf853"
+    },
+    {
+      "ruta": "5_modelos/E_servible_binario/importancia_variables_mlp.csv",
+      "bytes": 527,
+      "sha256": "2e3722e50f8b1013bd4f18be0c5b7e0b8178562fd3756c4f73bd61c239b24e0e"
+    },
+    {
+      "ruta": "5_modelos/E_servible_binario/importancia_variables_rf.csv",
+      "bytes": 529,
+      "sha256": "0567e74d92c16dc5ddf9fc632aca2e4807f190f5d3490461a5f4bdcf0967b823"
+    },
+    {
+      "ruta": "5_modelos/E_servible_binario/importancia_variables_xgb.csv",
+      "bytes": 533,
+      "sha256": "0ef67d782af14da8d3bbc020a9503cd7b16224ec9edad18a0a2b0c8f5e04e591"
+    },
+    {
+      "ruta": "5_modelos/E_servible_binario/metricas.json",
+      "bytes": 11584,
+      "sha256": "e83f6fbd60460962040f7614ce20361c2ffd438b3e82b732777219d97d42c2b3"
+    },
+    {
+      "ruta": "5_modelos/E_servible_binario/modelo_mlp.pt",
+      "bytes": 44405,
+      "sha256": "7a10d263ab7b0c51c9fe4216d6695839ac1c34a160f76e98f72c3c84533e51a3"
+    },
+    {
+      "ruta": "5_modelos/E_servible_binario/modelo_rf.joblib",
+      "bytes": 2482243,
+      "sha256": "9023f285648314b9cbe8e61cbc9044553cdf2be2580213f5910ace59d4d5b4fb"
+    },
+    {
+      "ruta": "5_modelos/E_servible_binario/modelo_xgb.joblib",
+      "bytes": 472135,
+      "sha256": "b9c0eb4dfe498f4034f8d242fb6c117c7875119806079bf5bee42e361eb874e8"
+    },
+    {
+      "ruta": "5_modelos/E_servible_binario/oof.parquet",
+      "bytes": 40455,
+      "sha256": "3381c62c89058f467371209998a55dc21a60144e4d77da7e2af28867204c75b1"
+    },
+    {
+      "ruta": "5_modelos/E_servible_binario/test.parquet",
+      "bytes": 12449,
+      "sha256": "7b46b6609f109c17219e3e0a4cdeb840836578224e7b3982d8bc00252ab9ec97"
+    },
+    {
+      "ruta": "5_modelos/comparacion_global.csv",
+      "bytes": 2999,
+      "sha256": "fd0859252a53a1cdf27c2ebccd6767770f1b26c3ebd7586111ce635d35a51e51"
+    },
+    {
+      "ruta": "5_modelos/resumen.json",
+      "bytes": 2542,
+      "sha256": "6680e5ee3a0e91637157236a73d6bd2201a72d87f70e429e6738aedd3f85774e"
+    },
+    {
+      "ruta": "6_exportar/PARA_BACKEND.md",
+      "bytes": 1717,
+      "sha256": "881bbe136539b7418deebd970eddd098e29b44dd4202448054e1c5a9383d1ab6"
+    },
+    {
+      "ruta": "6_exportar/metadata.json",
+      "bytes": 2509,
+      "sha256": "a107e1fe6d9c8abb0c482b97012b599f97209ce5fb4f1f8bac0545e4f191d854"
+    },
+    {
+      "ruta": "6_exportar/model.onnx",
+      "bytes": 1075238,
+      "sha256": "44501737fd919f8606b8be4817068919c07f23bfdd58aab669b849c4e1d540b6"
+    },
+    {
+      "ruta": "6_exportar/verificacion.json",
+      "bytes": 2346,
+      "sha256": "8c85a27744803f87b2cec7f4147180fd39ea4d066839574c511dfe6567338596"
+    },
+    {
+      "ruta": "6_exportar/versiones/motor-rf-E_servible_binario-spherex-2026-11-16T0256/PARA_BACKEND.md",
+      "bytes": 1717,
+      "sha256": "881bbe136539b7418deebd970eddd098e29b44dd4202448054e1c5a9383d1ab6"
+    },
+    {
+      "ruta": "6_exportar/versiones/motor-rf-E_servible_binario-spherex-2026-11-16T0256/metadata.json",
+      "bytes": 2509,
+      "sha256": "a107e1fe6d9c8abb0c482b97012b599f97209ce5fb4f1f8bac0545e4f191d854"
+    },
+    {
+      "ruta": "6_exportar/versiones/motor-rf-E_servible_binario-spherex-2026-11-16T0256/model.onnx",
+      "bytes": 1075238,
+      "sha256": "44501737fd919f8606b8be4817068919c07f23bfdd58aab669b849c4e1d540b6"
+    },
+    {
+      "ruta": "6_exportar/versiones/motor-rf-E_servible_binario-spherex-2026-11-16T0256/verificacion.json",
+      "bytes": 2346,
+      "sha256": "8c85a27744803f87b2cec7f4147180fd39ea4d066839574c511dfe6567338596"
+    },
+    {
+      "ruta": "ESTADO.json",
+      "bytes": 8122,
+      "sha256": "832dc337fde4ce03314e73a55867a4b01bb86acc3febae7343eb336f12e230bc"
+    },
+    {
+      "ruta": "INFORME_MOTOR.md",
+      "bytes": 8412,
+      "sha256": "61c7bbb8bad585219484b1f04827cc16c1722b1084bddc9641214d1a8386e925"
+    },
+    {
+      "ruta": "entorno.json",
+      "bytes": 5281,
+      "sha256": "63b6c16fafa85fea3e29cd61d128e02b21c609e80b1ae6a2f29d336c2282df80"
+    },
+    {
+      "ruta": "motor.log",
+      "bytes": 15128,
+      "sha256": "83d678108175d8bd03e58adc11fd95a10f6d1b3b0bb75f4e90f0752660f3dde4"
+    }
+  ]
+}

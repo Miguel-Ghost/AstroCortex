@@ -1,0 +1,17 @@
+{
+  "source": "NOIRLab Astro Data Lab",
+  "catalog": "catwise2020.main",
+  "service": "https://datalab.noirlab.edu/query/query",
+  "queried_utc": "2026-11-14T19:08:59.963571+00:00",
+  "input": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\data\\processed\\objects.parquet",
+  "input_sha256": "1af75a55d9ece4196a5b497616cce6379d4bd7fcc7c2c83d27357bd6bead3b20",
+  "query_sql": "SELECT t.oid,t.ra_q,t.dec_q,c.source_id,c.ra,c.dec,c.w1mpro,c.w1sigmpro,c.w2mpro,c.w2sigmpro,c.pmra,c.pmdec,c.cc_flags,c.ab_flags,c.w1snr,c.w2snr FROM (VALUES (11840,152.2971048434,-7.0027613112),(11841,152.1982969998,-7.4198660195),(11842,152.2564358083,-7.2293721589),(11843,152.3785421634,-7.3040200740),(11844,152.0284951881,-7.2359535773),(11845,152.1318919816,-7.1110403740),(11846,152.2396936634,-7.1128347717),(11847,152.0740231374,-7.0484318066),(11848,152.1516976274,-7.0028031569),(11849,152.4863993378,-7.0756322756)) AS t(oid,ra_q,dec_q), catwise2020.main AS c WHERE q3c_join(t.ra_q,t.dec_q,c.ra,c.dec,0.000833333333)",
+  "epoch_jyear": 2015.4,
+  "radius_arcsec": 3.0,
+  "rows_in": 10,
+  "rows_out": 10,
+  "response_bytes": 1483,
+  "response_sha256": "bf23a06356901ffaa029fe1e3c3c0437f61a641b5439c99e6bcbcfec8e8bdc51",
+  "seconds": 0.61,
+  "complete": true
+}

@@ -1,0 +1,17 @@
+{
+  "source": "NOIRLab Astro Data Lab",
+  "catalog": "twomass.psc",
+  "service": "https://datalab.noirlab.edu/query/query",
+  "queried_utc": "2026-11-14T19:34:26.985687+00:00",
+  "input": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\data\\processed\\objects.parquet",
+  "input_sha256": "1af75a55d9ece4196a5b497616cce6379d4bd7fcc7c2c83d27357bd6bead3b20",
+  "query_sql": "SELECT t.oid,t.ra_q,t.dec_q,c.designation,c.ra,c.dec,c.j_m,c.j_msigcom,c.h_m,c.h_msigcom,c.k_m,c.k_msigcom,c.ph_qual,c.cc_flg,c.rd_flg,c.bl_flg FROM (VALUES (11840,152.2971061041,-7.0027275793),(11841,152.1983616531,-7.4199006682),(11842,152.2564516042,-7.2293782177),(11843,152.3785725400,-7.3039963977),(11844,152.0285108551,-7.2359492391),(11845,152.1319257174,-7.1110777035),(11846,152.2396731652,-7.1127488119),(11847,152.0740047922,-7.0483976036),(11848,152.1517458826,-7.0026999490),(11849,152.4864641057,-7.0756402220)) AS t(oid,ra_q,dec_q), twomass.psc AS c WHERE q3c_join(t.ra_q,t.dec_q,c.ra,c.dec,0.000833333333)",
+  "epoch_jyear": 1999.5,
+  "radius_arcsec": 3.0,
+  "rows_in": 10,
+  "rows_out": 9,
+  "response_bytes": 1249,
+  "response_sha256": "1f66e87414fd4d3a73160bbd83d6c786516de88d28511bd5a27190c6ec317dae",
+  "seconds": 0.914,
+  "complete": true
+}

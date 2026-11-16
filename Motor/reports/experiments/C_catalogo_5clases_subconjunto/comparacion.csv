@@ -1,0 +1,4 @@
+experimento,modelo,elegido_por_cv,potencia_peso,n_variables,poblacion,cv_balanced_accuracy,cv_macro_f1,cv_ap_positivas,cv_precision_positivas,cv_recall_positivas,cv_recall_star,cv_recall_M,cv_recall_L,cv_recall_T,cv_recall_Y,test_balanced_accuracy,test_macro_f1,test_ap_positivas,test_precision_positivas,test_recall_positivas,test_recall_star,test_recall_M,test_recall_L,test_recall_T,test_recall_Y
+C_catalogo_5clases_subconjunto,rf,True,0.25,21,spherex,0.7325,0.75,0.9845,0.9094,0.9656,0.8938,0.5949,0.8443,0.9044,0.425,0.748,0.7729,0.9951,0.95,0.9661,0.9487,0.5714,0.7812,0.9388,0.5
+C_catalogo_5clases_subconjunto,xgb,False,0.25,21,spherex,0.7203,0.7358,0.985,0.9128,0.9347,0.8812,0.6456,0.8443,0.8805,0.35,0.7602,0.7922,0.9898,0.9344,0.9661,0.9744,0.5238,0.8438,0.9592,0.5
+C_catalogo_5clases_subconjunto,mlp,False,0.25,21,spherex,0.7156,0.7181,0.9757,0.9438,0.866,0.8938,0.6329,0.7006,0.8008,0.55,0.7258,0.7259,0.978,0.9615,0.8475,1.0,0.5238,0.75,0.7551,0.6

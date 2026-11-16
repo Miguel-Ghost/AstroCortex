@@ -1,0 +1,131 @@
+{
+  "groups": {
+    "color_wise": [
+      "cw_W1_W2",
+      "aw_W1_W2",
+      "uw_W1_W2"
+    ],
+    "color_2mass": [
+      "J_H",
+      "H_Ks",
+      "J_Ks"
+    ],
+    "color_nir_mir": [
+      "J_W1",
+      "J_W2",
+      "H_W2",
+      "Ks_W2"
+    ],
+    "movimiento": [
+      "cw_mu",
+      "cw_log_mu",
+      "Hrpm_W2",
+      "Hrpm_J"
+    ],
+    "variabilidad": [
+      "aw_var_w2"
+    ],
+    "color_w3": [
+      "W2_W3",
+      "W1_W3",
+      "W3_detectada"
+    ],
+    "wise_pm": [
+      "cw_W1_W2_pm",
+      "cw_mu_snr",
+      "Hrpm_W2_pm"
+    ],
+    "paralaje_wise": [
+      "cw_par",
+      "cw_par_snr"
+    ],
+    "gaia": [
+      "gaia_parallax",
+      "gaia_plx_snr",
+      "gaia_ruwe",
+      "gaia_BP_RP",
+      "gaia_Cstar",
+      "gaia_mu",
+      "gaia_G_W2",
+      "gaia_G_J",
+      "gaia_M_W2"
+    ],
+    "AUDIT_brillo": [
+      "cw_w1mpro",
+      "cw_w2mpro",
+      "tm_j_m",
+      "cw_w2snr",
+      "cw_W1_W2_err"
+    ],
+    "AUDIT_artefacto": [
+      "has_cw",
+      "has_aw",
+      "has_tm",
+      "has_uw",
+      "cw_n_cand",
+      "aw_n_cand",
+      "tm_n_cand",
+      "uw_n_cand",
+      "cw_sep_arcsec",
+      "aw_sep_arcsec",
+      "tm_sep_arcsec",
+      "uw_sep_arcsec",
+      "has_gaia"
+    ],
+    "AUDIT_posicion": [
+      "glat"
+    ]
+  },
+  "feature_sets": {
+    "E1_nucleo_fisico": [
+      "color_wise",
+      "color_2mass",
+      "color_nir_mir",
+      "movimiento",
+      "variabilidad",
+      "color_w3",
+      "wise_pm"
+    ],
+    "E1b_sin_extra": [
+      "color_wise",
+      "color_2mass",
+      "color_nir_mir",
+      "movimiento",
+      "variabilidad"
+    ],
+    "E1c_mas_paralaje_wise": [
+      "color_wise",
+      "color_2mass",
+      "color_nir_mir",
+      "movimiento",
+      "variabilidad",
+      "color_w3",
+      "wise_pm",
+      "paralaje_wise"
+    ],
+    "E2_nucleo_mas_gaia": [
+      "color_wise",
+      "color_2mass",
+      "color_nir_mir",
+      "movimiento",
+      "variabilidad",
+      "color_w3",
+      "wise_pm",
+      "gaia"
+    ],
+    "E3_nucleo_mas_brillo": [
+      "color_wise",
+      "color_2mass",
+      "color_nir_mir",
+      "movimiento",
+      "variabilidad",
+      "AUDIT_brillo"
+    ],
+    "E0_solo_atajos": [
+      "AUDIT_artefacto",
+      "AUDIT_posicion",
+      "AUDIT_brillo"
+    ]
+  },
+  "generated_utc": "2026-11-16T01:45:13+00:00"
+}

@@ -1,0 +1,35 @@
+{
+  "pkl_sha256": "352c313fa3add40e6bffb11fb92c38eeb0a70e588d0fffba503ec84cc0c7b913",
+  "features": [
+    "cw_W1_W2",
+    "aw_W1_W2",
+    "uw_W1_W2",
+    "J_H",
+    "H_Ks",
+    "J_Ks",
+    "J_W1",
+    "J_W2",
+    "H_W2",
+    "Ks_W2",
+    "cw_mu",
+    "cw_log_mu",
+    "Hrpm_W2",
+    "Hrpm_J",
+    "aw_var_w2",
+    "W2_W3",
+    "W1_W3",
+    "W3_detectada",
+    "cw_W1_W2_pm",
+    "cw_mu_snr",
+    "Hrpm_W2_pm"
+  ],
+  "classes": [
+    "star",
+    "M",
+    "L",
+    "T",
+    "Y"
+  ],
+  "tau": 0.3,
+  "uso": "p = model.predict_proba(X[features]); clase 'desconocido' si max(p) < tau"
+}

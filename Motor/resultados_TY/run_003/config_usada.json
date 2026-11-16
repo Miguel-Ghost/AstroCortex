@@ -1,0 +1,70 @@
+{
+  "_nota": "Rutas relativas se resuelven desde esta carpeta (config). Entradas: solo lectura. Salidas: dentro de NASA SPACE APPS.",
+  "paths": {
+    "input_root": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto",
+    "processed": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\data\\processed",
+    "ultracoolsheet": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\data\\raw\\ultracoolsheet\\UltracoolSheet_-_Main.csv",
+    "noirlab_catalogs": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\CLASIFICADOR_TY\\data\\catalogos_noirlab",
+    "spherex_index": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\CLASIFICADOR_TY\\data\\spherex_index\\pilot_image_index.jsonl",
+    "spherex_raw": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\CLASIFICADOR_TY\\data\\spherex_raw_mef",
+    "fits_status": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\logs\\run_2.status",
+    "output_root": "C:\\Users\\Paolo\\Downloads\\NASA SPACE APPS\\CLASIFICADOR_TY\\resultados_TY",
+    "extra_catalogs": "C:\\Users\\Paolo\\Downloads\\NASA SPACE APPS\\CLASIFICADOR_TY\\datos_extra_TY"
+  },
+  "run_id": "run_003",
+  "seed": 20261115,
+  "catalogs": [
+    "catwise",
+    "allwise",
+    "tmass",
+    "unwise"
+  ],
+  "match_radius_arcsec": 3.0,
+  "split": {
+    "sky_dec_bands": 12,
+    "sky_ra_bins": 24,
+    "test_fraction_folds": 5,
+    "cv_folds": 5,
+    "min_y_in_test": 8
+  },
+  "quality": {
+    "mask_artifact_photometry": true,
+    "mu_floor_arcsec_yr": 0.005
+  },
+  "model": {
+    "max_iter": 300,
+    "learning_rate": 0.06,
+    "max_leaf_nodes": 31,
+    "min_samples_leaf": 20,
+    "l2_regularization": 1.0,
+    "class_weight_power": 0.5,
+    "class_weight_power_candidates": [
+      1.0,
+      0.5,
+      0.25
+    ]
+  },
+  "robustness": {
+    "corr_cluster_threshold": 0.8,
+    "dominance_warning_share": 0.5,
+    "dropout_probability": 0.3,
+    "dropout_copies": 2,
+    "max_clean_loss_for_robust": 0.02
+  },
+  "importance": {
+    "permutation_repeats": 10,
+    "boruta_iterations": 40,
+    "boruta_trees": 150
+  },
+  "abstention": {
+    "target_precision_ty": 0.9
+  },
+  "spherex": {
+    "scan_fits_headers": true,
+    "fits_sample_stride": 64,
+    "verify_fits_sha256": false,
+    "max_fits": 1927
+  },
+  "_config_path": "C:\\Users\\Paolo\\Downloads\\NASA SPACE APPS\\CLASIFICADOR_TY\\TY_PIPELINE\\config\\config.json",
+  "_config_sha256": "38ce2d23a006ca565fc5b0fd66faabadb6c53499c33982d0b6fc4552655fc145"
+}

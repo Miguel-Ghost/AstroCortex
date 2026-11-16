@@ -1,0 +1,86 @@
+# Model pipeline as DVC stages (dvc repro). The SPHEREx download stage is frozen: it needs IRSA and
+# ~40 min of network time, so `dvc repro` reuses its outputs; unfreeze it with `dvc unfreeze spherex`.
+# Every output is cache: false: the outputs are small enough to live in git (fitted estimators excepted, see
+# .gitignore), so no DVC remote is needed; dvc.lock records their hashes and `dvc status` shows what is stale.
+stages:
+  ty:
+    cmd: python main.py ty
+    deps:
+      - TY_PIPELINE/typipe
+      - TY_PIPELINE/config/config.json
+      - datos_entrada
+      - datos_extra_TY
+    outs:
+      - resultados_TY/run_004:
+          cache: false
+
+  spherex:
+    frozen: true
+    cmd: python main.py descargar
+    deps:
+      - motor/e1_indice.py
+      - motor/e2_fotometria.py
+      - motor/e3_features_spherex.py
+      - motor/spherex_io.py
+      - datos_entrada/processed/objects.parquet
+    params:
+      - config/motor.json:
+          - spherex.seleccion_por_clase
+          - spherex.colecciones
+          - spherex.exposiciones_por_detector
+          - spherex.recorte_px
+          - spherex.psf_sigma_px
+          - spherex.snr_color_min
+    outs:
+      - salidas/1_indice_spherex:
+          cache: false
+          persist: true
+      - salidas/2_fotometria_spherex:
+          cache: false
+          persist: true
+      - salidas/3_features_spherex:
+          cache: false
+
+  entrenar:
+    cmd: python main.py entrenar
+    deps:
+      - motor/e4_preprocesamiento.py
+      - motor/e5_modelos.py
+      - motor/e6_exportar.py
+      - motor/e7_informe.py
+      - motor/modelos.py
+      - resultados_TY/run_004
+      - salidas/3_features_spherex
+    params:
+      - config/motor.json:
+          - preprocesamiento
+          - modelos
+          - conjuntos
+          - objetivos
+          - experimentos
+          - exportar
+    outs:
+      - salidas/4_preprocesamiento:
+          cache: false
+      - salidas/5_modelos:
+          cache: false
+      - salidas/6_exportar:
+          cache: false
+
+  promover:
+    cmd: python main.py promover
+    deps:
+      - salidas/6_exportar
+      - salidas/5_modelos
+    outs:
+      - artifacts/models/actual:
+          cache: false
+      - reports/experiments:
+          cache: false
+      - reports/INFORME_MOTOR.md:
+          cache: false
+      - reports/metrics/comparacion_global.csv:
+          cache: false
+    metrics:
+      - reports/metrics/resumen.json:
+          cache: false

@@ -1,0 +1,299 @@
+{
+  "motor_version": "1.0.0",
+  "created_utc": "2026-11-16T01:34:19+00:00",
+  "etapas": {
+    "1_indice_spherex": {
+      "estado": "OK_CON_AVISOS",
+      "inicio_utc": "2026-11-16T01:53:45+00:00",
+      "fin_utc": "2026-11-16T02:11:44+00:00",
+      "segundos": 1078.7,
+      "resumen": {
+        "objetos_seleccionados": 855,
+        "objetos_con_cache": 834,
+        "objetos_con_error": 21,
+        "filas_sia": 240384,
+        "filas_sin_clave_s3": 0,
+        "filas_qr2_descartadas": 0,
+        "duplicados_entre_colecciones": 0,
+        "filas_indice": 240384,
+        "objetos_con_exposiciones": 834,
+        "exposiciones_por_objeto_mediana": 267.0,
+        "epocas_por_objeto_mediana": 3.0,
+        "por_detector": {
+          "1": 40163,
+          "2": 39970,
+          "3": 40691,
+          "4": 39724,
+          "5": 39629,
+          "6": 40207
+        },
+        "filas_crudas": 240384
+      },
+      "avisos": [
+        "21 objetos sin respuesta de SIA (se reintentan al relanzar la etapa)"
+      ]
+    },
+    "2_fotometria_spherex": {
+      "estado": "OK",
+      "inicio_utc": "2026-11-16T02:11:44+00:00",
+      "fin_utc": "2026-11-16T02:33:45+00:00",
+      "segundos": 1321.1,
+      "resumen": {
+        "lecturas_plan": 15012,
+        "mediciones": 15012,
+        "estados": {
+          "OK": 14189,
+          "NUCLEO_ENMASCARADO": 668,
+          "SIN_FONDO": 140,
+          "FUERA_DEL_DETECTOR": 15
+        },
+        "objetos_con_alguna_medicion_ok": 829,
+        "snr_mediana_por_detector": {
+          "1": 3.68,
+          "2": 9.62,
+          "3": 10.77,
+          "4": 8.51,
+          "5": 5.04,
+          "6": 2.3
+        }
+      }
+    },
+    "3_features_spherex": {
+      "estado": "OK",
+      "inicio_utc": "2026-11-16T02:33:45+00:00",
+      "fin_utc": "2026-11-16T02:33:45+00:00",
+      "segundos": 0.1,
+      "resumen": {
+        "objetos": 850,
+        "con_alguna_medicion_ok": 826,
+        "cobertura_colores_por_clase": {
+          "L": {
+            "spx_c21": 0.615,
+            "spx_c32": 0.88,
+            "spx_c43": 0.88,
+            "spx_c54": 0.85,
+            "spx_c65": 0.68,
+            "spx_c64": 0.675,
+            "spx_ch4": 0.85
+          },
+          "M": {
+            "spx_c21": 0.85,
+            "spx_c32": 0.91,
+            "spx_c43": 0.91,
+            "spx_c54": 0.91,
+            "spx_c65": 0.89,
+            "spx_c64": 0.87,
+            "spx_ch4": 0.91
+          },
+          "T": {
+            "spx_c21": 0.233,
+            "spx_c32": 0.377,
+            "spx_c43": 0.37,
+            "spx_c54": 0.427,
+            "spx_c65": 0.38,
+            "spx_c64": 0.277,
+            "spx_ch4": 0.69
+          },
+          "Y": {
+            "spx_c21": 0.1,
+            "spx_c32": 0.16,
+            "spx_c43": 0.16,
+            "spx_c54": 0.2,
+            "spx_c65": 0.3,
+            "spx_c64": 0.12,
+            "spx_ch4": 0.54
+          },
+          "star": {
+            "spx_c21": 0.975,
+            "spx_c32": 0.97,
+            "spx_c43": 0.875,
+            "spx_c54": 0.635,
+            "spx_c65": 0.475,
+            "spx_c64": 0.47,
+            "spx_ch4": 0.635
+          }
+        }
+      }
+    },
+    "4_preprocesamiento": {
+      "estado": "OK",
+      "inicio_utc": "2026-11-16T02:41:54+00:00",
+      "fin_utc": "2026-11-16T02:41:56+00:00",
+      "segundos": 1.6,
+      "resumen": {
+        "filas_inicio": 11850,
+        "filas_final": 11815,
+        "quitadas_duplicado": 35,
+        "valores_imposibles_a_faltante": {},
+        "variables_quitadas_por_faltantes": [],
+        "variables_por_conjunto": {
+          "catalogo": 21,
+          "catalogo_mas_spherex": 28,
+          "servible": 10
+        },
+        "outliers_marcados_total": 1107,
+        "con_spherex": true,
+        "ty_run": "/workspace/CLASIFICADOR_VAST/resultados_TY/run_004"
+      }
+    },
+    "5_modelos": {
+      "estado": "OK",
+      "inicio_utc": "2026-11-16T02:41:56+00:00",
+      "fin_utc": "2026-11-16T02:56:18+00:00",
+      "segundos": 861.7,
+      "resumen": {
+        "A_catalogo_5clases": {
+          "estado": "OK",
+          "elegido": "xgb",
+          "n_variables": 21,
+          "poblacion": "todos",
+          "cv_macro_f1": {
+            "rf": 0.7531,
+            "xgb": 0.7808,
+            "mlp": 0.7469
+          },
+          "test_elegido": {
+            "balanced_accuracy": 0.7625,
+            "macro_f1": 0.7814,
+            "ap_positivas": 0.9456,
+            "precision_positivas": 0.9205,
+            "recall_positivas": 0.8394,
+            "recall_star": 0.9919,
+            "recall_M": 0.6467,
+            "recall_L": 0.8706,
+            "recall_T": 0.8033,
+            "recall_Y": 0.5
+          }
+        },
+        "B_catalogo_binario": {
+          "estado": "OK",
+          "elegido": "rf",
+          "n_variables": 21,
+          "poblacion": "todos",
+          "cv_macro_f1": {
+            "rf": 0.9384,
+            "xgb": 0.9377,
+            "mlp": 0.9378
+          },
+          "test_elegido": {
+            "balanced_accuracy": 0.9122,
+            "macro_f1": 0.9359,
+            "ap_positivas": 0.9385,
+            "precision_positivas": 0.9412,
+            "recall_positivas": 0.829,
+            "recall_star": 0.9954,
+            "recall_cold_brown_dwarf": 0.829
+          }
+        },
+        "C_catalogo_5clases_subconjunto": {
+          "estado": "OK",
+          "elegido": "rf",
+          "n_variables": 21,
+          "poblacion": "spherex",
+          "cv_macro_f1": {
+            "rf": 0.75,
+            "xgb": 0.7358,
+            "mlp": 0.7181
+          },
+          "test_elegido": {
+            "balanced_accuracy": 0.748,
+            "macro_f1": 0.7729,
+            "ap_positivas": 0.9951,
+            "precision_positivas": 0.95,
+            "recall_positivas": 0.9661,
+            "recall_star": 0.9487,
+            "recall_M": 0.5714,
+            "recall_L": 0.7812,
+            "recall_T": 0.9388,
+            "recall_Y": 0.5
+          }
+        },
+        "D_catalogo_spherex_5clases": {
+          "estado": "OK",
+          "elegido": "rf",
+          "n_variables": 28,
+          "poblacion": "spherex",
+          "cv_macro_f1": {
+            "rf": 0.7563,
+            "xgb": 0.7459,
+            "mlp": 0.7385
+          },
+          "test_elegido": {
+            "balanced_accuracy": 0.8066,
+            "macro_f1": 0.8325,
+            "ap_positivas": 0.9934,
+            "precision_positivas": 0.9344,
+            "recall_positivas": 0.9661,
+            "recall_star": 1.0,
+            "recall_M": 0.619,
+            "recall_L": 0.875,
+            "recall_T": 0.9388,
+            "recall_Y": 0.6
+          }
+        },
+        "E_servible_binario": {
+          "estado": "OK",
+          "elegido": "rf",
+          "n_variables": 10,
+          "poblacion": "spherex",
+          "cv_macro_f1": {
+            "rf": 0.9455,
+            "xgb": 0.941,
+            "mlp": 0.9197
+          },
+          "test_elegido": {
+            "balanced_accuracy": 0.9583,
+            "macro_f1": 0.9583,
+            "ap_positivas": 0.9924,
+            "precision_positivas": 0.9492,
+            "recall_positivas": 0.9492,
+            "recall_star": 0.9674,
+            "recall_cold_brown_dwarf": 0.9492
+          }
+        }
+      }
+    },
+    "6_exportar": {
+      "estado": "OK",
+      "inicio_utc": "2026-11-16T02:56:18+00:00",
+      "fin_utc": "2026-11-16T02:56:21+00:00",
+      "segundos": 2.9,
+      "resumen": {
+        "modelo": "rf",
+        "experimento": "E_servible_binario",
+        "version": "motor-rf-E_servible_binario-spherex-2026-11-16T0256",
+        "features": [
+          "cw_W1_W2",
+          "cw_mu",
+          "Hrpm_W2",
+          "spx_c21",
+          "spx_c32",
+          "spx_c43",
+          "spx_c54",
+          "spx_c65",
+          "spx_c64",
+          "spx_ch4"
+        ],
+        "umbral": 0.5,
+        "verificacion_ok": true
+      }
+    },
+    "7_informe": {
+      "estado": "OK",
+      "inicio_utc": "2026-11-16T02:56:21+00:00",
+      "fin_utc": "2026-11-16T02:56:21+00:00",
+      "segundos": 0.2,
+      "resumen": {
+        "informe": "INFORME_MOTOR.md",
+        "archivos_en_manifiesto": 127
+      }
+    }
+  },
+  "resumen": {
+    "terminadas": "7/7",
+    "en_curso": [],
+    "fallidas": [],
+    "global": "COMPLETO"
+  },
+  "updated_utc": "2026-11-16T02:56:21+00:00"
+}

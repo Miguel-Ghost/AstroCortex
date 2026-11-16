@@ -1,0 +1,42 @@
+{
+  "umbral": 0.8,
+  "clusters": [
+    [
+      "cw_W1_W2",
+      "aw_W1_W2",
+      "uw_W1_W2",
+      "J_W2",
+      "H_W2",
+      "Ks_W2",
+      "cw_W1_W2_pm"
+    ],
+    [
+      "cw_mu",
+      "cw_log_mu",
+      "Hrpm_W2",
+      "Hrpm_J",
+      "Hrpm_W2_pm"
+    ],
+    [
+      "J_H",
+      "J_Ks",
+      "J_W1"
+    ],
+    [
+      "W2_W3",
+      "W1_W3"
+    ],
+    [
+      "H_Ks"
+    ],
+    [
+      "W3_detectada"
+    ],
+    [
+      "aw_var_w2"
+    ],
+    [
+      "cw_mu_snr"
+    ]
+  ]
+}

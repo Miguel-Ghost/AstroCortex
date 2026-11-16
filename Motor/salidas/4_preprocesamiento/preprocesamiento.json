@@ -1,0 +1,15 @@
+{
+  "filas_inicio": 11850,
+  "filas_final": 11815,
+  "quitadas_duplicado": 35,
+  "valores_imposibles_a_faltante": {},
+  "variables_quitadas_por_faltantes": [],
+  "variables_por_conjunto": {
+    "catalogo": 21,
+    "catalogo_mas_spherex": 28,
+    "servible": 10
+  },
+  "outliers_marcados_total": 1107,
+  "con_spherex": true,
+  "ty_run": "/workspace/CLASIFICADOR_VAST/resultados_TY/run_004"
+}

@@ -1,0 +1,180 @@
+{
+  "_nota": "Rutas relativas a esta carpeta config/. Cambiar solo lo necesario y anotarlo en salidas/BITACORA.md.",
+  "rutas": {
+    "ty_pipeline": "../TY_PIPELINE",
+    "ty_run": "../resultados_TY/run_004",
+    "ty_run_respaldo": "../resultados_TY/run_003",
+    "datos_entrada": "../datos_entrada",
+    "salidas": "../salidas"
+  },
+  "semilla": 20261115,
+  "spherex": {
+    "_nota": "Etapas 1-3. La seleccion es por clase: -1 = todos los objetos de esa clase.",
+    "seleccion_por_clase": {
+      "star": 200,
+      "M": 100,
+      "L": 200,
+      "T": 300,
+      "Y": -1
+    },
+    "incluir_pilotos": true,
+    "sia_url": "https://irsa.ipac.caltech.edu/SIA",
+    "colecciones": [
+      "spherex_dr1"
+    ],
+    "prioridad_coleccion": [
+      "spherex_dr1",
+      "spherex_qr3",
+      "spherex_qr3_deep"
+    ],
+    "sia_radio_grados": 0.0003,
+    "sia_concurrencia": 16,
+    "sia_reintentos": 6,
+    "sia_timeout_s": 90,
+    "mjd_referencia_indice": 61000.0,
+    "mjd_catwise": 57170.0,
+    "hueco_epoca_dias": 20,
+    "s3_base": "https://nasa-irsa-spherex.s3.us-east-1.amazonaws.com/",
+    "exposiciones_por_detector": 3,
+    "s3_concurrencia": 64,
+    "s3_reintentos": 3,
+    "recorte_px": 15,
+    "leer_lambda": true,
+    "psf_sigma_px": {
+      "1": 0.415,
+      "2": 0.383,
+      "3": 0.391,
+      "4": 0.516,
+      "5": 0.517,
+      "6": 0.522
+    },
+    "radio_fotometria_px": 3.0,
+    "anillo_fondo_px": [
+      4.0,
+      7.0
+    ],
+    "bits_no_enmascarar": [
+      "SOURCE",
+      "OUTLIER"
+    ],
+    "cobertura_psf_min": 0.6,
+    "snr_color_min": 3.0,
+    "snr_deteccion": 5.0,
+    "guardar_cada": 500
+  },
+  "preprocesamiento": {
+    "radio_duplicado_arcsec": 2.0,
+    "epoca_comun_duplicados": 2016.0,
+    "limite_fisico_color_mag": 15.0,
+    "outlier_mad_k": 6.0,
+    "max_faltante_dev": 0.97
+  },
+  "modelos": {
+    "potencias_peso_clase": [
+      0.25
+    ],
+    "rf": {
+      "n_estimators": 500,
+      "min_samples_leaf": 2,
+      "max_features": "sqrt"
+    },
+    "xgb": {
+      "n_estimators": 400,
+      "max_depth": 6,
+      "learning_rate": 0.05,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "min_child_weight": 1.0,
+      "reg_lambda": 1.0
+    },
+    "mlp": {
+      "capas": [
+        128,
+        64
+      ],
+      "dropout": 0.2,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "epocas_max": 150,
+      "paciencia": 15,
+      "batch": 256,
+      "recorte_percentil": [
+        0.5,
+        99.5
+      ]
+    },
+    "permutaciones": 2,
+    "precision_objetivo_fria": 0.9,
+    "regla_eleccion": "mayor macro-F1 en la CV espacial de desarrollo; el test se evalua una sola vez, despues de elegir"
+  },
+  "conjuntos": {
+    "catalogo": {
+      "conjunto_ty": "E1_nucleo_fisico",
+      "spherex": false
+    },
+    "catalogo_mas_spherex": {
+      "conjunto_ty": "E1_nucleo_fisico",
+      "spherex": true
+    },
+    "servible": {
+      "variables": [
+        "cw_W1_W2",
+        "cw_mu",
+        "Hrpm_W2"
+      ],
+      "spherex": true
+    }
+  },
+  "objetivos": {
+    "5clases": {
+      "star": "star",
+      "M": "M",
+      "L": "L",
+      "T": "T",
+      "Y": "Y"
+    },
+    "servible": {
+      "star": "star",
+      "M": "star",
+      "L": "star",
+      "T": "cold_brown_dwarf",
+      "Y": "cold_brown_dwarf"
+    }
+  },
+  "experimentos": [
+    {
+      "nombre": "A_catalogo_5clases",
+      "conjunto": "catalogo",
+      "objetivo": "5clases",
+      "poblacion": "todos"
+    },
+    {
+      "nombre": "B_catalogo_binario",
+      "conjunto": "catalogo",
+      "objetivo": "servible",
+      "poblacion": "todos"
+    },
+    {
+      "nombre": "C_catalogo_5clases_subconjunto",
+      "conjunto": "catalogo",
+      "objetivo": "5clases",
+      "poblacion": "spherex"
+    },
+    {
+      "nombre": "D_catalogo_spherex_5clases",
+      "conjunto": "catalogo_mas_spherex",
+      "objetivo": "5clases",
+      "poblacion": "spherex"
+    },
+    {
+      "nombre": "E_servible_binario",
+      "conjunto": "servible",
+      "objetivo": "servible",
+      "poblacion": "spherex_o_todos"
+    }
+  ],
+  "exportar": {
+    "experimento": "E_servible_binario",
+    "clase_fria": "cold_brown_dwarf"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "generated_utc": "2026-11-15T07:36:04+00:00",
+  "objects_sha256": "1af75a55d9ece4196a5b497616cce6379d4bd7fcc7c2c83d27357bd6bead3b20",
+  "n_objects": 11850,
+  "classes": {
+    "star": 8000,
+    "L": 1958,
+    "M": 924,
+    "T": 918,
+    "Y": 50
+  },
+  "input_files": [
+    {
+      "path": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\data\\processed\\objects.parquet",
+      "bytes": 937294,
+      "sha256": "1af75a55d9ece4196a5b497616cce6379d4bd7fcc7c2c83d27357bd6bead3b20"
+    },
+    {
+      "path": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\data\\processed\\spherex_index_targets.parquet",
+      "bytes": 117621,
+      "sha256": "cb76db0f4d808ef3e30fee96587789ca604c8a3d6d0e2603d98e08d1a2e5e895"
+    },
+    {
+      "path": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\data\\processed\\spherex_phot_targets.parquet",
+      "bytes": 259517,
+      "sha256": "774e4052706c88567783e7f334736d6447e500a7001b6c86f07a4f06d73cbc17"
+    },
+    {
+      "path": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\data\\processed\\spherex_sample_targets.parquet",
+      "bytes": 6180,
+      "sha256": "0f2073f72416608d728d2ccb7299aa1fd987d56ea9d2bdb303a5a14990a42b34"
+    },
+    {
+      "path": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\data\\processed\\targets.parquet",
+      "bytes": 6332,
+      "sha256": "04658078decb4e42faf2ee3eac4e1158a4c4270b78948ab681880cc113cb1fe4"
+    },
+    {
+      "path": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\data\\processed\\xm_allwise.parquet",
+      "bytes": 1560532,
+      "sha256": "86d561d2a13996845d3e46965f320a6c0609ba114571f2e02b46d1b28192e7a3"
+    },
+    {
+      "path": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\data\\processed\\xm_allwise_nb.parquet",
+      "bytes": 1061731,
+      "sha256": "086b5d888df85557d40858a569bc58ee92488dd675c509668c0aec7cf05d1630"
+    },
+    {
+      "path": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\data\\processed\\xm_catwise.parquet",
+      "bytes": 782164,
+      "sha256": "08a4fca499d659fcf345e4a478ccd4705c0e01a2c193ddf8e6b360e5f3adf648"
+    },
+    {
+      "path": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\data\\processed\\xm_gaia.parquet",
+      "bytes": 1313902,
+      "sha256": "785bcbc280933ed579a80f2b50c903bdf424b3f64aed9eaac51c2f75c4df829f"
+    },
+    {
+      "path": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\data\\processed\\xm_tmass_nb.parquet",
+      "bytes": 832421,
+      "sha256": "40ecf25c05435ab0e52ec5150178c2775d206b33711632e856197e70327f32e8"
+    },
+    {
+      "path": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\data\\raw\\ultracoolsheet\\UltracoolSheet_-_Main.csv",
+      "bytes": 6638748,
+      "sha256": "2307303072ebf729be6e7af6ec67c0a9feed6c2ab6f0adb35444bfab5724a184"
+    },
+    {
+      "path": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\CLASIFICADOR_TY\\data\\spherex_index\\pilot_image_index.jsonl",
+      "bytes": 1214192,
+      "sha256": "e28d44136b13608c46e2af055184ed7b34f3e1943c7c27827047ed60f6def04d"
+    }
+  ],
+  "noirlab_catalogs": {
+    "catwise": {
+      "csv": 593,
+      "receipts": 593
+    },
+    "allwise": {
+      "csv": 593,
+      "receipts": 593
+    },
+    "tmass": {
+      "csv": 593,
+      "receipts": 593
+    },
+    "unwise": {
+      "csv": 593,
+      "receipts": 593
+    }
+  },
+  "spherex": {
+    "index_rows": 1927,
+    "on_disk": {
+      "fits": 1927,
+      "receipts": 1927,
+      "partial": 0,
+      "bytes": 125665162560
+    },
+    "download_status": {
+      "index_sha256": "e28d44136b13608c46e2af055184ed7b34f3e1943c7c27827047ed60f6def04d",
+      "selected": 1927,
+      "attempted": 1927,
+      "failed": 0,
+      "failure_details": [],
+      "raw_bytes": 125665162560,
+      "saved_utc": "2026-11-15T04:27:23.240992+00:00"
+    },
+    "bat_status_tail": "[s�b 14/11/2026 21:36:12.17] inicio FITS completos \n[s�b 14/11/2026 23:27:23.28] FIN FITS completos OK \n"
+  },
+  "packages": {
+    "python": "3.13.14",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "pyarrow": "26.0.1",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "astropy": "8.0.2"
+  },
+  "config_sha256": "38ce2d23a006ca565fc5b0fd66faabadb6c53499c33982d0b6fc4552655fc145",
+  "scope": {
+    "usado": [
+      "UltracoolSheet (etiquetas)",
+      "Gaia DR3 (controles y cruce por id)",
+      "CatWISE2020/AllWISE/2MASS/unWISE (NOIRLab, recibos verificados)",
+      "SPHEREx DR1/QR3: 1927 MEF de 5 objetivos piloto + fotometría forzada"
+    ],
+    "no_disponible_localmente": [
+      "Euclid",
+      "COSMOS",
+      "Spitzer (salvo ch1/ch2 de UltracoolSheet)",
+      "ZTF",
+      "Datos simulados Roman/Rubin"
+    ],
+    "solo_metodo": [
+      "IRSA Techniques & Tools",
+      "CatNorth (arXiv:2310.12704) §3"
+    ]
+  }
+}

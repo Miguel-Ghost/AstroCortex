@@ -1,0 +1,23 @@
+{
+  "3781": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+354.0315207+-35.6976534+0.0003')\")",
+  "28": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+1.6364928+14.1018298+0.0003')\")",
+  "108": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+7.3387029+26.8714835+0.0003')\")",
+  "113": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+7.7177257+-38.1417098+0.0003')\")",
+  "124": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+8.4090515+28.4581438+0.0003')\")",
+  "156": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+10.9587703+9.4780510+0.0003')\")",
+  "176": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+12.6001373+-15.6421911+0.0003')\")",
+  "184": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+13.4556506+-1.2318876+0.0003')\")",
+  "190": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+14.1508088+-1.1931254+0.0003')\")",
+  "193": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+14.5503857+-56.8921233+0.0003')\")",
+  "215": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+16.8301551+13.4479663+0.0003')\")",
+  "225": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+17.5631111+1.1056077+0.0003')\")",
+  "311": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+24.7875558+81.1665547+0.0003')\")",
+  "338": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+26.8645035+47.5203852+0.0003')\")",
+  "348": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+27.4857200+0.2796976+0.0003')\")",
+  "360": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+28.4762257+14.0807128+0.0003')\")",
+  "465": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+39.6357889+-21.7753416+0.0003')\")",
+  "1696": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+155.4733452+37.0700999+0.0003')\")",
+  "1798": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+162.6829458+32.9786190+0.0003')\")",
+  "1051": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+98.9671999+51.8044626+0.0003')\")",
+  "3608": "RuntimeError(\"SIA falló tras 6 intentos: HTTPError('502 Server Error: Proxy Error for url: https://irsa.ipac.caltech.edu/SIA?COLLECTION=spherex_dr1&POS=circle+338.4328553+-13.5280944+0.0003')\")"
+}

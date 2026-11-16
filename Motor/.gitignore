@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+logs/
+# fitted estimators of every experiment (reproducible with `python main.py entrenar`; the served model is in artifacts/models)
+salidas/**/*.joblib
+salidas/**/*.pt
+ENTREGA_CLASIFICADOR_*.zip

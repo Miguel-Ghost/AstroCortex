@@ -1,0 +1,22 @@
+# Versiones con las que se probó el paquete (Python 3.13). torch se instala aparte (rueda CPU) en instalar.sh.
+numpy==2.5.5
+pandas==3.1.1
+pyarrow==26.0.1
+scipy==1.18.1
+scikit-learn==1.9.1
+matplotlib==3.11.2
+astropy==8.0.2
+xgboost==3.4.1
+onnx==1.23.2
+onnxruntime==1.32.0
+skl2onnx==1.20.0
+onnxmltools==1.16.0
+fsspec==2026.9.0
+aiohttp==3.14.5
+requests==2.34.2
+joblib==1.6.0
+jupyterlab
+nbconvert==7.17.2
+ipykernel==7.4.0
+nbformat==5.11.1
+gdown

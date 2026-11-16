@@ -3,10 +3,12 @@ name: CI
 on:
   push:
     branches: [main, backend-skeleton]
-    # a push that touches only the frontend or repository-level files neither tests nor redeploys
+    # a push that touches only the frontend, the engine model repository (Motor/, own workflow) or
+    # repository-level files neither tests nor redeploys
     # the backend (deploy.yml runs after this workflow)
     paths-ignore:
       - "Frontend/**"
+      - "Motor/**"
       - ".github/workflows/frontend.yml"
       - ".github/workflows/deploy-frontend.yml"
       - ".github/workflows/keepalive.yml"
@@ -14,6 +16,7 @@ on:
   pull_request:
     paths-ignore:
       - "Frontend/**"
+      - "Motor/**"
       - ".github/workflows/frontend.yml"
       - ".github/workflows/deploy-frontend.yml"
       - ".github/workflows/keepalive.yml"

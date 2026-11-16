@@ -1,0 +1,17 @@
+{
+  "source": "NOIRLab Astro Data Lab",
+  "catalog": "unwise_dr1.object",
+  "service": "https://datalab.noirlab.edu/query/query",
+  "queried_utc": "2026-11-14T19:39:47.274441+00:00",
+  "input": "C:\\Users\\Paolo\\Downloads\\SpaceApps2026_Reto\\data\\processed\\objects.parquet",
+  "input_sha256": "1af75a55d9ece4196a5b497616cce6379d4bd7fcc7c2c83d27357bd6bead3b20",
+  "query_sql": "SELECT t.oid,t.ra_q,t.dec_q,c.unwise_objid,c.ra,c.dec,c.flux_w1,c.dflux_w1,c.flux_w2,c.dflux_w2,c.qf_w1,c.qf_w2,c.fracflux_w1,c.fracflux_w2,c.flags_unwise_w1,c.flags_unwise_w2,c.primary FROM (VALUES (5100,3.7559164460,-3.4401102129),(5101,3.9708664682,-3.4806128939),(5102,3.9471249352,-3.1329041868),(5103,4.1388267842,-3.4069948333),(5104,3.7868130588,-3.5066737514),(5105,3.9716073293,-3.5791706589),(5106,318.2726483221,12.4681982338),(5107,318.3686336504,12.4430970578),(5108,318.4791126923,12.2182265761),(5109,318.5103172255,12.4266359005),(5110,318.2903517111,12.3678513396),(5111,318.4326507267,12.3598729599),(5112,318.3798027942,12.4850685822),(5113,318.2899821025,12.2822562142),(5114,318.4482660217,12.6702847887),(5115,318.3381909460,12.6654071392),(5116,318.4969651534,12.2583940484),(5117,318.3244997355,12.5306977965),(5118,318.6250821688,12.3339022507),(5119,318.4520829532,12.5795043275)) AS t(oid,ra_q,dec_q), unwise_dr1.object AS c WHERE q3c_join(t.ra_q,t.dec_q,c.ra,c.dec,0.000833333333)",
+  "epoch_jyear": 2013.0,
+  "radius_arcsec": 3.0,
+  "rows_in": 20,
+  "rows_out": 22,
+  "response_bytes": 3520,
+  "response_sha256": "1dc3aa4a80ca810b8ecde45ba670e496028dad96c325bb0d580c86bb3c492ce3",
+  "seconds": 0.644,
+  "complete": true
+}

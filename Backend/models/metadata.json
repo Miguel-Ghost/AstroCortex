@@ -1,0 +1,76 @@
+{
+  "model_version": "motor-rf-E_servible_binario-spherex-2026-11-16T0256",
+  "features": [
+    "cw_W1_W2",
+    "cw_mu",
+    "Hrpm_W2",
+    "spx_c21",
+    "spx_c32",
+    "spx_c43",
+    "spx_c54",
+    "spx_c65",
+    "spx_c64",
+    "spx_ch4"
+  ],
+  "classes": [
+    "star",
+    "cold_brown_dwarf"
+  ],
+  "calibrated": false,
+  "thresholds": {
+    "cold_brown_dwarf": 0.5
+  },
+  "fill_values": {
+    "cw_W1_W2": 0.34800000000000075,
+    "cw_mu": 0.15012990738314913,
+    "Hrpm_W2": 15.070248340936764,
+    "spx_c21": -0.651065558758797,
+    "spx_c32": -0.012353231554913083,
+    "spx_c43": 0.39644475134971874,
+    "spx_c54": -0.05543021596838665,
+    "spx_c65": 0.44363594229807973,
+    "spx_c64": 0.4701077946236018,
+    "spx_ch4": 0.06741458781692235
+  },
+  "feature_definitions": {
+    "cw_W1_W2": "CatWISE2020 w1mpro − w2mpro [mag Vega]; NaN si cc_flags/ab_flags de W1 o W2 ≠ '0'",
+    "cw_mu": "hypot(pmra, pmdec) de CatWISE2020 [arcsec/año] (pmra/pmdec de CatWISE vienen en arcsec/año)",
+    "Hrpm_W2": "w2mpro + 5·log10(max(cw_mu, 0.005)) + 5 [mag]; movimiento propio reducido",
+    "spx_c21": "−2.5·log10(F_D2/F_D1), flujos SPHEREx con ajuste de PSF gaussiana; solo si S/N ≥ 3 en ambos",
+    "spx_c32": "−2.5·log10(F_D3/F_D2), misma regla",
+    "spx_c43": "−2.5·log10(F_D4/F_D3), misma regla",
+    "spx_c54": "−2.5·log10(F_D5/F_D4), misma regla",
+    "spx_c65": "−2.5·log10(F_D6/F_D5), misma regla",
+    "spx_c64": "−2.5·log10(F_D6/F_D4), misma regla",
+    "spx_ch4": "log10(F_D5/F_D4) = log10(methane_index del backend); con D5 S/N≥3 y D4 S/N<3: log10(F_D5/(3·σ_D4))"
+  },
+  "training": {
+    "experimento": "E_servible_binario",
+    "modelo": "rf",
+    "potencia_peso_clase": 0.25,
+    "poblacion": "spherex",
+    "n_dev": 697,
+    "n_test": 151,
+    "cv": {
+      "balanced_accuracy": 0.9457,
+      "macro_f1": 0.9455,
+      "ap_positivas": 0.983,
+      "precision_positivas": 0.9349,
+      "recall_positivas": 0.9381,
+      "recall_star": 0.9532,
+      "recall_cold_brown_dwarf": 0.9381
+    },
+    "test": {
+      "balanced_accuracy": 0.9583,
+      "macro_f1": 0.9583,
+      "ap_positivas": 0.9924,
+      "precision_positivas": 0.9492,
+      "recall_positivas": 0.9492,
+      "recall_star": 0.9674,
+      "recall_cold_brown_dwarf": 0.9492
+    },
+    "particion": "espacial de TY_PIPELINE (celdas de cielo; test = 20 % de celdas)",
+    "etiquetas": "star = estrella, M o L; cold_brown_dwarf = T o Y (UltracoolSheet)"
+  },
+  "created_utc": "2026-11-16T02:56:20+00:00"
+}

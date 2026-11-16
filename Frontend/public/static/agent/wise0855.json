@@ -49,7 +49,7 @@
    ]
   },
   {
-   "say": "The rule-based engine labels it a candidate cold brown dwarf; that agrees with the catalog type (cold brown dwarf, SIMBAD).",
+   "say": "The model motor-rf-E_servible_binario-spherex-2026-11-16T0256 labels it a candidate cold brown dwarf; that agrees with the catalog type (cold brown dwarf, SIMBAD).",
    "actions": [
     {
      "type": "open_tab",
@@ -62,7 +62,7 @@
    ]
   },
   {
-   "say": "7 of 33 sources in this field need a human look. The first one, CWISE J085505.62-071320.6, is flagged for: Not enough data to classify; Only in one date; No Gaia counterpart. Is it real or an artefact?",
+   "say": "4 of 33 sources in this field need a human look. The first one, CWISE J085505.62-071320.6, is flagged for: Only in one date; No Gaia counterpart. Is it real or an artefact?",
    "actions": [
     {
      "type": "select_source",

@@ -1,0 +1,42 @@
+{
+  "conteos": {
+    "5clases": {
+      "dev": {
+        "star": 6371,
+        "L": 1563,
+        "M": 736,
+        "T": 735,
+        "Y": 40
+      },
+      "test": {
+        "star": 1599,
+        "L": 394,
+        "M": 184,
+        "T": 183,
+        "Y": 10
+      },
+      "dev_subconjunto_spherex": {
+        "T": 251,
+        "L": 167,
+        "star": 160,
+        "M": 79,
+        "Y": 40
+      }
+    },
+    "servible": {
+      "dev": {
+        "star": 8670,
+        "cold_brown_dwarf": 775
+      },
+      "test": {
+        "star": 2177,
+        "cold_brown_dwarf": 193
+      },
+      "dev_subconjunto_spherex": {
+        "star": 406,
+        "cold_brown_dwarf": 291
+      }
+    }
+  },
+  "estrategia": "pesos por clase (N/(K·n_c))^p, p elegido por CV entre [0.25]; sin remuestreo ni SMOTE"
+}

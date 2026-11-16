@@ -1,0 +1,161 @@
+{
+  "metodo": "gaussiana 2D ponderada sobre IMAGE−ZODI; predicción con μ + paralaje anual geocéntrico",
+  "estado": "DEGRADED_GAUSS_NO_EPSF: posiciones aproximadas; validar con ePSF del motor",
+  "objetivos": {
+    "Barnard's Star": {
+      "exposiciones": 364,
+      "estados": {
+        "OK_DEGRADED_GAUSS_NO_EPSF": 354,
+        "BORDE_O_FUERA": 7,
+        "SIN_FONDO": 3
+      },
+      "limpias_para_astrometria": 0,
+      "mjd_rango": [
+        60902.865380738,
+        61305.628686814
+      ],
+      "pm_catalogo_mas_yr": [
+        -801.5509783684709,
+        10362.394206546573
+      ],
+      "plx_catalogo_mas": 546.975939730948
+    },
+    "Epsilon Indi B": {
+      "exposiciones": 421,
+      "estados": {
+        "OK_DEGRADED_GAUSS_NO_EPSF": 408,
+        "BORDE_O_FUERA": 10,
+        "SIN_FONDO": 3
+      },
+      "limpias_para_astrometria": 314,
+      "mjd_rango": [
+        60789.85618796,
+        61315.478741768
+      ],
+      "pm_catalogo_mas_yr": [
+        3982.0,
+        -2466.8
+      ],
+      "plx_catalogo_mas": 270.7,
+      "movimiento_propio": {
+        "pmra": {
+          "delta_mas_yr": -66.41436845624526,
+          "err_mas_yr": 11.093982357536047,
+          "catalogo_mas_yr": 3982.0,
+          "medido_mas_yr": 3915.585631543755,
+          "offset_medio_arcsec": 0.084990049031422,
+          "n": 209,
+          "chi2_red": 2.111811893381885
+        },
+        "pmdec": {
+          "delta_mas_yr": -76.69957934248671,
+          "err_mas_yr": 12.50971709601336,
+          "catalogo_mas_yr": -2466.8,
+          "medido_mas_yr": -2543.499579342487,
+          "offset_medio_arcsec": -0.7827489426319271,
+          "n": 189,
+          "chi2_red": 2.198028693553976
+        }
+      },
+      "residuo_mediano_arcsec": 0.8043272186113875,
+      "exposiciones_con_fotometria_limpia": 326
+    },
+    "R Draconis": {
+      "exposiciones": 548,
+      "estados": {
+        "OK_DEGRADED_GAUSS_NO_EPSF": 406,
+        "SIN_FONDO": 123,
+        "BORDE_O_FUERA": 19
+      },
+      "limpias_para_astrometria": 0,
+      "mjd_rango": [
+        60811.956495321,
+        61237.873900124
+      ],
+      "pm_catalogo_mas_yr": [
+        -20.642811719160797,
+        6.148818852711324
+      ],
+      "plx_catalogo_mas": 1.2509180143740992
+    },
+    "RW Aurigae": {
+      "exposiciones": 336,
+      "estados": {
+        "OK_DEGRADED_GAUSS_NO_EPSF": 331,
+        "BORDE_O_FUERA": 3,
+        "SIN_FONDO": 2
+      },
+      "limpias_para_astrometria": 18,
+      "mjd_rango": [
+        60919.420312786,
+        61299.896562983
+      ],
+      "pm_catalogo_mas_yr": [
+        2.6406431770317083,
+        -27.397582540455325
+      ],
+      "plx_catalogo_mas": 6.406249329219477,
+      "movimiento_propio": {
+        "pmra": {
+          "delta_mas_yr": 157.11372471173777,
+          "err_mas_yr": 51.74576096016955,
+          "catalogo_mas_yr": 2.6406431770317083,
+          "medido_mas_yr": 159.75436788876948,
+          "offset_medio_arcsec": 0.4884645092772599,
+          "n": 16,
+          "chi2_red": 1.529564729416307
+        },
+        "pmdec": {
+          "delta_mas_yr": 164.68618043416427,
+          "err_mas_yr": 48.3549812178665,
+          "catalogo_mas_yr": -27.397582540455325,
+          "medido_mas_yr": 137.28859789370895,
+          "offset_medio_arcsec": 0.15817708644278092,
+          "n": 16,
+          "chi2_red": 1.776332803556656
+        }
+      },
+      "residuo_mediano_arcsec": 0.49913652863665625,
+      "exposiciones_con_fotometria_limpia": 18
+    },
+    "WISE 0855-0714": {
+      "exposiciones": 258,
+      "estados": {
+        "OK_DEGRADED_GAUSS_NO_EPSF": 256,
+        "SIN_FONDO": 2
+      },
+      "limpias_para_astrometria": 44,
+      "mjd_rango": [
+        60800.70069465,
+        61174.287883944
+      ],
+      "pm_catalogo_mas_yr": [
+        -8123.7,
+        673.2
+      ],
+      "plx_catalogo_mas": 439.0,
+      "movimiento_propio": {
+        "pmra": {
+          "delta_mas_yr": 8999.868429060576,
+          "err_mas_yr": 296.8856450067791,
+          "catalogo_mas_yr": -8123.7,
+          "medido_mas_yr": 876.1684290605763,
+          "offset_medio_arcsec": -3.3928385949904434,
+          "n": 42,
+          "chi2_red": 1.305260881181484
+        },
+        "pmdec": {
+          "delta_mas_yr": -1056.308075709999,
+          "err_mas_yr": 262.8848850599391,
+          "catalogo_mas_yr": 673.2,
+          "medido_mas_yr": -383.10807570999896,
+          "offset_medio_arcsec": 5.8492924281804815,
+          "n": 41,
+          "chi2_red": 0.8040322098940776
+        }
+      },
+      "residuo_mediano_arcsec": 7.395472627388081,
+      "exposiciones_con_fotometria_limpia": 218
+    }
+  }
+}
